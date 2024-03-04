@@ -21,37 +21,116 @@ class Comparison(dict):
     - data_id to avoid overwriting data (benchmark_id or the key used by the
       external parser to uniquely identify the individual read out files)
     """
+    
     _data_separators = ("basis", "method")
 
     def __init__(self, *data_separators: str) -> None:
+        """
+        Initialize the Comparison class.
+
+        Parameters
+        ----------
+        *data_separators : str
+            Data separators used to split data into nested dictionaries.
+        
+        """
         if data_separators:
             self._data_separators = data_separators
         super().__init__()
 
     @property
     def data_separators(self):
+        """
+        Get the data separators.
+
+        Returns
+        -------
+        tuple of str
+            Data separators used to split data into nested dictionaries.
+        
+        """
         return self._data_separators
 
     @property
     def structure(self):
+        """
+        Get the structure of the nested comparison dictionary.
+
+        Returns
+        -------
+        tuple of str
+            Structure of the nested comparison dictionary.
+        
+        """
         return ("name", *self.data_separators, "proptype", "data_id")
 
     def _import_value(self, value):
+        """
+        Import value into numpy array if it is not a scalar type.
+
+        Parameters
+        ----------
+        value : scalar or array-like
+            Value to be imported.
+
+        Returns
+        -------
+        scalar or numpy.ndarray
+            Imported value.
+        
+        """
         if isinstance(value, (int, float, complex, str)):
             return value
         else:
             return numpy.array(value)
 
     def walk_property(self, property):
+        """
+        Walk through properties in the comparison dictionary.
+
+        Parameters
+        ----------
+        property : str
+            Property to walk through.
+
+        Returns
+        -------
+        generator
+            Generator yielding paths and corresponding values for the specified property.
+        
+        """
         return self._walk_key(self, desired_key=property)
 
     def walk_values(self):
-        """walk all values that are no dicts"""
+        """
+        Walk through all values in the comparison dictionary that are not dictionaries.
+
+        Returns
+        -------
+        generator
+            Generator yielding paths and corresponding values for all values that are not
+            dictionaries.
+        
+        """
         return self._walk_values(self)
 
     @staticmethod
     def _walk_values(indict: dict, prev_keys: list = None):
-        """Walk the arbitrarily nested dictionary."""
+        """
+        Walk through all values in the nested dictionary.
+
+        Parameters
+        ----------
+        indict : dict
+            Nested dictionary to walk through.
+        prev_keys : list of str, optional
+            List of previous keys leading to the current dictionary. Default is None.
+
+        Returns
+        -------
+        generator
+            Generator yielding paths and corresponding values. 
+        """
         if prev_keys is None:
             prev_keys = []
         if isinstance(indict, dict):
@@ -64,9 +143,24 @@ class Comparison(dict):
 
     @staticmethod
     def _walk_key(indict: dict, desired_key, prev_keys: list = None):
-        """Walk the arbitrarily nested dictionary until the desired key is
-           found. Return the sequence of keys to reach the value that
-           corresponds to the desired key."""
+        """
+        Walk through nested dictionary until the desired key is found.
+
+        Parameters
+        ----------
+        indict : dict
+            Nested dictionary to walk through.
+        desired_key : str
+            Key to search for.
+        prev_keys : list of str, optional
+            List of previous keys leading to the current dictionary. Default is None.
+
+        Returns
+        -------
+        generator
+            Generator yielding paths and corresponding values for the desired key.
+
+        """
         if prev_keys is None:
             prev_keys = []
         if isinstance(indict, dict):
@@ -80,10 +174,20 @@ class Comparison(dict):
 
     def add_benchmark(self, benchmark: dict, benchmark_id: str) -> None:
         """
-        Read in a benchmark of the following structure:
+        Add benchmark data to the comparison dictionary. Read in a benchmark of the following 
+        structure:
         {name: {..., 'properties': {_: {
             'basis': val,..., 'type': proptype1, value: 42
         }}}}
+
+
+        Parameters
+        ----------
+        benchmark : dict
+            Benchmark data to be added.
+        benchmark_id : str
+            Identifier for the benchmark data.
+
         """
         # XXX: 'type' and 'value' are benchmark specific
         # -> could add both as argument to the function
@@ -119,11 +223,19 @@ class Comparison(dict):
 
     def add_external(self, external: dict) -> None:
         """
-        Read in external data of the following structure:
+        Add external data to the comparison dictionary. Reads in external data of the following 
+        structure:
         {outfile: {_: {
             data_separator1: val, data_separator2: val, ...,
             'data': {proptype1: val, proptype2: val, ...}
         }}}
+
+
+        Parameters
+        ----------
+        external : dict
+            External data to be added.
+
         """
         # XXX: 'name' and 'data' are external specific
         # -> could add them as arguments to the function

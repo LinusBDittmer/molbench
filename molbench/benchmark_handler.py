@@ -11,6 +11,21 @@ premade_benchmarks = None
 
 
 def _collect_premade_benchmarks():
+    """
+    Collect premade benchmark files from the 'benchmarks' directory.
+
+    Explanation
+    -----------
+    - `premade_benchmarks`: Global dictionary to store premade benchmark files.
+    - If `premade_benchmarks` is already populated, exit the function.
+    - `wpath`: Get the directory path of the current file.
+    - `rpath`: Create the absolute path to the 'benchmarks' directory relative to the current file.
+    - Initialize `premade_benchmarks` as an empty dictionary.
+    - Iterate over files in the 'benchmarks' directory:
+        - If the file has a '.json' extension, add it to `premade_benchmarks` with the filename 
+          (without extension) as key and the absolute path as value.
+
+    """
     global premade_benchmarks
     if premade_benchmarks is not None:
         return
@@ -27,6 +42,34 @@ def _collect_premade_benchmarks():
 
 
 def load_benchmark(benchmark: str, use_local_benchmark: bool = False) -> dict:
+    """
+    Load a benchmark file.
+
+    Parameters
+    ----------
+    benchmark : str
+        Path to the benchmark file or name of a premade benchmark.
+    use_local_benchmark : bool, optional
+        If True, `benchmark` is interpreted as a local path, otherwise as the name of a premade 
+        benchmark. Default is False.
+
+    Returns
+    -------
+    dict
+        Dictionary containing the loaded benchmark data.
+
+    Explanation
+    -----------
+    - `premade_benchmarks`: Global dictionary storing premade benchmark files.
+    - Call `_collect_premade_benchmarks` to populate `premade_benchmarks`.
+    - If `premade_benchmarks` is populated and `benchmark` is in `premade_benchmarks`, use the 
+      corresponding premade benchmark.
+    - Otherwise, if `benchmark` is not a local path or doesn't exist, log a critical error.
+    - If `benchmark` doesn't end with '.json', log a warning.
+    - Attempt to load the benchmark file as JSON.
+    - If an error occurs during JSON decoding, log a critical error.
+
+    """
     _collect_premade_benchmarks()
     global premade_benchmarks
 
