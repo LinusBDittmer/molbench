@@ -73,8 +73,9 @@ from .comparison import Comparison
 from .statistics import Statistics, register_as_error_measure
 from .export import Exporter, CsvExporter
 from .external_parser import ExternalParser, JSON_Parser
+from .molecule import Molecule
 
-__all__ = ["config", "load_benchmark", "InputConstructor",
+__all__ = ["config", "Molecule", "load_benchmark", "InputConstructor",
            "TemplateConstructor", "create_bash_files", "make_send_script",
            "Comparison", "Statistics", "register_as_error_measure",
            "Exporter", "CsvExporter",

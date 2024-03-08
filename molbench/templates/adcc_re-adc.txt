@@ -72,12 +72,11 @@ def run_adcc(hf, **kwargs):
 
 def dump_adcc(states, outname):
 	if not states.converged:
-		print("ADC calculation not converged")
-		exit()
+		raise ValueError("ADC calculation not converged")
 	if states.kind == "singlet":
-		multiplicity = 1
+		mul = 1
 	elif states.kind == "triplet":
-		multiplicity = 3
+		mul = 3
 	else:
 		raise ValueError(f"Unknown states kind {states.kind}.")
 
@@ -91,10 +90,10 @@ def dump_adcc(states, outname):
 		"name": name,
 		"basis": basis,
 		"method": gs_method,
+		"state_id": "ground state"
 	}
 	au_to_ev = constants.value("Hartree energy in eV")
 	data = {}
-	data["state_id"] = "ground state"
 	data["scf energy"] = states.reference_state.energy_scf
 	data["energy correction"] = states.ground_state.energy_correction(adc_order)
 	data["energy"] = states.ground_state.energy(adc_order)
@@ -112,7 +111,7 @@ def dump_adcc(states, outname):
 			"name": name,
 			"basis": basis,
 			"method": states.method.name,
-			"state_multiplicity": multiplicity,
+			"state_multiplicity": mul,
 			"detected_point_group": "C1",
 			"irrep": "A",
 			"exctation type": "Excitation",
@@ -135,8 +134,13 @@ def state_overlap(left, right):
 		print(f"Overlap of {method_r} states with {method_l} state {i}:")
 		overlaps = {}
 		for j, r in enumerate(right.excitation_vector):
-			overlaps[j] = round(l.dot(r), 4)
-		print(overlaps)
+			o = round(l.dot(r), 4)
+			if o > 0.1:
+				overlaps[j] = o
+		if overlaps:
+			print(overlaps)
+		else:
+			print("No {method_r} state has an overlap > 0.1 with {method_l} state {i}.")
 	print("-"*80)
 
 

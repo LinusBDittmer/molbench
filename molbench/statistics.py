@@ -152,11 +152,10 @@ class Statistics:
         type ('energy', ...), which can be provided as another optional
         argument.
         """
-        statistical_error_measures = [
+        statistical_error_measures = set(
             measure.lower() for measure in statistical_error_measures
-        ]
+        )
         if "all" in statistical_error_measures:
-            statistical_error_measures = set(statistical_error_measures)
             statistical_error_measures.update(
                 self.available_error_measures.keys()
             )
