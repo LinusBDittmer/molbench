@@ -113,8 +113,9 @@ class Comparison(dict):
                     d[proptype] = {}
                 if benchmark_id in (d := d[proptype]):
                     log.warning("Benchmark ID is not unique. Found conflicting"
-                                f" entry for {separators} and {proptype}."
-                                "Overwriting the exisiting value", Comparison)
+                                f" entry for {name}, {separators} and "
+                                f"{proptype}. Overwriting the exisiting value",
+                                Comparison)
                 d[benchmark_id] = self._import_value(value)
 
     def add_external(self, external: dict) -> None:
