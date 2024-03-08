@@ -3,9 +3,10 @@
 
 """
 
+from . import logger as log
+from .molecule import Molecule
 import os
 import json
-import molbench.logger as log
 
 premade_benchmarks = None
 
@@ -26,7 +27,8 @@ def _collect_premade_benchmarks():
                 premade_benchmarks.update({key: val})
 
 
-def load_benchmark(benchmark: str, use_local_benchmark: bool = False) -> dict:
+def load_benchmark(benchmark: str, benchmark_id=None,
+                   use_local_benchmark: bool = False) -> dict:
     _collect_premade_benchmarks()
     global premade_benchmarks
 
@@ -50,4 +52,7 @@ def load_benchmark(benchmark: str, use_local_benchmark: bool = False) -> dict:
     except json.JSONDecodeError:
         log.critical(f"Benchmark file {benchmark} cannot be read.")
 
-    return bm_dict
+    if benchmark_id is None:
+        benchmark_id = benchmark
+    return [Molecule.from_benchmark(moldata, benchmark_id, molkey)
+            for molkey, moldata in bm_dict.items()]

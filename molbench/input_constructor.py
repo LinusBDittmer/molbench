@@ -6,6 +6,7 @@ import os
 from . import logger as log
 from .configuration import config
 from .functions import substitute_template
+from .molecule import Molecule
 
 
 class InputConstructor:
@@ -30,7 +31,7 @@ class InputConstructor:
     def __init__(self):
         pass
 
-    def create(self, benchmark: dict, filepath: str,
+    def create(self, benchmark: list[Molecule], basepath: str,
                flat_structure: bool = False,
                name_template: str = '[[name]]_[[method]]_[[basis]].in'
                ) -> list:
@@ -73,7 +74,8 @@ class TemplateConstructor(InputConstructor):
                 log.critical(f"Custom template {template} could not be "
                              "loaded.", self)
 
-    def create(self, benchmark: dict, basepath: str, calculation_details: dict,
+    def create(self, benchmark: list[Molecule], basepath: str,
+               calculation_details: dict,
                input_expansion_keys: tuple[str] = ("basis",),
                flat_structure: bool = False,
                name_template: str = None):
@@ -90,7 +92,8 @@ class TemplateConstructor(InputConstructor):
             # construct a name that ensures that each file has a unique name
             name_template = "[[name]]_[[method]]"
             for key in input_expansion_keys:
-                name_template += f"_[[{key}]]"
+                if key not in ["name", "method"]:
+                    name_template += f"_[[{key}]]"
             name_template += ".in"
 
         if not os.path.exists(basepath_abs):
@@ -98,41 +101,33 @@ class TemplateConstructor(InputConstructor):
 
         log.info("Path created successfully")
 
-        for molkey, moldict in benchmark.items():
-            # Not sure if we want to skip creating input files in this case
-            if not moldict.get('properties', {}):
+        for molecule in benchmark:
+            # we don't have any reference data for the molecule
+            if not molecule.state_data:
                 continue
-            base_details = {k: v for k, v in moldict.items()
-                            if k != 'properties'}
-            if "name" not in base_details:
-                base_details["name"] = molkey
-            if "xyz" in base_details and \
-                    not isinstance(base_details["xyz"], str):
-                base_details["xyz"] = "\n".join(base_details["xyz"])
-
             # find all unique combinations of relevant keys present in the
             # benchmark, skipping all entries where at least one key is not
             # defined
             variants = set()
-            for prop in moldict["properties"].values():
+            for prop in molecule.state_data.values():
                 var = tuple(
                     (key, prop.get(key, None)) for key in input_expansion_keys
                 )
                 if any(v is None for _, v in var):
                     continue
                 variants.add(var)
-
             for var in variants:
-                log.debug(f"Now handling: {molkey} -> {var}.")
-                details = base_details.copy()
-                for k, v in var:
-                    # inform if conflicting data exists
-                    if k in details:
-                        log.warning(f"Found conflicting entry for {k}. "
-                                    f"Overwriting existing value {details[k]}"
-                                    f"with {v}.", TemplateConstructor)
-                    details[k] = v
-
+                log.debug(f"Creating input file for: {molecule.name} -> "
+                          f"{var}.")
+                details = molecule.system_data.copy()
+                details["name"] = molecule.name
+                for key, val in var:
+                    if key in details:
+                        log.warning(f"Found conflicting entry for {key}. "
+                                    f"Overwriting existing value "
+                                    f"{details[key]} with {val}.",
+                                    TemplateConstructor.create)
+                    details[key] = val
                 # this is direct user input -> use whatever we got and
                 # silently overwrite if necessary
                 details.update(calculation_details)
@@ -140,20 +135,16 @@ class TemplateConstructor(InputConstructor):
                 for key, val in config.items():
                     if key not in details:
                         details[key] = val
-
-                inputfile_contents = substitute_template(self.template,
-                                                         details)
-                inputfile_name = substitute_template(name_template, details)
+                infile_content = substitute_template(self.template, details)
+                infile_name = substitute_template(name_template, details)
                 if flat_structure:
-                    inputfile_path = os.path.join(basepath_abs, inputfile_name)
+                    infile = os.path.join(basepath, infile_name)
                 else:
-                    inputfile_path = os.path.join(basepath_abs, molkey,
-                                                  inputfile_name)
-                    if not os.path.exists(os.path.join(basepath_abs, molkey)):
-                        os.makedirs(os.path.join(basepath_abs, molkey),
-                                    exist_ok=True)
-                with open(inputfile_path, "w") as f:
-                    f.write(inputfile_contents)
-                inputfile_list.append(inputfile_path)
-
+                    infile_folder = os.path.join(basepath_abs, molecule.name)
+                    if not os.path.exists(infile_folder):
+                        os.makedirs(infile_folder)
+                    infile = os.path.join(infile_folder, infile_name)
+                with open(infile, "w") as f:
+                    f.write(infile_content)
+                inputfile_list.append(infile)
         return inputfile_list
