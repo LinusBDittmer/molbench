@@ -40,9 +40,7 @@ mul_pops, mul_charges = mf.mulliken_pop(dm=dm1)
 homo_index = numpy.where(mf.mo_occ > 0)[0][-1]
 lumo_index = numpy.where(mf.mo_occ < 1)[0][0]
 homo_lumo_gap = mf.mo_energy[lumo_index] - mf.mo_energy[homo_index]
-
-max_t2 = numpy.amax(ordmp2._mp2.t2)
-min_t2 = numpy.amin(ordmp2._mp2.t2)
+max_e_denom = 1 / (mf.mo_energy[lumo_index+1] - mf.mo_energy[homo_index-1] + homo_lumo_gap)
 
 name = os.path.basename(__file__)
 outname = os.path.splitext(name)[0] + ".out"
@@ -62,7 +60,7 @@ data = {
     "mulliken charges": tuple(mul_charges),
     "scf energy": mf.energy_tot(),
     "homo lumo gap": homo_lumo_gap,
-    "t2 range": (min_t2, max_t2)
+    "maximum energy denominator": max_e_denom
 }
 metadata["data"] = data
 

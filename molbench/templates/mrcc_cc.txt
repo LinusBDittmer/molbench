@@ -1,0 +1,8 @@
+# Automated generation of CC calculation
+basis=[[basis]]
+calc=[[method]]
+mem=[[memory]]
+
+unit=[[xyz_unit]]
+geom=xyz
+[[xyz]]
