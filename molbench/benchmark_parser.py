@@ -69,7 +69,7 @@ class BenchmarkParser:
 
 
 class JSONBenchmarkParser(BenchmarkParser):
-    def parse_benchmark(benchmarkfile: str) -> dict:
+    def parse_benchmark(self, benchmarkfile: str) -> dict:
         """
         Load a benchmark file.
 
