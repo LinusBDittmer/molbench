@@ -14,16 +14,18 @@ class Configuration(dict):
     Attributes
     ----------
     required_fields : dict
-        Dictionary containing required configuration fields and their default values.
+        Dictionary containing required configuration fields and their default
+        values.
 
     Methods
     -------
     load_from_file()
-        Load configuration from a JSON file specified by environment variable or default path.
+        Load configuration from a JSON file specified by environment variable
+        or default path.
     check_required_fields()
-        Check if all required fields are present in the configuration and fill in missing ones 
-        with default values.
-    
+        Check if all required fields are present in the configuration and fill
+        in missing ones with default values.
+
     """
 
     required_fields = {
@@ -38,7 +40,7 @@ class Configuration(dict):
 
         Parameters
         ----------
-        *args, **kwargs : 
+        *args, **kwargs :
             Arguments to initialize the superclass dict.
 
         """
@@ -49,9 +51,9 @@ class Configuration(dict):
         """
         Load configuration from a JSON file.
 
-        This method attempts to load the configuration from a JSON file specified by the 
-        environment variable "MOLBENCH_CONFIG" or from the default path "local_config.json" 
-        relative to the current file.
+        This method attempts to load the configuration from a JSON file
+        specified by the environment variable "MOLBENCH_CONFIG" or from the
+        default path "local_config.json" relative to the current file.
 
         """
         current_dir = os.path.dirname(os.path.realpath(__file__))
@@ -68,9 +70,10 @@ class Configuration(dict):
         """
         Check and fill in missing required fields with default values.
 
-        This method iterates through the required fields defined in the class and checks if they 
-        are present in the configuration dictionary. If any required field is missing, it is added
-        to the configuration with its default value.
+        This method iterates through the required fields defined in the class
+        and checks if they are present in the configuration dictionary. If any
+        required field is missing, it is added to the configuration with its
+        default value.
 
         """
         for field, val in self.required_fields.items():

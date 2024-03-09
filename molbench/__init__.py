@@ -79,6 +79,7 @@ __all__ = ["config", "Molecule", "load_benchmark", "InputConstructor",
            "TemplateConstructor", "create_bash_files", "make_send_script",
            "Comparison", "Statistics", "register_as_error_measure",
            "Exporter", "CsvExporter",
-           "ExternalParser", "JSON_Parser"]
+           "ExternalParser", "JSON_Parser",
+           "JSONBenchmarkParser"]
 __version__ = "0.0.1"
 __authors__ = ["Linus Bjarne Dittmer", "Jonas Leitner"]

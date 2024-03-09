@@ -9,7 +9,8 @@ from . import config
 
 def create_bash_files(files: list, command: str) -> list:
     """
-    Generate submit scripts for each input file files and for calculation on a cluster.
+    Generate submit scripts for each input file files and for calculation on a
+    cluster.
 
     Parameters
     ----------
@@ -25,7 +26,8 @@ def create_bash_files(files: list, command: str) -> list:
 
     Notes
     -----
-    This function generates bash scripts that submit them to a cluster for execution.
+    This function generates bash scripts that submit them to a cluster for
+    execution.
 
     Explanation
     -----------
@@ -38,7 +40,8 @@ def create_bash_files(files: list, command: str) -> list:
         - `infilename`: Extract the base name of the current file.
         - Construct the command to be executed on the current file.
         - Log a message indicating the script generation process.
-        - Execute the command using subprocess to submit the script to the cluster.
+        - Execute the command using subprocess to submit the script to the
+          cluster.
         - Log debug information about the executed command.
         - Extract the filename without extension.
         - Find all '.sh' and '.sbatch' files in the current directory.
@@ -73,7 +76,8 @@ def create_bash_files(files: list, command: str) -> list:
     return bash_files
 
 
-def make_send_script(bashfiles: list, send_command: str, sendscript: typing.IO):
+def make_send_script(bashfiles: list, send_command: str,
+                     sendscript: typing.IO):
     """
     Generate a script for sending all jobscripts to a cluster.
 
@@ -92,14 +96,15 @@ def make_send_script(bashfiles: list, send_command: str, sendscript: typing.IO):
 
     Explanation
     -----------
-    - `send_command`: Command used for sending and executing bash scripts on a cluster.
-    - `sendscript_content`: Initialize the content of the send script with shebang and a function 
-                            definition.
+    - `send_command`: Command used for sending and executing bash scripts on a
+      cluster.
+    - `sendscript_content`: Initialize the content of the send script with
+                            shebang and a function definition.
     - Iterate over each bash script file:
         - `fpath`: Get the absolute directory path of the current bash script.
         - `infilename`: Extract the base name of the current bash script.
-        - Construct the addendum to the send script content for sending and executing the current 
-          bash script.
+        - Construct the addendum to the send script content for sending and
+          executing the current bash script.
         - Append the addendum to the sendscript content.
     - Write the sendscript content to the sendscript file.
 

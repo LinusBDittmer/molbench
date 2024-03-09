@@ -23,7 +23,7 @@ class Comparison(dict):
     - data_id to avoid overwriting data (benchmark_id or the key used by the
       external parser to uniquely identify the individual read out files)
     """
-    
+
     _data_separators = ("basis", "method")
 
     def __init__(self, *data_separators: str) -> None:
@@ -34,7 +34,7 @@ class Comparison(dict):
         ----------
         *data_separators : str
             Data separators used to split data into nested dictionaries.
-        
+
         """
         if data_separators:
             # remove the special separators (used anyway)
@@ -54,7 +54,7 @@ class Comparison(dict):
         -------
         tuple of str
             Data separators used to split data into nested dictionaries.
-        
+
         """
         return self._data_separators
 
@@ -67,7 +67,7 @@ class Comparison(dict):
         -------
         tuple of str
             Structure of the nested comparison dictionary.
-        
+
         """
         return ("name", *self.data_separators, "proptype", "data_id")
 
@@ -84,7 +84,7 @@ class Comparison(dict):
         -------
         scalar or numpy.ndarray
             Imported value.
-        
+
         """
         if isinstance(value, (int, float, complex, str)):
             return value
@@ -92,8 +92,11 @@ class Comparison(dict):
             return numpy.array(value)
 
     def add(self, dataset: tuple[Molecule]) -> None:
-        for data in dataset:
-            self.add_molecule(data)
+        if isinstance(dataset, Molecule):
+            self.add_molecule(dataset)
+        else:
+            for data in dataset:
+                self.add_molecule(data)
 
     def add_molecule(self, data: Molecule) -> None:
         if not isinstance(data, Molecule):
