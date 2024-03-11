@@ -6,7 +6,7 @@ import os
 from . import logger as log
 from .configuration import config
 from .functions import substitute_template
-from .molecule import Molecule
+from .molecule import MoleculeList
 
 
 class InputConstructor:
@@ -31,7 +31,7 @@ class InputConstructor:
     def __init__(self):
         pass
 
-    def create(self, benchmark: list[Molecule], basepath: str,
+    def create(self, benchmark: MoleculeList, basepath: str,
                flat_structure: bool = False,
                name_template: str = '[[name]]_[[method]]_[[basis]].in'
                ) -> list:
@@ -74,7 +74,7 @@ class TemplateConstructor(InputConstructor):
                 log.critical(f"Custom template {template} could not be "
                              "loaded.", self)
 
-    def create(self, benchmark: list[Molecule], basepath: str,
+    def create(self, benchmark: MoleculeList, basepath: str,
                calculation_details: dict,
                input_expansion_keys: tuple[str] = ("basis",),
                flat_structure: bool = False,

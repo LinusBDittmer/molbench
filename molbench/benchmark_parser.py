@@ -4,7 +4,7 @@
 """
 
 from . import logger as log
-from .molecule import Molecule
+from .molecule import Molecule, MoleculeList
 import os
 import json
 
@@ -58,8 +58,10 @@ class BenchmarkParser:
         content = self.parse_benchmark(benchfile)
         if benchmark_id is None:
             benchmark_id = benchmark
-        return [Molecule.from_benchmark(moldata, benchmark_id, molkey)
-                for molkey, moldata in content.items()]
+        return MoleculeList(
+            Molecule.from_benchmark(moldata, benchmark_id, molkey)
+            for molkey, moldata in content.items()
+        )
 
     def parse_benchmark(self, benchmarkfile: str) -> dict:
         raise NotImplementedError("The parse_benchmark function is not "
@@ -71,7 +73,7 @@ class BenchmarkParser:
 class JSONBenchmarkParser(BenchmarkParser):
     def parse_benchmark(self, benchmarkfile: str) -> dict:
         """
-        Load a benchmark file.
+        Parse a benchmark file.
 
         Parameters
         ----------

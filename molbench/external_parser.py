@@ -2,7 +2,7 @@
 
 """
 from . import logger as log
-from .molecule import Molecule
+from .molecule import Molecule, MoleculeList
 import os.path
 import numpy
 import json
@@ -36,11 +36,11 @@ class ExternalParser:
     def parse_file(self, outfile: str) -> dict:
         raise NotImplementedError()
 
-    def load(self, filepath: str, suffix: str = 'out') -> dict:
+    def load(self, filepath: str, suffix: str = 'out') -> MoleculeList:
         outfiles = self._fetch_all_outfiles(filepath, suffix)
         metadata_extractors = OutFile()._registry
 
-        data = []
+        data = MoleculeList()
         for outf in outfiles:
             suite = self._suite_from_outfile(outf)
             extractor = metadata_extractors.get(suite, None)
@@ -149,10 +149,10 @@ class QChem_MP2_Parser(ExternalParser):
         metadata["data"] = data
         return {"s0": metadata}
 
-    def load(self, filepath: str, suffix: str = 'out') -> dict:
+    def load(self, filepath: str, suffix: str = 'out') -> MoleculeList:
         outfiles = self._fetch_all_outfiles(filepath, suffix)
 
-        data = []
+        data = MoleculeList()
         for outfile in outfiles:
             # filter out non qchem MP2 outfiles
             if self._suite_from_outfile(outfile) != "QChem" or \
@@ -167,11 +167,12 @@ class JSON_Parser(ExternalParser):
     def parse_file(self, outfile: str) -> dict:
         return json.load(open(outfile, "r"))
 
-    def load(self, filepath: str, suffix: str = 'out') -> dict:
+    def load(self, filepath: str, suffix: str = 'out') -> MoleculeList:
         outfiles = self._fetch_all_outfiles(filepath, suffix)
-        return [Molecule.from_external(self.parse_file(outf), outf)
-                for outf in outfiles
-                if self._suite_from_outfile(outf) == "JSON"]
+        return MoleculeList(
+            Molecule.from_external(self.parse_file(outf), outf)
+            for outf in outfiles if self._suite_from_outfile(outf) == "JSON"
+        )
 
 
 class OutFile:

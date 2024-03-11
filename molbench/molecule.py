@@ -1,4 +1,5 @@
 from . import logger as log
+from .functions import walk_dict_by_key
 
 
 class Molecule:
@@ -68,11 +69,18 @@ class Molecule:
                 log.warning("The keys 'type' and 'value' in external data "
                             "will be overwritten when the structure is "
                             "flattened.", Molecule.from_external)
-            for i, (proptype, value) in enumerate(data.items()):
+            i = 0
+            for proptype, value in data.items():
                 prop = metadata.copy()
                 prop["type"] = proptype
                 prop["value"] = value
-                state_data[f"{state_id}_{i}"] = prop
+                # ensure that we don't overwrite any data!
+                key = f"{state_id}_{i}"
+                while key in external or key in state_data:
+                    i += 1
+                    key = f"{state_id}_{i}"
+                state_data[key] = prop
+                i += 1
 
         if name is None:
             if molname is None:
@@ -81,3 +89,114 @@ class Molecule:
                              Molecule.from_external)
             name = molname
         return cls(name, data_id, None, state_data)
+
+
+class MoleculeList(list):
+    def filter(self, key, *values) -> 'MoleculeList':
+        return self._filter(key, lambda v: v in values)
+
+    def remove(self, key, *values) -> 'MoleculeList':
+        return self._filter(key, lambda v: v not in values)
+
+    def filter_by_range(self, key, min=None, max=None) -> 'MoleculeList':
+        # here we don't know how to add elements to min and max
+        # and we also don't know how anything about the value we want to
+        # compare
+        # -> user has to provide good structured input that can be directly
+        # compared to the value in the data
+        if min is None and max is None:
+            return self
+
+        def _filter_range(value) -> bool:
+            if min is None:
+                return max >= value
+            elif max is None:
+                return min <= value
+            else:
+                return min <= value and max >= value
+
+        return self._filter(key, _filter_range)
+
+    def filter_by_vec_norm(self, key, min=None, max=None) -> 'MoleculeList':
+        # filter according to the vector norm and only keep states with a norm
+        # min <= norm <= max
+        # min and max should be provided as list of numbers of arbitrary length
+        # but a single number is also possible
+        # if more or only min values are provided max is filled with 1, i.e.,
+        # a normalized vector norm is assumed (similarly min is filled with 0)
+        if isinstance(min, (int, float)):
+            min = (min,)
+        if isinstance(max, (int, float)):
+            max = (max,)
+
+        if min is None and max is None:
+            return self
+        elif min is None:
+            min = tuple(0 for _ in range(len(max)))
+        elif max is None:
+            max = tuple(1 for _ in range(len(min)))
+        elif len(max) != len(min):
+            n_missing = len(min) - len(max)
+            if n_missing < 0:  # min has not fewer elements -> fill with 0
+                min = (*min, *(0 for _ in range(abs(n_missing))))
+            else:  # max has fewer elements than min -> fill with 1
+                max = (*max, *(1 for _ in range(n_missing)))
+        norm_range = tuple((lower, upper) for lower, upper in zip(min, max))
+
+        def _filter_vec_norm(vec_norm) -> bool:
+            # assumptions:
+            # - if vec norm is a list/tuple it has to be sorted already
+            # - if it is a dict it should be possible to obtain the correct
+            #   order by sorting the keys
+            if isinstance(vec_norm, dict):
+                vec_norm = [norm for _, norm in sorted(vec_norm.items())]
+            # ensure that vec_norm is at least as long as norm_range
+            # -> fill up with 0
+            if len(vec_norm) < len(norm_range):
+                vec_norm = [
+                    *vec_norm,
+                    *(0 for _ in range(len(norm_range) - len(vec_norm)))
+                ]
+            # norm_range might be shorter than vec_norm
+            for i, norm in enumerate(vec_norm):
+                if len(norm_range) < i:  # have a user input for the norm
+                    lower, upper = norm_range[i]
+                    if lower > norm or upper < norm:
+                        return False
+                else:  # user input is exhausted -> allow all norms
+                    break
+            return True
+        return self._filter(key, _filter_vec_norm)
+
+    def _filter(self: list[Molecule], key, callback: callable):
+        # XXX: currently it is not possible to filter according to state names!
+        if key == "name":  # filter according to molecule names
+            filtered = [m for m in self if callback(m.name)]
+        elif key == "data_id":
+            filtered = [m for m in self if callback(m.data_id)]
+        else:  # check system_data and state_data for the key
+            filtered = []
+            for molecule in self:
+                # start by checking system_data -> possibly drop the molecule
+                if not all(callback(val) for _, val in
+                           walk_dict_by_key(molecule.system_data, key)):
+                    continue
+                # now check the state_data -> possibly drop multiple states
+                # if no states are left we drop the whole molecule
+                remaining_states = [state for state, data in
+                                    molecule.state_data.items()
+                                    if all(callback(val) for _, val
+                                           in walk_dict_by_key(data, key))]
+                if not remaining_states:  # no state left -> drop molecule
+                    continue
+                # no state was removed
+                if len(remaining_states) == len(molecule.state_data.keys()):
+                    filtered.append(molecule)
+                else:  # at least 1 state was removed
+                    state_data = {state: molecule.state_data[state]
+                                  for state in remaining_states}
+                    filtered.append(Molecule(
+                        molecule.name, molecule.data_id, molecule.system_data,
+                        state_data
+                    ))
+        return MoleculeList(filtered)

@@ -9,7 +9,7 @@ name -> basis -> method -> property -> id/path
 """
 
 from . import logger as log
-from .molecule import Molecule
+from .molecule import Molecule, MoleculeList
 from .functions import walk_dict_by_key, walk_dict_values
 import numpy
 
@@ -91,7 +91,7 @@ class Comparison(dict):
         else:
             return numpy.array(value)
 
-    def add(self, dataset: tuple[Molecule]) -> None:
+    def add(self, dataset: MoleculeList) -> None:
         if isinstance(dataset, Molecule):
             self.add_molecule(dataset)
         else:
