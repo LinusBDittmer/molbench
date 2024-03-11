@@ -171,11 +171,11 @@ class MoleculeList(list):
     def _filter(self: list[Molecule], key, callback: callable):
         # XXX: currently it is not possible to filter according to state names!
         if key == "name":  # filter according to molecule names
-            filtered = [m for m in self if callback(m.name)]
+            filtered = MoleculeList(m for m in self if callback(m.name))
         elif key == "data_id":
-            filtered = [m for m in self if callback(m.data_id)]
+            filtered = MoleculeList(m for m in self if callback(m.data_id))
         else:  # check system_data and state_data for the key
-            filtered = []
+            filtered = MoleculeList()
             for molecule in self:
                 # start by checking system_data -> possibly drop the molecule
                 if not all(callback(val) for _, val in
@@ -199,4 +199,4 @@ class MoleculeList(list):
                         molecule.name, molecule.data_id, molecule.system_data,
                         state_data
                     ))
-        return MoleculeList(filtered)
+        return filtered
