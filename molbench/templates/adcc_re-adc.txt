@@ -134,13 +134,14 @@ def state_overlap(left, right):
 		print(f"Overlap of {method_r} states with {method_l} state {i}:")
 		overlaps = {}
 		for j, r in enumerate(right.excitation_vector):
-			o = round(l.dot(r), 4)
+			o = abs(round(l.dot(r), 4))
 			if o > 0.1:
 				overlaps[j] = o
 		if overlaps:
 			print(overlaps)
 		else:
-			print("No {method_r} state has an overlap > 0.1 with {method_l} state {i}.")
+			print(f"No {method_r} state has an overlap > 0.1 with "
+				  f"{method_l} state {i}.")
 	print("-"*80)
 
 
