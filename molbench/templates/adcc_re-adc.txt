@@ -114,13 +114,13 @@ def dump_adcc(states, outname):
 			"state_multiplicity": mul,
 			"detected_point_group": "C1",
 			"irrep": "A",
-			"exctation type": "Excitation",
+			"exctation_type": "excitation",
 			"vec_norm": overlap(vec, vec),
 			"state_id": None,  # state has still to be assigned!
 		}
 		data = {}
 		data["excitation energy"] = round(energy_au * au_to_ev, 6)
-		data["osc_strength"] = round(states.oscillator_strength[state_num], 4)
+		data["osc strength"] = round(states.oscillator_strength[state_num], 4)
 		metadata["data"] = data
 		out[state_num + 1] = metadata
 	json.dump(out, open(outname + ".out", "w"), indent=2)

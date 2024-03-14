@@ -1,0 +1,688 @@
+{
+	"acrolein": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 8,
+		"n_electrons": 30,
+		"n_core_orbitals": 4,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C  -1.11645072  -0.68348783   0.00000000",
+			"C   1.20647847   0.83714564   0.00000000",
+			"C   3.46831059  -0.28872636   0.00000000",
+			"O  -3.23666415   0.19187203   0.00000000",
+			"H  -0.80613858  -2.74747338   0.00000000",
+			"H   0.98699813   2.86613511   0.00000000",
+			"H   5.20930864   0.77443560   0.00000000",
+			"H   3.60951559  -2.33000749   0.00000000"
+		],
+		"properties": {
+			"s1": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"irrep": "A'",
+				"state_id": "s1",
+				"value": 8.00
+			},
+			"cc3_s1": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"irrep": "A'",
+				"state_id": "s1",
+				"comment": "73% singles character",
+				"value": 8.21
+			}
+		}
+	},
+	"benzene": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 12,
+		"n_electrons": 42,
+		"n_core_orbitals": 6,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C   0.00000000   2.63144965   0.00000000",
+			"C  -2.27890225   1.31572483   0.00000000",
+			"C  -2.27890225  -1.31572483   0.00000000",
+			"C   0.00000000  -2.63144965   0.00000000",
+			"C   2.27890225  -1.31572483   0.00000000",
+			"C   2.27890225   1.31572483   0.00000000",
+			"H  -4.04725813   2.33668557   0.00000000",
+			"H  -4.04725813  -2.33668557   0.00000000",
+			"H   0.00000000  -4.67337115   0.00000000",
+			"H   4.04725813  -2.33668557   0.00000000",
+			"H   4.04725813   2.33668557   0.00000000",
+			"H   0.00000000   4.67337115   0.00000000"
+		],
+		"properties": {
+			"s1": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "D6h",
+				"irrep": "E2g",
+				"state_id": "s1",
+				"value": 8.40
+			},
+			"cc3_s1": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "D6h",
+				"irrep": "E2g",
+				"state_id": "s1",
+				"comment": "72% singles character",
+				"value": 8.50
+			}
+		}
+	},
+	"beryllium": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 1,
+		"n_electrons": 4,
+		"n_core_orbitals": 0,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"Be   0.00000000   0.00000000   0.00000000"
+		],
+		"properties": {
+			"s1_small": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "R3",
+				"irrep": "D",
+				"state_id": "s1",
+				"value": 8.04
+			},
+			"s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "R3",
+				"irrep": "D",
+				"state_id": "s1",
+				"value": 7.15
+			},
+			"cc3_s1_small": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "R3",
+				"irrep": "D",
+				"state_id": "s1",
+				"comment": "2% singles character",
+				"value": 8.04
+			},
+			"cc3_s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "R3",
+				"irrep": "D",
+				"state_id": "s1",
+				"comment": "32% singles character",
+				"value": 7.17
+			}
+		}
+	},
+	"butadiene": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 10,
+		"n_electrons": 30,
+		"n_core_orbitals": 4,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz": [
+			"C   1.14656244   0.00000000   0.75468820",
+			"C  -1.14656244   0.00000000  -0.75468820",
+			"C   3.48132647   0.00000000  -0.22482805",
+			"C  -3.48132647   0.00000000   0.22482805",
+			"H   0.90770978   0.00000000   2.78883925",
+			"H  -0.90770978   0.00000000  -2.78883925",
+			"H   3.77525814   0.00000000  -2.24895470",
+			"H  -3.77525814   0.00000000   2.24895470",
+			"H   5.13664967   0.00000000   0.96861890",
+			"H  -5.13664967   0.00000000  -0.96861890"
+		],
+		"xyz_unit": "Bohr",
+		"properties": {
+			"s1": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2h",
+				"irrep": "Ag",
+				"state_id": "s1",
+				"value": 6.55
+			},
+			"cc3_s1": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2h",
+				"irrep": "Ag",
+				"state_id": "s1",
+				"comment": "74% singles character",
+				"value": 6.73
+			}
+		}
+	},
+	"carbon dimer": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 2,
+		"n_electrons": 8,
+		"n_core_orbitals": 2,
+		"n_states": {
+			"n_singlets": 2
+		},
+		"xyz": [
+			"C   0.00000000   0.00000000   1.17922927",
+			"C   0.00000000   0.00000000  -1.17922927"
+		],
+		"xyz_unit": "Bohr",
+		"properties": {
+			"s1_small": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Dg",
+				"state_id": "s1",
+				"value": 2.29
+			},
+			"s2_small": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Sg+",
+				"state_id": "s2",
+				"value": 2.51
+			},
+			"s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Dg",
+				"state_id": "s1",
+				"value": 2.09
+			},
+			"s2": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Sg+",
+				"state_id": "s2",
+				"value": 2.42
+			},
+			"cc3_s1_small": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Dg",
+				"state_id": "s1",
+				"value": 3.10
+			},
+			"cc3_s2_small": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Sg+",
+				"state_id": "s2",
+				"comment": "0% singles character",
+				"value": 3.23
+			},
+			"cc3_s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Dg",
+				"state_id": "s1",
+				"value": 3.05
+			},
+			"cc3_s2": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Sg+",
+				"state_id": "s2",
+				"comment": "0% singles character",
+				"value": 3.26
+			}
+		}
+	},
+	"carbon trimer": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 3,
+		"n_electrons": 18,
+		"n_core_orbitals": 3,
+		"n_states": {
+			"n_singlets": 2
+		},
+		"xyz": [
+			"C   0.00000000   0.00000000   0.00000000",
+			"C   0.00000000   0.00000000   2.45345613",
+			"C   0.00000000   0.00000000  -2.45345613"
+		],
+		"xyz_unit": "Bohr",
+		"properties": {
+			"s1_small": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Dg",
+				"state_id": "s1",
+				"value": 5.27
+			},
+			"s2_small": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Sg+",
+				"state_id": "s2",
+				"value": 5.93
+			},
+			"s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Dg",
+				"state_id": "s1",
+				"value": 5.22
+			},
+			"s2": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Sg+",
+				"state_id": "s2",
+				"value": 5.91
+			},
+			"cc3_s1_small": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Dg",
+				"state_id": "s1",
+				"comment": "0% singles character",
+				"value": 6.65
+			},
+			"cc3_s2_small": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Sg+",
+				"state_id": "s2",
+				"comment": "1% singles character",
+				"value": 7.20
+			},
+			"cc3_s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Dg",
+				"state_id": "s1",
+				"comment": "1% singles character",
+				"value": 6.68
+			},
+			"cc3_s2": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"irrep": "Sg+",
+				"state_id": "s2",
+				"comment": "1% singles character",
+				"value": 7.24
+			}
+		}
+	},
+	"ethylene": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 6,
+		"n_electrons": 16,
+		"n_core_orbitals": 2,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz": [
+			"C   0.00000000   1.26026583   0.00000000",
+			"C   0.00000000  -1.26026583   0.00000000",
+			"H   0.00000000   2.32345976   1.74287672",
+			"H   0.00000000  -2.32345976   1.74287672",
+			"H   0.00000000   2.32345976  -1.74287672",
+			"H   0.00000000  -2.32345976  -1.74287672"
+		],
+		"xyz_unit": "Bohr",
+		"properties": {
+			"s1_small": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "D2h",
+				"irrep": "Ag",
+				"state_id": "s1",
+				"value": 13.38
+			},
+			"s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "D2h",
+				"irrep": "Ag",
+				"state_id": "s1",
+				"value": 12.92
+			},
+			"cc3_s1_small": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "D2h",
+				"irrep": "Ag",
+				"state_id": "s1",
+				"comment": "4% singles character",
+				"value": 13.82
+			},
+			"cc3_s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "D2h",
+				"irrep": "Ag",
+				"state_id": "s1",
+				"comment": "20% singles character",
+				"value": 13.42
+			}
+		}
+	},
+	"formaldehyde": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 4,
+		"n_electrons": 16,
+		"n_core_orbitals": 2,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz": [
+			"C   0.00000000   0.00000000  -1.13947666",
+			"O   0.00000000   0.00000000   1.14402883",
+			"H   0.00000000   1.76627623  -2.23398653",
+			"H   0.00000000  -1.76627623  -2.23398653"
+		],
+		"xyz_unit": "Bohr",
+		"properties": {
+			"s1_small": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"irrep": "A1",
+				"state_id": "s1",
+				"value": 10.86
+			},
+			"s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"irrep": "A1",
+				"state_id": "s1",
+				"value": 10.35
+			},
+			"cc3_s1_small": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"irrep": "A1",
+				"state_id": "s1",
+				"comment": "5% singles character",
+				"value": 11.49
+			},
+			"cc3_s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"irrep": "A1",
+				"state_id": "s1",
+				"comment": "5% singles character",
+				"value": 11.20
+			}
+		}
+	},
+	"glyoxal": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 6,
+		"n_electrons": 30,
+		"n_core_orbitals": 4,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz": [
+			"C   1.21360282   0.75840215   0.00000000",
+			"C  -1.21360282  -0.75840215   0.00000000",
+			"O   3.25581408  -0.26453186   0.00000000",
+			"O  -3.25581408   0.26453186   0.00000000",
+			"H   0.96135276   2.81883243   0.00000000",
+			"H  -0.96135276  -2.81883243   0.00000000"
+		],
+		"xyz_unit": "Bohr",
+		"properties": {
+			"s1": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2h",
+				"irrep": "Ag",
+				"state_id": "s1",
+				"value": 5.60
+			},
+			"cc3_s1": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2h",
+				"irrep": "Ag",
+				"state_id": "s1",
+				"comment": "0% singles character",
+				"value": 6.74
+			}
+		}
+	},
+	"nitrosomethane": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 6,
+		"n_electrons": 24,
+		"n_core_orbitals": 3,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz": [
+			"C  -1.78426612   0.00000000  -1.07224050",
+			"N  -0.00541753   0.00000000   1.08060391",
+			"O   2.18814985   0.00000000   0.43452135",
+			"H  -0.77343975   0.00000000  -2.86415606",
+			"H  -2.97471478   1.66801808  -0.86424584",
+			"H  -2.97471478  -1.66801808  -0.86424584"
+		],
+		"xyz_unit": "Bohr",
+		"properties": {
+			"s1_small": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"irrep": "A'",
+				"state_id": "s1",
+				"value": 4.86
+			},
+			"s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"irrep": "A'",
+				"state_id": "s1",
+				"value": 4.76
+			},
+			"cc3_s1_small": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"irrep": "A'",
+				"state_id": "s1",
+				"comment": "2% singles character",
+				"value": 5.73
+			},
+			"cc3_s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"irrep": "A'",
+				"state_id": "s1",
+				"comment": "3% singles character",
+				"value": 5.76
+			}
+		}
+	},
+	"nitroxyl": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 3,
+		"n_electrons": 16,
+		"n_core_orbitals": 2,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz": [
+			"O   0.21099695   0.00000000   2.15462460",
+			"N  -0.44776863   0.00000000  -0.03589263",
+			"H   1.18163475   0.00000000  -1.17386890"
+		],
+		"xyz_unit": "Bohr",
+		"properties": {
+			"s1_small": {
+				"basis": "6-31+G*",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"irrep": "A'",
+				"state_id": "s1",
+				"value": 4.51
+			},
+			"s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"irrep": "A'",
+				"state_id": "s1",
+				"value": 4.33
+			},
+			"cc3_s1_small": {
+				"basis": "6-31+G*",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"irrep": "A'",
+				"state_id": "s1",
+				"comment": "0% singles character",
+				"value": 5.28
+			},
+			"cc3_s1": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"irrep": "A'",
+				"state_id": "s1",
+				"comment": "0% singles character",
+				"value": 5.26
+			}
+		}
+	}
+}
