@@ -195,7 +195,7 @@
 			}
 		}
 	},
-	"carbon dimer": {
+	"carbon_dimer": {
 		"charge": 0,
 		"multiplicity": 1,
 		"n_atoms": 2,
@@ -294,7 +294,7 @@
 			}
 		}
 	},
-	"carbon trimer": {
+	"carbon_trimer": {
 		"charge": 0,
 		"multiplicity": 1,
 		"n_atoms": 3,
