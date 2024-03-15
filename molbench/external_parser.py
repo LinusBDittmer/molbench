@@ -34,7 +34,8 @@ class ExternalParser:
         cls._registry[parser] = cls()
 
     def parse_file(self, outfile: str) -> dict:
-        raise NotImplementedError()
+        raise NotImplementedError("Parse file not implemented on the "
+                                  "base class")
 
     def load(self, filepath: str, suffix: str = 'out') -> MoleculeList:
         outfiles = self._fetch_all_outfiles(filepath, suffix)

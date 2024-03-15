@@ -1,5 +1,5 @@
 from .comparison import Comparison
-from .formatting import StdFormatter
+from .formatting import StdFormatter, Formatter
 from collections import defaultdict
 import typing
 
@@ -23,61 +23,63 @@ class Exporter:
     None
     """
 
+    def export(self, comparison: Comparison, *args, **kwargs) -> str:
+        raise NotImplementedError("Export function has to be implemented on "
+                                  "the child classes.")
+
+
+class TableExporter(Exporter):
+    def build_row_column_label(self, columns: tuple, rows: tuple,
+                               sep_names: tuple,
+                               sep_vals: tuple) -> tuple[tuple, tuple]:
+        row_l, column_l = [], []
+        for name, val in zip(sep_names, sep_vals):
+            if name in columns:
+                column_l.append(val)
+            elif name in rows:
+                row_l.append(val)
+        return "/".join(row_l), "/".join(column_l)
+
+    def prepare_export(self, comparison: Comparison, columns: tuple,
+                       rows: tuple, prop):
+        column_labels = set()
+        data = defaultdict(lambda: defaultdict(list))
+        for keys, propdata in comparison.walk_by_key(prop):
+            for data_id, value in propdata.items():
+                row_l, column_l = self.build_row_column_label(
+                    columns, rows, comparison.structure, keys + (data_id,)
+                )
+                column_labels.add(column_l)
+                data[row_l][column_l].append(value)
+        return data, column_labels
+
+
+class LatexExporter(TableExporter):
     def __init__(self):
+        # TODO: allow to modify the style of the latex table
         pass
 
-    def export(self, comparison: Comparison, properties: tuple) -> str:
-        return None
-
-
-class CsvExporter(Exporter):
-
-    def __init__(self, flatten_visual=False):
-        super().__init__()
-        self.flatten_visual = flatten_visual
-
-    def build_row_column_label(self, columns, sep_names, sep_vals, data_id):
-        row_l, column_l = [], []
-        name, sep_vals = sep_vals[0], sep_vals[1:]
-        if "name" in columns:
-            column_l.append(name)
-        else:
-            row_l.append(name)
-        for n, val in zip(sep_names, sep_vals):
-            if n in columns:
-                column_l.append(val)
-            else:
-                row_l.append(val)
-        if "data_id" in columns:
-            column_l.append(data_id)
-        else:
-            row_l.append(data_id)
-
-        return "///".join(row_l), "///".join(column_l)
-
-    def export(self, comparison: Comparison, columns: tuple, prop: str,
-               outfile: typing.IO, formatter=None, delimiter=";"):
-        columns = [s.lower().strip() for s in columns]
-        column_labels = set()
+    def export(self, data: Comparison, prop, outfile: typing.IO,
+               columns: tuple, rows: tuple = None,
+               formatter: Formatter = None) -> None:
+        # if no row labels are provided, use all labels
+        # -> will put everything in row_label that is not defined as column
+        if rows is None:
+            rows = data.structure
         if formatter is None:
             formatter = StdFormatter()
 
-        data = defaultdict(dict)
-        for keys, propdata in comparison.walk_property(prop):
-            for data_id, value in propdata.items():
-                row_l, column_l = self.build_row_column_label(
-                    columns, comparison.data_separators, keys, data_id
-                )
-                column_labels.add(column_l)
-                data[row_l][column_l] = value
+        prepared_data, column_labels = self.prepare_export(data, columns, rows,
+                                                           prop)
         column_labels = sorted(column_labels)
-
-        csv_list = [delimiter.join(["", *column_labels])]
-        for row_l, row_data in data.items():
-            row = []
-            for column_l in column_labels:
-                value = row_data.get(column_l, None)
-                row.append(formatter.format_datapoint(value, prop))
-            csv_list.append(delimiter.join([row_l, *row]))
-
-        outfile.write("\n".join(csv_list))
+        # TODO: set up table
+        out = []
+        out.append(" & ".join(("", *column_labels)))
+        for row_l, row_data in prepared_data.items():
+            row = [row_l,
+                   *(formatter.format_datapoint(row_data.get(column_l, None))
+                     for column_l in column_labels)]
+            out.append(" & ".join(row))
+        out = r"\\\n".join(out)
+        # TODO: finalize table
+        outfile.write(out)

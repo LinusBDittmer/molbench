@@ -121,14 +121,16 @@ class Comparison(dict):
                 d[proptype] = {}
             d = d[proptype]
             if data.data_id in d:
-                log.warning(f"data_id {data.data_id}is not unique. Found "
+                log.warning(f"data_id {data.data_id} is not unique. Found "
                             f"conflicting entry for {data.name}, {separators} "
                             f"and {proptype}. Overwriting the exisiting value",
                             "Comparison.add_molecule")
             d[data.data_id] = self._import_value(value)
 
-    def walk_property(self, property):
-        return walk_dict_by_key(self, desired_key=property)
+    def walk_by_key(self, desired_key):
+        """Walk the dictionary looking for the desired key, returning
+           the sqeuence of keys and the corresponding value."""
+        return walk_dict_by_key(self, desired_key=desired_key)
 
     def walk_values(self):
         """walk all values that are no dicts"""

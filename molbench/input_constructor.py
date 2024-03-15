@@ -6,7 +6,7 @@ import os
 from . import logger as log
 from .configuration import config
 from .functions import substitute_template
-from .molecule import MoleculeList
+from .molecule import MoleculeList, Molecule
 
 
 class InputConstructor:
@@ -28,14 +28,9 @@ class InputConstructor:
     None
     """
 
-    def __init__(self):
-        pass
-
-    def create(self, benchmark: MoleculeList, basepath: str,
-               flat_structure: bool = False,
-               name_template: str = '[[name]]_[[method]]_[[basis]].in'
-               ) -> list:
-        return None
+    def create(self, *args, **kwargs) -> list:
+        raise NotImplementedError("The 'create' method is only implemented "
+                                  "on child classes.")
 
 
 class TemplateConstructor(InputConstructor):
@@ -44,7 +39,6 @@ class TemplateConstructor(InputConstructor):
     """
 
     def __init__(self, template: str):
-        super().__init__()
         self.init_template(template)
 
     def init_template(self, template: str):
@@ -74,11 +68,11 @@ class TemplateConstructor(InputConstructor):
                 log.critical(f"Custom template {template} could not be "
                              "loaded.", self)
 
-    def create(self, benchmark: MoleculeList, basepath: str,
+    def create(self, benchmark: MoleculeList[Molecule], basepath: str,
                calculation_details: dict,
                input_expansion_keys: tuple[str] = ("basis",),
                flat_structure: bool = False,
-               name_template: str = None):
+               name_template: str = None) -> list:
         # For each compound iterate over all combinattions of the
         # input_expansion_keys that exist in the benchmark.
         # By default this means iterate over all basis sets for which

@@ -71,14 +71,14 @@ from .input_constructor import InputConstructor, TemplateConstructor
 from .bash_wrapper import create_bash_files, make_send_script
 from .comparison import Comparison
 from .statistics import Statistics, register_as_error_measure
-from .export import Exporter, CsvExporter
+from .export import Exporter, LatexExporter
 from .external_parser import ExternalParser, JSON_Parser
 from .molecule import Molecule
 
 __all__ = ["config", "Molecule", "load_benchmark", "InputConstructor",
            "TemplateConstructor", "create_bash_files", "make_send_script",
            "Comparison", "Statistics", "register_as_error_measure",
-           "Exporter", "CsvExporter",
+           "Exporter", "LatexExporter",
            "ExternalParser", "JSON_Parser",
            "JSONBenchmarkParser"]
 __version__ = "0.0.1"
