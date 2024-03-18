@@ -1,6 +1,8 @@
 from .comparison import Comparison
 from .formatting import StdFormatter, Formatter
-from collections import defaultdict
+from .tree import Node, DummyNode
+from . import logger as log
+from itertools import chain
 import typing
 
 
@@ -23,63 +25,182 @@ class Exporter:
     None
     """
 
-    def export(self, comparison: Comparison, *args, **kwargs) -> str:
+    def export(self, *args, **kwargs) -> str:
         raise NotImplementedError("Export function has to be implemented on "
                                   "the child classes.")
 
 
 class TableExporter(Exporter):
-    def build_row_column_label(self, columns: tuple, rows: tuple,
-                               sep_names: tuple,
-                               sep_vals: tuple) -> tuple[tuple, tuple]:
-        row_l, column_l = [], []
+    def _build_row_column_label(self, columns: tuple, rows: tuple,
+                                sep_names: tuple,
+                                sep_vals: tuple) -> tuple[tuple, tuple]:
+        row_l, column_l = {}, {}
         for name, val in zip(sep_names, sep_vals):
-            if name in columns:
-                column_l.append(val)
-            elif name in rows:
-                row_l.append(val)
-        return "/".join(row_l), "/".join(column_l)
+            assigned = False
+            for gen, cols in enumerate(columns):
+                # also include the index of the node to maintain the label
+                # order as given in the tree
+                for i, node in enumerate(cols):
+                    if name == node.value:
+                        if gen not in column_l:
+                            column_l[gen] = []
+                        column_l[gen].append((i, node.to_string(val)))
+                        assigned = True
+                        break
+                if assigned:
+                    break
+            if assigned:
+                continue
+            for gen, row in enumerate(rows):
+                for i, node in enumerate(row):
+                    if name == node.value:
+                        if gen not in row_l:
+                            row_l[gen] = []
+                        row_l[gen].append((i, node.to_string(val)))
+                        assigned = True
+                        break
+                if assigned:
+                    break
+        # TODO: custom separator
+        column_l = {key: "/".join(v for _, v in sorted(val))
+                    for key, val in column_l.items()}
+        row_l = {key: "/".join(v for _, v in sorted(val))
+                 for key, val in row_l.items()}
+        return (
+            tuple(v for _, v in sorted(column_l.items())),
+            tuple(v for _, v in sorted(row_l.items()))
+        )
 
-    def prepare_export(self, comparison: Comparison, columns: tuple,
-                       rows: tuple, prop):
-        column_labels = set()
-        data = defaultdict(lambda: defaultdict(list))
+    def _add_to_label_tree(self, label, node_cache) -> None:
+        parent = node_cache["root"]
+        for value in label:
+            key = (value, parent)
+            node = node_cache.get(key, None)
+            if node is None:  # construct the node and store it
+                node = Node(value, parent)
+                node_cache[key] = node
+            parent = node
+
+    def prepare_export(self, comparison: Comparison, column_tree: Node,
+                       row_tree: Node, prop):
+        # Ensure that all nodes are present in comparison!
+        data_structure = comparison.structure
+        column_nodes = tuple(column_tree.traverse_generations())
+        row_nodes = tuple(row_tree.traverse_generations())
+        if any(n.value not in data_structure for n in
+               chain.from_iterable(chain(column_nodes, row_nodes))):
+            log.critical("A key is not available in the provided Comparison.")
+
+        col_node_cache = {"root": DummyNode()}
+        data: dict[tuple, dict[tuple, list]] = {}
         for keys, propdata in comparison.walk_by_key(prop):
             for data_id, value in propdata.items():
-                row_l, column_l = self.build_row_column_label(
-                    columns, rows, comparison.structure, keys + (data_id,)
+                column_l, row_l = self._build_row_column_label(
+                    column_nodes, row_nodes, data_structure, keys + (data_id,)
                 )
-                column_labels.add(column_l)
+                self._add_to_label_tree(column_l, col_node_cache)
+                if row_l not in data:
+                    data[row_l] = {}
+                if column_l not in data[row_l]:
+                    data[row_l][column_l] = []
                 data[row_l][column_l].append(value)
-        return data, column_labels
+        # sort the label tree according to the values
+        col_label_tree = col_node_cache["root"]
+        col_label_tree.sort(key=lambda n: n.value)
+        # build all unique labels in the right order.
+        # TODO: after sorting the tree is the order corerct?
+        column_labels = []
+        for leave in col_label_tree.walk_leaves():
+            path = leave.path_to_root()
+            column_labels.append(tuple(node.value for node in reversed(path)))
+
+        # get the names for the additional columns that are required due to
+        # the structure of the rows.
+        # TODO: custom separator
+        additional_col_labels = tuple("/".join(n.value for n in gen)
+                                      for gen in row_nodes)
+        return data, column_labels, col_label_tree, additional_col_labels
+
+    def _prepare_table_header(self, col_label_tree: Node,
+                              additional_cols: tuple[str]) -> str:
+        rows = []
+        prefix = tuple("" for _ in range(len(additional_cols)))
+        nodes_by_generation = tuple(col_label_tree.traverse_generations())
+        for i, generation in enumerate(nodes_by_generation):
+            if i == len(nodes_by_generation) - 1:  # last row
+                prefix = additional_cols
+            row = [*prefix]
+            for node in generation:
+                if (width := node.width() - 1) > 1:
+                    label = self._multicolumn(width, node.value)
+                else:
+                    label = node.value
+                row.append(label)
+            rows.append(row)
+        return rows
 
 
 class LatexExporter(TableExporter):
     def __init__(self):
         # TODO: allow to modify the style of the latex table
+        # also move formatter to init and use it also for things like
+        # linebreaks, column speparators, etc.
         pass
 
     def export(self, data: Comparison, prop, outfile: typing.IO,
-               columns: tuple, rows: tuple = None,
+               columns, rows,
                formatter: Formatter = None) -> None:
         # if no row labels are provided, use all labels
         # -> will put everything in row_label that is not defined as column
         if rows is None:
-            rows = data.structure
+            rows = DummyNode()
+            for key in data.structure:
+                Node(key, rows)
+        # TODO: add some functions to create trees from certain data structures
+        if not isinstance(columns, Node):
+            raise NotImplementedError
+        if not isinstance(rows, Node):
+            raise NotImplementedError
+
         if formatter is None:
             formatter = StdFormatter()
 
-        prepared_data, column_labels = self.prepare_export(data, columns, rows,
-                                                           prop)
-        column_labels = sorted(column_labels)
-        # TODO: set up table
-        out = []
-        out.append(" & ".join(("", *column_labels)))
-        for row_l, row_data in prepared_data.items():
-            row = [row_l,
-                   *(formatter.format_datapoint(row_data.get(column_l, None))
-                     for column_l in column_labels)]
-            out.append(" & ".join(row))
-        out = r"\\\n".join(out)
-        # TODO: finalize table
-        outfile.write(out)
+        prepared_data, column_labels, col_label_tree, additional_cols = \
+            self.prepare_export(data, columns, rows, prop)
+        print(prepared_data)
+        print(column_labels)
+        print(col_label_tree)
+        print(additional_cols)
+        print()
+
+        # generate the header of the table
+        header = self._table_header(col_label_tree, additional_cols)
+        print(header)
+        print()
+        content = []
+        for row_label, row_data in prepared_data.items():
+            # TODO: multirow for row label
+            row = [*row_label]
+            for column_l in column_labels:
+                row.append(
+                    formatter.format_datapoint(row_data.get(column_l, None))
+                )
+            # TODO: custom separator
+            content.append(" & ".join(row))
+        content = "\\\\\n".join(content)
+        print(content)
+        exit()
+        outfile.write(header)
+        outfile.write("\n")
+        outfile.write(content)
+
+    def _table_header(self, col_label_tree: Node,
+                      additional_cols: tuple[str]) -> str:
+        rows = self._prepare_table_header(col_label_tree, additional_cols)
+        return (
+            "\\\\\n".join(" & ".join(r for r in row) for row in rows) +
+            r"\\ \hline"
+        )
+
+    def _multicolumn(self, width: int, value: str) -> str:
+        return r"\multicolumn{" + str(width) + r"}{c}{" + value + "}"
