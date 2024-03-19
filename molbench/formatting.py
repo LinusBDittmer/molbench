@@ -1,4 +1,3 @@
-""" Formatting of datapoints """
 
 
 class Formatter:
@@ -25,3 +24,43 @@ class StdFormatter(Formatter):
             return self.empty_field
         else:
             return str(value)
+
+
+class LatexFormatter(StdFormatter):
+    def __init__(self, n_decimals: int = 5, empty_field: str = "",
+                 value_delimiter: str = ", ") -> None:
+        # TODO: construct the boilerplate table setup and customize it
+        super().__init__(n_decimals, empty_field, value_delimiter)
+        self.label_delimiter = "/"
+        self.column_delimiter = " & "
+        self.row_delimiter = r"\\" + "\n"
+
+    def table_header(self, labels: list[list[str]]) -> str:
+        # TODO: customize the layout -> more/fewer hlines
+        return (
+            self.join_rows(self.join_columns(row) for row in labels) +
+            r"\\ \hline"
+        )
+
+    def table_content(self, content: list[list[str]]) -> str:
+        # TODO: customize layout -> more/fewer hlines
+        return (
+            self.join_rows(self.join_columns(row) for row in content)
+        )
+
+    def join_labels(self, labels: tuple[str]) -> str:
+        return self.label_delimiter.join(labels)
+
+    def join_columns(self, columns: tuple[str]) -> str:
+        return self.column_delimiter.join(columns)
+
+    def join_rows(self, rows: tuple[str]) -> str:
+        return self.row_delimiter.join(rows)
+
+    def multicolumn(self, width: int, value: str) -> str:
+        # TODO: custom allignment
+        return r"\multicolumn{" + str(width) + r"}{c}{" + value + "}"
+
+    def multirow(self, heigth: int, value: str) -> str:
+        # TODO: custom width of the cell
+        return r"\multirow{" + str(heigth) + r"}{*}{" + value + "}"
