@@ -92,6 +92,7 @@ class TableExporter(Exporter):
             log.critical("A key is not available in the provided Comparison.")
 
         col_node_cache = {"root": DummyNode()}
+        row_node_cache = {"root": DummyNode()}
         data: dict[tuple, dict[tuple, list]] = {}
         for keys, propdata in comparison.walk_by_key(prop):
             for data_id, value in propdata.items():
@@ -99,27 +100,37 @@ class TableExporter(Exporter):
                     column_nodes, row_nodes, data_structure, keys + (data_id,)
                 )
                 self._add_to_label_tree(column_l, col_node_cache)
+                self._add_to_label_tree(row_l, row_node_cache)
                 if row_l not in data:
                     data[row_l] = {}
                 if column_l not in data[row_l]:
                     data[row_l][column_l] = []
                 data[row_l][column_l].append(value)
-        # sort the label tree according to the values
+        # sort the column label tree according to the values
         col_label_tree = col_node_cache["root"]
         col_label_tree.sort(key=lambda n: n.value)
-        # build all unique labels in the right order.
-        # TODO: after sorting the tree is the order corerct?
+        # build all unique column labels in the right order.
         column_labels = []
         for leave in col_label_tree.walk_leaves():
             path = leave.path_to_root()
             column_labels.append(tuple(node.value for node in reversed(path)))
+
+        # also sort the row labels
+        # TODO: if we don't use multirow but instead just don't repeat
+        # row labels that are the same as in the previous row,
+        # sorting the row labels is optional!
+        row_label_tree = row_node_cache["root"]
+        row_label_tree.sort(key=lambda n: n.value)
 
         # get the names for the additional columns that are required due to
         # the structure of the rows.
         # TODO: custom separator
         additional_col_labels = tuple("/".join(n.value for n in gen)
                                       for gen in row_nodes)
-        return data, column_labels, col_label_tree, additional_col_labels
+        return (
+            data, column_labels, col_label_tree, additional_col_labels,
+            row_label_tree
+        )
 
     def _prepare_table_header(self, col_label_tree: Node,
                               additional_cols: tuple[str]) -> str:
@@ -139,17 +150,34 @@ class TableExporter(Exporter):
             rows.append(row)
         return rows
 
+    def _build_row(self, row_data: dict, row_label: tuple,
+                   column_labels: tuple,
+                   prev_row_label: tuple = None) -> list:
+        if prev_row_label is None:  # first row -> write all row labels
+            row = [*row_label]
+        else:
+            # TODO: do we want to use multirow here?
+            # only write row labels that differ from the previous label
+            row = ["" if label == prev else label
+                   for label, prev in zip(row_label, prev_row_label)]
+        for label in column_labels:
+            row.append(
+                self.formatter.format_datapoint(row_data.get(label, None))
+            )
+        return row
+
 
 class LatexExporter(TableExporter):
-    def __init__(self):
+    def __init__(self, formatter: Formatter = None):
         # TODO: allow to modify the style of the latex table
         # also move formatter to init and use it also for things like
         # linebreaks, column speparators, etc.
-        pass
+        if formatter is None:
+            formatter = StdFormatter()
+        self.formatter = formatter
 
     def export(self, data: Comparison, prop, outfile: typing.IO,
-               columns, rows,
-               formatter: Formatter = None) -> None:
+               columns, rows) -> None:
         # if no row labels are provided, use all labels
         # -> will put everything in row_label that is not defined as column
         if rows is None:
@@ -162,32 +190,25 @@ class LatexExporter(TableExporter):
         if not isinstance(rows, Node):
             raise NotImplementedError
 
-        if formatter is None:
-            formatter = StdFormatter()
-
-        prepared_data, column_labels, col_label_tree, additional_cols = \
-            self.prepare_export(data, columns, rows, prop)
+        export_data = self.prepare_export(data, columns, rows, prop)
+        prepared_data = export_data[0]
+        column_labels = export_data[1]
+        col_label_tree = export_data[2]
+        additional_cols = export_data[3]
+        row_label_tree = export_data[4]
         print(prepared_data)
         print(column_labels)
         print(col_label_tree)
         print(additional_cols)
+        print(row_label_tree)
         print()
 
         # generate the header of the table
         header = self._table_header(col_label_tree, additional_cols)
         print(header)
         print()
-        content = []
-        for row_label, row_data in prepared_data.items():
-            # TODO: multirow for row label
-            row = [*row_label]
-            for column_l in column_labels:
-                row.append(
-                    formatter.format_datapoint(row_data.get(column_l, None))
-                )
-            # TODO: custom separator
-            content.append(" & ".join(row))
-        content = "\\\\\n".join(content)
+        content = self._table_content(prepared_data, row_label_tree,
+                                      column_labels)
         print(content)
         exit()
         outfile.write(header)
@@ -204,3 +225,17 @@ class LatexExporter(TableExporter):
 
     def _multicolumn(self, width: int, value: str) -> str:
         return r"\multicolumn{" + str(width) + r"}{c}{" + value + "}"
+
+    def _table_content(self, data: dict, row_label_tree: Node,
+                       column_labels: tuple):
+        content: list[str] = []
+        prev_row_label = None
+        for leave_node in row_label_tree.walk_leaves():
+            path = leave_node.path_to_root()
+            row_label = tuple(n.value for n in reversed(path))
+            row = self._build_row(data[row_label], row_label, column_labels,
+                                  prev_row_label)
+            # TODO: custom separator
+            content.append(" & ".join(row))
+            prev_row_label = row_label
+        return "\\\\\n".join(content)
