@@ -32,10 +32,13 @@ class Exporter:
 
 class TableExporter(Exporter):
     def __init__(self, formatter: Formatter, sort_cols: bool = True,
-                 sort_rows: bool = True):
+                 sort_rows: bool = True, sparse_row_labels: bool = True,
+                 multirow: bool = False):
         self.formatter = formatter
         self.sort_cols = sort_cols
         self.sort_rows = sort_rows
+        self.sparse_row_labels = sparse_row_labels
+        self.multirow = multirow
 
     def export(self, data: Comparison, property, outfile: typing.IO,
                columns, rows=None):
@@ -71,21 +74,21 @@ class TableExporter(Exporter):
             self.formatter.join_labels(n.value for n in generation)
             for generation in rows.traverse_generations()
         )
-        print(prepared_data)
-        print(col_label_tree)
-        print(row_label_tree)
-        print(column_labels)
-        print(additional_col_labels)
-        # Build the header of the table
+        # init the table
+        preamble = self.formatter.init_table(len(additional_col_labels),
+                                             len(column_labels))
+        # Build the header of the table (column labels)
         header = self._prepare_table_header(col_label_tree,
                                             additional_col_labels)
         header = self.formatter.table_header(header)
-        print(header)
+        # Fill the body of the table
         content = self._prepare_content(prepared_data, row_label_tree,
                                         column_labels)
         content = self.formatter.table_content(content)
-        print(content)
-        exit()
+        # finalize the table (close environments etc.)
+        finish = self.formatter.finalize_table()
+        table = "\n".join((preamble, header, content, finish))
+        outfile.write(table)
 
     def _prepare_data(self, comparison: Comparison, column_tree: Node,
                       row_tree: Node, prop):
@@ -201,26 +204,41 @@ class TableExporter(Exporter):
         content: list[list[str]] = []
         prev_row_label = None
         for leave in row_label_tree.walk_leaves():
-            row_label = tuple(n.value for n in reversed(leave.path_to_root()))
+            row = []
+            # write the row labels for the values in the current row
+            tree_path = tuple(n for n in reversed(leave.path_to_root()))
+            row_label = tuple(n.value for n in tree_path)
             if prev_row_label is None:
-                row = [*row_label]
+                write_label = [True for _ in range(len(row_label))]
             else:
-                # only write row labels that differ from the ones in the
-                # previous row
-                # TODO: we might want to use multirow here
-                row = ["" if label == prev else label
-                       for label, prev in zip(row_label, prev_row_label)]
+                write_label = [label != prev for label, prev in
+                               zip(row_label, prev_row_label)]
+            for label, write, node in zip(row_label, write_label, tree_path):
+                # possibly skip repeating row labels
+                if self.sparse_row_labels and not write:
+                    row.append("")
+                    continue
+                # we have to write the row label
+                # -> either as multirow or simply as entry
+                if self.multirow and (width := node.width() - 1) > 1:
+                    row.append(self.formatter.multirow(width, label))
+                else:
+                    row.append(label)
+            prev_row_label = row_label
+            # add the values to the row
             for label in column_labels:
                 value = data[row_label].get(label, None)
                 row.append(self.formatter.format_datapoint(value))
             content.append(row)
-            prev_row_label = row_label
         return content
 
 
 class LatexExporter(TableExporter):
     def __init__(self, formatter: Formatter = None, sort_cols: bool = True,
-                 sort_rows: bool = True):
+                 sort_rows: bool = True, sparse_row_labels: bool = True,
+                 multirow: bool = False):
         if formatter is None:
             formatter = LatexFormatter()
-        super().__init__(formatter, sort_cols, sort_rows)
+        super().__init__(formatter, sort_cols=sort_cols, sort_rows=sort_rows,
+                         sparse_row_labels=sparse_row_labels,
+                         multirow=multirow)

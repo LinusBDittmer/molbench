@@ -28,22 +28,38 @@ class StdFormatter(Formatter):
 
 class LatexFormatter(StdFormatter):
     def __init__(self, n_decimals: int = 5, empty_field: str = "",
-                 value_delimiter: str = ", ") -> None:
-        # TODO: construct the boilerplate table setup and customize it
+                 value_delimiter: str = ", ",
+                 label_delimiter: str = "/",
+                 column_delimiter: str = " & ",
+                 row_delimiter: str = "\\\\ \n",
+                 column_allignment: str = "c",
+                 additional_column_allignment: str = "l",
+                 multicol_allignment: str = "c",
+                 multirow_width: str = "*") -> None:
         super().__init__(n_decimals, empty_field, value_delimiter)
-        self.label_delimiter = "/"
-        self.column_delimiter = " & "
-        self.row_delimiter = r"\\" + "\n"
+        self.label_delimiter = label_delimiter
+        self.column_delimiter = column_delimiter
+        self.row_delimiter = row_delimiter
+        self.column_allignment = column_allignment
+        self.additional_column_allignment = additional_column_allignment
+        self.multicol_alignment = multicol_allignment
+        self.multirow_width = multirow_width
+
+    def init_table(self, n_additional_cols: int, n_columns: int,) -> str:
+        allignment = (self.additional_column_allignment * n_additional_cols +
+                      "|" + self.column_allignment * n_columns)
+        return r"\begin{table}" + "\n" + r"\begin{tabular}{" + allignment + "}"
+
+    def finalize_table(self):
+        return r"\end{tabular}" + "\n" + r"\end{table}"
 
     def table_header(self, labels: list[list[str]]) -> str:
-        # TODO: customize the layout -> more/fewer hlines
         return (
             self.join_rows(self.join_columns(row) for row in labels) +
             r"\\ \hline"
         )
 
     def table_content(self, content: list[list[str]]) -> str:
-        # TODO: customize layout -> more/fewer hlines
         return (
             self.join_rows(self.join_columns(row) for row in content)
         )
@@ -58,9 +74,9 @@ class LatexFormatter(StdFormatter):
         return self.row_delimiter.join(rows)
 
     def multicolumn(self, width: int, value: str) -> str:
-        # TODO: custom allignment
-        return r"\multicolumn{" + str(width) + r"}{c}{" + value + "}"
+        return (r"\multicolumn{" + str(width) + "}{" +
+                self.multicol_alignment + "}{" + value + "}")
 
     def multirow(self, heigth: int, value: str) -> str:
-        # TODO: custom width of the cell
-        return r"\multirow{" + str(heigth) + r"}{*}{" + value + "}"
+        return (r"\multirow{" + str(heigth) + "}{" +
+                self.multirow_width + "}{" + value + "}")
