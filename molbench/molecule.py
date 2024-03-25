@@ -159,7 +159,7 @@ class MoleculeList(list):
                 ]
             # norm_range might be shorter than vec_norm
             for i, norm in enumerate(vec_norm):
-                if len(norm_range) < i:  # have a user input for the norm
+                if len(norm_range) > i:  # have a user input for the norm
                     lower, upper = norm_range[i]
                     if lower > norm or upper < norm:
                         return False

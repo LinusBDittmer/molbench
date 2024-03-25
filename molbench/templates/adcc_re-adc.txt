@@ -113,7 +113,7 @@ def dump_adcc(states, outname):
 			"method": states.method.name,
 			"state_multiplicity": mul,
 			"detected_point_group": "C1",
-			"irrep": "A",
+			"detected_irrep": "A",
 			"exctation_type": "excitation",
 			"vec_norm": overlap(vec, vec),
 			"state_id": None,  # state has still to be assigned!

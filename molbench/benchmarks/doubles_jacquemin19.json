@@ -26,7 +26,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
-				"irrep": "A'",
+				"detected_irrep": "A'",
 				"state_id": "s1",
 				"value": 8.00
 			},
@@ -36,7 +36,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
-				"irrep": "A'",
+				"detected_irrep": "A'",
 				"state_id": "s1",
 				"comment": "73% singles character",
 				"value": 8.21
@@ -74,7 +74,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "D6h",
-				"irrep": "E2g",
+				"detected_irrep": "E2g",
 				"state_id": "s1",
 				"value": 8.40
 			},
@@ -84,7 +84,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "D6h",
-				"irrep": "E2g",
+				"detected_irrep": "E2g",
 				"state_id": "s1",
 				"comment": "72% singles character",
 				"value": 8.50
@@ -111,7 +111,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "R3",
-				"irrep": "D",
+				"detected_irrep": "D",
 				"state_id": "s1",
 				"value": 8.04
 			},
@@ -121,7 +121,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "R3",
-				"irrep": "D",
+				"detected_irrep": "D",
 				"state_id": "s1",
 				"value": 7.15
 			},
@@ -131,7 +131,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "R3",
-				"irrep": "D",
+				"detected_irrep": "D",
 				"state_id": "s1",
 				"comment": "2% singles character",
 				"value": 8.04
@@ -142,7 +142,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "R3",
-				"irrep": "D",
+				"detected_irrep": "D",
 				"state_id": "s1",
 				"comment": "32% singles character",
 				"value": 7.17
@@ -178,7 +178,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2h",
-				"irrep": "Ag",
+				"detected_irrep": "Ag",
 				"state_id": "s1",
 				"value": 6.55
 			},
@@ -188,7 +188,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2h",
-				"irrep": "Ag",
+				"detected_irrep": "Ag",
 				"state_id": "s1",
 				"comment": "74% singles character",
 				"value": 6.73
@@ -216,7 +216,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Dg",
+				"detected_irrep": "Dg",
 				"state_id": "s1",
 				"value": 2.29
 			},
@@ -226,7 +226,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Sg+",
+				"detected_irrep": "Sg+",
 				"state_id": "s2",
 				"value": 2.51
 			},
@@ -236,7 +236,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Dg",
+				"detected_irrep": "Dg",
 				"state_id": "s1",
 				"value": 2.09
 			},
@@ -246,7 +246,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Sg+",
+				"detected_irrep": "Sg+",
 				"state_id": "s2",
 				"value": 2.42
 			},
@@ -256,7 +256,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Dg",
+				"detected_irrep": "Dg",
 				"state_id": "s1",
 				"value": 3.10
 			},
@@ -266,7 +266,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Sg+",
+				"detected_irrep": "Sg+",
 				"state_id": "s2",
 				"comment": "0% singles character",
 				"value": 3.23
@@ -277,7 +277,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Dg",
+				"detected_irrep": "Dg",
 				"state_id": "s1",
 				"comment": "0% singles character",
 				"value": 3.05
@@ -288,7 +288,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Sg+",
+				"detected_irrep": "Sg+",
 				"state_id": "s2",
 				"comment": "0% singles character",
 				"value": 3.26
@@ -317,7 +317,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Dg",
+				"detected_irrep": "Dg",
 				"state_id": "s1",
 				"value": 5.27
 			},
@@ -327,7 +327,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Sg+",
+				"detected_irrep": "Sg+",
 				"state_id": "s2",
 				"value": 5.93
 			},
@@ -337,7 +337,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Dg",
+				"detected_irrep": "Dg",
 				"state_id": "s1",
 				"value": 5.22
 			},
@@ -347,7 +347,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Sg+",
+				"detected_irrep": "Sg+",
 				"state_id": "s2",
 				"value": 5.91
 			},
@@ -357,7 +357,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Dg",
+				"detected_irrep": "Dg",
 				"state_id": "s1",
 				"comment": "0% singles character",
 				"value": 6.65
@@ -368,7 +368,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Sg+",
+				"detected_irrep": "Sg+",
 				"state_id": "s2",
 				"comment": "1% singles character",
 				"value": 7.20
@@ -379,7 +379,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Dg",
+				"detected_irrep": "Dg",
 				"state_id": "s1",
 				"comment": "1% singles character",
 				"value": 6.68
@@ -390,7 +390,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Dinfh",
-				"irrep": "Sg+",
+				"detected_irrep": "Sg+",
 				"state_id": "s2",
 				"comment": "1% singles character",
 				"value": 7.24
@@ -422,7 +422,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "D2h",
-				"irrep": "Ag",
+				"detected_irrep": "Ag",
 				"state_id": "s1",
 				"value": 13.38
 			},
@@ -432,7 +432,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "D2h",
-				"irrep": "Ag",
+				"detected_irrep": "Ag",
 				"state_id": "s1",
 				"value": 12.92
 			},
@@ -442,7 +442,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "D2h",
-				"irrep": "Ag",
+				"detected_irrep": "Ag",
 				"state_id": "s1",
 				"comment": "4% singles character",
 				"value": 13.82
@@ -453,7 +453,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "D2h",
-				"irrep": "Ag",
+				"detected_irrep": "Ag",
 				"state_id": "s1",
 				"comment": "20% singles character",
 				"value": 13.42
@@ -483,7 +483,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2v",
-				"irrep": "A1",
+				"detected_irrep": "A1",
 				"state_id": "s1",
 				"value": 10.86
 			},
@@ -493,7 +493,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2v",
-				"irrep": "A1",
+				"detected_irrep": "A1",
 				"state_id": "s1",
 				"value": 10.35
 			},
@@ -503,7 +503,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2v",
-				"irrep": "A1",
+				"detected_irrep": "A1",
 				"state_id": "s1",
 				"comment": "5% singles character",
 				"value": 11.49
@@ -514,7 +514,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2v",
-				"irrep": "A1",
+				"detected_irrep": "A1",
 				"state_id": "s1",
 				"comment": "5% singles character",
 				"value": 11.20
@@ -546,7 +546,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2h",
-				"irrep": "Ag",
+				"detected_irrep": "Ag",
 				"state_id": "s1",
 				"value": 5.60
 			},
@@ -556,7 +556,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2h",
-				"irrep": "Ag",
+				"detected_irrep": "Ag",
 				"state_id": "s1",
 				"comment": "0% singles character",
 				"value": 6.74
@@ -588,7 +588,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
-				"irrep": "A'",
+				"detected_irrep": "A'",
 				"state_id": "s1",
 				"value": 4.86
 			},
@@ -598,7 +598,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
-				"irrep": "A'",
+				"detected_irrep": "A'",
 				"state_id": "s1",
 				"value": 4.76
 			},
@@ -608,7 +608,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
-				"irrep": "A'",
+				"detected_irrep": "A'",
 				"state_id": "s1",
 				"comment": "2% singles character",
 				"value": 5.73
@@ -619,7 +619,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
-				"irrep": "A'",
+				"detected_irrep": "A'",
 				"state_id": "s1",
 				"comment": "3% singles character",
 				"value": 5.76
@@ -648,7 +648,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
-				"irrep": "A'",
+				"detected_irrep": "A'",
 				"state_id": "s1",
 				"value": 4.51
 			},
@@ -658,7 +658,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
-				"irrep": "A'",
+				"detected_irrep": "A'",
 				"state_id": "s1",
 				"value": 4.33
 			},
@@ -668,7 +668,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
-				"irrep": "A'",
+				"detected_irrep": "A'",
 				"state_id": "s1",
 				"comment": "0% singles character",
 				"value": 5.28
@@ -679,7 +679,7 @@
 				"type": "excitation energy",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
-				"irrep": "A'",
+				"detected_irrep": "A'",
 				"state_id": "s1",
 				"comment": "0% singles character",
 				"value": 5.26

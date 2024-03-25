@@ -114,6 +114,9 @@ class Statistics:
                     assigned_interest.append(i)
             for i in reversed(assigned_interest):
                 del interest_pool[i]
+            if len(interest_values) > 1:
+                log.warning("Found more than 1 interest value for reference "
+                            f"value {ref_separators}.")
             return interest_values
         return _get_interest_values
 
