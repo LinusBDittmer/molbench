@@ -90,6 +90,43 @@ class Molecule:
             name = molname
         return cls(name, data_id, None, state_data)
 
+    def add_assignments(self, assignments: dict,
+                        state_id_key: str = "state_id") -> None:
+        """
+        Add the state assignment to the state data, i.e., try to add an
+        assignment for each property in the state data.
+
+        Parameters
+        ----------
+        assignments : dict
+            The assignments to add.
+        state_id_key : str, optional
+            The key under which the assignment should be placed
+            (default: 'state_id').
+        """
+        # during import the external_ids might be suffixed with '_number'
+        # first check for an exact match in the assignment
+        # if not found remove the extension and check if we find an assignment
+        # for the shorter key.
+        for external_id, state_data in self.state_data.items():
+            if external_id not in assignments:
+                ext_id = external_id.split("_")
+                if not ext_id[-1].isdigit():  # unexpected extension
+                    continue
+                ext_id = "_".join(ext_id[:-1])
+                if ext_id not in assignments:
+                    continue
+                external_id = ext_id
+
+            # check if the key is already in use (None as value is ok)
+            current_id = state_data.get(state_id_key, None)
+            if current_id is not None:
+                log.warning(f"The state id key {state_id_key} is already "
+                            f"used in the state data of property {external_id}"
+                            f" of molecule {self.name}. Overwriting the "
+                            "existing value.")
+            state_data[state_id_key] = assignments[external_id]
+
 
 class MoleculeList(list):
     def filter(self, key, *values) -> 'MoleculeList':

@@ -3,7 +3,9 @@
 """
 from . import logger as log
 from .molecule import Molecule, MoleculeList
+from .assignment import parse_assignment_file
 import os.path
+from pathlib import Path
 import numpy
 import json
 
@@ -37,8 +39,23 @@ class ExternalParser:
         raise NotImplementedError("Parse file not implemented on the "
                                   "base class")
 
-    def load(self, filepath: str, suffix: str = 'out') -> MoleculeList:
-        outfiles = self._fetch_all_outfiles(filepath, suffix)
+    def load(self, filepath: str, out_suffix: str = '.out',
+             assignment_suffix: str = ".ass") -> MoleculeList:
+        """
+        Loads the external data in the given folder.
+
+        Parameters
+        ----------
+        filepath : str
+            Path to the external data.
+        out_suffix : str, optional
+            Files with the given suffix will be treated as output files
+            and imported (default: '.out').
+        assignment_suffix : str, optional
+            Files with the given suffix will be treated as assignment files
+            (default: '.ass').
+        """
+        outfiles = self._fetch_all_outfiles(filepath, out_suffix)
         metadata_extractors = OutFile()._registry
 
         data = MoleculeList()
@@ -54,11 +71,44 @@ class ExternalParser:
             parser = self._registry.get(parser, None)
             if parser is None:
                 log.critical(f"No parser available for parsing {parser}.")
-            data.append(Molecule.from_external(parser.parse_file(outf),
-                                               outf))
+            # load the file and add assignments if available
+            mol = self._load_file(
+                outfile=outf, out_parser=parser.parse_file,
+                assignment_parser=parse_assignment_file,
+                assignment_suffix=assignment_suffix
+            )
+            data.append(mol)
         return data
 
-    def _fetch_all_outfiles(self, path: str, suffix: str = 'out') -> list:
+    def _load_file(self, outfile: str, out_parser: callable,
+                   assignment_parser: callable,
+                   assignment_suffix: str = ".ass") -> Molecule:
+        """
+        Parses and imports the given outfile, and if possible finds the
+        corresponding assignment file and adds the assignments of states.
+
+        Parameters
+        ----------
+        outfile : str
+            The output file to import.
+        out_parser : callable
+            Parser that imports the outfile to a dictionary.
+        assignment_parser : callable
+            Parser that imports the assignmentfile to a dictionary.
+        assignment_suffix : str, optional
+            The suffix of the assignment file (default: '.ass').
+            filename.out -> filename.ass
+        """
+        data: dict = out_parser(outfile)  # read in as dict
+        mol = Molecule.from_external(data, outfile)
+        ass_file = self._assignmentfile_from_outfile(outfile,
+                                                     assignment_suffix)
+        if ass_file is not None:  # assignment file exists -> add assignments
+            assignments = assignment_parser(ass_file)
+            mol.add_assignments(assignments)
+        return mol
+
+    def _fetch_all_outfiles(self, path: str, suffix: str = '.out') -> list:
         outfiles = []
 
         for root, _, files in os.walk(path):
@@ -67,6 +117,16 @@ class ExternalParser:
                     fp = os.path.abspath(os.path.join(root, f))
                     outfiles.append(fp)
         return outfiles
+
+    def _assignmentfile_from_outfile(self, outfile: str,
+                                     assignment_suffix: str = ".ass"
+                                     ) -> str | None:
+        """
+        Finds the assignmentfile for a given output file. Returns None if no
+        assignment file could be found.
+        """
+        assignmentf = Path(outfile).with_suffix(assignment_suffix)
+        return assignmentf if assignmentf.is_file() else None
 
     def _suite_from_outfile(self, outfile: str) -> str:
         # since we have to open the file multiple times don't use IO here!
@@ -150,8 +210,9 @@ class QChem_MP2_Parser(ExternalParser):
         metadata["data"] = data
         return {"s0": metadata}
 
-    def load(self, filepath: str, suffix: str = 'out') -> MoleculeList:
-        outfiles = self._fetch_all_outfiles(filepath, suffix)
+    def load(self, filepath: str, out_suffix: str = ".out",
+             assignment_suffix: str = ".ass") -> MoleculeList:
+        outfiles = self._fetch_all_outfiles(filepath, out_suffix)
 
         data = MoleculeList()
         for outfile in outfiles:
@@ -159,8 +220,12 @@ class QChem_MP2_Parser(ExternalParser):
             if self._suite_from_outfile(outfile) != "QChem" or \
                     QChemOutFile().find_parser(outfile) != "QChem_MP2":
                 continue
-            data.append(Molecule.from_external(self.parse_file(outfile),
-                                               outfile))
+            mol = self._load_file(
+                outfile=outfile, out_parser=self.parse_file,
+                assignment_parser=parse_assignment_file,
+                assignment_suffix=assignment_suffix
+            )
+            data.append(mol)
         return data
 
 
@@ -168,12 +233,34 @@ class JSON_Parser(ExternalParser):
     def parse_file(self, outfile: str) -> dict:
         return json.load(open(outfile, "r"))
 
-    def load(self, filepath: str, suffix: str = 'out') -> MoleculeList:
-        outfiles = self._fetch_all_outfiles(filepath, suffix)
-        return MoleculeList(
-            Molecule.from_external(self.parse_file(outf), outf)
-            for outf in outfiles if self._suite_from_outfile(outf) == "JSON"
-        )
+    def load(self, filepath: str, out_suffix: str = ".out",
+             assignment_suffix: str = ".ass") -> MoleculeList:
+        """
+        Loads all JSON outfiles in the given path.
+
+        Parameters
+        ----------
+        filepath: str
+            Path to the external data.
+        out_suffix : str, optional
+            Files with this suffix will be treated as output files
+            (default: '.out').
+        assignment_suffix : str, optional
+            Files with this suffix will be treated as assignment files
+            (default: '.ass').
+        """
+        outfiles = self._fetch_all_outfiles(filepath, out_suffix)
+        data = MoleculeList()
+        for outf in outfiles:
+            if self._suite_from_outfile(outf) != "JSON":
+                continue
+            mol = self._load_file(
+                outfile=outf, out_parser=self.parse_file,
+                assignment_parser=parse_assignment_file,
+                assignment_suffix=assignment_suffix
+            )
+            data.append(mol)
+        return data
 
 
 class OutFile:

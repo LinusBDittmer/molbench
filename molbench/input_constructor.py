@@ -189,7 +189,7 @@ class TemplateConstructor(InputConstructor):
         Parameters
         ----------
         benchmark: MoleculeList
-            The set of Molecules to generate input files for.
+            The set of Molecules to generate assignment files for.
         basepath: str
             The path where all the generated files are placed.
         calc_details: dict
