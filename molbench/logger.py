@@ -58,7 +58,7 @@ def warning(msg: str, cause=None):
     if cause is None:
         instance.warning(msg)
     else:
-        instance.warning(f"[{cause}] {msg}")
+        instance.warning(f"[{cause}] {msg}\n")
 
 
 def error(msg: str, cause=None, etype: str = ""):
@@ -66,12 +66,12 @@ def error(msg: str, cause=None, etype: str = ""):
     if cause is None:
         instance.error(f"{msg} (Error type: {etype})")
     else:
-        instance.warning(f"[{cause}] {msg} (Error type: {etype})")
+        instance.error(f"[{cause}] {msg} (Error type: {etype})\n")
 
 
 def critical(msg: str, cause):
     global instance
-    instance.critical(f"[{cause}] CRITICAL ERROR: {msg}")
+    instance.critical(f"[{cause}] CRITICAL ERROR: {msg}\n")
     sys.exit(-1)
 
 

@@ -113,11 +113,11 @@ def make_send_script(bashfiles: list, send_command: str,
     sendscript_content = (
         "#!/bin/bash\n"
         "function cd_and_sbatch() {\n"
-        "    local script_file=$1\n"
-        "    local folder=$2\n"
+        "    local script_file=\"$1\"\n"
+        "    local folder=\"$2\"\n"
         "    echo \"Sending $script_file\"\n"
         "    cd \"$folder\"\n"
-        f"    {send_command.strip()} $script_file\n"
+        f"    {send_command.strip()} \"$script_file\"\n"
         "}\n\n"
     )
 
@@ -125,7 +125,7 @@ def make_send_script(bashfiles: list, send_command: str,
         fpath = os.path.abspath(os.path.dirname(f))
         infilename = os.path.basename(f)
 
-        addendum = f"cd_and_sbatch {infilename} {fpath}\n"
+        addendum = f"cd_and_sbatch \"{infilename}\" \"{fpath}\"\n"
         sendscript_content += addendum
 
     sendscript.write(sendscript_content)

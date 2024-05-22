@@ -32,7 +32,6 @@ class InputConstructor:
         raise NotImplementedError("The 'create' method is only implemented "
                                   "on child classes.")
 
-
 class TemplateConstructor(InputConstructor):
     """
     Constructor that creates input files by substituting from a template.

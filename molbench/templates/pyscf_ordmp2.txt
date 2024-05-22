@@ -13,6 +13,11 @@ symmetry = [[symmetry]]
 restricted = not [[spin_unrestricted]]
 use_soscf = [[use_soscf]]
 ordmp2_opt = "[[optimality_criterion]]"
+ordmp2_solv = "[[ordmp2_solver]]"
+ordmp2_stepsize = [[ordmp2_stepsize]]
+ordmp2_max_cycles = [[ordmp2_max_cycles]]
+use_renorm = [[use_renorm]]
+renormalisation = [[renormalisation]]
 
 mol = gto.M(atom=atom_str, basis=basis, charge=charge, spin=spin,
             verbose=verbose, unit=unit, symmetry=symmetry)
@@ -31,7 +36,10 @@ if not use_soscf:
 else:
     mf.newton().kernel()
 
-ordmp2 = mp.ORDMP2(mf, optimality=ordmp2_opt)
+ordmp2 = mp.ORDMP2(mf, optimality=ordmp2_opt, max_cycles=ordmp2_max_cycles, stepsize=ordmp2_stepsize)
+if use_renorm:
+    ordmp2.renormalisation = renormalisation
+ordmp2.switch_solver(ordmp2_solv)
 ordmp2.kernel()
 dm1 = ordmp2.make_rdm1()
 

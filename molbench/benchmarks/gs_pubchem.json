@@ -5,7 +5,20 @@
         "multiplicity": 1,
         "n_atoms": 8,
         "n_electrons": 22,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -103.445278640162
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -103.584083297669
+            }
+        },
         "smiles": "[B]CC",
         "xyz": [
             "B            1.56189170034045        0.59844709453491        0.96637701745061",
@@ -76,6 +89,36 @@
                     0.09931899,
                     0.09931899
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -76.99494957184
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -77.090280007619
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -77.096159743139
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -77.119050546227
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -77.108597590546
             }
         },
         "smiles": "C#C",
@@ -152,6 +195,18 @@
                     -0.09006785,
                     0.21023894
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -176.494666802039
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -176.706837771093
             }
         },
         "smiles": "OBO",
@@ -228,6 +283,30 @@
                     0.19803918,
                     0.19803936
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -147.966309334797
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -148.214888135278
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -148.228836835548
+            },
+            "p008": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -148.248786436491
             }
         },
         "smiles": "[C]1NN1",
@@ -301,6 +380,36 @@
                     -0.05096144,
                     -0.06811045
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -366.591129252609
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -366.707859409279
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -366.711078464389
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -366.766066705832
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -366.754247949996
             }
         },
         "smiles": "B=P",
@@ -377,6 +486,18 @@
                     0.08809703,
                     0.08816926
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -177.022078825792
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -177.209318711182
             }
         },
         "smiles": "[CH]CF",
@@ -395,7 +516,20 @@
         "multiplicity": 1,
         "n_atoms": 8,
         "n_electrons": 24,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -133.283852947373
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -133.47126087418
+            }
+        },
         "smiles": "C[C]N",
         "xyz": [
             "C           -1.00723102466404        0.14960284518683       -0.02805742707556",
@@ -414,7 +548,20 @@
         "multiplicity": 1,
         "n_atoms": 7,
         "n_electrons": 22,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -119.598296117902
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -119.751142440521
+            }
+        },
         "smiles": "CB=N",
         "xyz": [
             "C           -0.98893469678402       -0.01043876934790        0.00095866640187",
@@ -488,6 +635,30 @@
                     -0.16351306,
                     0.22567948
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -168.002812024222
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -168.23309839407
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -168.243713991146
+            },
+            "p008": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -168.26427243575
             }
         },
         "smiles": "N=C=O",
@@ -564,6 +735,24 @@
                     0.07580128,
                     0.19351421
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -132.127143301532
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -132.311884338475
+            },
+            "p007": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -132.34555440349
             }
         },
         "smiles": "C=C=N",
@@ -582,7 +771,20 @@
         "multiplicity": 1,
         "n_atoms": 9,
         "n_electrons": 24,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -120.692213797985
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -120.863260705239
+            }
+        },
         "smiles": "BCN",
         "xyz": [
             "B            1.22367083728526       -0.01353962453453       -0.27607213978026",
@@ -658,6 +860,30 @@
                     0.03996826,
                     -0.02033846
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -179.290345848536
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -179.46865065325
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -179.482466892712
+            },
+            "p008": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -179.506448626428
             }
         },
         "smiles": "B=NF",
@@ -722,6 +948,48 @@
                     8.8817842e-16,
                     2.66453526e-15
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -149.745098161316
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -149.917775187238
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -149.927900765733
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -149.984090899989
+            },
+            "p009": {
+                "basis": "aug-cc-pVTZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -150.105606135842
+            },
+            "p010": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -149.948905421676
+            },
+            "p011": {
+                "basis": "cc-pVTZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -150.093354701236
             }
         },
         "smiles": "O=O",
@@ -794,6 +1062,30 @@
                     0.10217765,
                     0.10462201
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -151.839369098077
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -152.046048784314
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -152.059982259074
+            },
+            "p008": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -152.073928307372
             }
         },
         "smiles": "[CH]O[CH]",
@@ -867,6 +1159,36 @@
                     0.1818121,
                     -0.2240347
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.046245254778
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.196688387263
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.20829500338
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.282666171935
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.248664075913
             }
         },
         "smiles": "O[SiH]",
@@ -939,6 +1261,30 @@
                     0.1586213,
                     0.21781651
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -104.452197922742
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -104.584815323102
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -104.599741722663
+            },
+            "p008": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -104.611489366381
             }
         },
         "smiles": "[B]N[B]",
@@ -955,7 +1301,20 @@
         "multiplicity": 1,
         "n_atoms": 7,
         "n_electrons": 22,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -116.073459222788
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -116.244970912218
+            }
+        },
         "smiles": "[CH]=C[CH2]",
         "xyz": [
             "C            0.72350415957016        0.51041390017501       -0.24669051174616",
@@ -1027,6 +1386,42 @@
                     -0.00453938,
                     0.11815523
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -497.798119853926
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -497.986487772366
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -497.995122032915
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -498.057310522435
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -498.033629377921
+            },
+            "p010": {
+                "basis": "cc-pVTZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -498.155543378604
             }
         },
         "smiles": "[CH]Cl",
@@ -1100,6 +1495,30 @@
                     0.05683776,
                     0.05682096
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -163.370039526476
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -163.531652660027
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -163.546559681784
+            },
+            "p008": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -163.576244530461
             }
         },
         "smiles": "C=BF",
@@ -1117,7 +1536,20 @@
         "multiplicity": 1,
         "n_atoms": 7,
         "n_electrons": 24,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -164.615037882806
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -164.78350623847
+            }
+        },
         "smiles": "CBF",
         "xyz": [
             "C           -0.68803657890671       -0.07024119765535       -0.01448698051764",
@@ -1187,6 +1619,36 @@
                     -0.07584875,
                     -0.0758916
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -125.467799196068
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -125.582818616123
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -125.592690792207
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -125.648394127807
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -125.622280415926
             }
         },
         "smiles": "BF",
@@ -1257,6 +1719,30 @@
                     -0.07758123,
                     0.23104639
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -101.472058017931
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -101.596503714955
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -101.60471960569
+            },
+            "p008": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -101.638942875832
             }
         },
         "smiles": "BO",
@@ -1328,6 +1814,36 @@
                     0.07015137,
                     0.07015283
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -64.366942041564
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -64.446549458161
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -64.453318960409
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -64.487478297616
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -64.47570793077
             }
         },
         "smiles": "B=C",
@@ -1345,7 +1861,20 @@
         "multiplicity": 1,
         "n_atoms": 7,
         "n_electrons": 22,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -119.409807774218
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -119.580255452044
+            }
+        },
         "smiles": "[B]CN",
         "xyz": [
             "B           -0.63822243603236        1.06890293416064       -0.63232377263673",
@@ -1419,6 +1948,36 @@
                     -0.14804553,
                     -0.14796076
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.017740934628
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.198002835587
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.20799940747
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.270248946599
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.239584120574
             }
         },
         "smiles": "O=[SiH2]",
@@ -1541,6 +2100,42 @@
                     -0.03665693,
                     -0.03665693
                 ]
+            },
+            "p010": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -398.810865902432
+            },
+            "p011": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -398.812803409311
+            },
+            "p012": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -398.880852924237
+            },
+            "p013": {
+                "basis": "aug-cc-pVTZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -398.941690007821
+            },
+            "p014": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -398.865109868309
+            },
+            "p015": {
+                "basis": "cc-pVTZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -398.93622054412
             }
         },
         "smiles": "S",
@@ -1612,6 +2207,42 @@
                     0.02627114,
                     0.02627114
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -327.99103922962
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -328.091126805852
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -328.096822938495
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -328.146875078138
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -328.132940869626
+            },
+            "p010": {
+                "basis": "cc-pVTZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -328.202645371554
             }
         },
         "smiles": "C=[Si]",
@@ -1684,6 +2315,36 @@
                     0.04542971,
                     -0.08584485
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -327.911423869047
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -328.010000155539
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -328.014936094038
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -328.067988957479
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -328.055100833141
             }
         },
         "smiles": "C#[SiH]",
@@ -1700,7 +2361,14 @@
         "multiplicity": 1,
         "n_atoms": 9,
         "n_electrons": 24,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -117.156805563794
+            }
+        },
         "smiles": "C[C]C",
         "xyz": [
             "C           -1.42436155543507        0.01851620275944       -0.38019549710715",
@@ -1720,7 +2388,20 @@
         "multiplicity": 1,
         "n_atoms": 9,
         "n_electrons": 24,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -117.204031400564
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -117.373128121653
+            }
+        },
         "smiles": "[CH]CC",
         "xyz": [
             "C            1.68652147338278       -0.18749087688670        0.03227940002738",
@@ -1841,6 +2522,42 @@
                     -0.15177654,
                     0.15177654
                 ]
+            },
+            "p010": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -460.208759807453
+            },
+            "p011": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -460.211097386984
+            },
+            "p012": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -460.272819844089
+            },
+            "p013": {
+                "basis": "aug-cc-pVTZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -460.344131438217
+            },
+            "p014": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -460.255022882411
+            },
+            "p015": {
+                "basis": "cc-pVTZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -460.338020255859
             }
         },
         "smiles": "Cl",
@@ -1911,6 +2628,30 @@
                     -0.0640843,
                     0.10747088
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -101.039286742831
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -101.16283005345
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -101.173873658981
+            },
+            "p008": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -101.180011036929
             }
         },
         "smiles": "[B]C#C",
@@ -1983,6 +2724,30 @@
                     -0.10229812,
                     0.11796534
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -167.85098141478
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -168.096730882619
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -168.108872061152
+            },
+            "p008": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -168.123562313388
             }
         },
         "smiles": "C1=NO1",
@@ -2053,6 +2818,36 @@
                     0.32258545,
                     -0.16129274
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -187.859367041599
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -188.111642996717
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -188.121494071632
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -188.183294240269
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -188.146192726199
             }
         },
         "smiles": "O=C=O",
@@ -2122,6 +2917,36 @@
                     0.05057511,
                     -0.16079807
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -124.323853731162
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -124.464351012805
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -124.474723158869
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -124.503314237678
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -124.487035070661
             }
         },
         "smiles": "[B]B=O",
@@ -2137,7 +2962,20 @@
         "multiplicity": 1,
         "n_atoms": 7,
         "n_electrons": 22,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -116.073459165573
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -116.244965832069
+            }
+        },
         "smiles": "C1=CC1",
         "xyz": [
             "C            0.46807771272618        0.75025140812024       -0.05432831804810",
@@ -2215,6 +3053,18 @@
                     0.16899108,
                     0.18320175
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -165.184700791453
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -165.461131652428
             }
         },
         "smiles": "[nH]1[nH][nH]1",
@@ -2233,7 +3083,32 @@
         "multiplicity": 1,
         "n_atoms": 7,
         "n_electrons": 24,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -316.545136567032
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -316.650474524914
+            },
+            "p002": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -316.653622773614
+            },
+            "p003": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -316.71735900423
+            }
+        },
         "smiles": "B[SiH3]",
         "xyz": [
             "B            1.19219604506494       -0.07000683211413        0.08741419447443",
@@ -2311,6 +3186,30 @@
                     0.06431939,
                     0.06064932
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -102.245963660817
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -102.37706536442
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -102.389027862797
+            },
+            "p008": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -102.41235045108
             }
         },
         "smiles": "[B]C=C",
@@ -2387,6 +3286,24 @@
                     0.19165831,
                     0.2223703
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -188.942035357817
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -189.184213661133
+            },
+            "p007": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -189.240161754613
             }
         },
         "smiles": "O[C]O",
@@ -2462,6 +3379,24 @@
                     3.21056137e-05,
                     3.21039864e-05
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -189.010441452764
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -189.262759684077
+            },
+            "p007": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -189.309837359082
             }
         },
         "smiles": "[O]C[O]",
@@ -2531,6 +3466,48 @@
                     -0.18840901,
                     0.18840901
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.334078121385
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.432901866662
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.436040981526
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.469755632189
+            },
+            "p009": {
+                "basis": "aug-cc-pVTZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.522462928271
+            },
+            "p010": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.461653660633
+            },
+            "p011": {
+                "basis": "cc-pVTZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -365.519319509178
             }
         },
         "smiles": "B#P",
@@ -2545,7 +3522,14 @@
         "multiplicity": 1,
         "n_atoms": 6,
         "n_electrons": 24,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -126.243556015514
+            }
+        },
         "smiles": "B1=BC=C1",
         "xyz": [
             "B            1.40658224745356        0.63929001115791       -0.16197215417569",
@@ -2562,7 +3546,20 @@
         "multiplicity": 1,
         "n_atoms": 7,
         "n_electrons": 22,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -126.810345908986
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -126.972152960059
+            }
+        },
         "smiles": "BOB",
         "xyz": [
             "B            1.25842787967211        0.24402718126544       -0.40976787665986",
@@ -2640,6 +3637,18 @@
                     0.20969673,
                     0.16262468
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -169.117022092524
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -169.343383124581
             }
         },
         "smiles": "N[C]O",
@@ -2658,7 +3667,20 @@
         "multiplicity": 1,
         "n_atoms": 7,
         "n_electrons": 24,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -153.158010684589
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -153.355351805842
+            }
+        },
         "smiles": "C=CO",
         "xyz": [
             "C           -0.77374288541679       -0.16329646447582        0.38488579597101",
@@ -2736,6 +3758,18 @@
                     0.06891043,
                     0.08326919
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -169.098240710194
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -169.32807096463
             }
         },
         "smiles": "CN=O",
@@ -2754,7 +3788,26 @@
         "multiplicity": 1,
         "n_atoms": 4,
         "n_electrons": 20,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -98.607930115249
+            },
+            "p001": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -98.723192598758
+            },
+            "p002": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -98.728084081235
+            }
+        },
         "smiles": "[B]B([B])[B]",
         "xyz": [
             "B           -0.24904356532189       -1.22996309965939       -0.01939700403448",
@@ -2769,7 +3822,20 @@
         "multiplicity": 1,
         "n_atoms": 4,
         "n_electrons": 24,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -158.268716752082
+            },
+            "p001": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -158.517441980351
+            }
+        },
         "smiles": "B1=BN=N1",
         "xyz": [
             "B           -0.49623788643046       -0.82116435506564       -0.18024630661125",
@@ -2838,6 +3904,36 @@
                     -0.32538393,
                     0.16268572
                 ]
+            },
+            "p005": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -124.331940003085
+            },
+            "p006": {
+                "basis": "6-31G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -124.481624707889
+            },
+            "p007": {
+                "basis": "6-31+G*",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -124.495968412431
+            },
+            "p008": {
+                "basis": "aug-cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -124.515735925916
+            },
+            "p009": {
+                "basis": "cc-pVDZ",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -124.49898956277
             }
         },
         "smiles": "[B]O[B]",
@@ -2853,7 +3949,14 @@
         "multiplicity": 1,
         "n_atoms": 8,
         "n_electrons": 24,
-        "properties": {},
+        "properties": {
+            "p000": {
+                "basis": "6-31G",
+                "method": "ccsdtq(p)",
+                "type": "energy",
+                "value": -133.19776817812
+            }
+        },
         "smiles": "CC[N]",
         "xyz": [
             "C            0.79131122483807        0.07707796707922        0.04892612686106",

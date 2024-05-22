@@ -60,8 +60,7 @@ class ExternalParser:
 
     def _fetch_all_outfiles(self, path: str, suffix: str = 'out') -> list:
         outfiles = []
-
-        for root, _, files in os.walk(path):
+        for root, _, files in os.walk(os.path.abspath(path), topdown=True, followlinks=True):
             for f in files:
                 if f.endswith(suffix):
                     fp = os.path.abspath(os.path.join(root, f))
