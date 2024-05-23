@@ -138,10 +138,8 @@ class Statistics:
 
         signed_errors = defaultdict(dict)
         for (ref_keys, ref) in reference:
-            #print(f"Reference: {ref_keys}")
             interest_values = get_interest_values(ref_keys, interest)
             for interest_keys, values in interest_values:
-                #print(f"Interest: {interest_keys}")
                 signed_errors[ref_keys][interest_keys] = values - ref
         return signed_errors
 

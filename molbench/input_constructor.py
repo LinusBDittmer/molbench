@@ -90,6 +90,7 @@ class InputConstructor:
             return path
         return _folder_structure
 
+
 class TemplateConstructor(InputConstructor):
     """
     Constructor that creates input files by substituting from a template.
