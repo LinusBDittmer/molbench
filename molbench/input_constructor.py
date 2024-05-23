@@ -181,7 +181,7 @@ class TemplateConstructor(InputConstructor):
                            file_expansion_keys: tuple = ("basis",),
                            flat_structure: bool = False,
                            name_template: str = None,
-                           state_id_key="state_id"):
+                           state_id_key="state_id") -> list:
         """
         Create assignment files for the provided set of Molecules.
 

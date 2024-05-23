@@ -95,7 +95,8 @@ def dump_adcc(states, outname):
 	au_to_ev = constants.value("Hartree energy in eV")
 	data = {}
 	data["scf energy"] = states.reference_state.energy_scf
-	data["energy correction"] = states.ground_state.energy_correction(adc_order)
+	for o in range(2, adc_order + 1):
+		data[f"energy correction {o}"] = states.ground_state.energy_correction(o)
 	data["energy"] = states.ground_state.energy(adc_order)
 	if adc_order == 2:  # only second order density implemented currently
 		dip = states.ground_state.dipole_moment(2)
