@@ -4,9 +4,12 @@ from .functions import walk_dict_by_key
 
 class Molecule:
     def __init__(self, name, data_id, system_data: dict = None,
-                 state_data: dict = None) -> None:
+                 state_data: dict = None, geometry_num: int = 1) -> None:
         self.name = name
         self.data_id = data_id
+        # Whether this molecule encodes relative energies through
+        # multiple molecules
+        self.geometry_num = geometry_num
         # dict that contains all the information regarding the system:
         # xyz_coords, charge, ...
         # -> information that is mostly required to build input files
@@ -23,6 +26,14 @@ class Molecule:
         # benchmark
         system_data = {k: v for k, v in benchmark_entry.items()
                        if k != "properties"}
+        # Check if this molecule is a multi-Molecule entry,
+        # e. g. through relative energies
+        # If so, it contains the usual entries suffixed by "_list"
+        # i. e. "xyz_list", "multiplicity_list", "n_atoms_list" etc.
+        geometry_num: int = len(system_data["xyz_list"]) if "xyz_list" in system_data else 1 
+        if "xyz_list" in system_data:
+            if not isinstance(system_data["xyz_list"][0], str):
+                system_data["xyz_list"] = ["\n".join(s) for s in system_data["xyz_list"]]
         # ensure that xyz coordinates are a string
         if "xyz" in system_data and not isinstance(system_data["xyz"], str):
             system_data["xyz"] = "\n".join(system_data["xyz"])
@@ -38,7 +49,7 @@ class Molecule:
             name = molname
 
         properties = benchmark_entry.get("properties", None)
-        return cls(name, benchmark_id, system_data, properties)
+        return cls(name, benchmark_id, system_data, properties, geometry_num)
 
     @classmethod
     def from_external(cls, external: dict, data_id,

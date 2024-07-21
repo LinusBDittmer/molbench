@@ -2,6 +2,7 @@
 
 """
 
+import json
 from pathlib import Path
 from .assignment import new_assignment_file
 from . import logger as log
@@ -41,7 +42,8 @@ class InputConstructor:
     def _create_files(self, data_iterable, basepath: str,
                       file_name_generator: callable,
                       file_content_generator: callable,
-                      folder_structure_generator: callable):
+                      folder_structure_generator: callable,
+                      stoch_name_generator: callable):
 
         basepath: Path = Path(basepath).resolve()
         if not basepath.exists():
@@ -60,19 +62,43 @@ class InputConstructor:
         created_files = []
         for data in data_iterable:
             name: str = file_name_generator(data)
+            stoch_name: str = stoch_name_generator(data)
             content: str = file_content_generator(data)
             folders: Path = folder_structure_generator(data)
+            stochiometry: list = data[1][0].get("stochiometry", None)
+            if stochiometry is None:
+                stochiometry = [1.0]
+            stochiometry_dict: dict = dict()
 
-            # create the folder and write the file content
-            path = basepath / folders
-            if not path.exists():
-                path.mkdir(parents=True, exist_ok=True)
-            file = path / name
-            if file.is_file():
-                log.warning(f"Overwriting existing file {file}.")
-            with open(file, "w") as f:
-                f.write(content)
-            created_files.append(file)
+            # Content is a list of file contents
+            for content_idx, (subcontent, subname) in enumerate(zip(content, name)):
+                # create the folder and write the file content
+                path = basepath / folders 
+                if not path.exists():
+                    path.mkdir(parents=True, exist_ok=True)
+                if len(content) == 1:
+                    file = path / subname
+                else:
+                    fileindex = "_" + str(content_idx).zfill(len(str(len(content))))
+                    subname_proper: str = subname[:subname.rfind(".")]
+                    subname_proper += fileindex + subname[subname.rfind("."):]
+                    file = path / subname_proper
+                if file.is_file():
+                    log.warning(f"Overwriting existing file {file}.")
+                stochiometry_dict[str(file)] = stochiometry[content_idx]
+                with open(file, "w") as f:
+                    f.write(subcontent)
+                created_files.append(file)
+                        
+            if len(stochiometry_dict.keys()) > 1:
+                path = basepath / folders
+                file = path / stoch_name[0]
+                if file.is_file():
+                    log.warning(f"Overwriting existing file {file}.")
+                with open(file, "w") as f:
+                    json.dump(stochiometry_dict, f, ensure_ascii=True, 
+                              sort_keys=True, indent=2)
+
         return created_files
 
     def _folders_from_tree(self, root: Node) -> Path:
@@ -124,7 +150,8 @@ class TemplateConstructor(InputConstructor):
                       calc_details: dict,
                       file_expansion_keys: tuple = ("basis",),
                       flat_structure: bool = False,
-                      name_template: str = None) -> list:
+                      name_template: str = None,
+                      stochiometry_template: str = None) -> list:
         """
         Create inputs files for the provided set of Molecules by filling
         in the placeholders in the input template with data from the
@@ -157,10 +184,14 @@ class TemplateConstructor(InputConstructor):
         if name_template is None:
             name_template = self._default_name_template(file_expansion_keys,
                                                         ".in")
+        if stochiometry_template is None:
+            stochiometry_template = self._default_name_template(file_expansion_keys,
+                                                                ".stoch")
         variant_data_iterator = self._molecule_variants_data_iter(
             benchmark, calc_details, file_expansion_keys
         )
         file_name_generator = self._substitute_template(name_template)
+        stoch_filename_generator = self._substitute_template(stochiometry_template)
         file_content_generator = self._substitute_template(self.template)
 
         # create a tree representing the folder structure
@@ -175,7 +206,7 @@ class TemplateConstructor(InputConstructor):
 
         return self._create_files(variant_data_iterator, basepath,
                                   file_name_generator, file_content_generator,
-                                  folder_structure_generator)
+                                  folder_structure_generator, stoch_filename_generator)
 
     def create_assignments(self, benchmark: MoleculeList[Molecule],
                            basepath: str, calc_details: dict,

@@ -252,3 +252,9 @@ def median_se(signed_errors: dict, assign: callable):
     """Computes the median signed error."""
     errors = _collect_errors(signed_errors, assign)
     return numpy.median(numpy.array(errors), axis=0), len(errors)
+
+@register_as_error_measure
+def rmsd(signed_errors: dict, assign: callable):
+    """Computes the root mean-square deviation."""
+    errors = _collect_errors(signed_errors, assign)
+    return numpy.sqrt(numpy.mean(numpy.square(errors), axis=0)), len(errors)

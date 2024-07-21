@@ -54,7 +54,7 @@ def create_bash_files(files: list, command: str) -> list:
     """
     bash_files = []
     basepath = os.getcwd()
-    command = substitute_template(command, config)
+    command = substitute_template(command, config)[0]
 
     for f in files:
         fpath = os.path.dirname(f)
@@ -109,7 +109,7 @@ def make_send_script(bashfiles: list, send_command: str,
     - Write the sendscript content to the sendscript file.
 
     """
-    send_command = substitute_template(send_command, config)
+    send_command = substitute_template(send_command, config)[0]
     sendscript_content = (
         "#!/bin/bash\n"
         "function cd_and_sbatch() {\n"

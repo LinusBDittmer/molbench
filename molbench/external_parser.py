@@ -40,7 +40,8 @@ class ExternalParser:
                                   "base class")
 
     def load(self, filepath: str, out_suffix: str = '.out',
-             assignment_suffix: str = ".ass") -> MoleculeList:
+             assignment_suffix: str = ".ass", 
+             stochiometry_suffix: str = ".stoch") -> MoleculeList:
         """
         Loads the external data in the given folder.
 
@@ -54,8 +55,12 @@ class ExternalParser:
         assignment_suffix : str, optional
             Files with the given suffix will be treated as assignment files
             (default: '.ass').
+        stochiometry_suffix : str, optional
+            Files with the given suffix will be treated as stochiometry files
+            (default: '.stoch')
         """
         outfiles = self._fetch_all_outfiles(filepath, out_suffix)
+        stochfiles = self._fetch_all_outfiles(filepath, stochiometry_suffix)
         metadata_extractors = OutFile()._registry
 
         data = MoleculeList()
@@ -78,7 +83,66 @@ class ExternalParser:
                 assignment_suffix=assignment_suffix
             )
             data.append(mol)
-        return data
+        
+        if len(stochfiles) == 0:
+            return data
+        # Set of files which have stochiometry attached
+        corrected_data = MoleculeList()
+        correction_set = set()
+        for stochfile in stochfiles:
+            stoch_dict = json.load(open(stochfile, "r"))
+            keylist = [k[:k.rfind(".")] for k in stoch_dict.keys()]
+            correction_set.update(set(keylist))
+        
+        for molecule in data:
+            data_id = molecule.data_id[:molecule.data_id.rfind(".")]
+            if data_id not in correction_set:
+                corrected_data.append(molecule)
+
+        for stochfile in stochfiles:
+            stoch_dict = json.load(open(stochfile, "r"))
+            global_name = None
+            system_data = {}
+            state_data = None
+
+            for stochkey in stoch_dict:
+                if global_name is None:
+                    global_name = "_".join(stochkey.split("_")[:-1])
+                for mol in data:
+                    molname = mol.data_id.replace(".out", ".in")
+                    if molname == stochkey:
+                        active_mol: Molecule = mol
+                        break
+                
+                if len(system_data.keys()) == 0:
+                    system_data = active_mol.system_data
+                if len(active_mol.state_data) > 1:
+                    log.warning(f"Relative energies not implemented for more than "
+                                + f"one state. Received {len(active_mol.state_data)} with {mol.name}", self)
+                active_state = tuple(active_mol.state_data.items())[0][1]
+                if state_data is None:
+                    state_data = dict()
+                    for key in active_state:
+                        if key == "value":
+                            if isinstance(active_state[key], (int, float, complex)):
+                                state_data[key] = 0.0
+                            elif isinstance(active_state[key], (tuple, list)):
+                                state_data[key] = list([0.0] * len(active_state[key]))
+                        else:
+                            state_data[key] = active_state[key]
+                
+                if isinstance(state_data["value"], (int, float, complex)):
+                    state_data["value"] += stoch_dict[stochkey] * active_state["value"]
+                else:
+                    for index, active_value in enumerate(active_state[key]):
+                        state_data["value"][index] += stoch_dict[stochkey] * active_state["value"] 
+            
+            state_data = {"s0": state_data}
+            pretty_name = os.path.basename(global_name).split("_")[0]
+            mol: Molecule = Molecule(pretty_name, stochkey, system_data, state_data)
+            corrected_data.append(mol)
+
+        return corrected_data  
 
     def _load_file(self, outfile: str, out_parser: callable,
                    assignment_parser: callable,
@@ -146,6 +210,7 @@ class ExternalParser:
 
 
 class QChem_MP2_Parser(ExternalParser):
+
     def parse_file(self, outfile: str) -> dict:
         outname = os.path.basename(outfile)
         # Signature must contain molkey, basis, method
@@ -209,59 +274,66 @@ class QChem_MP2_Parser(ExternalParser):
                             mul_charges.append(float(lsplit[-1]))
         metadata["data"] = data
         return {"s0": metadata}
+    
+class QChem_RIBWS2_Parser(ExternalParser):
 
-    def load(self, filepath: str, out_suffix: str = ".out",
-             assignment_suffix: str = ".ass") -> MoleculeList:
-        outfiles = self._fetch_all_outfiles(filepath, out_suffix)
+    def parse_file(self, outfile: str) -> dict:
+        outname = os.path.basename(outfile)
+        # Signature must contain molkey, basis, method
+        metadata = {"name": outname.split("_")[0]}
+        data = {}
+        with open(outfile, "r") as outf:
+            for line in outf.readlines():
+                lsplit = line.strip().split()
+                if "RIBW-S2         total energy" in line:
+                    data["energy"] = float(lsplit[-2])
+                if "basis" not in metadata:
+                    if len(lsplit) >= 2 and lsplit[0].lower() == "basis":
+                        b = lsplit[1]
+                        if lsplit[1] == "=":
+                            b = lsplit[2]
+                        metadata["basis"] = b
+                if "method" not in metadata:
+                    if len(lsplit) >= 2 and lsplit[0].lower() == "method":
+                        m = lsplit[1]
+                        if lsplit[1] == "=":
+                            m = lsplit[2]
+                        metadata["method"] = m
+        metadata["data"] = data
+        return {"s0": metadata}   
 
-        data = MoleculeList()
-        for outfile in outfiles:
-            # filter out non qchem MP2 outfiles
-            if self._suite_from_outfile(outfile) != "QChem" or \
-                    QChemOutFile().find_parser(outfile) != "QChem_MP2":
-                continue
-            mol = self._load_file(
-                outfile=outfile, out_parser=self.parse_file,
-                assignment_parser=parse_assignment_file,
-                assignment_suffix=assignment_suffix
-            )
-            data.append(mol)
-        return data
+class QChem_RICC2_Parser(ExternalParser):
 
+    def parse_file(self, outfile: str) -> dict:
+        outname = os.path.basename(outfile)
+        # Signature must contain molkey, basis, method
+        metadata = {"name": outname.split("_")[0]}
+        data = {}
+        with open(outfile, "r") as outf:
+            for line in outf.readlines():
+                lsplit = line.strip().split()
+                if "RICC2         total energy" in line:
+                    data["energy"] = float(lsplit[-2])
+                if "basis" not in metadata:
+                    if len(lsplit) >= 2 and lsplit[0].lower() == "basis":
+                        b = lsplit[1]
+                        if lsplit[1] == "=":
+                            b = lsplit[2]
+                        metadata["basis"] = b
+                if "method" not in metadata:
+                    if len(lsplit) >= 2 and lsplit[0].lower() == "method":
+                        m = lsplit[1]
+                        if lsplit[1] == "=":
+                            m = lsplit[2]
+                        metadata["method"] = m
+        if metadata["method"] == "ribws2":
+            metadata["method"] = "RIBWS-CC2"
+        metadata["data"] = data
+        return {"s0": metadata} 
 
 class JSON_Parser(ExternalParser):
     def parse_file(self, outfile: str) -> dict:
         return json.load(open(outfile, "r"))
-
-    def load(self, filepath: str, out_suffix: str = ".out",
-             assignment_suffix: str = ".ass") -> MoleculeList:
-        """
-        Loads all JSON outfiles in the given path.
-
-        Parameters
-        ----------
-        filepath: str
-            Path to the external data.
-        out_suffix : str, optional
-            Files with this suffix will be treated as output files
-            (default: '.out').
-        assignment_suffix : str, optional
-            Files with this suffix will be treated as assignment files
-            (default: '.ass').
-        """
-        outfiles = self._fetch_all_outfiles(filepath, out_suffix)
-        data = MoleculeList()
-        for outf in outfiles:
-            if self._suite_from_outfile(outf) != "JSON":
-                continue
-            mol = self._load_file(
-                outfile=outf, out_parser=self.parse_file,
-                assignment_parser=parse_assignment_file,
-                assignment_suffix=assignment_suffix
-            )
-            data.append(mol)
-        return data
-
 
 class OutFile:
     """
@@ -296,7 +368,14 @@ class OutFile:
 
 class QChemOutFile(OutFile):
     def find_parser(self, outfile: str) -> str:
-        raise NotImplementedError
+        parser = None
+        with open(outfile, "r") as f:
+            for line in f.readlines():
+                if "RICC2         total energy" in line:
+                    parser = "QChem_RICC2"
+                if "RIBW-S2         total energy" in line:
+                    parser = "QChem_RIBWS2"
+        return parser
 
 
 class JSONOutFile(OutFile):
