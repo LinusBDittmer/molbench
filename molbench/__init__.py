@@ -74,6 +74,7 @@ from .statistics import Statistics, register_as_error_measure
 from .export import Exporter, LatexExporter
 from .external_parser import ExternalParser, JSON_Parser, QChem_RIBWS2_Parser, QChem_RICC2_Parser
 from .molecule import Molecule
+from .extrapolate import CBSExtrapolator
 
 __all__ = ["config", "Molecule", "load_benchmark", "InputConstructor",
            "TemplateConstructor", "create_bash_files", "make_send_script",

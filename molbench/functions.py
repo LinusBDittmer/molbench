@@ -32,7 +32,7 @@ def _substitute_single(template: str, subvals: dict) -> str:
         if val is None:
             log.error(f"No value for required parameter {key} "
                       f"available. Available are {subvals}.",
-                      "substitute_template", KeyError)
+                      "Functions: Substitute Template", "KeyError")
         template = template.replace(template[start:stop+2], str(val))
     return template
 
@@ -57,3 +57,56 @@ def walk_dict_values(indict: dict, prev_keys: tuple = tuple()):
                 yield data
         else:
             yield prev_keys + (key,), val
+
+def determine_basis_cardinality(basis: str):
+    # Dunnings basis sets
+    def _dunnings(bas: str):
+        b: list[str] = bas.split("-")
+        cstr: str = b[b.index("cc")+1]
+        zetaidx: int = 2
+        zetaoffset: int = 0
+        if cstr.startswith("pwv") or cstr.startswith("pcv"):
+            zetaidx += 1
+        if "(" in cstr:
+            zetaidx += 1
+            zetaoffset += 1
+        if cstr[zetaidx] == "d": return 2 + zetaoffset
+        if cstr[zetaidx] == "t": return 3 + zetaoffset
+        if cstr[zetaidx] == "q": return 4 + zetaoffset
+        if cstr[zetaidx].isnumeric(): return int(cstr[zetaidx]) + zetaoffset
+        
+        log.error(f"Basis set {bas} was interpreted as a Dunning's basis but could not be identified!", 
+                  "Functions: Determine Basis Cardinality", "Basis identification error")
+        return 0
+
+    # Karlsruhe def2
+    def _karlsruhe(bas: str):
+        b: list[str] = bas.split("-")
+        cstr: str = b[b.index("def2")+1]
+        zetaidx: int = 0
+        if cstr.startswith("m"):
+            zetaidx += 1
+        if cstr[zetaidx] == "s": return 1
+        if cstr[zetaidx] == "t": return 3
+        if cstr[zetaidx] == "q": return 4
+        if cstr[zetaidx].isnumeric(): return int(cstr[zetaidx])
+
+        log.error(f"Basis set {bas} was interpreted as a Karlruhe basis but could not be identified!", 
+                  "Functions: Determine Basis Cardinality", "Basis identification error")
+        return 0
+
+    b: str = basis.lower()
+    # Dunnings
+    for identifier in ["cc-p", "aug-cc-p", "jun-cc-p", "jul-cc-p", "maug-cc-p"]:
+        if b.startswith(identifier):
+            return _dunnings(b)
+    
+    if "def2" in b:
+        return _karlsruhe(b)
+    
+    log.error(f"Unknown basis format for {b}.", "Functions: Determine Basis Cardinality", 
+              "Basis identification error")
+
+    return 0
+
+    

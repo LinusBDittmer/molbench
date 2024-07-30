@@ -98,7 +98,7 @@ class TableExporter(Exporter):
         row_nodes = tuple(row_tree.traverse_generations())
         if any(n.value not in data_structure for n in
                chain.from_iterable(chain(column_nodes, row_nodes))):
-            log.critical("A key is not available in the provided Comparison.")
+            log.critical("A key is not available in the provided Comparison.", "Export")
 
         col_node_cache = {"root": DummyNode()}
         row_node_cache = {"root": DummyNode()}

@@ -11,8 +11,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -38,8 +38,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -65,8 +65,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -92,8 +92,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -119,8 +119,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -146,8 +146,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -173,8 +173,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -200,8 +200,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -227,8 +227,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -254,8 +254,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -281,8 +281,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -308,8 +308,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -335,8 +335,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -362,8 +362,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -389,8 +389,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -416,8 +416,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -443,8 +443,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -470,8 +470,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -503,8 +503,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -6.0,
@@ -563,8 +563,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     8.0,
@@ -619,8 +619,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -665,8 +665,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -716,8 +716,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -760,8 +760,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -805,8 +805,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -844,8 +844,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -2.0
@@ -879,8 +879,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0
@@ -921,8 +921,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -3.0,
@@ -974,8 +974,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -1022,8 +1022,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -1067,8 +1067,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     2.0
@@ -1102,8 +1102,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0
@@ -1136,8 +1136,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0
@@ -1178,8 +1178,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -1228,8 +1228,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -1280,8 +1280,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -1332,8 +1332,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -1384,8 +1384,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -1441,8 +1441,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     2.0,
@@ -1488,8 +1488,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -1538,8 +1538,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -1589,8 +1589,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -3.0,
@@ -1639,8 +1639,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -2.0,
@@ -1691,8 +1691,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -1745,8 +1745,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -1800,8 +1800,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -1847,8 +1847,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -1899,8 +1899,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -1957,8 +1957,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -2007,8 +2007,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -2081,8 +2081,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -2135,8 +2135,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -2177,8 +2177,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -2223,8 +2223,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -2264,8 +2264,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0
@@ -2303,8 +2303,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -2352,8 +2352,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -2409,8 +2409,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -2455,8 +2455,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -2504,8 +2504,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -2549,8 +2549,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -2596,8 +2596,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -2644,8 +2644,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0
@@ -2682,8 +2682,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -2724,8 +2724,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -2768,8 +2768,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -2821,8 +2821,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -2875,8 +2875,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -2937,8 +2937,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -17.0,
@@ -3048,8 +3048,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -15.0,
@@ -3161,8 +3161,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -19.0,
@@ -3264,8 +3264,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -26.0,
@@ -3373,8 +3373,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -7.0,
@@ -3493,8 +3493,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -11.0,
@@ -3608,8 +3608,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -9.0,
@@ -3715,8 +3715,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -4.0,
@@ -3820,8 +3820,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -7.0,
@@ -3927,8 +3927,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -16.0,
@@ -4032,8 +4032,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -7.0,
@@ -4122,8 +4122,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -4198,8 +4198,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -4.0,
@@ -4308,8 +4308,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -6.0,
@@ -4423,8 +4423,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -13.0,
@@ -4537,8 +4537,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -8.0,
@@ -4651,8 +4651,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -10.0,
@@ -4778,8 +4778,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -19.0,
@@ -4876,8 +4876,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -4948,8 +4948,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -5000,8 +5000,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -5066,8 +5066,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -5110,8 +5110,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -5149,8 +5149,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0
@@ -5183,8 +5183,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -2.0
@@ -5245,8 +5245,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -5.0
@@ -5298,8 +5298,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -5373,8 +5373,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -5432,8 +5432,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -5482,8 +5482,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     2.0
@@ -5526,8 +5526,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0
@@ -5565,8 +5565,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0
@@ -5629,8 +5629,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0
@@ -5667,8 +5667,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -2.0
@@ -5702,8 +5702,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -2.0
@@ -5737,8 +5737,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -2.0
@@ -5793,8 +5793,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -5848,8 +5848,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -5900,8 +5900,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -5952,8 +5952,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -6000,8 +6000,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0
@@ -6049,8 +6049,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -6127,8 +6127,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -6169,8 +6169,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -6240,8 +6240,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0
@@ -6280,8 +6280,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0
@@ -6329,8 +6329,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     3.0
@@ -6368,8 +6368,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -6418,8 +6418,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -6458,8 +6458,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0
@@ -6502,8 +6502,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0
@@ -6571,8 +6571,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -6614,8 +6614,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0
@@ -6653,8 +6653,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -6726,8 +6726,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0
@@ -6793,8 +6793,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -6839,8 +6839,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -6884,8 +6884,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -6935,8 +6935,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -6977,8 +6977,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0
@@ -7049,8 +7049,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0
@@ -7089,8 +7089,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -1.0,
@@ -7150,8 +7150,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -7189,8 +7189,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0
@@ -7220,8 +7220,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0
                 ],
@@ -7250,8 +7250,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0
@@ -7297,8 +7297,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -7341,8 +7341,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -7385,8 +7385,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -7434,8 +7434,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -7486,8 +7486,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -7535,8 +7535,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -7580,8 +7580,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -1.0,
@@ -7628,8 +7628,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     -2.0,
@@ -7671,8 +7671,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     6.0,
@@ -7723,8 +7723,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     2.0,
@@ -7766,8 +7766,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -7810,8 +7810,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     2.0,
@@ -7851,8 +7851,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     2.0
@@ -7910,8 +7910,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -12.0,
@@ -8010,8 +8010,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     2.0
@@ -8045,8 +8045,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     2.0
@@ -8080,8 +8080,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     2.0
@@ -8115,8 +8115,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     2.0
@@ -8156,8 +8156,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     15.0,
@@ -8233,8 +8233,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -4.0,
@@ -8328,8 +8328,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -5.0,
@@ -8422,8 +8422,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -11.0,
@@ -8514,8 +8514,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     4.0,
@@ -8591,8 +8591,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -8633,8 +8633,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,
@@ -8691,8 +8691,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -2.0,
                     -6.0,
@@ -8794,8 +8794,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     -5.0,
@@ -8879,8 +8879,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -8921,8 +8921,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     1.0,
                     1.0,
@@ -8953,7 +8953,7 @@
             ]
         ]
     },
-    "NCE15-1": {
+    "\ufeffNCE15-1": {
         "charge_list": [
             0,
             0,
@@ -8971,8 +8971,8 @@
         ],
         "properties": {
             "p001": {
-                "basis": "aug-cc-pvtz",
-                "method": "See reference",
+                "basis": "CBS",
+                "method": "TBE",
                 "stochiometry": [
                     -1.0,
                     1.0,

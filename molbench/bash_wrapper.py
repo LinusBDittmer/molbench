@@ -61,9 +61,9 @@ def create_bash_files(files: list, command: str) -> list:
         os.chdir(fpath)
         infilename = os.path.basename(f)
         cmd = command.strip() + " " + infilename
-        log.info(f"Now building script for {infilename}: {f}")
+        log.info(f"Now building script for {infilename}: {f}", "Bash Wrapper")
         subprocess.run(cmd, shell=True)
-        log.debug(f"Executing command : {cmd}")
+        log.debug(f"Executing command : {cmd}", "Bash Wrapper")
 
         fname_no_ext = os.path.splitext(infilename)[0]
         all_shs = glob.glob("*.sh")

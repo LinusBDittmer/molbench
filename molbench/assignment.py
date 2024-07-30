@@ -69,12 +69,12 @@ def parse_assignment_file(assignmentfile: str,
         if len(assignment) != 2:
             log.critical(f"Invalid use of state id separator {id_separator} in"
                          f" line {line} of assignment file {assignmentfile}.",
-                         "parse_assignment_file")
+                         "parse_assignment_file", "Assignment")
 
         ref = assignment[0].strip()
         external = assignment[1].strip()
         if ref == null_token or external == null_token:  # skip not assigned
-            log.warning(f"Unassigned state in file {assignmentfile}.")
+            log.warning(f"Unassigned state in file {assignmentfile}.", "Assigment")
             continue
 
         if import_external is not None:
@@ -85,6 +85,6 @@ def parse_assignment_file(assignmentfile: str,
         if external in state_assignments:
             log.warning(f"The external state {external} in assignment file "
                         f"{assignmentfile} is assigned twice. Overwriting the "
-                        "first assignment.")
+                        "first assignment.", "Assigment")
         state_assignments[external] = ref
     return state_assignments

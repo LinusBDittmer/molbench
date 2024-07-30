@@ -36,42 +36,51 @@ def __init_log_instance():
     stream_handler.setFormatter(formatter)
     instance.addHandler(stream_handler)
 
+def _format_cause(cause):
+    if isinstance(cause, str):
+        return cause
+    return str(cause)
 
 def debug(msg: str, cause=None):
+    fcause = _format_cause(cause)
     global instance
     if cause is None:
         instance.debug(msg)
     else:
-        instance.debug(f"[{cause}] {msg}")
+        instance.debug(f"[{fcause}] {msg}")
 
 
 def info(msg: str, cause=None):
+    fcause = _format_cause(cause)
     global instance
     if cause is None:
         instance.info(msg)
     else:
-        instance.info(f"[{cause}] {msg}")
+        instance.info(f"[{fcause}] {msg}")
 
 
 def warning(msg: str, cause=None):
+    fcause = _format_cause(cause)
     global instance
     if cause is None:
         instance.warning(msg)
     else:
-        instance.warning(f"[{cause}] {msg}\n")
+        instance.warning(f"[{fcause}] {msg}\n")
 
 
 def error(msg: str, cause=None, etype: str = ""):
+    fcause = _format_cause(cause)
     global instance
     if cause is None:
         instance.error(f"{msg} (Error type: {etype})")
     else:
-        instance.error(f"[{cause}] {msg} (Error type: {etype})\n")
+        instance.error(f"[{fcause}] {msg} (Error type: {etype})\n")
 
 
 def critical(msg: str, cause):
+    fcause = _format_cause(cause)
     global instance
-    instance.critical(f"[{cause}] CRITICAL ERROR: {msg}\n")
+    instance.critical(f"[{fcause}] CRITICAL ERROR: {msg}\n")
     sys.exit(-1)
 
 

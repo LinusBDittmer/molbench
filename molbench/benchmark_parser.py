@@ -53,7 +53,7 @@ class BenchmarkParser:
         else:
             if not os.path.exists(benchmark):
                 log.critical(f"Benchmark file {benchmark} does not exists or "
-                             "cannot be seen.", "load_benchmark")
+                             "cannot be seen.", "Benchmark Parser")
             benchfile = benchmark
         content = self.parse_benchmark(benchfile)
         if benchmark_id is None:
@@ -88,4 +88,4 @@ class JSONBenchmarkParser(BenchmarkParser):
         try:
             return json.load(open(benchmarkfile, "r"))
         except json.JSONDecodeError:
-            log.critical(f"Could not read benchmark file {benchmarkfile}.")
+            log.critical(f"Could not read benchmark file {benchmarkfile}.", "Benchmark Parser")

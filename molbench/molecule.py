@@ -18,6 +18,8 @@ class Molecule:
         # for each state. Is of the form:
         # {state: {basis: _, method: _, ... type: _, value: _}
         self.state_data: dict = {} if state_data is None else state_data
+        # Compute relative properties from given data
+        self._compute_relative_properties()
 
     @classmethod
     def from_benchmark(cls, benchmark_entry: dict,
@@ -44,7 +46,7 @@ class Molecule:
         elif molname is None:
             log.critical("Name not specified in benchmark entry and not "
                          "provided as argument to the method.",
-                         Molecule.from_benchmark)
+                         "Molecule: from_benchmark")
         else:
             name = molname
 
@@ -68,7 +70,7 @@ class Molecule:
                     name = n
                 elif name != n:
                     log.critical("Ambiguous name definition in external data: "
-                                 f"{name} and {n}", Molecule.from_external)
+                                 f"{name} and {n}", "Molecule: from_external")
             data = metadata.get("data", None)
             metadata = {k: v for k, v in metadata.items()
                         if k not in ["name", "data"]}
@@ -79,7 +81,7 @@ class Molecule:
             if "type" in metadata or "value" in metadata:
                 log.warning("The keys 'type' and 'value' in external data "
                             "will be overwritten when the structure is "
-                            "flattened.", Molecule.from_external)
+                            "flattened.", "Molecule: from_external")
             i = 0
             for proptype, value in data.items():
                 prop = metadata.copy()
@@ -97,7 +99,7 @@ class Molecule:
             if molname is None:
                 log.critical("Name not specified in external data and not "
                              "provided as argument to the method.",
-                             Molecule.from_external)
+                             "Molecule: from_external")
             name = molname
         return cls(name, data_id, None, state_data)
 
@@ -135,8 +137,49 @@ class Molecule:
                 log.warning(f"The state id key {state_id_key} is already "
                             f"used in the state data of property {external_id}"
                             f" of molecule {self.name}. Overwriting the "
-                            "existing value.")
+                            "existing value.", "Molecule: add_assignments")
             state_data[state_id_key] = assignments[external_id]
+
+    def _compute_relative_properties(self):
+        # List of relevant keys in state_data
+        relative_keys: list[str] = [k for k in self.state_data if \
+                                    "stochiometry" in self.state_data[k]]
+        # Leave away all properties with precomputed stochiometry
+        relative_keys = [k for k in relative_keys if 
+                         isinstance(self.state_data[k]["stochiometry"], dict)]
+
+        if len(relative_keys) == 0:
+            return
+        for relkey in relative_keys:
+            # First mentioned component energy dict
+            p0: str = tuple(self.state_data[relkey]["stochiometry"].keys())[0]
+            # Method and basis are not necessarily set so we define them here
+            for subkey in ("method", "basis"):
+                if subkey not in self.state_data[relkey]:
+                    self.state_data[relkey][subkey] = self.state_data[p0][subkey]
+
+            # Value of p0 to get the type correct
+            v0 = self.state_data[p0]["value"]
+            relative_value = None
+            if isinstance(v0, (float, int, complex)):
+                relative_value = 0.0
+            elif isinstance(v0, (tuple, list)):
+                relative_value = list()
+
+            for stoch_key, stoch_val in self.state_data[relkey]["stochiometry"].items():
+                if isinstance(relative_value, list):
+                    if len(relative_value) == 0:
+                        for i in range(len(self.state_data[stoch_key]["value"])):
+                            relative_value.append(0.0)
+                    for idx in range(len(relative_value)):
+                        relative_value[idx] += self.state_data[stoch_key]["value"][idx] * stoch_val
+                else:
+                    relative_value += self.state_data[stoch_key]["value"] * stoch_val
+                
+                if not self.state_data[stoch_key]["type"].startswith("component"):
+                    self.state_data[stoch_key]["type"] = "component " + self.state_data[stoch_key]["type"]
+            
+            self.state_data[relkey]["value"] = relative_value
 
 
 class MoleculeList(list):

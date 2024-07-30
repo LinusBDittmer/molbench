@@ -69,13 +69,13 @@ class ExternalParser:
             extractor = metadata_extractors.get(suite, None)
             if extractor is None:
                 log.critical("No extractor available to find a suitable Parser"
-                             f" for suite {suite}.")
+                             f" for suite {suite}.", "External Parser")
             # contains all the relevant metadata, suite, method, etc
             # to determine which parser is needed
             parser = extractor.find_parser(outf)
             parser = self._registry.get(parser, None)
             if parser is None:
-                log.critical(f"No parser available for parsing {parser}.")
+                log.critical(f"No parser available for parsing {parser}.", "External Parser")
             # load the file and add assignments if available
             mol = self._load_file(
                 outfile=outf, out_parser=parser.parse_file,
@@ -101,11 +101,14 @@ class ExternalParser:
 
         for stochfile in stochfiles:
             stoch_dict = json.load(open(stochfile, "r"))
-            global_name = None
-            system_data = {}
-            state_data = None
+            global_name: str = None
+            system_data = dict()
+            state_data: dict = dict()
 
-            for stochkey in stoch_dict:
+            current_state_idx: int = 0
+            relative_state_data: dict = dict()
+
+            for stochidx, stochkey in enumerate(stoch_dict):
                 if global_name is None:
                     global_name = "_".join(stochkey.split("_")[:-1])
                 for mol in data:
@@ -114,35 +117,34 @@ class ExternalParser:
                         active_mol: Molecule = mol
                         break
                 
-                if len(system_data.keys()) == 0:
-                    system_data = active_mol.system_data
-                if len(active_mol.state_data) > 1:
-                    log.warning(f"Relative energies not implemented for more than "
-                                + f"one state. Received {len(active_mol.state_data)} with {mol.name}", self)
-                active_state = tuple(active_mol.state_data.items())[0][1]
-                if state_data is None:
-                    state_data = dict()
-                    for key in active_state:
-                        if key == "value":
-                            if isinstance(active_state[key], (int, float, complex)):
-                                state_data[key] = 0.0
-                            elif isinstance(active_state[key], (tuple, list)):
-                                state_data[key] = list([0.0] * len(active_state[key]))
-                        else:
-                            state_data[key] = active_state[key]
-                
-                if isinstance(state_data["value"], (int, float, complex)):
-                    state_data["value"] += stoch_dict[stochkey] * active_state["value"]
-                else:
-                    for index, active_value in enumerate(active_state[key]):
-                        state_data["value"][index] += stoch_dict[stochkey] * active_state["value"] 
+                for key, value in active_mol.system_data.items():
+                    if key+"_list" not in system_data:
+                        system_data[key+"_list"] = [value]
+                    else:
+                        system_data[key+"_list"].append(value)
+
+                relative_properties = set([v["type"] for k, v in active_mol.state_data.items()])
+                for relprop in relative_properties:
+                    if relprop not in relative_state_data:
+                        relative_state_data[relprop] = dict()
+                for _, active_state in active_mol.state_data.items():
+                    current_state_key = f"p{current_state_idx:02d}"
+                    current_type = active_state["type"]
+                    active_state["component index"] = stochidx
+                    relative_state_data[current_type][current_state_key] = stoch_dict[stochkey]
+                    state_data[current_state_key] = dict(active_state)
+                    current_state_idx += 1
             
-            state_data = {"s0": state_data}
+            for relprop, stochiometry in relative_state_data.items():
+                current_state_key = f"p{current_state_idx:02d}"
+                state_data[current_state_key] = {"type": relprop, "stochiometry": stochiometry}
+                current_state_idx += 1
+
             pretty_name = os.path.basename(global_name).split("_")[0]
-            mol: Molecule = Molecule(pretty_name, stochkey, system_data, state_data)
+            mol: Molecule = Molecule(pretty_name, stochkey, system_data, state_data, current_state_idx)
             corrected_data.append(mol)
 
-        return corrected_data  
+        return corrected_data
 
     def _load_file(self, outfile: str, out_parser: callable,
                    assignment_parser: callable,
@@ -206,7 +208,7 @@ class ExternalParser:
             if any("Welcome to Q-Chem" in line for line in f):
                 return "QChem"
         log.critical(f"Could not determine a suite for outfile {outfile}.",
-                     self)
+                     "External Parser")
 
 
 class QChem_MP2_Parser(ExternalParser):
@@ -281,7 +283,7 @@ class QChem_RIBWS2_Parser(ExternalParser):
         outname = os.path.basename(outfile)
         # Signature must contain molkey, basis, method
         metadata = {"name": outname.split("_")[0]}
-        data = {}
+        data: dict = dict()
         with open(outfile, "r") as outf:
             for line in outf.readlines():
                 lsplit = line.strip().split()
@@ -299,8 +301,11 @@ class QChem_RIBWS2_Parser(ExternalParser):
                         if lsplit[1] == "=":
                             m = lsplit[2]
                         metadata["method"] = m
+                if "scf energy" not in metadata:
+                    if "SCF   energy =" in line:
+                        data["scf energy"] = float(lsplit[-1])
         metadata["data"] = data
-        return {"s0": metadata}   
+        return {"s0": metadata}
 
 class QChem_RICC2_Parser(ExternalParser):
 
@@ -308,7 +313,7 @@ class QChem_RICC2_Parser(ExternalParser):
         outname = os.path.basename(outfile)
         # Signature must contain molkey, basis, method
         metadata = {"name": outname.split("_")[0]}
-        data = {}
+        data: dict = dict()
         with open(outfile, "r") as outf:
             for line in outf.readlines():
                 lsplit = line.strip().split()
@@ -326,6 +331,9 @@ class QChem_RICC2_Parser(ExternalParser):
                         if lsplit[1] == "=":
                             m = lsplit[2]
                         metadata["method"] = m
+                if "scf energy" not in metadata:
+                    if "SCF   energy =" in line:
+                        data["scf energy"] = float(lsplit[-1])
         if metadata["method"] == "ribws2":
             metadata["method"] = "RIBWS-CC2"
         metadata["data"] = data

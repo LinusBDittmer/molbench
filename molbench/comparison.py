@@ -120,12 +120,15 @@ class Comparison(dict):
             if proptype not in d:  # special separator: proptype
                 d[proptype] = {}
             d = d[proptype]
-            if data.data_id in d:
+            data_id = data.data_id
+            if "component" in proptype and "component index" in prop:
+                data_id += f"_{prop["component index"]}"
+            if data_id in d:
                 log.warning(f"data_id {data.data_id} is not unique. Found "
                             f"conflicting entry for {data.name}, {separators} "
                             f"and {proptype}. Overwriting the exisiting value",
                             "Comparison.add_molecule")
-            d[data.data_id] = self._import_value(value)
+            d[data_id] = self._import_value(value)
 
     def walk_by_key(self, desired_key):
         """Walk the dictionary looking for the desired key, returning

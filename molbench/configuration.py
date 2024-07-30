@@ -64,7 +64,7 @@ class Configuration(dict):
                 self.update(json.load(f))
         except Exception:
             log.critical(f"Configuration file at {config_path} could not be "
-                         "parsed.", self)
+                         "parsed.", "Configuration")
 
     def check_required_fields(self):
         """
@@ -80,7 +80,7 @@ class Configuration(dict):
             if field not in self:
                 log.warning(f"Expected Configuration value {field} to be set. "
                             f"Reverting to hardcoded standard of {val}",
-                            self)
+                            "Configuration")
                 self[field] = val
 
     def __setattr__(self, attr: str, val) -> None:

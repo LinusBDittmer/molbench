@@ -14,7 +14,7 @@ class Statistics:
     def __init__(self, data: Comparison) -> None:
         if not isinstance(data, Comparison):
             log.error("Data for statistics evaluation has to be provided as "
-                      f"{Comparison}.", self, TypeError)
+                      f"{Comparison}.", "Statistics", "TypeError")
         self._data = data
 
     @property
@@ -116,7 +116,7 @@ class Statistics:
                 del interest_pool[i]
             if len(interest_values) > 1:
                 log.warning("Found more than 1 interest value for reference "
-                            f"value {ref_separators}.")
+                            f"value {ref_separators}.", "Statistics: get_interest_values")
             return interest_values
         return _get_interest_values
 
@@ -141,6 +141,14 @@ class Statistics:
             interest_values = get_interest_values(ref_keys, interest)
             for interest_keys, values in interest_values:
                 signed_errors[ref_keys][interest_keys] = values - ref
+        
+        for ref_keys in signed_errors:
+            for interest_keys in signed_errors[ref_keys]:
+                if abs(signed_errors[ref_keys][interest_keys]) > 1:
+                    log.warning(f"Large Error detected: {signed_errors[ref_keys][interest_keys]}\n"
+                                + f"Reference:    {ref_keys}\nInterest:     {interest_keys}\n"
+                                + "Please check that all calculations involved in this "
+                                + "calculation were successful.", "Statistics._compare")
         return signed_errors
 
     def evaluate(self, signed_errors: dict, *statistical_error_measures,
@@ -166,7 +174,7 @@ class Statistics:
 
         if assign is None:
             if proptype is None:
-                log.error("No assign callable or proptype given.", self)
+                log.error("No assign callable or proptype given.", "Statistics: evaluate")
                 return
             assign = self.assign_by_proptye(proptype)
 
@@ -175,7 +183,7 @@ class Statistics:
             callback = self.available_error_measures.get(error_measure, None)
             if callback is None:
                 log.error("Can not evalute the unknown error measure "
-                          f"{error_measure}.", self, ValueError)
+                          f"{error_measure}.", "Statistics", "ValueError")
                 continue
             ret[error_measure] = callback(signed_errors, assign)
         return ret

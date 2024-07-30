@@ -1,0 +1,25 @@
+$comment
+[[comment]]
+$end
+
+$molecule
+[[charge]] [[multiplicity]]
+[[xyz]]
+$end
+
+$rem
+method [[method]]
+basis [[basis]]
+aux_basis [[aux_basis]]
+threads [[threads]]
+mem_total [[memory]]
+!QSYS wt=[[walltime]]
+[[rem_args]]
+$end
+
+$bws2
+method [[bws2_partition]]
+alpha [[bws2_alpha]]
+$end
+
+[[qchem_section_args]]

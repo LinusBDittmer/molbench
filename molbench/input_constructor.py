@@ -84,7 +84,7 @@ class InputConstructor:
                     subname_proper += fileindex + subname[subname.rfind("."):]
                     file = path / subname_proper
                 if file.is_file():
-                    log.warning(f"Overwriting existing file {file}.")
+                    log.warning(f"Overwriting existing file {file}.", "Input Constructor")
                 stochiometry_dict[str(file)] = stochiometry[content_idx]
                 with open(file, "w") as f:
                     f.write(subcontent)
@@ -94,7 +94,7 @@ class InputConstructor:
                 path = basepath / folders
                 file = path / stoch_name[0]
                 if file.is_file():
-                    log.warning(f"Overwriting existing file {file}.")
+                    log.warning(f"Overwriting existing file {file}.", "Input Constructor")
                 with open(file, "w") as f:
                     json.dump(stochiometry_dict, f, ensure_ascii=True, 
                               sort_keys=True, indent=2)
@@ -110,7 +110,7 @@ class InputConstructor:
                     val = variant_data.get(node.value, None)
                     if val is None:
                         log.critical("Failed to resolve folder path for ",
-                                     f"{variant_data}.")
+                                     f"{variant_data}.", "Input Constructor")
                     folder_name.append(node.to_string(val))
                 path /= "_".join(folder_name)
             return path
@@ -144,7 +144,7 @@ class TemplateConstructor(InputConstructor):
                 self.template = f.read()
         except Exception:
             log.critical(f"Template {template} could not be loaded.",
-                         TemplateConstructor.init_template)
+                         "Template Constructor")
 
     def create_inputs(self, benchmark: MoleculeList[Molecule], basepath: str,
                       calc_details: dict,
@@ -297,7 +297,7 @@ class TemplateConstructor(InputConstructor):
                     variants.append(var)
                     variant_properties.append([property])
             for var, props in zip(variants, variant_properties):
-                log.debug(f"Creating file for: {molecule.name} -> {var}.")
+                log.debug(f"Creating file for: {molecule.name} -> {var}.", "Template Constructor")
                 # collect all the relevant data
                 variant_data: dict = molecule.system_data.copy()
                 if "name" in variant_data:
@@ -305,7 +305,7 @@ class TemplateConstructor(InputConstructor):
                                 " is reservedfor the name of the molecule. "
                                 "Overwriting existing value "
                                 f"{variant_data['name']} with "
-                                f"{molecule.name}.")
+                                f"{molecule.name}.", "Template Constructor")
                 variant_data["name"] = molecule.name
                 # add the relevant subset of state_data for resolving the
                 # current variant
@@ -314,7 +314,7 @@ class TemplateConstructor(InputConstructor):
                         log.warning(f"Found conflicting entry for {key}. "
                                     f"Overwriting existing value "
                                     f"{variant_data[key]} with {val}.",
-                                    TemplateConstructor.create)
+                                    "TemplateConstructor")
                     variant_data[key] = val
                 # add the additional data from the user
                 variant_data.update(calc_details)
@@ -351,7 +351,7 @@ class TemplateConstructor(InputConstructor):
                 s_id = prop.get(state_id_key, None)
                 if s_id is None:
                     log.warning(f"Property of molecule {variant_data['name']} "
-                                f"has no assignment: {prop}")
+                                f"has no assignment: {prop}", "Template Constructor")
                     continue
                 if s_id not in state_ids:  # s_id has not to be hashable
                     state_ids.append(s_id)

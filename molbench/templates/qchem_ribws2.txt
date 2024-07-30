@@ -14,6 +14,7 @@ aux_basis [[aux_basis]]
 threads [[threads]]
 mem_total [[memory]]
 !QSYS wt=[[walltime]]
+[[rem_args]]
 $end
 
 $bws2
@@ -21,3 +22,5 @@ method [[bws2_partition]]
 alpha [[bws2_alpha]]
 exc_method [[exc_method]]
 $end
+
+[[qchem_section_args]]
