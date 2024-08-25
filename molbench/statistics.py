@@ -22,12 +22,11 @@ class Statistics:
         return self._data
 
     def compare(self, interest: dict, reference: dict, relative: bool = False,
-                relative_damping: float = 0.0) -> dict:
+                relative_damping: float = 0.0,
+                error_thresh: float = 1) -> dict:
         """
         Computes the signed error for a subset of data as
         interest_value - reference_value.
-        If relative is true, it instead computes the relative signed errors as
-        (interest_value - reference_value) / abs(reference_value)
         The subset of data for wich to compute the signed error has to be
         provided as two descriptive dictionaries that define which values in
         the dataset should be used as reference and interest values. The keys
@@ -36,11 +35,12 @@ class Statistics:
         be a reference value. Therefore providing an empty reference
         description will result in all values being assigned as reference and
         thus no signed errors will be computed in this case. In a second step,
-        reference and interest values are mapped onto each other.
+        reference and interest values are mapped onto each other. Each value
+        is only mapped onto a single reference value.
         Thereby, we apply the following rules to the provided descriptions:
         1) If a descriptor ('method', 'basis', ...) is given in both
            dictionaries, the corresponding values are fixed for interest and
-           reference -> the inpiut data provides a clear mapping that we don't
+           reference -> the input data provides a clear mapping that we don't
            interfere with.
         2) If a descriptor is given in one of the dictionaries, it restricts
            the data in one of the subsets but no further restriction is applied
@@ -55,12 +55,35 @@ class Statistics:
            descriptor. Since 'data_id' is used to avoid conflicting entries in
            the data set, the 'data_id' descriptor is not forced to be the same
            if no 'data_id' is given in the input.
-        Each value is only mapped onto a single reference value.
+
+        Parameters
+        ----------
+        interest : dict
+            Descitption of the data to compare against the reference data.
+        reference : dict
+            Description of the reference data.
+        relative : bool, optional
+            If set, relative Errors [(val - ref) / ref] will be computed
+            instead of absolute errors [val - ref]. (default: False)
+        relative_damping : float, optional
+            Damping factor for relative errors to damp the effects of small
+            reference values [(val - ref) / (ref + damping)]. (default: 0.0)
+        error_thresh : float, optional
+            Throw a warning if an absolute or relative error is larger than
+            the threshold. (default: 1)
+
+        Returns
+        -------
+        dict
+            Nested dictionary containing the signed (absolute/relative) errors
+            {reference_identifier: {interest_identifier: error}}.
         """
 
         identifier = self.identify(interest, reference)
         interest_finder = self.get_interest_values(interest, reference)
-        return self._compare(identifier, interest_finder, relative, relative_damping)
+        return self._compare(identifier, interest_finder, relative=relative,
+                             relative_damping=relative_damping,
+                             error_thresh=error_thresh)
 
     def identify(self, interest: dict, reference: dict) -> callable:
         """Returns a callable to identify whether a value is a reference or
@@ -119,14 +142,16 @@ class Statistics:
                 del interest_pool[i]
             if len(interest_values) > 1:
                 log.warning("Found more than 1 interest value for reference "
-                            f"value {ref_separators}.", "Statistics: get_interest_values")
+                            f"value {ref_separators}.",
+                            "Statistics: get_interest_values")
             return interest_values
         return _get_interest_values
 
     def _compare(self, identify: callable,
-                 get_interest_values: callable, 
+                 get_interest_values: callable,
                  relative: bool = False,
-                 relative_damping: float = 0.0) -> dict:
+                 relative_damping: float = 0.0,
+                 error_thresh: float = 1) -> dict:
         reference = []
         interest = []
         for keys, value in self.data.walk_values():
@@ -148,17 +173,15 @@ class Statistics:
                 se = values - ref
                 if relative:
                     se /= abs(ref) + relative_damping
+                if abs(se) > error_thresh:
+                    log.warning(f"Large Error detected: {se}\n"
+                                f"Reference:    {ref_keys}\n"
+                                f"Interest:     {interest_keys}\n"
+                                f"Relative Error: {relative}\n"
+                                f"Damping: {relative_damping}\n"
+                                "Please check that all involved calculations "
+                                "were successful.", "Statistics._compare")
                 signed_errors[ref_keys][interest_keys] = se
-        
-        for ref_keys in signed_errors:
-            for interest_keys in signed_errors[ref_keys]:
-                if ((abs(signed_errors[ref_keys][interest_keys]) > 1 and not relative)
-                     or (abs(signed_errors[ref_keys][interest_keys]) > 10.0 and relative)):
-                    log.warning(f"Large Error detected: {signed_errors[ref_keys][interest_keys]}\n"
-                                + f"Reference:    {ref_keys}\nInterest:     {interest_keys}\n"
-                                + f"Relative Error: {relative}\nDamping: {relative_damping}\n"
-                                + "Please check that all calculations involved in this "
-                                + "calculation were successful.", "Statistics._compare")
         return signed_errors
 
     def evaluate(self, signed_errors: dict, *statistical_error_measures,
@@ -184,7 +207,8 @@ class Statistics:
 
         if assign is None:
             if proptype is None:
-                log.error("No assign callable or proptype given.", "Statistics: evaluate")
+                log.error("No assign callable or proptype given.",
+                          "Statistics: evaluate")
                 return
             assign = self.assign_by_proptye(proptype)
 
@@ -270,6 +294,7 @@ def median_se(signed_errors: dict, assign: callable):
     """Computes the median signed error."""
     errors = _collect_errors(signed_errors, assign)
     return numpy.median(numpy.array(errors), axis=0), len(errors)
+
 
 @register_as_error_measure
 def rmsd(signed_errors: dict, assign: callable):
