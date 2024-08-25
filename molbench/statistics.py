@@ -21,10 +21,13 @@ class Statistics:
     def data(self):
         return self._data
 
-    def compare(self, interest: dict, reference: dict) -> dict:
+    def compare(self, interest: dict, reference: dict, relative: bool = False,
+                relative_damping: float = 0.0) -> dict:
         """
         Computes the signed error for a subset of data as
         interest_value - reference_value.
+        If relative is true, it instead computes the relative signed errors as
+        (interest_value - reference_value) / abs(reference_value)
         The subset of data for wich to compute the signed error has to be
         provided as two descriptive dictionaries that define which values in
         the dataset should be used as reference and interest values. The keys
@@ -57,7 +60,7 @@ class Statistics:
 
         identifier = self.identify(interest, reference)
         interest_finder = self.get_interest_values(interest, reference)
-        return self._compare(identifier, interest_finder)
+        return self._compare(identifier, interest_finder, relative, relative_damping)
 
     def identify(self, interest: dict, reference: dict) -> callable:
         """Returns a callable to identify whether a value is a reference or
@@ -121,7 +124,9 @@ class Statistics:
         return _get_interest_values
 
     def _compare(self, identify: callable,
-                 get_interest_values: callable) -> dict:
+                 get_interest_values: callable, 
+                 relative: bool = False,
+                 relative_damping: float = 0.0) -> dict:
         reference = []
         interest = []
         for keys, value in self.data.walk_values():
@@ -140,13 +145,18 @@ class Statistics:
         for (ref_keys, ref) in reference:
             interest_values = get_interest_values(ref_keys, interest)
             for interest_keys, values in interest_values:
-                signed_errors[ref_keys][interest_keys] = values - ref
+                se = values - ref
+                if relative:
+                    se /= abs(ref) + relative_damping
+                signed_errors[ref_keys][interest_keys] = se
         
         for ref_keys in signed_errors:
             for interest_keys in signed_errors[ref_keys]:
-                if abs(signed_errors[ref_keys][interest_keys]) > 1:
+                if ((abs(signed_errors[ref_keys][interest_keys]) > 1 and not relative)
+                     or (abs(signed_errors[ref_keys][interest_keys]) > 10.0 and relative)):
                     log.warning(f"Large Error detected: {signed_errors[ref_keys][interest_keys]}\n"
                                 + f"Reference:    {ref_keys}\nInterest:     {interest_keys}\n"
+                                + f"Relative Error: {relative}\nDamping: {relative_damping}\n"
                                 + "Please check that all calculations involved in this "
                                 + "calculation were successful.", "Statistics._compare")
         return signed_errors

@@ -19,8 +19,7 @@ $end
 
 $bws2
 method [[bws2_partition]]
-alpha [[bws2_alpha]]
-exc_method [[exc_method]]
+[[bws2_args]]
 $end
 
 [[qchem_section_args]]

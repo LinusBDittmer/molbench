@@ -13,4 +13,7 @@ basis [[basis]]
 threads [[threads]]
 mem_total [[memory]]
 !QSYS wt=[[walltime]]
+[[rem_args]]
 $end
+
+[[section_args]]

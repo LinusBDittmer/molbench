@@ -116,6 +116,10 @@ class ExternalParser:
                     if molname == stochkey:
                         active_mol: Molecule = mol
                         break
+
+                if active_mol is None:
+                    log.critical(f"Could not find an output file at {stochkey}. Maybe the path was changed?", 
+                                 "External Parser")
                 
                 for key, value in active_mol.system_data.items():
                     if key+"_list" not in system_data:
