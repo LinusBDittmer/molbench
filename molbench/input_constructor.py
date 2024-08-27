@@ -43,61 +43,78 @@ class InputConstructor:
                       file_name_generator: callable,
                       file_content_generator: callable,
                       folder_structure_generator: callable,
-                      stoch_name_generator: callable):
+                      stoch_name_generator: callable = None):
 
         basepath: Path = Path(basepath).resolve()
         if not basepath.exists():
             basepath.mkdir(parents=True, exist_ok=True)
         log.debug("Path created successfully.")
 
-        # - data_iterable should return 1 data set for each file that are to be
-        #   created
+        # - data_iterable should return 1 data set for each data point, e.g.,
+        #   each molecule, that is to be created
         # - file_name_generator is a callable that takes the data set and
-        #   returns the filename as string
+        #   returns the names of all files to create for the given data point
         # - file_content_generator is a callable that takes the data set and
-        #   returns the content of the file
+        #   returns the content of all files of the given data point
         # - folder_structure_generator is a callable that produces the
-        #   relative path of folders where the file is to be placed:
+        #   relative path of folders where the files are placed:
         #   basepath / folder_path / file_name
+        # - stoch_name_generator is a callable that produces the names of the
+        #   stoch file where the stochiometry data is placed (in case we have
+        #   stochiometry data)
         created_files = []
         for data in data_iterable:
-            name: str = file_name_generator(data)
-            stoch_name: str = stoch_name_generator(data)
-            content: str = file_content_generator(data)
+            name_list: tuple[str] = file_name_generator(data)
+            content_list: tuple[str] = file_content_generator(data)
             folders: Path = folder_structure_generator(data)
-            stochiometry: list = data[1][0].get("stochiometry", None)
-            if stochiometry is None:
-                stochiometry = [1.0]
+            assert len(name_list) == len(content_list)
+
+            # create the folder
+            path = basepath / folders
+            if not path.exists():
+                path.mkdir(parents=True, exist_ok=True)
+
+            # get the stochiometry data
+            if stoch_name_generator is None:
+                stoch_name_list: tuple[str] = []
+            else:
+                stoch_name_list: tuple[str] = stoch_name_generator(data)
+            stochiometry: list[float] = data[1][0].get("stochiometry", None)
+            assert all(prop.get("stochiometry", None) == stochiometry
+                       for prop in data[1])
             stochiometry_dict: dict = dict()
 
             # Content is a list of file contents
-            for content_idx, (subcontent, subname) in enumerate(zip(content, name)):
-                # create the folder and write the file content
-                path = basepath / folders 
-                if not path.exists():
-                    path.mkdir(parents=True, exist_ok=True)
-                if len(content) == 1:
-                    file = path / subname
-                else:
-                    fileindex = "_" + str(content_idx).zfill(len(str(len(content))))
-                    subname_proper: str = subname[:subname.rfind(".")]
-                    subname_proper += fileindex + subname[subname.rfind("."):]
-                    file = path / subname_proper
+            n_items = len(content_list)
+            for content_idx, (content, name) in \
+                    enumerate(zip(content_list, name_list)):
+                # build the file name: insert an index into the name
+                if n_items > 1:
+                    file_index = str(content_idx).zfill(len(str(n_items)))
+                    name = Path(name)
+                    name = f"{name.stem}_{file_index}{name.suffix}"
+                file = path / name
                 if file.is_file():
-                    log.warning(f"Overwriting existing file {file}.", "Input Constructor")
-                stochiometry_dict[str(file)] = stochiometry[content_idx]
+                    log.warning(f"Overwriting existing file {file}.",
+                                "Input Constructor")
+                # write the file
                 with open(file, "w") as f:
-                    f.write(subcontent)
+                    f.write(content)
                 created_files.append(file)
-                        
+                # collect stochiometry data
+                if stochiometry is not None:
+                    stochiometry_dict[str(file)] = stochiometry[content_idx]
+
+            # create all the stochiometry files.
             if len(stochiometry_dict.keys()) > 1:
-                path = basepath / folders
-                file = path / stoch_name[0]
-                if file.is_file():
-                    log.warning(f"Overwriting existing file {file}.", "Input Constructor")
-                with open(file, "w") as f:
-                    json.dump(stochiometry_dict, f, ensure_ascii=True, 
-                              sort_keys=True, indent=2)
+                for stoch_name in set(stoch_name_list):
+                    file = path / stoch_name
+                    if file.is_file():
+                        log.warning(f"Overwriting existing file {file}.",
+                                    "Input Constructor")
+                    with open(file, "w") as f:
+                        json.dump(stochiometry_dict, f, ensure_ascii=True,
+                                  sort_keys=True, indent=2)
 
         return created_files
 
@@ -185,13 +202,16 @@ class TemplateConstructor(InputConstructor):
             name_template = self._default_name_template(file_expansion_keys,
                                                         ".in")
         if stochiometry_template is None:
-            stochiometry_template = self._default_name_template(file_expansion_keys,
-                                                                ".stoch")
+            stochiometry_template = (
+                self._default_name_template(file_expansion_keys, ".stoch")
+            )
         variant_data_iterator = self._molecule_variants_data_iter(
             benchmark, calc_details, file_expansion_keys
         )
         file_name_generator = self._substitute_template(name_template)
-        stoch_filename_generator = self._substitute_template(stochiometry_template)
+        stoch_filename_generator = (
+            self._substitute_template(stochiometry_template)
+        )
         file_content_generator = self._substitute_template(self.template)
 
         # create a tree representing the folder structure
@@ -206,7 +226,8 @@ class TemplateConstructor(InputConstructor):
 
         return self._create_files(variant_data_iterator, basepath,
                                   file_name_generator, file_content_generator,
-                                  folder_structure_generator, stoch_filename_generator)
+                                  folder_structure_generator,
+                                  stoch_filename_generator)
 
     def create_assignments(self, benchmark: MoleculeList[Molecule],
                            basepath: str, calc_details: dict,
@@ -297,7 +318,8 @@ class TemplateConstructor(InputConstructor):
                     variants.append(var)
                     variant_properties.append([property])
             for var, props in zip(variants, variant_properties):
-                log.debug(f"Creating file for: {molecule.name} -> {var}.", "Template Constructor")
+                log.debug(f"Creating file for: {molecule.name} -> {var}.",
+                          "Template Constructor")
                 # collect all the relevant data
                 variant_data: dict = molecule.system_data.copy()
                 if "name" in variant_data:
@@ -342,7 +364,7 @@ class TemplateConstructor(InputConstructor):
         return _gen_folders
 
     def _gen_assignment_content(self, state_id_key):
-        def _gen_assignment(data: tuple[dict, list]):
+        def _gen_assignment(data: tuple[dict, list]) -> tuple[str]:
             variant_data, properties = data
             # collect all the state id's of properties of the molecule
             # that match the variant data
@@ -351,9 +373,10 @@ class TemplateConstructor(InputConstructor):
                 s_id = prop.get(state_id_key, None)
                 if s_id is None:
                     log.warning(f"Property of molecule {variant_data['name']} "
-                                f"has no assignment: {prop}", "Template Constructor")
+                                f"has no assignment: {prop}",
+                                "Template Constructor")
                     continue
                 if s_id not in state_ids:  # s_id has not to be hashable
                     state_ids.append(s_id)
-            return new_assignment_file(state_ids)
+            return (new_assignment_file(state_ids),)
         return _gen_assignment
