@@ -1,0 +1,1360 @@
+{
+	"BF": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 2,
+		"n_electrons": 14,
+		"n_core_orbitals": 2,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"B  0.00000000  0.00000000  0.00000000",
+			"F  0.00000000  0.00000000  2.39729626"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 6.417,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 6.410,
+				"unit": "eV"
+			}
+		}
+	},
+	"BH": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 2,
+		"n_electrons": 6,
+		"n_core_orbitals": 1,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"B  0.00000000  0.00000000  0.00000000",
+			"F  0.00000000  0.00000000  2.31089693"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 2.901,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 2.910,
+				"unit": "eV"
+			}
+		}
+	},
+	"carbon_monoxyde": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 2,
+		"n_electrons": 14,
+		"n_core_orbitals": 2,
+		"n_states": {
+			"n_singlets": 6
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C  0.00000000  0.00000000 -1.24942055",
+			"O  0.00000000  0.00000000  0.89266692"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 8.478,
+				"unit": "eV"
+			},
+			"s2_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "S-",
+				"state_id": "s2",
+				"value": 9.932,
+				"unit": "eV"
+			},
+			"s3_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "D",
+				"state_id": "s3",
+				"value": 10.065,
+				"unit": "eV"
+			},
+			"s4_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "S+",
+				"state_id": "s4",
+				"value": 10.956,
+				"unit": "eV"
+			},
+			"s5_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "S+",
+				"state_id": "s5",
+				"value": 11.519,
+				"unit": "eV"
+			},
+			"s6_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s6",
+				"value": 11.715,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 8.486,
+				"unit": "eV"
+			},
+			"s2_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "S-",
+				"state_id": "s2",
+				"value": 9.992,
+				"unit": "eV"
+			},
+			"s3_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "D",
+				"state_id": "s3",
+				"value": 10.119,
+				"unit": "eV"
+			},
+			"s4_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "S+",
+				"state_id": "s4",
+				"value": 10.944,
+				"unit": "eV"
+			},
+			"s5_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "S+",
+				"state_id": "s5",
+				"value": 11.489,
+				"unit": "eV"
+			},
+			"s6_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s6",
+				"value": 11.690,
+				"unit": "eV"
+			}
+		}
+	},
+	"CF2": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 3,
+		"n_electrons": 24,
+		"n_core_orbitals": 3,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C  0.00000000  0.00000000 -1.14170749",
+			"F  0.00000000  1.94810617  0.36114458",
+			"F  0.00000000 -1.94810617  0.36114458"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 5.066,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 5.069,
+				"unit": "eV"
+			}
+		}
+	},
+	"cyclopropene": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 7,
+		"n_electrons": 22,
+		"n_core_orbitals": 3,
+		"n_states": {
+			"n_singlets": 2
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C   0.00000000  0.00000000 -1.66820880",
+			"C   0.00000000  1.22523906  0.90681419",
+			"C   0.00000000 -1.22523906  0.90681419",
+			"H   1.72255446  0.00000000 -2.77881149",
+			"H  -1.72255446  0.00000000 -2.77881149",
+			"H   0.00000000  2.97844519  1.92076771",
+			"H   0.00000000 -2.97844519  1.92076771"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 6.671,
+				"unit": "eV"
+			},
+			"s2_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 6.733,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 6.683,
+				"unit": "eV"
+			},
+			"s2_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 6.733,
+				"unit": "eV"
+			}
+		}
+	},
+	"diazirine": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 5,
+		"n_electrons": 22,
+		"n_core_orbitals": 3,
+		"n_states": {
+			"n_singlets": 3
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C  0.00000000  0.00000000 -0.26696099",
+			"H  0.00000000  1.75890895 -1.28616478",
+			"H  0.00000000 -1.75890895 -1.28616478",
+			"N  1.16058100  0.00000000  2.27183007",
+			"N -1.16058100  0.00000000  2.27183007"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 4.093,
+				"unit": "eV"
+			},
+			"s2_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s2",
+				"value": 7.273,
+				"unit": "eV"
+			},
+			"s3_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s3",
+				"value": 7.437,
+				"unit": "eV"
+			},
+			"s4_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": 8.017,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 4.114,
+				"unit": "eV"
+			},
+			"s2_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s2",
+				"value": 7.308,
+				"unit": "eV"
+			},
+			"s3_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s3",
+				"value": 7.450,
+				"unit": "eV"
+			},
+			"s4_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": 8.037,
+				"unit": "eV"
+			}
+		}
+	},
+	"diazomethane": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 5,
+		"n_electrons": 22,
+		"n_core_orbitals": 3,
+		"n_states": {
+			"n_singlets": 3
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C  0.00000000   0.00000000  -2.30830005",
+			"N  0.00000000   0.00000000   0.14457890",
+			"N  0.00000000   0.00000000   2.29923216",
+			"H  0.00000000   1.79875201  -3.24272317",
+			"H  0.00000000  -1.79875201  -3.24272317"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 3.050,
+				"unit": "eV"
+			},
+			"s2_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": 5.463,
+				"unit": "eV"
+			},
+			"s3_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": 5.827,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 3.070,
+				"unit": "eV"
+			},
+			"s2_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": 5.450,
+				"unit": "eV"
+			},
+			"s3_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": 5.836,
+				"unit": "eV"
+			}
+		}
+	},
+	"dinitrogen": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 2,
+		"n_electrons": 14,
+		"n_core_orbitals": 2,
+		"n_states": {
+			"n_singlets": 4
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"N  0.00000000 0.00000000  1.04008632",
+			"N  0.00000000 0.00000000 -1.04008632"
+		],
+		"properties": {
+			"s5_e": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Pu",
+				"state_id": "s5",
+				"value": 13.090,
+				"unit": "eV"
+			},
+			"s6_e": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Su+",
+				"state_id": "s6",
+				"value": 13.088,
+				"unit": "eV"
+			},
+			"s7_e": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Pu",
+				"state_id": "s7",
+				"value": 13.417,
+				"unit": "eV"
+			},
+			"s8_e": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Pu",
+				"state_id": "s8",
+				"value": 14.009,
+				"unit": "eV"
+			},
+			"s5_e_cc3": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Pu",
+				"state_id": "s5",
+				"value": 13.223,
+				"unit": "eV"
+			},
+			"s6_e_cc3": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Su+",
+				"state_id": "s6",
+				"value": 13.120,
+				"unit": "eV"
+			},
+			"s7_e_cc3": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Pu",
+				"state_id": "s7",
+				"value": 13.494,
+				"unit": "eV"
+			},
+			"s8_e_cc3": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Pu",
+				"state_id": "s8",
+				"value": 13.974,
+				"unit": "eV"
+			}
+		}
+	},
+	"ethylene": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 6,
+		"n_electrons": 16,
+		"n_core_orbitals": 2,
+		"n_states": {
+			"n_singlets": 2
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C  0.00000000   1.26026583   0.00000000",
+			"C  0.00000000  -1.26026583   0.00000000",
+			"H  0.00000000   2.32345976   1.74287672",
+			"H  0.00000000  -2.32345976   1.74287672",
+			"H  0.00000000   2.32345976  -1.74287672",
+			"H  0.00000000  -2.32345976  -1.74287672"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "D2h",
+				"detected_irrep": "B3u",
+				"state_id": "s1",
+				"value": 7.374,
+				"unit": "eV"
+			},
+			"s2_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "D2h",
+				"detected_irrep": "B1u",
+				"state_id": "s2",
+				"value": 7.905,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "D2h",
+				"detected_irrep": "B3u",
+				"state_id": "s1",
+				"value": 7.354,
+				"unit": "eV"
+			},
+			"s2_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "D2h",
+				"detected_irrep": "B1u",
+				"state_id": "s2",
+				"value": 7.905,
+				"unit": "eV"
+			}
+		}
+	},
+	"formaldehyde": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 4,
+		"n_electrons": 16,
+		"n_core_orbitals": 2,
+		"n_states": {
+			"n_singlets": 7,
+			"n_triplets": 6
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C  0.00000000  0.00000000  1.13947666",
+			"O  0.00000000  0.00000000 -1.14402883",
+			"H  0.00000000  1.76627623  2.23398653",
+			"H  0.00000000 -1.76627623  2.23398653"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 3.966,
+				"unit": "eV"
+			},
+			"s2_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 7.225,
+				"unit": "eV"
+			},
+			"s3_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s3",
+				"value": 8.119,
+				"unit": "eV"
+			},
+			"s4_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": 8.224,
+				"unit": "eV"
+			},
+			"s7_e": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s7",
+				"value": 9.441,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 3.970,
+				"unit": "eV"
+			},
+			"s2_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 7.179,
+				"unit": "eV"
+			},
+			"s3_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s3",
+				"value": 8.086,
+				"unit": "eV"
+			},
+			"s4_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": 8.182,
+				"unit": "eV"
+			},
+			"s7_e_cc3": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s7",
+				"value": 9.482,
+				"unit": "eV"
+			}
+		}
+	},
+	"HCF": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 3,
+		"n_electrons": 16,
+		"n_core_orbitals": 2,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C -0.13561085  0.00000000  1.20394474",
+			"F  1.85493976  0.00000000 -0.27610752",
+			"H -1.71932891  0.00000000 -0.18206846"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"detected_irrep": "A\"",
+				"state_id": "s1",
+				"value": 2.498,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"detected_irrep": "A\"",
+				"state_id": "s1",
+				"value": 2.496,
+				"unit": "eV"
+			}
+		}
+	},
+	"hydrogen_chloride": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 2,
+		"n_electrons": 18,
+		"n_core_orbitals": 5,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"H   0.00000000 0.00000000  2.38483140",
+			"Cl  0.00000000 0.00000000 -0.02489783"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 7.837,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 7.840,
+				"unit": "eV"
+			}
+		}
+	},
+	"hydrogen_sulfide": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 3,
+		"n_electrons": 18,
+		"n_core_orbitals": 5,
+		"n_states": {
+			"n_singlets": 2
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"S  0.00000000  0.00000000 -0.50365086",
+			"H  0.00000000  1.81828105  1.25212288",
+			"H  0.00000000 -1.81828105  1.25212288"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 6.181,
+				"unit": "eV"
+			},
+			"s2_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": 6.238,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 6.192,
+				"unit": "eV"
+			},
+			"s2_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": 6.240,
+				"unit": "eV"
+			}
+		}
+	},
+	"ketene": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 5,
+		"n_electrons": 22,
+		"n_core_orbitals": 3,
+		"n_states": {
+			"n_singlets": 4
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C   0.00000000   0.00000000  -2.44810151",
+			"C   0.00000000   0.00000000   0.03498545",
+			"O   0.00000000   0.00000000   2.23663914",
+			"H   0.00000000   1.77432079  -3.43705988",
+			"H   0.00000000  -1.77432079  -3.43705988"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 3.861,
+				"unit": "eV"
+			},
+			"s2_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": 5.987,
+				"unit": "eV"
+			},
+			"s3_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s3",
+				"value": 7.200,
+				"unit": "eV"
+			},
+			"s4_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": 7.250,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 3.882,
+				"unit": "eV"
+			},
+			"s2_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": 5.956,
+				"unit": "eV"
+			},
+			"s3_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s3",
+				"value": 7.157,
+				"unit": "eV"
+			},
+			"s4_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": 7.231,
+				"unit": "eV"
+			}
+		}
+	},
+	"nitroxyl": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 3,
+		"n_electrons": 16,
+		"n_core_orbitals": 2,
+		"n_states": {
+			"n_singlets": 1
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"O  0.21099695  0.00000000  2.15462460",
+			"N -0.44776863  0.00000000 -0.03589263",
+			"H  1.18163475  0.00000000 -1.17386890"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"detected_irrep": "A\"",
+				"state_id": "s1",
+				"value": 1.740,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"detected_irrep": "A\"",
+				"state_id": "s1",
+				"value": 1.747,
+				"unit": "eV"
+			}
+		}
+	},
+	"silylidene": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 4,
+		"n_electrons": 22,
+		"n_core_orbitals": 6,
+		"n_states": {
+			"n_singlets": 2
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C   0.00000000  0.00000000 -2.09539928",
+			"Si  0.00000000  0.00000000  1.14992930",
+			"H   0.00000000  1.70929524 -3.22894481",
+			"H   0.00000000 -1.70929524 -3.22894481"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 2.122,
+				"unit": "eV"
+			},
+			"s2_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 3.783,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 2.154,
+				"unit": "eV"
+			},
+			"s2_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 3.780,
+				"unit": "eV"
+			}
+		}
+	},
+	"thioformaldehyde": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 4,
+		"n_electrons": 24,
+		"n_core_orbitals": 6,
+		"n_states": {
+			"n_singlets": 3
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"C  0.00000000  0.00000000  2.08677304",
+			"S  0.00000000  0.00000000 -0.97251194",
+			"H  0.00000000  1.73657773  3.17013507",
+			"H  0.00000000 -1.73657773  3.17013507"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 2.210,
+				"unit": "eV"
+			},
+			"s2_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 5.923,
+				"unit": "eV"
+			},
+			"s3_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": 6.377,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 2.228,
+				"unit": "eV"
+			},
+			"s2_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 5.910,
+				"unit": "eV"
+			},
+			"s3_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": 6.484,
+				"unit": "eV"
+			}
+		}
+	},
+	"water": {
+		"charge": 0,
+		"multiplicity": 1,
+		"n_atoms": 3,
+		"n_electrons": 10,
+		"n_core_orbitals": 1,
+		"n_states": {
+			"n_singlets": 3
+		},
+		"xyz_unit": "Bohr",
+		"xyz": [
+			"O  0.00000000  0.00000000 -0.13209669",
+			"H  0.00000000  1.43152878  0.97970006",
+			"H  0.00000000 -1.43152878  0.97970006"
+		],
+		"properties": {
+			"s1_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 7.614,
+				"unit": "eV"
+			},
+			"s2_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s2",
+				"value": 9.405,
+				"unit": "eV"
+			},
+			"s3_e": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": 9.985,
+				"unit": "eV"
+			},
+			"s1_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 7.605,
+				"unit": "eV"
+			},
+			"s2_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s2",
+				"value": 9.382,
+				"unit": "eV"
+			},
+			"s3_e_cc3": {
+				"basis": "aug-cc-pvtz",
+				"method": "cc3",
+				"type": "excitation energy",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": 9.966,
+				"unit": "eV"
+			}
+		}
+	}
+}
