@@ -25,6 +25,17 @@
 				"value": 6.417,
 				"unit": "eV"
 			},
+			"s1_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 0.468
+			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
 				"method": "cc3",
@@ -63,6 +74,17 @@
 				"state_id": "s1",
 				"value": 2.901,
 				"unit": "eV"
+			},
+			"s1_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 0.048
 			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
@@ -157,6 +179,50 @@
 				"state_id": "s6",
 				"value": 11.715,
 				"unit": "eV"
+			},
+			"s1_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 0.166
+			},
+			"s4_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "S+",
+				"state_id": "s4",
+				"value": 0.003
+			},
+			"s5_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "S+",
+				"state_id": "s5",
+				"value": 0.202
+			},
+			"s6_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s6",
+				"value": 0.107
 			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
@@ -253,6 +319,17 @@
 				"value": 5.066,
 				"unit": "eV"
 			},
+			"s1_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 0.034
+			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
 				"method": "cc3",
@@ -307,6 +384,28 @@
 				"state_id": "s2",
 				"value": 6.733,
 				"unit": "eV"
+			},
+			"s1_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 0.001
+			},
+			"s2_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 0.070
 			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
@@ -393,6 +492,39 @@
 				"state_id": "s4",
 				"value": 8.017,
 				"unit": "eV"
+			},
+			"s1_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 0.002
+			},
+			"s3_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s3",
+				"value": 0.000
+			},
+			"s4_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": 0.131
 			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
@@ -490,6 +622,28 @@
 				"state_id": "s3",
 				"value": 5.827,
 				"unit": "eV"
+			},
+			"s2_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": 0.016
+			},
+			"s3_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": 0.235
 			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
@@ -589,6 +743,54 @@
 				"value": 14.009,
 				"unit": "eV"
 			},
+			"s5_f": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Pu",
+				"state_id": "s5",
+				"value": 0.423
+			},
+			"s6_f": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Su+",
+				"state_id": "s6",
+				"value": 0.286
+			},
+			"s7_f": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Pu",
+				"state_id": "s7",
+				"value": 0.015
+			},
+			"s8_f": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Dinfh",
+				"detected_irrep": "Pu",
+				"state_id": "s8",
+				"value": 0.148
+			},
 			"s5_e_cc3": {
 				"comment": "state_id consistent with jacquemin18",
 				"basis": "aug-cc-pvtz",
@@ -679,6 +881,28 @@
 				"state_id": "s2",
 				"value": 7.905,
 				"unit": "eV"
+			},
+			"s1_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "D2h",
+				"detected_irrep": "B3u",
+				"state_id": "s1",
+				"value": 0.078
+			},
+			"s2_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "D2h",
+				"detected_irrep": "B1u",
+				"state_id": "s2",
+				"value": 0.345
 			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
@@ -778,6 +1002,51 @@
 				"value": 9.441,
 				"unit": "eV"
 			},
+			"s2_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 0.020
+			},
+			"s3_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s3",
+				"value": 0.039
+			},
+			"s4_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": 0.052
+			},
+			"s7_f": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s7",
+				"value": 0.127
+			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
 				"method": "cc3",
@@ -863,6 +1132,17 @@
 				"value": 2.498,
 				"unit": "eV"
 			},
+			"s1_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"detected_irrep": "A\"",
+				"state_id": "s1",
+				"value": 0.006
+			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
 				"method": "cc3",
@@ -901,6 +1181,17 @@
 				"state_id": "s1",
 				"value": 7.837,
 				"unit": "eV"
+			},
+			"s1_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 0.055
 			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
@@ -952,6 +1243,17 @@
 				"state_id": "s2",
 				"value": 6.238,
 				"unit": "eV"
+			},
+			"s2_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": 0.063
 			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
@@ -1038,6 +1340,28 @@
 				"state_id": "s4",
 				"value": 7.250,
 				"unit": "eV"
+			},
+			"s2_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": 0.034
+			},
+			"s4_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": 0.156
 			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
@@ -1164,6 +1488,17 @@
 				"value": 3.783,
 				"unit": "eV"
 			},
+			"s2_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 0.034
+			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
 				"method": "cc3",
@@ -1237,6 +1572,28 @@
 				"state_id": "s3",
 				"value": 6.377,
 				"unit": "eV"
+			},
+			"s2_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": 0.013
+			},
+			"s3_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": 0.135
 			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
@@ -1321,6 +1678,28 @@
 				"state_id": "s3",
 				"value": 9.985,
 				"unit": "eV"
+			},
+			"s1_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 0.054
+			},
+			"s3_f": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "oscillator strength",
+				"gauge": "length",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": 0.100
 			},
 			"s1_e_cc3": {
 				"basis": "aug-cc-pvtz",
