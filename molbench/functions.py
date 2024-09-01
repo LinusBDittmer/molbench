@@ -2,44 +2,103 @@ from . import logger as log
 
 
 def substitute_template(template: str, subvals: dict) -> tuple[str]:
-    if "xyz_list" not in subvals:
-        return (_substitute_single(template, subvals),)
-    num_subs: int = len(subvals["xyz_list"])
-    # We remove the "_list" from each key and call _substitute_single
-    substitutions: list = []
-    for index in range(num_subs):
-        subval_dict: dict = dict()
-        for key, val in subvals.items():
-            newkey: str = key.removesuffix("_list")
-            subval_dict[newkey] = val[index] if "_list" in key else val
-        substitutions.append(_substitute_single(template, subval_dict))
-    return tuple(substitutions)
+    """
+    Substitute placeholders "[[placeholder]]" in the template with the provided
+    value in the subvals dictionary {placeholder: value}.
+    Furthermore, it is possible to substitute an element of a value list/tuple
+    into the template using the syntax "[[placeholder->index]]", where
+    "index" refers to the position of the element in the list/tuple.
 
-def _substitute_single(template: str, subvals: dict) -> str:
+    For placeholder keys that end with the suffix "_list" and have a value
+    of type list/tuple, multiple templates (one for each entry in the
+    list/tuple) will be generated. For instance a subvals dictionary
+    {charge_list: [0, 1], multiplicity_list: [1, 3], conv_tol: 1e-9}
+    will generate two templates with the following values
+    - charge = 0; multiplicity = 1, conv_tol = 1e-9
+    - charge = 1; multiplicity = 3, conv_tol = 1e-9
+    Note that the list "_list" suffix is removed before substitution and
+    that an error is thrown if the length of charge_list and
+    multiplicity_list are not equal.
+    """
+    if not any(key.endswith("_list") for key in subvals.keys()):
+        return (_substitute_single_template(template, subvals),)
+    # split subvals in values to expand and common values
+    # and remove the _list suffix
+    common = []
+    to_expand = []
+    for key, val in subvals.items():
+        if key.endswith("_list") and isinstance(val, (list, tuple)):
+            to_expand.append((key[:-5], val))
+        else:
+            common.append((key, val))
+    # ensure that all expansion lists are of the same length
+    n_variants = len(to_expand[0][1])
+    if not all(len(val) == n_variants for _, val in to_expand):
+        log.critical("List subvals to expand into multiple templates have to "
+                     f"be all of the same length. Got\n{to_expand}\n from\n"
+                     f"{subvals}", "Functions: Substitute Template")
+    # build subvals dicts for all variants
+    variants = [dict(common) for _ in range(n_variants)]
+    for key, val_list in to_expand:
+        for var, val in zip(variants, val_list):
+            if key in var:
+                log.error(f"The key {key} generated from {key}_list already "
+                          f"exists in the variant\n{var}\nOverwriting existing"
+                          " value", "Functions: Substitute Template",
+                          "KeyError")
+            var[key] = val
+    return tuple(
+        _substitute_single_template(template, var) for var in variants
+    )
+
+
+def _substitute_single_template(template: str, subvals: dict) -> str:
+    """
+    Subsitutes placeholders "[[placeholder]]" in the template with the provided
+    values in the subvals dictionary {"placeholder": val}.
+    Furthermore, it is possible to substitute an element of a value list/tuple
+    into the template using the syntax "[[placeholder->index]]", where
+    "index" refers to the position of the element in the list/tuple.
+    """
     while True:
         start = template.find("[[")
         stop = template.find("]]")
         if start == -1 or stop == -1:
             break
         key = template[start+2:stop]
-        key_subindex = None
+        # check if we have [[key->number]] and get the key and number
+        val_idx = None
         if "->" in key:
-            key, key_subindex = key.split("->")
-            key_subindex = int(key_subindex)
+            key, val_idx = key.split("->")
+            if not val_idx.isnumeric():
+                log.critical(f"{val_idx} is not a number. Placeholders of the "
+                             f"form {key}->{val_idx} need to be of the form "
+                             "'key'->'number'.",
+                             "Functions: Substitute Template")
+            val_idx = int(val_idx)
+        # get the actual value
         val = subvals.get(key, None)
-        if key_subindex is not None:
-            val = val[key_subindex]
+        if val_idx is not None:
+            if not isinstance(val, (list, tuple)):
+                log.critical("The value for a placeholder of the form "
+                             "'[[placeholder->number]]' needs to be a 'list' "
+                             f"or 'tuple'. Found {val} for key {key}.",
+                             "Functions: Substitute Template")
+            val = val[val_idx]
         if val is None:
-            log.error(f"No value for required parameter {key} "
-                      f"available. Available are {subvals}.",
-                      "Functions: Substitute Template", "KeyError")
+            log.critical(f"No value available for placeholder {key}. "
+                         f"Available are {subvals}",
+                         "Functions: Substitute Template")
+        # update the template
         template = template.replace(template[start:stop+2], str(val))
     return template
 
 
 def walk_dict_by_key(indict: dict, desired_key, prev_keys: tuple = tuple()):
-    """Walk an arbitrarily nested dictionary looking for the desired key
-       yielding the squence of keys and the corresponding value."""
+    """
+    Walk an arbitrarily nested dictionary looking for the desired key
+    yielding the squence of keys and the corresponding value.
+    """
     for key, val in indict.items():
         if key == desired_key:
             yield prev_keys + (key,), val
@@ -49,14 +108,17 @@ def walk_dict_by_key(indict: dict, desired_key, prev_keys: tuple = tuple()):
 
 
 def walk_dict_values(indict: dict, prev_keys: tuple = tuple()):
-    """Walk an arbitrarily nested dictionary yielding all non dictionary
-       values and the corresponding sequence of keys."""
+    """
+    Walk an arbitrarily nested dictionary yielding all non dictionary
+    values and the corresponding sequence of keys.
+    """
     for key, val in indict.items():
         if isinstance(val, dict):
             for data in walk_dict_values(val, prev_keys + (key,)):
                 yield data
         else:
             yield prev_keys + (key,), val
+
 
 def determine_basis_cardinality(basis: str):
     # Dunnings basis sets
@@ -70,13 +132,19 @@ def determine_basis_cardinality(basis: str):
         if "(" in cstr:
             zetaidx += 1
             zetaoffset += 1
-        if cstr[zetaidx] == "d": return 2 + zetaoffset
-        if cstr[zetaidx] == "t": return 3 + zetaoffset
-        if cstr[zetaidx] == "q": return 4 + zetaoffset
-        if cstr[zetaidx].isnumeric(): return int(cstr[zetaidx]) + zetaoffset
-        
-        log.error(f"Basis set {bas} was interpreted as a Dunning's basis but could not be identified!", 
-                  "Functions: Determine Basis Cardinality", "Basis identification error")
+        if cstr[zetaidx] == "d":
+            return 2 + zetaoffset
+        if cstr[zetaidx] == "t":
+            return 3 + zetaoffset
+        if cstr[zetaidx] == "q":
+            return 4 + zetaoffset
+        if cstr[zetaidx].isnumeric():
+            return int(cstr[zetaidx]) + zetaoffset
+
+        log.error(f"Basis set {bas} was interpreted as a Dunning's basis but "
+                  "could not be identified!",
+                  "Functions: Determine Basis Cardinality",
+                  "Basis identification error")
         return 0
 
     # Karlsruhe def2
@@ -86,27 +154,31 @@ def determine_basis_cardinality(basis: str):
         zetaidx: int = 0
         if cstr.startswith("m"):
             zetaidx += 1
-        if cstr[zetaidx] == "s": return 1
-        if cstr[zetaidx] == "t": return 3
-        if cstr[zetaidx] == "q": return 4
-        if cstr[zetaidx].isnumeric(): return int(cstr[zetaidx])
+        if cstr[zetaidx] == "s":
+            return 1
+        if cstr[zetaidx] == "t":
+            return 3
+        if cstr[zetaidx] == "q":
+            return 4
+        if cstr[zetaidx].isnumeric():
+            return int(cstr[zetaidx])
 
-        log.error(f"Basis set {bas} was interpreted as a Karlruhe basis but could not be identified!", 
-                  "Functions: Determine Basis Cardinality", "Basis identification error")
+        log.error(f"Basis set {bas} was interpreted as a Karlruhe basis but "
+                  "could not be identified!",
+                  "Functions: Determine Basis Cardinality",
+                  "Basis identification error")
         return 0
 
     b: str = basis.lower()
     # Dunnings
-    for identifier in ["cc-p", "aug-cc-p", "jun-cc-p", "jul-cc-p", "maug-cc-p"]:
-        if b.startswith(identifier):
-            return _dunnings(b)
-    
+    dunning_prefs = ["cc-p", "aug-cc-p", "jun-cc-p", "jul-cc-p", "maug-cc-p"]
+    if any(b.startswith(pref) for pref in dunning_prefs):
+        return _dunnings(b)
+
     if "def2" in b:
         return _karlsruhe(b)
-    
-    log.error(f"Unknown basis format for {b}.", "Functions: Determine Basis Cardinality", 
+
+    log.error(f"Unknown basis format for {b}.",
+              "Functions: Determine Basis Cardinality",
               "Basis identification error")
-
     return 0
-
-    
