@@ -43,8 +43,7 @@ class InputConstructor:
     def _create_files(self, data_iterable, basepath: str,
                       file_name_generator: callable,
                       file_content_generator: callable,
-                      folder_structure_generator: callable,
-                      stoch_name_generator: callable = None):
+                      folder_structure_generator: callable):
 
         basepath: Path = Path(basepath).resolve()
         if not basepath.exists():
@@ -60,9 +59,6 @@ class InputConstructor:
         # - folder_structure_generator is a callable that produces the
         #   relative path of folders where the files are placed:
         #   basepath / folder_path / file_name
-        # - stoch_name_generator is a callable that produces the names of the
-        #   stoch file where the stochiometry data is placed (in case we have
-        #   stochiometry data)
         created_files = []
         for data in data_iterable:
             name_list: tuple[str] = file_name_generator(data)
@@ -75,19 +71,8 @@ class InputConstructor:
             if not path.exists():
                 path.mkdir(parents=True, exist_ok=True)
 
-            # get the stochiometry data
-            if stoch_name_generator is None:
-                stoch_name_list: tuple[str] = []
-            else:
-                stoch_name_list: tuple[str] = stoch_name_generator(data)
-            stochiometry: list[float] = data[1][0].get("stochiometry", None)
-            assert all(prop.get("stochiometry", None) == stochiometry
-                       for prop in data[1])
-            stochiometry_dict: dict = dict()
-
-            # Content is a list of file contents
-            for content_idx, (content, name) in \
-                    enumerate(zip(content_list, name_list)):
+            # create the actual files
+            for content, name in zip(content_list, name_list):
                 file = path / name
                 if file.is_file():
                     log.warning(f"Overwriting existing file {file}.",
@@ -96,21 +81,6 @@ class InputConstructor:
                 with open(file, "w") as f:
                     f.write(content)
                 created_files.append(file)
-                # collect stochiometry data
-                if stochiometry is not None:
-                    stochiometry_dict[str(file)] = stochiometry[content_idx]
-
-            # create all the stochiometry files.
-            if len(stochiometry_dict.keys()) > 1:
-                for stoch_name in set(stoch_name_list):
-                    file = path / stoch_name
-                    if file.is_file():
-                        log.warning(f"Overwriting existing file {file}.",
-                                    "Input Constructor")
-                    with open(file, "w") as f:
-                        json.dump(stochiometry_dict, f, ensure_ascii=True,
-                                  sort_keys=True, indent=2)
-
         return created_files
 
     def _folders_from_tree(self, root: Node) -> Path:
@@ -162,8 +132,7 @@ class TemplateConstructor(InputConstructor):
                       calc_details: dict,
                       file_expansion_keys: tuple = ("basis",),
                       flat_structure: bool = False,
-                      name_template: str = None,
-                      stochiometry_template: str = None) -> list:
+                      name_template: str = None) -> list:
         """
         Create inputs files for the provided set of Molecules by filling
         in the placeholders in the input template with data from the
@@ -179,34 +148,30 @@ class TemplateConstructor(InputConstructor):
         calc_details: dict
             Additional information used to resolve the placeholders in the
             template
-        file_expansion_keys: tuple
+        file_expansion_keys: tuple, optional
             Possibly multiple input files need to be generated for one
-            molecule, e.g., for different basis sets and/or multiplicities.
-            This parameter defines the keys for which to check the Molecules.
-            For each uninque combination of the corresponding values
-            a file is generated.
-        flat_structure: bool
+            molecule that correspond to different data point represented by
+            e.g. different basis sets and/or multiplicities.
+            This parameter defines the keys for which the Molecules
+            are checked. Each uninque combination of the corresponding
+            values defines a data point for which input files are generated.
+            (default: ('basis',))
+        flat_structure: bool, optional
             True: place all generated files in the same folder
             False: generate a folder for each Molecule
-        name_template: str
+            (default: False)
+        name_template: str, optional
             Template to define the names of the generated files. By default,
             a template based on the file_expansion_keys is used that ensures
-            that all generated files have a unique name.
+            that each data point has a unique name.
         """
         if name_template is None:
             name_template = self._default_name_template(file_expansion_keys,
                                                         ".in")
-        if stochiometry_template is None:
-            stochiometry_template = (
-                self._default_name_template(file_expansion_keys, ".stoch")
-            )
         variant_data_iterator = self._molecule_variants_data_iter(
             benchmark, calc_details, file_expansion_keys
         )
         file_name_generator = self._gen_file_names(name_template)
-        stoch_filename_generator = (
-            self._substitute_template(stochiometry_template)
-        )
         file_content_generator = self._substitute_template(self.template)
 
         # create a tree representing the folder structure
@@ -221,8 +186,7 @@ class TemplateConstructor(InputConstructor):
 
         return self._create_files(variant_data_iterator, basepath,
                                   file_name_generator, file_content_generator,
-                                  folder_structure_generator,
-                                  stoch_filename_generator)
+                                  folder_structure_generator)
 
     def create_assignments(self, benchmark: MoleculeList[Molecule],
                            basepath: str, calc_details: dict,
@@ -232,6 +196,7 @@ class TemplateConstructor(InputConstructor):
                            state_id_key="state_id") -> list:
         """
         Create assignment files for the provided set of Molecules.
+        Note: This does currently not work for relative properties!
 
         Parameters
         ----------
@@ -241,22 +206,25 @@ class TemplateConstructor(InputConstructor):
             The path where all the generated files are placed.
         calc_details: dict
             Additional information to generate the filenames.
-        file_expansion_keys: tuple
+        file_expansion_keys: tuple, optional
             Possibly multiple assignment files need to be generated for one
-            molecule, e.g., for different basis sets and/or multiplicities.
+            molecule, i.e, there are multiple data points representing e.g.,
+            different basis sets and/or multiplicities.
             This parameter defines the keys for which to check the Molecules.
-            For each uninque combination of the corresponding values
-            a file is generated.
-        flat_structure: bool
+            Each unique combination defines a data point and for which
+            assignment files are generated.
+            (default: ('basis',))
+        flat_structure: bool, optional
             True: place all generated files in the same folder
             False: generate a folder for each Molecule
-        name_template: str
+            (default: False)
+        name_template: str, optional
             Template to define the names of the generated files. By default,
             a template based on the file_expansion_keys is used that ensures
-            that all generated files have a unique name.
+            that all data points have a unique name.
         state_id_key
-            The key where the state_ids an be found in the 'state_data' of the
-            molecules.
+            The key under which the state_ids an be found in the
+            properties (the state_data) of the molecules.
         """
         if name_template is None:
             name_template = self._default_name_template(file_expansion_keys,
@@ -276,6 +244,86 @@ class TemplateConstructor(InputConstructor):
             tree = Node("name")
         folder_structure_generator = self._gen_folder_structure(tree)
 
+        return self._create_files(variant_data_iterator, basepath,
+                                  file_name_generator, file_content_generator,
+                                  folder_structure_generator)
+
+    def create_context_files(self, benchmark: MoleculeList[Molecule],
+                             basepath: str, calc_details: dict,
+                             context_key,
+                             file_expansion_keys: tuple = ("basis",),
+                             flat_structure: bool = False,
+                             name_template: str = None,
+                             infile_name_template: str = None) -> list:
+        """
+        Create context files for the provided set of Molecules containing
+        information of how to compute relative properties, i.e., a context
+        contains filenames and prefactors with which the results in the
+        file need to be multiplied in order to compute the relative
+        property of interest, e.g,
+        {file1: {context_key: 1}, file2: {context_key: -1}}
+        indicates that the relative property can be computed as
+        1 * val_from_file1 + (-1) * val_from_file2.
+
+        Parameters
+        ----------
+        benchmark: MoleculeList[Molecule]
+            The set of Molecules to generate context files for.
+        basepath: str
+            The path where all generated files are placed.
+        calc_details: dict
+            Additional information used to resolve placeholders in the
+            name templates.
+        context_key
+            The key under which the prefactors can be found in the
+            properties (the state_data) of the molecules.
+        file_expansion_keys: tuple, optional
+            Possibly multiple context files need to be generated for one
+            molecule that belong to different data points, e.g., for different
+            basis sets. This parameter defines the keys for which the molecules
+            are checked. Each unique combination corresponds to a data point.
+            (default: ('basis',))
+        flat_structure: str, optional
+            True: place all generated files in the same folder
+            False: generate a folder for each Molecule
+            (default: False)
+        name_template: str, optional
+            Template for the names of context files. Should be unique for
+            each data point. By default a template based on the
+            file_expansion_keys is generated.
+        infile_name_template: str, optional
+            Template for the names of input files. Required to generate
+            the content of a context file. Here, the same template as for the
+            generation of the corresponding input files has to be used.
+            By default a template based on the file_expansion_keys
+            is generated.
+        """
+        if name_template is None:
+            name_template = self._default_name_template(file_expansion_keys,
+                                                        ".ctx")
+        if infile_name_template is None:
+            infile_name_template = self._default_name_template(
+                file_expansion_keys, ".in"
+            )
+        variant_data_iterator = self._molecule_variants_data_iter(
+            benchmark, calc_details, file_expansion_keys
+        )
+        file_name_generator = self._gen_context_file_names(name_template)
+
+        # create a tree representing the folder structure
+        # TODO: allow more complex input for more complex folder
+        #       structure?
+        if flat_structure:
+            tree = DummyNode()
+        else:
+            tree = Node("name")
+        folder_structure_generator = self._gen_folder_structure(tree)
+
+        file_content_generator = self._gen_context_content(
+            context_key=context_key,
+            infile_name_generator=self._gen_file_names(infile_name_template),
+            folder_structure_generator=folder_structure_generator
+        )
         return self._create_files(variant_data_iterator, basepath,
                                   file_name_generator, file_content_generator,
                                   folder_structure_generator)
@@ -377,6 +425,23 @@ class TemplateConstructor(InputConstructor):
             return tuple(ret)
         return _name_generator
 
+    def _gen_context_file_names(self, name_template: str):
+        # generate file names by resolving the template using the data for the
+        # given data point.
+        # if this results in multiple templates we want to remove duplicates.
+        # Currently, only a single unique context name is supported
+        def _context_name_generator(data) -> tuple[str]:
+            # resolve the template
+            subvals, _ = data
+            file_names = substitute_template(name_template, subvals)
+            if len(file_names) == 1:
+                return file_names
+            elif len(set(file_names)) == 1:
+                return (file_names[0],)
+            raise NotImplementedError("Did not implement the case of multiple "
+                                      "context files per data point.")
+        return _context_name_generator
+
     def _gen_folder_structure(self, tree: Node):
         # just a wrapper to remove the molecule from the data, which is
         # needed for the assignment file content
@@ -403,3 +468,47 @@ class TemplateConstructor(InputConstructor):
                     state_ids.append(s_id)
             return (new_assignment_file(state_ids),)
         return _gen_assignment
+
+    def _gen_context_content(self, context_key,
+                             infile_name_generator: callable,
+                             folder_structure_generator: callable):
+        # generate the context file / relative property file for a single
+        # data point. Therefore, we need
+        # - the context_key, which contains the prefactors that are needed to
+        # compute the relative property from the individual results of
+        # each calculation.
+        # - a generator to generate the names of the inpufiles for this data
+        # point. The generated infiles need to match the order of the
+        # prefactors of the prefactors from the context_key. This should
+        # trivially be the case if the infile_name_generator has been used
+        # to generate the input files.
+        # - a generator to find the folder in which the files for the
+        # current data point are placed.
+        def _context_content_generator(data):
+            _, properties = data
+            # extract the relative property data (factors)
+            # ensuring that all properties (if there are multiple)
+            # share the same value
+            context_val = [prop.get(context_key, None) for prop in properties]
+            if not all(ctx_val == context_val[0] for ctx_val in context_val):
+                log.critical("Expected all properties for a single data point "
+                             "to share the same value of the context key "
+                             f"{context_key}. Found\n{context_val}.",
+                             "Template Constructor")
+            context_val = context_val[0]
+            if context_val is None:
+                log.critical(f"Context key {context_key} not available in the "
+                             "properties data.", "Template Constructor")
+            # next we need to generate the infile names
+            infiles: tuple[str] = infile_name_generator(data)
+            # and the folder path
+            folders: Path = folder_structure_generator(data)
+            # write the path (relative to the base path) in the context file
+            content = defaultdict(dict)
+            for fname, ctx_val in zip(infiles, context_val):
+                content[str(folders / fname)][context_key] = ctx_val
+            content = json.dumps(content, sort_keys=True, ensure_ascii=True,
+                                 indent=2)
+            return (content,)
+
+        return _context_content_generator

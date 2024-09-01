@@ -78,7 +78,7 @@ def _substitute_single_template(template: str, subvals: dict) -> str:
             val_idx = int(val_idx)
         # get the actual value
         val = subvals.get(key, None)
-        if val_idx is not None:
+        if val_idx is not None and val is not None:
             if not isinstance(val, (list, tuple)):
                 log.critical("The value for a placeholder of the form "
                              "'[[placeholder->number]]' needs to be a 'list' "
