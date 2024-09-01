@@ -4,6 +4,7 @@
 
 import json
 from pathlib import Path
+from collections import Counter, defaultdict
 from .assignment import new_assignment_file
 from . import logger as log
 from .configuration import config
@@ -85,14 +86,8 @@ class InputConstructor:
             stochiometry_dict: dict = dict()
 
             # Content is a list of file contents
-            n_items = len(content_list)
             for content_idx, (content, name) in \
                     enumerate(zip(content_list, name_list)):
-                # build the file name: insert an index into the name
-                if n_items > 1:
-                    file_index = str(content_idx).zfill(len(str(n_items)))
-                    name = Path(name)
-                    name = f"{name.stem}_{file_index}{name.suffix}"
                 file = path / name
                 if file.is_file():
                     log.warning(f"Overwriting existing file {file}.",
@@ -208,7 +203,7 @@ class TemplateConstructor(InputConstructor):
         variant_data_iterator = self._molecule_variants_data_iter(
             benchmark, calc_details, file_expansion_keys
         )
-        file_name_generator = self._substitute_template(name_template)
+        file_name_generator = self._gen_file_names(name_template)
         stoch_filename_generator = (
             self._substitute_template(stochiometry_template)
         )
@@ -269,7 +264,7 @@ class TemplateConstructor(InputConstructor):
         variant_data_iterator = self._molecule_variants_data_iter(
             benchmark, calc_details, file_expansion_keys
         )
-        file_name_generator = self._substitute_template(name_template)
+        file_name_generator = self._gen_file_names(name_template)
         file_content_generator = self._gen_assignment_content(state_id_key)
 
         # create a tree representing the folder structure
@@ -353,6 +348,34 @@ class TemplateConstructor(InputConstructor):
             subvals, _ = data
             return substitute_template(template, subvals)
         return _substitute
+
+    def _gen_file_names(self, name_template: str):
+        # generate filenames by resolving the given template using the
+        # data for the given data point.
+        # if this results in multiple identical file names, a counter
+        # starting at 0 is added to the corresponding names.
+        def _name_generator(data) -> tuple[str]:
+            # resolve the template
+            subvals, _ = data
+            file_names = substitute_template(name_template, subvals)
+            if len(file_names) == 1:
+                return file_names
+            # more than 1 file name
+            # -> if the same file_name is encountered more than once
+            #    we add an counter to the name to ensure it is unique:
+            #    name.suffix -> name_number.suffix
+            name_counter = Counter(file_names)
+            f_index = defaultdict(int)
+            ret = []
+            for fname in file_names:
+                if (n_files := name_counter[fname]) > 1:
+                    idx = str(f_index[fname]).zfill(len(str(n_files)))
+                    f_index[fname] += 1
+                    fname = Path(fname)
+                    fname = f"{fname.stem}_{idx}{fname.suffix}"
+                ret.append(fname)
+            return tuple(ret)
+        return _name_generator
 
     def _gen_folder_structure(self, tree: Node):
         # just a wrapper to remove the molecule from the data, which is
