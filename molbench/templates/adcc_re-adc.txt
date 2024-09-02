@@ -64,7 +64,7 @@ def run_adcc(hf, **kwargs):
 	print(" "*25, "Running ", kwargs.get("method"))
 	print("#"*80)
 	states = run_adc(hf, **kwargs)
-	print(states.describe())
+	print(states.describe(state_dipole_moments=True))
 	print("#"*80 + "\n")
 	print(states.describe_amplitudes(tolerance=adc_amplitude_tolerance))
 	return states
@@ -79,9 +79,14 @@ def dump_adcc(states, outname):
 		mul = 3
 	else:
 		raise ValueError(f"Unknown states kind {states.kind}.")
+	# unit conversion
+	au_to_ev = constants.value("Hartree energy in eV")
+	au_to_debye = 2.541746
 
 	out = {}
 	# dump ground state... because why not
+	# ground state energy: Hartree
+	# ground state dipole moment: Debye
 	if isinstance(states.ground_state, LazyRe):
 		gs_method = f"re{adc_order}"
 	else:
@@ -92,20 +97,21 @@ def dump_adcc(states, outname):
 		"method": gs_method,
 		"state_id": "ground state"
 	}
-	au_to_ev = constants.value("Hartree energy in eV")
 	data = {}
 	data["scf energy"] = states.reference_state.energy_scf
 	for o in range(2, adc_order + 1):
 		data[f"energy correction {o}"] = states.ground_state.energy_correction(o)
 	data["energy"] = states.ground_state.energy(adc_order)
 	if adc_order == 2:  # only second order density implemented currently
-		dip = states.ground_state.dipole_moment(2)
+		dip = states.ground_state.dipole_moment(2) * au_to_debye
 		data["dipole moment"] = tuple(dip)
-		data["total dipole moment"] = sqrt(sum(comp**2 for comp in dip))
+		data["total dipole moment"] = round(sqrt(sum(comp**2 for comp in dip)), 4)
 	metadata["data"] = data
 	out["gs"] = metadata
 
 	# dump the excited states
+	# exictation energies: eV
+	# excited state dipole: Debye
 	for state_num, energy_au in enumerate(states.excitation_energy):
 		vec = states.excitation_vector[state_num]
 		metadata = {
@@ -120,8 +126,15 @@ def dump_adcc(states, outname):
 			"state_id": None,  # state has still to be assigned!
 		}
 		data = {}
+		# dump excitation energy
 		data["excitation energy"] = round(energy_au * au_to_ev, 6)
+		# dump oscillator strength
 		data["osc strength"] = round(states.oscillator_strength[state_num], 4)
+		# dump dipole moment, total dipole moment and largest component
+		state_dip = states.state_dipole_moment[state_num] * au_to_debye
+		data["dipole moment"] = tuple(state_dip)
+		data["total dipole moment"] = round(sqrt(sum(comp**2 for comp in state_dip)), 4)
+		data["dipole moment largest component"] = round(max(state_dip, key=abs), 4)
 		metadata["data"] = data
 		out[state_num + 1] = metadata
 	json.dump(out, open(outname + ".out", "w"), indent=2)
@@ -177,7 +190,7 @@ if __name__ == "__main__":
 
 	# re-adc(n) calculation
 	kwargs["method"] = f"re-adc{adc_order}"
-	kwargs["re_conv_tol"] = re_conv_tol
+	kwargs["gs_conv_tol"] = re_conv_tol
 	re_adc = run_adcc(hf, **kwargs)
 	dump_adcc(re_adc, file_name.replace("adc", "re-adc"))
 
