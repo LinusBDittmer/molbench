@@ -129,7 +129,7 @@ def dump_adcc(states, outname):
 		# dump excitation energy
 		data["excitation energy"] = round(energy_au * au_to_ev, 6)
 		# dump oscillator strength
-		data["osc strength"] = round(states.oscillator_strength[state_num], 4)
+		data["oscillator strength"] = round(states.oscillator_strength[state_num], 4)
 		# dump dipole moment, total dipole moment and largest component
 		state_dip = states.state_dipole_moment[state_num] * au_to_debye
 		data["dipole moment"] = tuple(state_dip)
