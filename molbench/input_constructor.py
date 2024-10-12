@@ -584,13 +584,3 @@ class CompressedTemplateConstructor(TemplateConstructor):
 
         return inputs
 
-                
-                
-                
-
-
-
-            
-
-
-        
