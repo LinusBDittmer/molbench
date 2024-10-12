@@ -512,3 +512,85 @@ class TemplateConstructor(InputConstructor):
             return (content,)
 
         return _context_content_generator
+
+class CompressedTemplateConstructor(TemplateConstructor):
+
+    def __init__(self, template: str):
+        super().__init__(template)
+    
+    def create_inputs(self, benchmark: MoleculeList[Molecule], basepath: str,
+                      calc_details: dict,
+                      file_expansion_keys: tuple = ("basis",),
+                      flat_structure: bool = False,
+                      name_template: str = None,
+                      reference_path: str = "references.json") -> list:
+        # Create compressed benchmark
+        # We create a new MoleculeList where each Molecule contains
+        # only one geometry.
+        # Additionally, we create a dict of references to the individual
+        # molecules
+
+        compressed: MoleculeList = []
+        references: dict = defaultdict()
+
+        def _unique(xyz: list) -> int:
+            all_xyzs = [m.system_data["xyz"] for m in compressed]
+            if xyz in all_xyzs:
+                return all_xyzs.index(xyz)
+            return -1
+
+        for mol in benchmark:
+            if "xyz_list" not in mol.system_data:
+                mol_counter = len(compressed)
+                mol.name = f"m{mol_counter:06d}"
+                compressed.append(mol)
+                references[mol.name] = (mol_counter,)
+                mol_counter += 1
+                continue
+            
+            # Number of Molecules in mol
+            n_mols = len(mol.system_data["xyz_list"])
+            references[mol.name] = []
+            for i in range(n_mols):
+                mol_counter = len(compressed)
+                idx = _unique(mol.system_data["xyz_list"][i])
+
+                if idx < 0:
+                    # Prepare new Molecule
+                    name = f"m{mol_counter:06d}"
+                    system_data = dict()
+                    for system_datapoint, system_val in mol.system_data.items():
+                        print(system_datapoint)
+                        print(system_datapoint.endswith("_list"))
+                        if system_datapoint.endswith("_list"):
+                            sd = system_datapoint[:-5]
+                            system_data[sd] = system_val[i]
+                        else:
+                            system_data[system_datapoint] = system_val
+                    newmol = Molecule(name, name, system_data, mol.state_data)
+
+                    compressed.append(newmol)
+                    idx = mol_counter
+                
+                references[mol.name].append(idx)
+                
+        inputs = super().create_inputs(compressed, basepath, calc_details, 
+                                       file_expansion_keys, flat_structure, 
+                                       name_template)
+
+        full_reference_path = Path(basepath) / Path(reference_path)
+        with open(full_reference_path, "w") as f:
+            json.dump(references, f, ensure_ascii=True, indent=4, sort_keys=True)
+
+        return inputs
+
+                
+                
+                
+
+
+
+            
+
+
+        
