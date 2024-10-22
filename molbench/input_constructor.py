@@ -534,7 +534,9 @@ class CompressedTemplateConstructor(TemplateConstructor):
         references: dict = defaultdict()
 
         def _unique(xyz: list) -> int:
-            all_xyzs = [m.system_data["xyz"] for m in compressed]
+            all_xyzs = [(m.system_data["xyz"],
+                         m.system_data["charge"],
+                         m.system_data["multiplicity"]) for m in compressed]
             if xyz in all_xyzs:
                 return all_xyzs.index(xyz)
             return -1
@@ -547,7 +549,7 @@ class CompressedTemplateConstructor(TemplateConstructor):
                 references[mol.name] = (mol_counter,)
                 mol_counter += 1
                 continue
-            
+
             # Number of Molecules in mol
             n_mols = len(mol.system_data["xyz_list"])
             references[mol.name] = []
