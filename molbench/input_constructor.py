@@ -533,12 +533,13 @@ class CompressedTemplateConstructor(TemplateConstructor):
         compressed: MoleculeList = []
         references: dict = defaultdict()
 
-        def _unique(xyz: list) -> int:
+        def _unique(xyz: list, charge: int, mult: int) -> int:
             all_xyzs = [(m.system_data["xyz"],
                          m.system_data["charge"],
                          m.system_data["multiplicity"]) for m in compressed]
-            if xyz in all_xyzs:
-                return all_xyzs.index(xyz)
+            xyz_list = (xyz, charge, mult)
+            if xyz_list in all_xyzs:
+                return all_xyzs.index(xyz_list)
             return -1
 
         for mol in benchmark:
@@ -555,15 +556,15 @@ class CompressedTemplateConstructor(TemplateConstructor):
             references[mol.name] = []
             for i in range(n_mols):
                 mol_counter = len(compressed)
-                idx = _unique(mol.system_data["xyz_list"][i])
+                idx = _unique(mol.system_data["xyz_list"][i],
+                              mol.system_data["charge_list"][i],
+                              mol.system_data["multiplicity_list"][i])
 
                 if idx < 0:
                     # Prepare new Molecule
                     name = f"m{mol_counter:06d}"
                     system_data = dict()
                     for system_datapoint, system_val in mol.system_data.items():
-                        print(system_datapoint)
-                        print(system_datapoint.endswith("_list"))
                         if system_datapoint.endswith("_list"):
                             sd = system_datapoint[:-5]
                             system_data[sd] = system_val[i]
@@ -582,7 +583,8 @@ class CompressedTemplateConstructor(TemplateConstructor):
 
         full_reference_path = Path(basepath) / Path(reference_path)
         with open(full_reference_path, "w") as f:
-            json.dump(references, f, ensure_ascii=True, indent=4, sort_keys=True)
+            json.dump(references, f, ensure_ascii=True, indent=4,
+                      sort_keys=True)
 
         return inputs
 

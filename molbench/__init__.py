@@ -67,7 +67,7 @@ CsvComparator.compare(benchmark: dict, external_data: dict, properties: tuple) -
 
 from .configuration import config
 from .benchmark_parser import JSONBenchmarkParser
-from .input_constructor import InputConstructor, TemplateConstructor
+from .input_constructor import InputConstructor, TemplateConstructor, CompressedTemplateConstructor
 from .bash_wrapper import create_bash_files, make_send_script
 from .comparison import Comparison
 from .statistics import Statistics, register_as_error_measure
