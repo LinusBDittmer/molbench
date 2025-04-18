@@ -36,10 +36,12 @@ def __init_log_instance():
     stream_handler.setFormatter(formatter)
     instance.addHandler(stream_handler)
 
+
 def _format_cause(cause):
     if isinstance(cause, str):
         return cause
     return str(cause)
+
 
 def debug(msg: str, cause=None):
     fcause = _format_cause(cause)

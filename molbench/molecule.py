@@ -4,12 +4,9 @@ from .functions import walk_dict_by_key
 
 class Molecule:
     def __init__(self, name, data_id, system_data: dict = None,
-                 state_data: dict = None, geometry_num: int = 1) -> None:
+                 state_data: dict = None) -> None:
         self.name = name
         self.data_id = data_id
-        # Whether this molecule encodes relative energies through
-        # multiple molecules
-        self.geometry_num = geometry_num
         # dict that contains all the information regarding the system:
         # xyz_coords, charge, ...
         # -> information that is mostly required to build input files
@@ -18,8 +15,9 @@ class Molecule:
         # for each state. Is of the form:
         # {state: {basis: _, method: _, ... type: _, value: _}
         self.state_data: dict = {} if state_data is None else state_data
-        # Compute relative properties from given data
-        self._compute_relative_properties()
+
+    def __repr__(self):
+        return f"{self.name}: {self.data_id}"
 
     @classmethod
     def from_benchmark(cls, benchmark_entry: dict,
@@ -32,10 +30,10 @@ class Molecule:
         # e. g. through relative energies
         # If so, it contains the usual entries suffixed by "_list"
         # i. e. "xyz_list", "multiplicity_list", "n_atoms_list" etc.
-        geometry_num: int = len(system_data["xyz_list"]) if "xyz_list" in system_data else 1 
         if "xyz_list" in system_data:
             if not isinstance(system_data["xyz_list"][0], str):
-                system_data["xyz_list"] = ["\n".join(s) for s in system_data["xyz_list"]]
+                system_data["xyz_list"] = ["\n".join(s)
+                                           for s in system_data["xyz_list"]]
         # ensure that xyz coordinates are a string
         if "xyz" in system_data and not isinstance(system_data["xyz"], str):
             system_data["xyz"] = "\n".join(system_data["xyz"])
@@ -51,7 +49,7 @@ class Molecule:
             name = molname
 
         properties = benchmark_entry.get("properties", None)
-        return cls(name, benchmark_id, system_data, properties, geometry_num)
+        return cls(name, benchmark_id, system_data, properties)
 
     @classmethod
     def from_external(cls, external: dict, data_id,
@@ -140,54 +138,52 @@ class Molecule:
                             "existing value.", "Molecule: add_assignments")
             state_data[state_id_key] = assignments[external_id]
 
-    def _compute_relative_properties(self):
-        # List of relevant keys in state_data
-        relative_keys: list[str] = [k for k in self.state_data if \
-                                    "stochiometry" in self.state_data[k]]
-        # Leave away all properties with precomputed stochiometry
-        relative_keys = [k for k in relative_keys if 
-                         isinstance(self.state_data[k]["stochiometry"], dict)]
-
-        if len(relative_keys) == 0:
-            return
-        for relkey in relative_keys:
-            # First mentioned component energy dict
-            p0: str = tuple(self.state_data[relkey]["stochiometry"].keys())[0]
-            # Method and basis are not necessarily set so we define them here
-            for subkey in ("method", "basis"):
-                if subkey not in self.state_data[relkey]:
-                    self.state_data[relkey][subkey] = self.state_data[p0][subkey]
-
-            # Value of p0 to get the type correct
-            v0 = self.state_data[p0]["value"]
-            relative_value = None
-            if isinstance(v0, (float, int, complex)):
-                relative_value = 0.0
-            elif isinstance(v0, (tuple, list)):
-                relative_value = list()
-
-            for stoch_key, stoch_val in self.state_data[relkey]["stochiometry"].items():
-                if isinstance(relative_value, list):
-                    if len(relative_value) == 0:
-                        for i in range(len(self.state_data[stoch_key]["value"])):
-                            relative_value.append(0.0)
-                    for idx in range(len(relative_value)):
-                        relative_value[idx] += self.state_data[stoch_key]["value"][idx] * stoch_val
-                else:
-                    relative_value += self.state_data[stoch_key]["value"] * stoch_val
-                
-                if not self.state_data[stoch_key]["type"].startswith("component"):
-                    self.state_data[stoch_key]["type"] = "component " + self.state_data[stoch_key]["type"]
-            
-            self.state_data[relkey]["value"] = relative_value
-
 
 class MoleculeList(list):
+
+    def __repr__(self):
+        return super().__repr__()
+
+    def __str__(self):
+        return super().__str__()
+
     def filter(self, key, *values) -> 'MoleculeList':
         return self._filter(key, lambda v: v in values)
 
     def remove(self, key, *values) -> 'MoleculeList':
         return self._filter(key, lambda v: v not in values)
+
+    def apply_stochiometry(self, stochiometry: dict) -> 'MoleculeList':
+        combined_list = MoleculeList()
+
+        def find_mol(name):
+            for mol in self:
+                if mol.name == name:
+                    return mol
+            return None
+
+        for c_name, c_data in stochiometry.items():
+            relevant_mol_names = c_data["molecules"]
+            data_id = " / ".join(relevant_mol_names)
+            factors = c_data["factors"]
+            relevant_mols = [find_mol(name) for name in relevant_mol_names]
+
+            if any([x is None for x in relevant_mols]):
+                log.error(f"Could not find all molecules for {c_name}",
+                          "MoleculeList")
+                continue
+
+            combined_mol = Molecule(c_name, data_id, dict(), dict())
+
+            for molidx, rmol in enumerate(relevant_mols):
+                self._join_system_data(combined_mol.system_data,
+                                       rmol.system_data, molidx)
+                self._join_state_data(combined_mol.state_data, rmol.state_data,
+                                      factors[molidx])
+
+            combined_list.append(combined_mol)
+
+        return combined_list
 
     def filter_by_range(self, key, min=None, max=None) -> 'MoleculeList':
         # here we don't know how to add elements to min and max
@@ -291,3 +287,71 @@ class MoleculeList(list):
                         state_data
                     ))
         return filtered
+
+    def _join_system_data(self, dst_sys, src_sys, idx):
+        """Joins the system data dictionary of a desination system and a
+        source system, where the destination system data dict is overwritten
+        and the source system data dict is inserted at position idx.
+
+        Args:
+            dst_sys (dict): Destiation system data dict
+            src_sys (dict): Source system data dict
+            idx (int): Index at which the source dict is inserted
+        """
+        for key, val in src_sys.items():
+            # In the inidividual molecules, each key is given "by itself"
+            # In the joined Molecule, they are appended by "_list"
+            lkey = str(key)
+            if not lkey.endswith("_list"):
+                lkey += "_list"
+            if lkey not in dst_sys and idx > 0:
+                # Add the key if it is not yet in dst_sys and pad with
+                # the appropriate number of missing entries
+                dst_sys[lkey] = [None] * idx
+            elif lkey not in dst_sys:
+                # If this is the first Molecule added into the combined
+                # Molecule, then we do not need to pad.
+                dst_sys[lkey] = []
+            # Add the value to the combined Molecule
+            dst_sys[lkey].append(val)
+
+    def _join_state_data(self, dst_state, src_state, factor):
+        """Joins the state data dictionary of a destination system and a
+        source system, where the destination state data dict is overwritten
+        and the source system data dict is merged under the application
+        of a formally stochiometric factor.
+
+        The decision, which properties to merge is performed by the
+        individual properties type argument, i. e. the value given at
+        state_data[state_id]["type"].
+
+        Args:
+            dst_state (dict): Destination state data dict
+            src_state (dict): Source state data dict
+            factor (float): Formal stochiometric factor
+        """
+        # Create and cache a dictionary, which types of properties
+        # are handled by which property keys in the destination state
+        # property dictionary for easy lookup in the loop
+        keydict = {v["type"]: k for k, v in dst_state.items()}
+        for key, val in src_state.items():
+            # Extract the property value of the source state data
+            # dictionary for out-of-place modification since the
+            # same source state data dictionary can influence
+            # multiple combined molecules
+            property_value = val["value"]
+            if isinstance(property_value, (list, tuple)):
+                property_value = [p * factor for p in property_value]
+            else:
+                property_value *= factor
+
+            if val["type"] not in keydict:
+                dst_state[key] = val
+                dst_state[key]["value"] = property_value
+            else:
+                pdict = dst_state[keydict[val["type"]]]
+                if isinstance(property_value, (list, tuple)):
+                    pdict["value"] = [p0 + p1 for p0, p1 in
+                                      zip(property_value, pdict["value"])]
+                else:
+                    pdict["value"] += property_value

@@ -122,7 +122,8 @@ class Comparison(dict):
             d = d[proptype]
             data_id = data.data_id
             if "component" in proptype and "component index" in prop:
-                data_id += f"_{prop["component index"]}"
+                propci = prop["component index"]
+                data_id += f"_{propci}"
             if data_id in d:
                 log.warning(f"data_id {data.data_id} is not unique. Found "
                             f"conflicting entry for {data.name}, {separators} "

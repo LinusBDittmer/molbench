@@ -513,17 +513,19 @@ class TemplateConstructor(InputConstructor):
 
         return _context_content_generator
 
+
 class CompressedTemplateConstructor(TemplateConstructor):
 
     def __init__(self, template: str):
         super().__init__(template)
-    
+
     def create_inputs(self, benchmark: MoleculeList[Molecule], basepath: str,
                       calc_details: dict,
                       file_expansion_keys: tuple = ("basis",),
                       flat_structure: bool = False,
                       name_template: str = None,
-                      reference_path: str = "references.json") -> list:
+                      reference_path: str = "references.json",
+                      compressed_property: str | None = None) -> list:
         # Create compressed benchmark
         # We create a new MoleculeList where each Molecule contains
         # only one geometry.
@@ -553,7 +555,8 @@ class CompressedTemplateConstructor(TemplateConstructor):
 
             # Number of Molecules in mol
             n_mols = len(mol.system_data["xyz_list"])
-            references[mol.name] = []
+            references[mol.name] = {"molecules": list(),
+                                    "factors": list()}
             for i in range(n_mols):
                 mol_counter = len(compressed)
                 idx = _unique(mol.system_data["xyz_list"][i],
@@ -564,21 +567,43 @@ class CompressedTemplateConstructor(TemplateConstructor):
                     # Prepare new Molecule
                     name = f"m{mol_counter:06d}"
                     system_data = dict()
-                    for system_datapoint, system_val in mol.system_data.items():
-                        if system_datapoint.endswith("_list"):
-                            sd = system_datapoint[:-5]
+                    for system_dp, system_val in mol.system_data.items():
+                        if system_dp.endswith("_list"):
+                            sd = system_dp[:-5]  # -5 to cut off "_list"
                             system_data[sd] = system_val[i]
                         else:
-                            system_data[system_datapoint] = system_val
+                            system_data[system_dp] = system_val
                     newmol = Molecule(name, name, system_data, mol.state_data)
 
                     compressed.append(newmol)
                     idx = mol_counter
-                
-                references[mol.name].append(idx)
-                
-        inputs = super().create_inputs(compressed, basepath, calc_details, 
-                                       file_expansion_keys, flat_structure, 
+
+                idx_name = f"m{idx:06d}"
+                references[mol.name]["molecules"].append(idx_name)
+
+                if len(mol.state_data) > 1 and compressed_property is None:
+                    log.critical("Please specify a property key from which the"
+                                 + " stochiometry should be read",
+                                 "CompressedTemplateConstructor")
+                elif (len(mol.state_data) > 1 and
+                      compressed_property not in mol.state_data):
+                    log.critical("compressed_property was not found in"
+                                 + f" Molecule {mol.name}",
+                                 "CompressedTemplateConstructor")
+                if compressed_property is None:
+                    pkey = list(mol.state_data.keys())[0]
+                else:
+                    pkey = [k for k, v in mol.state_data.items()
+                            if v["type"] == compressed_property][0]
+                if "stochiometry" in mol.state_data[pkey]:
+                    factor_key = "stochiometry"
+                elif "factors" in mol.state_data[pkey]:
+                    factor_key = "factors"
+                stoch: list = mol.state_data[pkey][factor_key]
+                references[mol.name]["factors"] = stoch
+
+        inputs = super().create_inputs(compressed, basepath, calc_details,
+                                       file_expansion_keys, flat_structure,
                                        name_template)
 
         full_reference_path = Path(basepath) / Path(reference_path)
@@ -587,4 +612,3 @@ class CompressedTemplateConstructor(TemplateConstructor):
                       sort_keys=True)
 
         return inputs
-

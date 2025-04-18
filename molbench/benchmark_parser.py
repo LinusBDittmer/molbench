@@ -88,4 +88,5 @@ class JSONBenchmarkParser(BenchmarkParser):
         try:
             return json.load(open(benchmarkfile, "r"))
         except json.JSONDecodeError:
-            log.critical(f"Could not read benchmark file {benchmarkfile}.", "Benchmark Parser")
+            log.critical(f"Could not read benchmark file {benchmarkfile}.",
+                         "Benchmark Parser")

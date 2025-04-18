@@ -74,7 +74,8 @@ def parse_assignment_file(assignmentfile: str,
         ref = assignment[0].strip()
         external = assignment[1].strip()
         if ref == null_token or external == null_token:  # skip not assigned
-            log.warning(f"Unassigned state in file {assignmentfile}.", "Assigment")
+            log.warning(f"Unassigned state in file {assignmentfile}.",
+                        "Assigment")
             continue
 
         if import_external is not None:
