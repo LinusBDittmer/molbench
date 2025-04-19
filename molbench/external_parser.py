@@ -78,6 +78,10 @@ class ExternalParser:
             The suffix of the assignment file (default: '.ass').
             filename.out -> filename.ass
         """
+        # XXX: Why the split?
+        # Above in the error message you say that the callable may
+        # take an optional name parameter. But you did not mention
+        # any suffix separated by '_'
         name: str = Path(outfile).stem.split("_")[0]
         if requires_name:
             data: dict = out_parser(outfile, name)  # read in as dict
@@ -91,7 +95,8 @@ class ExternalParser:
             mol.add_assignments(assignments)
         return mol
 
-    def _fetch_all_outfiles(self, path: str, suffix: str = '.out') -> list:
+    def _fetch_all_outfiles(self, path: str,
+                            suffix: str = '.out') -> list[str]:
         outfiles = []
         for root, _, files in os.walk(os.path.abspath(path), topdown=True,
                                       followlinks=True):
@@ -109,4 +114,4 @@ class ExternalParser:
         assignment file could be found.
         """
         assignmentf = Path(outfile).with_suffix(assignment_suffix)
-        return assignmentf if assignmentf.is_file() else None
+        return str(assignmentf) if assignmentf.is_file() else None

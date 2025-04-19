@@ -3,8 +3,8 @@ from .functions import walk_dict_by_key
 
 
 class Molecule:
-    def __init__(self, name, data_id, system_data: dict = None,
-                 state_data: dict = None) -> None:
+    def __init__(self, name, data_id, system_data: dict | None = None,
+                 state_data: dict | None = None) -> None:
         self.name = name
         self.data_id = data_id
         # dict that contains all the information regarding the system:
@@ -30,23 +30,24 @@ class Molecule:
         # e. g. through relative energies
         # If so, it contains the usual entries suffixed by "_list"
         # i. e. "xyz_list", "multiplicity_list", "n_atoms_list" etc.
-        if "xyz_list" in system_data:
-            if not isinstance(system_data["xyz_list"][0], str):
-                system_data["xyz_list"] = ["\n".join(s)
-                                           for s in system_data["xyz_list"]]
+        if "xyz_list" in system_data and \
+                isinstance(system_data["xyz_list"], (list, tuple)):
+            system_data["xyz_list"] = [
+                "\n".join(xyz) if not isinstance(xyz, str) else xyz
+                for xyz in system_data["xyz_list"]
+            ]
         # ensure that xyz coordinates are a string
         if "xyz" in system_data and not isinstance(system_data["xyz"], str):
             system_data["xyz"] = "\n".join(system_data["xyz"])
         # get a name for the molecule
+        name = molname
         if "name" in system_data:
             name = system_data["name"]
             del system_data["name"]
-        elif molname is None:
+        if name is None:
             log.critical("Name not specified in benchmark entry and not "
                          "provided as argument to the method.",
                          "Molecule: from_benchmark")
-        else:
-            name = molname
 
         properties = benchmark_entry.get("properties", None)
         return cls(name, benchmark_id, system_data, properties)
@@ -154,6 +155,8 @@ class MoleculeList(list):
         return self._filter(key, lambda v: v not in values)
 
     def apply_stochiometry(self, stochiometry: dict) -> 'MoleculeList':
+        # TODO: some explanation: e.g., what is the expected form of the
+        # stochiometry dict?
         combined_list = MoleculeList()
 
         def find_mol(name):
@@ -351,6 +354,7 @@ class MoleculeList(list):
             else:
                 pdict = dst_state[keydict[val["type"]]]
                 if isinstance(property_value, (list, tuple)):
+                    assert isinstance(pdict["value"], (tuple, list))
                     pdict["value"] = [p0 + p1 for p0, p1 in
                                       zip(property_value, pdict["value"])]
                 else:

@@ -132,7 +132,7 @@ class TemplateConstructor(InputConstructor):
                       calc_details: dict,
                       file_expansion_keys: tuple = ("basis",),
                       flat_structure: bool = False,
-                      name_template: str = None) -> list:
+                      name_template: str | None = None) -> list:
         """
         Create inputs files for the provided set of Molecules by filling
         in the placeholders in the input template with data from the
@@ -523,7 +523,7 @@ class CompressedTemplateConstructor(TemplateConstructor):
                       calc_details: dict,
                       file_expansion_keys: tuple = ("basis",),
                       flat_structure: bool = False,
-                      name_template: str = None,
+                      name_template: str | None = None,
                       reference_path: str = "references.json",
                       compressed_property: str | None = None) -> list:
         # Create compressed benchmark
@@ -532,8 +532,8 @@ class CompressedTemplateConstructor(TemplateConstructor):
         # Additionally, we create a dict of references to the individual
         # molecules
 
-        compressed: MoleculeList = []
-        references: dict = defaultdict()
+        compressed = MoleculeList()
+        references = {}
 
         def _unique(xyz: list, charge: int, mult: int) -> int:
             all_xyzs = [(m.system_data["xyz"],
@@ -595,10 +595,17 @@ class CompressedTemplateConstructor(TemplateConstructor):
                 else:
                     pkey = [k for k, v in mol.state_data.items()
                             if v["type"] == compressed_property][0]
+
+                factor_key = None
                 if "stochiometry" in mol.state_data[pkey]:
                     factor_key = "stochiometry"
                 elif "factors" in mol.state_data[pkey]:
                     factor_key = "factors"
+
+                if factor_key is None:
+                    log.critical(f"Could not find a factor in state {pkey} of "
+                                 f"molecule {mol.name}.",
+                                 "CompressedTemplateConstructor")
                 stoch: list = mol.state_data[pkey][factor_key]
                 references[mol.name]["factors"] = stoch
 
