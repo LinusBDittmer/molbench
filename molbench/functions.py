@@ -94,6 +94,16 @@ def _substitute_single_template(template: str, subvals: dict) -> str:
     return template
 
 
+def default_name_template(file_expansion_keys: tuple,
+                          file_extension: str) -> str:
+    # construct a name that ensures that each file has a unique name
+    name_template = "[[name]]_[[method]]"
+    for key in file_expansion_keys:
+        if key not in ["name", "method"]:
+            name_template += f"_[[{key}]]"
+    return name_template + file_extension
+
+
 def walk_dict_by_key(indict: dict, desired_key, prev_keys: tuple = tuple()):
     """
     Walk an arbitrarily nested dictionary looking for the desired key

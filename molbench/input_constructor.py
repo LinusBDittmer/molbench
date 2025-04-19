@@ -8,7 +8,7 @@ from collections import Counter, defaultdict
 from .assignment import new_assignment_file
 from . import logger as log
 from .configuration import config
-from .functions import substitute_template
+from .functions import substitute_template, default_name_template
 from .molecule import MoleculeList, Molecule
 from .tree import Node, DummyNode
 
@@ -166,8 +166,7 @@ class TemplateConstructor(InputConstructor):
             that each data point has a unique name.
         """
         if name_template is None:
-            name_template = self._default_name_template(file_expansion_keys,
-                                                        ".in")
+            name_template = default_name_template(file_expansion_keys, ".in")
         variant_data_iterator = self._molecule_variants_data_iter(
             benchmark, calc_details, file_expansion_keys
         )
@@ -227,8 +226,7 @@ class TemplateConstructor(InputConstructor):
             properties (the state_data) of the molecules.
         """
         if name_template is None:
-            name_template = self._default_name_template(file_expansion_keys,
-                                                        ".ass")
+            name_template = default_name_template(file_expansion_keys, ".ass")
         variant_data_iterator = self._molecule_variants_data_iter(
             benchmark, calc_details, file_expansion_keys
         )
@@ -299,12 +297,10 @@ class TemplateConstructor(InputConstructor):
             is generated.
         """
         if name_template is None:
-            name_template = self._default_name_template(file_expansion_keys,
-                                                        ".ctx")
+            name_template = default_name_template(file_expansion_keys, ".ctx")
         if infile_name_template is None:
-            infile_name_template = self._default_name_template(
-                file_expansion_keys, ".in"
-            )
+            infile_name_template = default_name_template(file_expansion_keys,
+                                                         ".in")
         variant_data_iterator = self._molecule_variants_data_iter(
             benchmark, calc_details, file_expansion_keys
         )
@@ -327,15 +323,6 @@ class TemplateConstructor(InputConstructor):
         return self._create_files(variant_data_iterator, basepath,
                                   file_name_generator, file_content_generator,
                                   folder_structure_generator)
-
-    def _default_name_template(self, file_expansion_keys: tuple,
-                               file_extension) -> str:
-        # construct a name that ensures that each file has a unique name
-        name_template = "[[name]]_[[method]]"
-        for key in file_expansion_keys:
-            if key not in ["name", "method"]:
-                name_template += f"_[[{key}]]"
-        return name_template + file_extension
 
     def _molecule_variants_data_iter(self, benchmark: MoleculeList[Molecule],
                                      calc_details: dict,
