@@ -114,7 +114,7 @@ class ExternalParser:
             match = re.match(name_pattern, Path(outfile).name)
             if not match:
                 log.critical(f"Output file name {outfile} does not match "
-                             + "expected pattern. Regex: {name_pattern}",
+                             + f"expected pattern. Regex: {name_pattern}",
                              "ExternalParser")
             # read in as dict
             data: dict = out_parser(outfile, match.group('name'))

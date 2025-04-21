@@ -53,24 +53,24 @@ class LatexFormatter(StdFormatter):
     def finalize_table(self):
         return r"\end{tabular}" + "\n" + r"\end{table}"
 
-    def table_header(self, labels: list[list[str]]) -> str:
+    def table_header(self, labels: tuple[tuple[str, ...], ...]) -> str:
         return (
-            self.join_rows(self.join_columns(row) for row in labels) +
+            self.join_rows(tuple(self.join_columns(row) for row in labels)) +
             r"\\ \hline"
         )
 
-    def table_content(self, content: list[list[str]]) -> str:
+    def table_content(self, content: tuple[tuple[str, ...], ...]) -> str:
         return (
-            self.join_rows(self.join_columns(row) for row in content)
+            self.join_rows(tuple(self.join_columns(row) for row in content))
         )
 
-    def join_labels(self, labels: tuple[str]) -> str:
+    def join_labels(self, labels: tuple[str, ...]) -> str:
         return self.label_delimiter.join(labels)
 
-    def join_columns(self, columns: tuple[str]) -> str:
+    def join_columns(self, columns: tuple[str, ...]) -> str:
         return self.column_delimiter.join(columns)
 
-    def join_rows(self, rows: tuple[str]) -> str:
+    def join_rows(self, rows: tuple[str, ...]) -> str:
         return self.row_delimiter.join(rows)
 
     def multicolumn(self, width: int, value: str) -> str:

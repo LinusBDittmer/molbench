@@ -168,7 +168,8 @@ class TableExporter(Exporter):
             tuple(v for _, v in sorted(row_l.items()))
         )
 
-    def _add_to_label_tree(self, label: tuple[str], node_cache: dict) -> None:
+    def _add_to_label_tree(self, label: tuple[str, ...],
+                           node_cache: dict) -> None:
         # Helper function for building the label trees
         # constructs all nodes for a given entry and inserts them in the tree
         parent = node_cache["root"]
@@ -181,7 +182,7 @@ class TableExporter(Exporter):
             parent = node
 
     def _prepare_table_header(self, col_label_tree: Node,
-                              additional_cols: tuple[str]) -> list:
+                              additional_cols: tuple[str, ...]) -> list:
         # Build the table header as nested list of strings
         rows = []
         prefix = tuple("" for _ in range(len(additional_cols)))
@@ -200,7 +201,7 @@ class TableExporter(Exporter):
         return rows
 
     def _prepare_content(self, data: dict, row_label_tree: Node,
-                         column_labels: tuple[str]) -> list:
+                         column_labels: tuple[str, ...]) -> list:
         # Build the content of the table as nested list
         content: list[list[str]] = []
         prev_row_label = None

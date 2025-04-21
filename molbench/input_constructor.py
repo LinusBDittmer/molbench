@@ -61,8 +61,8 @@ class InputConstructor:
         #   basepath / folder_path / file_name
         created_files = []
         for data in data_iterable:
-            name_list: tuple[str] = file_name_generator(data)
-            content_list: tuple[str] = file_content_generator(data)
+            name_list: tuple[str, ...] = file_name_generator(data)
+            content_list: tuple[str, ...] = file_content_generator(data)
             folders: Path = folder_structure_generator(data)
             assert len(name_list) == len(content_list)
 
@@ -83,7 +83,7 @@ class InputConstructor:
                 created_files.append(file)
         return created_files
 
-    def _folders_from_tree(self, root: Node) -> Path:
+    def _folders_from_tree(self, root: Node):
         def _folder_structure(variant_data: dict):
             path = Path("")
             for generation in root.traverse_generations():
@@ -91,8 +91,8 @@ class InputConstructor:
                 for node in generation:
                     val = variant_data.get(node.value, None)
                     if val is None:
-                        log.critical("Failed to resolve folder path for ",
-                                     f"{variant_data}.", "Input Constructor")
+                        log.critical("Failed to resolve folder path for "
+                                     + f"{variant_data}.", "Input Constructor")
                     folder_name.append(node.to_string(val))
                 path /= "_".join(folder_name)
             return path
@@ -191,7 +191,7 @@ class TemplateConstructor(InputConstructor):
                            basepath: str, calc_details: dict,
                            file_expansion_keys: tuple = ("basis",),
                            flat_structure: bool = False,
-                           name_template: str = None,
+                           name_template: str | None = None,
                            state_id_key="state_id") -> list:
         """
         Create assignment files for the provided set of Molecules.
@@ -311,7 +311,7 @@ class TemplateConstructor(InputConstructor):
         # data for the given data point.
         # if this results in multiple identical file names, a counter
         # starting at 0 is added to the corresponding names.
-        def _name_generator(data) -> tuple[str]:
+        def _name_generator(data) -> tuple[str, ...]:
             # resolve the template
             subvals, _ = data
             file_names = substitute_template(name_template, subvals)

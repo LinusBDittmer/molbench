@@ -1,7 +1,7 @@
 from . import logger as log
 
 
-def substitute_template(template: str, subvals: dict) -> tuple[str]:
+def substitute_template(template: str, subvals: dict) -> tuple[str, ...]:
     """
     Substitute placeholders "[[placeholder]]" in the template with the provided
     value in the subvals dictionary {placeholder: value}.
