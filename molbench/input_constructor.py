@@ -246,84 +246,6 @@ class TemplateConstructor(InputConstructor):
                                   file_name_generator, file_content_generator,
                                   folder_structure_generator)
 
-    def create_context_files(self, benchmark: MoleculeList[Molecule],
-                             basepath: str, calc_details: dict,
-                             context_key,
-                             file_expansion_keys: tuple = ("basis",),
-                             flat_structure: bool = False,
-                             name_template: str = None,
-                             infile_name_template: str = None) -> list:
-        """
-        Create context files for the provided set of Molecules containing
-        information of how to compute relative properties, i.e., a context
-        contains filenames and prefactors with which the results in the
-        file need to be multiplied in order to compute the relative
-        property of interest, e.g,
-        {file1: {context_key: 1}, file2: {context_key: -1}}
-        indicates that the relative property can be computed as
-        1 * val_from_file1 + (-1) * val_from_file2.
-
-        Parameters
-        ----------
-        benchmark: MoleculeList[Molecule]
-            The set of Molecules to generate context files for.
-        basepath: str
-            The path where all generated files are placed.
-        calc_details: dict
-            Additional information used to resolve placeholders in the
-            name templates.
-        context_key
-            The key under which the prefactors can be found in the
-            properties (the state_data) of the molecules.
-        file_expansion_keys: tuple, optional
-            Possibly multiple context files need to be generated for one
-            molecule that belong to different data points, e.g., for different
-            basis sets. This parameter defines the keys for which the molecules
-            are checked. Each unique combination corresponds to a data point.
-            (default: ('basis',))
-        flat_structure: str, optional
-            True: place all generated files in the same folder
-            False: generate a folder for each Molecule
-            (default: False)
-        name_template: str, optional
-            Template for the names of context files. Should be unique for
-            each data point. By default a template based on the
-            file_expansion_keys is generated.
-        infile_name_template: str, optional
-            Template for the names of input files. Required to generate
-            the content of a context file. Here, the same template as for the
-            generation of the corresponding input files has to be used.
-            By default a template based on the file_expansion_keys
-            is generated.
-        """
-        if name_template is None:
-            name_template = default_name_template(file_expansion_keys, ".ctx")
-        if infile_name_template is None:
-            infile_name_template = default_name_template(file_expansion_keys,
-                                                         ".in")
-        variant_data_iterator = self._molecule_variants_data_iter(
-            benchmark, calc_details, file_expansion_keys
-        )
-        file_name_generator = self._gen_context_file_names(name_template)
-
-        # create a tree representing the folder structure
-        # TODO: allow more complex input for more complex folder
-        #       structure?
-        if flat_structure:
-            tree = DummyNode()
-        else:
-            tree = Node("name")
-        folder_structure_generator = self._gen_folder_structure(tree)
-
-        file_content_generator = self._gen_context_content(
-            context_key=context_key,
-            infile_name_generator=self._gen_file_names(infile_name_template),
-            folder_structure_generator=folder_structure_generator
-        )
-        return self._create_files(variant_data_iterator, basepath,
-                                  file_name_generator, file_content_generator,
-                                  folder_structure_generator)
-
     def _molecule_variants_data_iter(self, benchmark: MoleculeList[Molecule],
                                      calc_details: dict,
                                      file_expansion_keys: tuple):
@@ -412,23 +334,6 @@ class TemplateConstructor(InputConstructor):
             return tuple(ret)
         return _name_generator
 
-    def _gen_context_file_names(self, name_template: str):
-        # generate file names by resolving the template using the data for the
-        # given data point.
-        # if this results in multiple templates we want to remove duplicates.
-        # Currently, only a single unique context name is supported
-        def _context_name_generator(data) -> tuple[str]:
-            # resolve the template
-            subvals, _ = data
-            file_names = substitute_template(name_template, subvals)
-            if len(file_names) == 1:
-                return file_names
-            elif len(set(file_names)) == 1:
-                return (file_names[0],)
-            raise NotImplementedError("Did not implement the case of multiple "
-                                      "context files per data point.")
-        return _context_name_generator
-
     def _gen_folder_structure(self, tree: Node):
         # just a wrapper to remove the molecule from the data, which is
         # needed for the assignment file content
@@ -455,50 +360,6 @@ class TemplateConstructor(InputConstructor):
                     state_ids.append(s_id)
             return (new_assignment_file(state_ids),)
         return _gen_assignment
-
-    def _gen_context_content(self, context_key,
-                             infile_name_generator: callable,
-                             folder_structure_generator: callable):
-        # generate the context file / relative property file for a single
-        # data point. Therefore, we need
-        # - the context_key, which contains the prefactors that are needed to
-        # compute the relative property from the individual results of
-        # each calculation.
-        # - a generator to generate the names of the inpufiles for this data
-        # point. The generated infiles need to match the order of the
-        # prefactors of the prefactors from the context_key. This should
-        # trivially be the case if the infile_name_generator has been used
-        # to generate the input files.
-        # - a generator to find the folder in which the files for the
-        # current data point are placed.
-        def _context_content_generator(data):
-            _, properties = data
-            # extract the relative property data (factors)
-            # ensuring that all properties (if there are multiple)
-            # share the same value
-            context_val = [prop.get(context_key, None) for prop in properties]
-            if not all(ctx_val == context_val[0] for ctx_val in context_val):
-                log.critical("Expected all properties for a single data point "
-                             "to share the same value of the context key "
-                             f"{context_key}. Found\n{context_val}.",
-                             "Template Constructor")
-            context_val = context_val[0]
-            if context_val is None:
-                log.critical(f"Context key {context_key} not available in the "
-                             "properties data.", "Template Constructor")
-            # next we need to generate the infile names
-            infiles: tuple[str] = infile_name_generator(data)
-            # and the folder path
-            folders: Path = folder_structure_generator(data)
-            # write the path (relative to the base path) in the context file
-            content = defaultdict(dict)
-            for fname, ctx_val in zip(infiles, context_val):
-                content[str(folders / fname)][context_key] = ctx_val
-            content = json.dumps(content, sort_keys=True, ensure_ascii=True,
-                                 indent=2)
-            return (content,)
-
-        return _context_content_generator
 
 
 class CompressedTemplateConstructor(TemplateConstructor):
