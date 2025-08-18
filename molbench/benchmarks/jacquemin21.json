@@ -36,10 +36,21 @@
 				"state_id": "s1",
 				"value": 0.468
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 0.299,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cinfv",
 				"detected_irrep": "P",
@@ -97,10 +108,21 @@
 				"state_id": "s1",
 				"value": 0.048
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": 0.559,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cinfv",
 				"detected_irrep": "P",
@@ -246,7 +268,7 @@
 				"state_id": "s6",
 				"value": 0.107
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -257,7 +279,7 @@
 				"value": 0.126,
 				"unit": "D"
 			},
-			"s2_mu": {
+			"s2_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -268,7 +290,7 @@
 				"value": 1.614,
 				"unit": "D"
 			},
-			"s3_mu": {
+			"s3_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -279,7 +301,7 @@
 				"value": 1.450,
 				"unit": "D"
 			},
-			"s4_mu": {
+			"s4_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -290,7 +312,7 @@
 				"value": 4.014,
 				"unit": "D"
 			},
-			"s5_mu": {
+			"s5_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -301,10 +323,76 @@
 				"value": 6.229,
 				"unit": "D"
 			},
-			"s6_mu": {
+			"s6_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s6",
+				"value": 0.124,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": -0.126,
+				"unit": "D"
+			},
+			"s2_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "S-",
+				"state_id": "s2",
+				"value": 1.614,
+				"unit": "D"
+			},
+			"s3_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "D",
+				"state_id": "s3",
+				"value": 1.450,
+				"unit": "D"
+			},
+			"s4_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "S+",
+				"state_id": "s4",
+				"value": -4.014,
+				"unit": "D"
+			},
+			"s5_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "S+",
+				"state_id": "s5",
+				"value": 6.229,
+				"unit": "D"
+			},
+			"s6_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cinfv",
 				"detected_irrep": "P",
@@ -418,10 +506,21 @@
 				"state_id": "s1",
 				"value": 0.034
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": 0.035,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2v",
 				"detected_irrep": "B1",
@@ -506,7 +605,7 @@
 				"state_id": "s2",
 				"value": 0.070
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -517,7 +616,7 @@
 				"value": 1.232,
 				"unit": "D"
 			},
-			"s2_mu": {
+			"s2_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -526,6 +625,28 @@
 				"detected_irrep": "B2",
 				"state_id": "s2",
 				"value": 0.813,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": -1.232,
+				"unit": "D"
+			},
+			"s2_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": -0.813,
 				"unit": "D"
 			},
 			"s1_e_cc3": {
@@ -658,7 +779,7 @@
 				"value": 4.114,
 				"unit": "eV"
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -669,7 +790,7 @@
 				"value": 2.509,
 				"unit": "D"
 			},
-			"s2_mu": {
+			"s2_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -680,7 +801,7 @@
 				"value": 1.708,
 				"unit": "D"
 			},
-			"s3_mu": {
+			"s3_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -691,10 +812,54 @@
 				"value": 3.025,
 				"unit": "D"
 			},
-			"s4_mu": {
+			"s4_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": 1.393,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": -2.509,
+				"unit": "D"
+			},
+			"s2_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s2",
+				"value": -1.708,
+				"unit": "D"
+			},
+			"s3_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s3",
+				"value": 3.025,
+				"unit": "D"
+			},
+			"s4_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2v",
 				"detected_irrep": "A1",
@@ -810,7 +975,7 @@
 				"state_id": "s3",
 				"value": 0.235
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -821,7 +986,7 @@
 				"value": 3.278,
 				"unit": "D"
 			},
-			"s2_mu": {
+			"s2_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -832,7 +997,7 @@
 				"value": 0.480,
 				"unit": "D"
 			},
-			"s3_mu": {
+			"s3_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -841,6 +1006,39 @@
 				"detected_irrep": "A1",
 				"state_id": "s3",
 				"value": 0.902,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": -3.278,
+				"unit": "D"
+			},
+			"s2_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": 0.480,
+				"unit": "D"
+			},
+			"s3_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": -0.902,
 				"unit": "D"
 			},
 			"s1_e_cc3": {
@@ -1244,7 +1442,7 @@
 				"state_id": "s7",
 				"value": 0.127
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1255,7 +1453,7 @@
 				"value": 1.325,
 				"unit": "D"
 			},
-			"s2_mu": {
+			"s2_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1266,7 +1464,7 @@
 				"value": 2.302,
 				"unit": "D"
 			},
-			"s3_mu": {
+			"s3_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1277,7 +1475,7 @@
 				"value": 0.454,
 				"unit": "D"
 			},
-			"s4_mu": {
+			"s4_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1288,11 +1486,67 @@
 				"value": 1.628,
 				"unit": "D"
 			},
-			"s7_mu": {
+			"s7_mu_tot": {
 				"comment": "state_id consistent with jacquemin18",
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s7",
+				"value": 1.301,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 1.325,
+				"unit": "D"
+			},
+			"s2_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": -2.302,
+				"unit": "D"
+			},
+			"s3_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s3",
+				"value": 0.454,
+				"unit": "D"
+			},
+			"s4_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": -1.628,
+				"unit": "D"
+			},
+			"s7_mu": {
+				"comment": "state_id consistent with jacquemin18",
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2v",
 				"detected_irrep": "A1",
@@ -1396,10 +1650,22 @@
 				"state_id": "s1",
 				"value": 0.006
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"detected_irrep": "A\"",
+				"state_id": "s1",
+				"value": 0.964,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"comment": "This is the total dipole moment for consistency with benchmark data (Table S7).",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
 				"detected_irrep": "A\"",
@@ -1457,7 +1723,7 @@
 				"state_id": "s1",
 				"value": 0.055
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1466,6 +1732,17 @@
 				"detected_irrep": "P",
 				"state_id": "s1",
 				"value": 2.501,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cinfv",
+				"detected_irrep": "P",
+				"state_id": "s1",
+				"value": -2.501,
 				"unit": "D"
 			},
 			"s1_e_cc3": {
@@ -1530,7 +1807,7 @@
 				"state_id": "s2",
 				"value": 0.063
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1541,7 +1818,7 @@
 				"value": 0.498,
 				"unit": "D"
 			},
-			"s2_mu": {
+			"s2_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1550,6 +1827,28 @@
 				"detected_irrep": "B1",
 				"state_id": "s2",
 				"value": 1.865,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 0.498,
+				"unit": "D"
+			},
+			"s2_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": -1.865,
 				"unit": "D"
 			},
 			"s1_e_cc3": {
@@ -1660,7 +1959,7 @@
 				"state_id": "s4",
 				"value": 0.156
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1671,7 +1970,7 @@
 				"value": 2.390,
 				"unit": "D"
 			},
-			"s2_mu": {
+			"s2_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1682,7 +1981,7 @@
 				"value": 0.969,
 				"unit": "D"
 			},
-			"s3_mu": {
+			"s3_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1693,10 +1992,54 @@
 				"value": 1.480,
 				"unit": "D"
 			},
-			"s4_mu": {
+			"s4_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s4",
+				"value": 0.929,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": -2.390,
+				"unit": "D"
+			},
+			"s2_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s2",
+				"value": -0.969,
+				"unit": "D"
+			},
+			"s3_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s3",
+				"value": 1.480,
+				"unit": "D"
+			},
+			"s4_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2v",
 				"detected_irrep": "A1",
@@ -1777,10 +2120,22 @@
 				"value": 1.740,
 				"unit": "eV"
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
+				"state_multiplicity": 1,
+				"detected_point_group": "Cs",
+				"detected_irrep": "A\"",
+				"state_id": "s1",
+				"value": 1.676,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"comment": "This is the total dipole moment for consistency with benchmark data (Table S7).",
 				"state_multiplicity": 1,
 				"detected_point_group": "Cs",
 				"detected_irrep": "A\"",
@@ -1851,7 +2206,7 @@
 				"state_id": "s2",
 				"value": 0.034
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1862,7 +2217,7 @@
 				"value": 1.924,
 				"unit": "D"
 			},
-			"s2_mu": {
+			"s2_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1871,6 +2226,28 @@
 				"detected_irrep": "B2",
 				"state_id": "s2",
 				"value": 0.039,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": -1.924,
+				"unit": "D"
+			},
+			"s2_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": -0.039,
 				"unit": "D"
 			},
 			"s1_e_cc3": {
@@ -1969,7 +2346,7 @@
 				"state_id": "s3",
 				"value": 0.135
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1980,7 +2357,7 @@
 				"value": 0.840,
 				"unit": "D"
 			},
-			"s2_mu": {
+			"s2_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -1991,10 +2368,43 @@
 				"value": 3.658,
 				"unit": "D"
 			},
-			"s3_mu": {
+			"s3_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": 1.179,
+				"unit": "D"
+			},
+			"s1_mu_": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s1",
+				"value": 0.840,
+				"unit": "D"
+			},
+			"s2_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B2",
+				"state_id": "s2",
+				"value": -3.658,
+				"unit": "D"
+			},
+			"s3_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
 				"state_multiplicity": 1,
 				"detected_point_group": "C2v",
 				"detected_irrep": "A1",
@@ -2108,7 +2518,7 @@
 				"state_id": "s3",
 				"value": 0.100
 			},
-			"s1_mu": {
+			"s1_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -2119,7 +2529,7 @@
 				"value": 1.558,
 				"unit": "D"
 			},
-			"s2_mu": {
+			"s2_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -2130,7 +2540,7 @@
 				"value": 1.106,
 				"unit": "D"
 			},
-			"s3_mu": {
+			"s3_mu_tot": {
 				"basis": "aug-cc-pvtz",
 				"method": "tbe",
 				"type": "total dipole moment",
@@ -2139,6 +2549,39 @@
 				"detected_irrep": "A1",
 				"state_id": "s3",
 				"value": 1.213,
+				"unit": "D"
+			},
+			"s1_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "B1",
+				"state_id": "s1",
+				"value": -1.558,
+				"unit": "D"
+			},
+			"s2_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A2",
+				"state_id": "s2",
+				"value": -1.106,
+				"unit": "D"
+			},
+			"s3_mu": {
+				"basis": "aug-cc-pvtz",
+				"method": "tbe",
+				"type": "dipole moment largest component",
+				"state_multiplicity": 1,
+				"detected_point_group": "C2v",
+				"detected_irrep": "A1",
+				"state_id": "s3",
+				"value": -1.213,
 				"unit": "D"
 			},
 			"s1_e_cc3": {
