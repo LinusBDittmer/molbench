@@ -70,135 +70,135 @@
 				"value": 7.456,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.964,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.361,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.364,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.363,
 				"unit": "au"
 			},
-			"s1->s3_e": {
+			"s1_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 1.032,
 				"unit": "eV"
 			},
-			"s1->s3_fl": {
+			"s1_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.256,
 				"unit": "au"
 			},
-			"s1->s3_fv": {
+			"s1_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.259,
 				"unit": "au"
 			},
-			"s1->s3_fm": {
+			"s1_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": -0.257,
 				"unit": "au"
 			},
-			"s1->s4_e": {
+			"s1_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->B2",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 1.037,
 				"unit": "eV"
 			},
-			"s1->s4_fl": {
+			"s1_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->B2",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.267,
 				"unit": "au"
 			},
-			"s1->s4_fv": {
+			"s1_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->B2",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.268,
 				"unit": "au"
 			},
-			"s1->s4_fm": {
+			"s1_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->B2",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.268,
 				"unit": "au"
 			}
@@ -249,47 +249,47 @@
 				"value": 6.743,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cs",
 				"detected_irreps": "A\"->A\"",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 3.002,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cs",
 				"detected_irreps": "A\"->A\"",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.036,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cs",
 				"detected_irreps": "A\"->A\"",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.039,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cs",
 				"detected_irreps": "A\"->A\"",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.037,
 				"unit": "au"
 			}
@@ -364,179 +364,179 @@
 				"value": 9.120,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A2->E",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 1.545,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A2->E",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.320,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A2->E",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.321,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A2->E",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.321,
 				"unit": "au"
 			},
-			"s1->s3_e": {
+			"s1_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A2->A1",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 1.992,
 				"unit": "eV"
 			},
-			"s1->s3_fl": {
+			"s1_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A2->A1",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.295,
 				"unit": "au"
 			},
-			"s1->s3_fv": {
+			"s1_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A2->A1",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.296,
 				"unit": "au"
 			},
-			"s1->s3_fm": {
+			"s1_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A2->A1",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.296,
 				"unit": "au"
 			},
-			"s2->s4_e": {
+			"s2_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "E->A2",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 1.003,
 				"unit": "eV"
 			},
-			"s2->s4_fl": {
+			"s2_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "E->A2",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.139,
 				"unit": "au"
 			},
-			"s2->s4_fv": {
+			"s2_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "E->A2",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.143,
 				"unit": "au"
 			},
-			"s2->s4_fm": {
+			"s2_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "E->A2",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.141,
 				"unit": "au"
 			},
-			"s3->s4_e": {
+			"s3_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A1->A2",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.556,
 				"unit": "eV"
 			},
-			"s3->s4_fl": {
+			"s3_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A1->A2",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.252,
 				"unit": "au"
 			},
-			"s3->s4_fv": {
+			"s3_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A1->A2",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.278,
 				"unit": "au"
 			},
-			"s3->s4_fm": {
+			"s3_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C3v",
 				"detected_irreps": "A1->A2",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.264,
 				"unit": "au"
 			}
@@ -603,91 +603,91 @@
 				"value": 7.117,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D6h",
 				"detected_irreps": "E1g->A2u",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.549,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D6h",
 				"detected_irreps": "E1g->A2u",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.132,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D6h",
 				"detected_irreps": "E1g->A2u",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.133,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D6h",
 				"detected_irreps": "E1g->A2u",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": -0.133,
 				"unit": "au"
 			},
-			"s1->s3_e": {
+			"s1_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D6h",
 				"detected_irreps": "E1g->E2u",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.613,
 				"unit": "eV"
 			},
-			"s1->s3_fl": {
+			"s1_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D6h",
 				"detected_irreps": "E1g->E2u",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.138,
 				"unit": "au"
 			},
-			"s1->s3_fv": {
+			"s1_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D6h",
 				"detected_irreps": "E1g->E2u",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.140,
 				"unit": "au"
 			},
-			"s1->s3_fm": {
+			"s1_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D6h",
 				"detected_irreps": "E1g->E2u",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.139,
 				"unit": "au"
 			}
@@ -764,179 +764,179 @@
 				"value": 7.447,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Bg->Au",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.316,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Bg->Au",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.122,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Bg->Au",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.124,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Bg->Au",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": -0.124,
 				"unit": "au"
 			},
-			"s1->s3_e": {
+			"s1_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Bg->Au",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.470,
 				"unit": "eV"
 			},
-			"s1->s3_fl": {
+			"s1_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Bg->Au",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.165,
 				"unit": "au"
 			},
-			"s1->s3_fv": {
+			"s1_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Bg->Au",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.167,
 				"unit": "au"
 			},
-			"s1->s3_fm": {
+			"s1_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Bg->Au",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": -0.166,
 				"unit": "au"
 			},
-			"s2->s4_e": {
+			"s2_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.821,
 				"unit": "eV"
 			},
-			"s2->s4_fl": {
+			"s2_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.062,
 				"unit": "au"
 			},
-			"s2->s4_fv": {
+			"s2_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.062,
 				"unit": "au"
 			},
-			"s2->s4_fm": {
+			"s2_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.062,
 				"unit": "au"
 			},
-			"s3->s4_e": {
+			"s3_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.667,
 				"unit": "eV"
 			},
-			"s3->s4_fl": {
+			"s3_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.367,
 				"unit": "au"
 			},
-			"s3->s4_fv": {
+			"s3_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.369,
 				"unit": "au"
 			},
-			"s3->s4_fm": {
+			"s3_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.368,
 				"unit": "au"
 			}
@@ -1009,223 +1009,223 @@
 				"value": 11.414,
 				"unit": "eV"
 			},
-			"s1->s4_e": {
+			"s1_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->S+",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 2.195,
 				"unit": "eV"
 			},
-			"s1->s4_fl": {
+			"s1_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->S+",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.025,
 				"unit": "au"
 			},
-			"s1->s4_fv": {
+			"s1_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->S+",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.025,
 				"unit": "au"
 			},
-			"s1->s4_fm": {
+			"s1_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->S+",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": -0.025,
 				"unit": "au"
 			},
-			"s1->s5_e": {
+			"s1_to_s5_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->S+",
-				"state_id": "s1->s5",
+				"state_id": "s1_to_s5",
 				"value": 2.804,
 				"unit": "eV"
 			},
-			"s1->s5_fl": {
+			"s1_to_s5_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->S+",
-				"state_id": "s1->s5",
+				"state_id": "s1_to_s5",
 				"value": 0.010,
 				"unit": "au"
 			},
-			"s1->s5_fv": {
+			"s1_to_s5_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->S+",
-				"state_id": "s1->s5",
+				"state_id": "s1_to_s5",
 				"value": 0.010,
 				"unit": "au"
 			},
-			"s1->s5_fm": {
+			"s1_to_s5_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->S+",
-				"state_id": "s1->s5",
+				"state_id": "s1_to_s5",
 				"value": -0.010,
 				"unit": "au"
 			},
-			"s1->s6_e": {
+			"s1_to_s6_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->P",
-				"state_id": "s1->s6",
+				"state_id": "s1_to_s6",
 				"value": 2.933,
 				"unit": "eV"
 			},
-			"s1->s6_fl": {
+			"s1_to_s6_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->P",
-				"state_id": "s1->s6",
+				"state_id": "s1_to_s6",
 				"value": 0.010,
 				"unit": "au"
 			},
-			"s1->s6_fv": {
+			"s1_to_s6_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->P",
-				"state_id": "s1->s6",
+				"state_id": "s1_to_s6",
 				"value": 0.009,
 				"unit": "au"
 			},
-			"s1->s6_fm": {
+			"s1_to_s6_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "P->P",
-				"state_id": "s1->s6",
+				"state_id": "s1_to_s6",
 				"value": 0.009,
 				"unit": "au"
 			},
-			"s4->s5_e": {
+			"s4_to_s5_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "S+->S+",
-				"state_id": "s4->s5",
+				"state_id": "s4_to_s5",
 				"value": 0.609,
 				"unit": "eV"
 			},
-			"s4->s5_fl": {
+			"s4_to_s5_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "S+->S+",
-				"state_id": "s4->s5",
+				"state_id": "s4_to_s5",
 				"value": 0.146,
 				"unit": "au"
 			},
-			"s4->s5_fv": {
+			"s4_to_s5_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "S+->S+",
-				"state_id": "s4->s5",
+				"state_id": "s4_to_s5",
 				"value": 0.146,
 				"unit": "au"
 			},
-			"s4->s5_fm": {
+			"s4_to_s5_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "S+->S+",
-				"state_id": "s4->s5",
+				"state_id": "s4_to_s5",
 				"value": 0.147,
 				"unit": "au"
 			},
-			"s4->s6_e": {
+			"s4_to_s6_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "S+->P",
-				"state_id": "s4->s6",
+				"state_id": "s4_to_s6",
 				"value": 0.738,
 				"unit": "eV"
 			},
-			"s4->s6_fl": {
+			"s4_to_s6_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "S+->P",
-				"state_id": "s4->s6",
+				"state_id": "s4_to_s6",
 				"value": 0.256,
 				"unit": "au"
 			},
-			"s4->s6_fv": {
+			"s4_to_s6_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "S+->P",
-				"state_id": "s4->s6",
+				"state_id": "s4_to_s6",
 				"value": 0.261,
 				"unit": "au"
 			},
-			"s4->s6_fm": {
+			"s4_to_s6_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "Cinfv",
 				"detected_irreps": "S+->P",
-				"state_id": "s4->s6",
+				"state_id": "s4_to_s6",
 				"value": 0.258,
 				"unit": "au"
 			}
@@ -1327,179 +1327,179 @@
 				"value": 6.567,
 				"unit": "eV"
 			},
-			"s1->s6_e": {
+			"s1_to_s6_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s1->s6",
+				"state_id": "s1_to_s6",
 				"value": 1.029,
 				"unit": "eV"
 			},
-			"s1->s6_fl": {
+			"s1_to_s6_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s1->s6",
+				"state_id": "s1_to_s6",
 				"value": 0.023,
 				"unit": "au"
 			},
-			"s1->s6_fv": {
+			"s1_to_s6_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s1->s6",
+				"state_id": "s1_to_s6",
 				"value": 0.032,
 				"unit": "au"
 			},
-			"s1->s6_fm": {
+			"s1_to_s6_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s1->s6",
+				"state_id": "s1_to_s6",
 				"value": -0.027,
 				"unit": "au"
 			},
-			"s2->s3_e": {
+			"s2_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": 0.616,
 				"unit": "eV"
 			},
-			"s2->s3_fl": {
+			"s2_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": 0.235,
 				"unit": "au"
 			},
-			"s2->s3_fv": {
+			"s2_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": 0.236,
 				"unit": "au"
 			},
-			"s2->s3_fm": {
+			"s2_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": -0.236,
 				"unit": "au"
 			},
-			"s2->s4_e": {
+			"s2_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.653,
 				"unit": "eV"
 			},
-			"s2->s4_fl": {
+			"s2_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.252,
 				"unit": "au"
 			},
-			"s2->s4_fv": {
+			"s2_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.254,
 				"unit": "au"
 			},
-			"s2->s4_fm": {
+			"s2_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.253,
 				"unit": "au"
 			},
-			"s2->s5_e": {
+			"s2_to_s5_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": 0.689,
 				"unit": "eV"
 			},
-			"s2->s5_fl": {
+			"s2_to_s5_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": 0.282,
 				"unit": "au"
 			},
-			"s2->s5_fv": {
+			"s2_to_s5_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": 0.284,
 				"unit": "au"
 			},
-			"s2->s5_fm": {
+			"s2_to_s5_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": -0.283,
 				"unit": "au"
 			}
@@ -1551,47 +1551,47 @@
 				"value": 7.294,
 				"unit": "eV"
 			},
-			"s3->s4_e": {
+			"s3_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->B1",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.373,
 				"unit": "eV"
 			},
-			"s3->s4_fl": {
+			"s3_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->B1",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.103,
 				"unit": "au"
 			},
-			"s3->s4_fv": {
+			"s3_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->B1",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.102,
 				"unit": "au"
 			},
-			"s3->s4_fm": {
+			"s3_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->B1",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.103,
 				"unit": "au"
 			}
@@ -1654,91 +1654,91 @@
 				"value": 7.972,
 				"unit": "eV"
 			},
-			"s1->s4_e": {
+			"s1_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A1",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 3.859,
 				"unit": "eV"
 			},
-			"s1->s4_fl": {
+			"s1_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A1",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.014,
 				"unit": "au"
 			},
-			"s1->s4_fv": {
+			"s1_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A1",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.015,
 				"unit": "au"
 			},
-			"s1->s4_fm": {
+			"s1_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A1",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": -0.014,
 				"unit": "au"
 			},
-			"s3->s4_e": {
+			"s3_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.530,
 				"unit": "eV"
 			},
-			"s3->s4_fl": {
+			"s3_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.085,
 				"unit": "au"
 			},
-			"s3->s4_fv": {
+			"s3_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": 0.084,
 				"unit": "au"
 			},
-			"s3->s4_fm": {
+			"s3_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s3->s4",
+				"state_id": "s3_to_s4",
 				"value": -0.084,
 				"unit": "au"
 			}
@@ -1788,47 +1788,47 @@
 				"value": 5.436,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 2.364,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.012,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.012,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": -0.012,
 				"unit": "au"
 			}
@@ -1916,223 +1916,223 @@
 				"value": 8.386,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 3.205,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.019,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.020,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": -0.020,
 				"unit": "au"
 			},
-			"s1->s5_e": {
+			"s1_to_s5_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s5",
+				"state_id": "s1_to_s5",
 				"value": 4.419,
 				"unit": "eV"
 			},
-			"s1->s5_fl": {
+			"s1_to_s5_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s5",
+				"state_id": "s1_to_s5",
 				"value": 0.015,
 				"unit": "au"
 			},
-			"s1->s5_fv": {
+			"s1_to_s5_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s5",
+				"state_id": "s1_to_s5",
 				"value": 0.014,
 				"unit": "au"
 			},
-			"s1->s5_fm": {
+			"s1_to_s5_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s5",
+				"state_id": "s1_to_s5",
 				"value": 0.014,
 				"unit": "au"
 			},
-			"s2->s4_e": {
+			"s2_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.972,
 				"unit": "eV"
 			},
-			"s2->s4_fl": {
+			"s2_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.297,
 				"unit": "au"
 			},
-			"s2->s4_fv": {
+			"s2_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.301,
 				"unit": "au"
 			},
-			"s2->s4_fm": {
+			"s2_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A1",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": -0.299,
 				"unit": "au"
 			},
-			"s2->s5_e": {
+			"s2_to_s5_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": 1.214,
 				"unit": "eV"
 			},
-			"s2->s5_fl": {
+			"s2_to_s5_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": 0.278,
 				"unit": "au"
 			},
-			"s2->s5_fv": {
+			"s2_to_s5_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": 0.279,
 				"unit": "au"
 			},
-			"s2->s5_fm": {
+			"s2_to_s5_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": 0.279,
 				"unit": "au"
 			},
-			"s3->s5_e": {
+			"s3_to_s5_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s3->s5",
+				"state_id": "s3_to_s5",
 				"value": 0.392,
 				"unit": "eV"
 			},
-			"s3->s5_fl": {
+			"s3_to_s5_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s3->s5",
+				"state_id": "s3_to_s5",
 				"value": 0.011,
 				"unit": "au"
 			},
-			"s3->s5_fv": {
+			"s3_to_s5_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s3->s5",
+				"state_id": "s3_to_s5",
 				"value": 0.011,
 				"unit": "au"
 			},
-			"s3->s5_fm": {
+			"s3_to_s5_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s3->s5",
+				"state_id": "s3_to_s5",
 				"value": 0.011,
 				"unit": "au"
 			}
@@ -2208,135 +2208,135 @@
 				"value": 6.883,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.544,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.220,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.220,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": -0.220,
 				"unit": "au"
 			},
-			"s1->s3_e": {
+			"s1_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.693,
 				"unit": "eV"
 			},
-			"s1->s3_fl": {
+			"s1_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.268,
 				"unit": "au"
 			},
-			"s1->s3_fv": {
+			"s1_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.269,
 				"unit": "au"
 			},
-			"s1->s3_fm": {
+			"s1_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.269,
 				"unit": "au"
 			},
-			"s1->s4_e": {
+			"s1_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.822,
 				"unit": "eV"
 			},
-			"s1->s4_fl": {
+			"s1_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.271,
 				"unit": "au"
 			},
-			"s1->s4_fv": {
+			"s1_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.272,
 				"unit": "au"
 			},
-			"s1->s4_fm": {
+			"s1_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": -0.271,
 				"unit": "au"
 			}
@@ -2397,91 +2397,91 @@
 				"value": 6.566,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 1.393,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.020,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.021,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.021,
 				"unit": "au"
 			},
-			"s1->s3_e": {
+			"s1_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 3.692,
 				"unit": "eV"
 			},
-			"s1->s3_fl": {
+			"s1_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.113,
 				"unit": "au"
 			},
-			"s1->s3_fv": {
+			"s1_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.117,
 				"unit": "au"
 			},
-			"s1->s3_fm": {
+			"s1_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2h",
 				"detected_irreps": "Au->Bg",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.115,
 				"unit": "au"
 			}
@@ -2544,91 +2544,91 @@
 				"value": 7.085,
 				"unit": "eV"
 			},
-			"s2->s3_e": {
+			"s2_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": 1.161,
 				"unit": "eV"
 			},
-			"s2->s3_fl": {
+			"s2_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": 0.336,
 				"unit": "au"
 			},
-			"s2->s3_fv": {
+			"s2_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": 0.338,
 				"unit": "au"
 			},
-			"s2->s3_fm": {
+			"s2_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": 0.337,
 				"unit": "au"
 			},
-			"s2->s4_e": {
+			"s2_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A1",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 1.136,
 				"unit": "eV"
 			},
-			"s2->s4_fl": {
+			"s2_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A1",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.176,
 				"unit": "au"
 			},
-			"s2->s4_fv": {
+			"s2_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A1",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": 0.174,
 				"unit": "au"
 			},
-			"s2->s4_fm": {
+			"s2_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A1",
-				"state_id": "s2->s4",
+				"state_id": "s2_to_s4",
 				"value": -0.175,
 				"unit": "au"
 			}
@@ -2691,91 +2691,91 @@
 				"value": 5.928,
 				"unit": "eV"
 			},
-			"s1->s3_e": {
+			"s1_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 1.616,
 				"unit": "eV"
 			},
-			"s1->s3_fl": {
+			"s1_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.023,
 				"unit": "au"
 			},
-			"s1->s3_fv": {
+			"s1_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.025,
 				"unit": "au"
 			},
-			"s1->s3_fm": {
+			"s1_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.024,
 				"unit": "au"
 			},
-			"s2->s3_e": {
+			"s2_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": 0.506,
 				"unit": "eV"
 			},
-			"s2->s3_fl": {
+			"s2_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": 0.188,
 				"unit": "au"
 			},
-			"s2->s3_fv": {
+			"s2_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": 0.189,
 				"unit": "au"
 			},
-			"s2->s3_fm": {
+			"s2_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s2->s3",
+				"state_id": "s2_to_s3",
 				"value": 0.189,
 				"unit": "au"
 			}
@@ -2864,179 +2864,179 @@
 				"value": 7.951,
 				"unit": "eV"
 			},
-			"s1->s3_e": {
+			"s1_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "Ag->B2u",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.591,
 				"unit": "eV"
 			},
-			"s1->s3_fl": {
+			"s1_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "Ag->B2u",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.240,
 				"unit": "au"
 			},
-			"s1->s3_fv": {
+			"s1_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "Ag->B2u",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.244,
 				"unit": "au"
 			},
-			"s1->s3_fm": {
+			"s1_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "Ag->B2u",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.242,
 				"unit": "au"
 			},
-			"s1->s4_e": {
+			"s1_to_s4_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "Ag->B1u",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.771,
 				"unit": "eV"
 			},
-			"s1->s4_fl": {
+			"s1_to_s4_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "Ag->B1u",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.198,
 				"unit": "au"
 			},
-			"s1->s4_fv": {
+			"s1_to_s4_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "Ag->B1u",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.197,
 				"unit": "au"
 			},
-			"s1->s4_fm": {
+			"s1_to_s4_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "Ag->B1u",
-				"state_id": "s1->s4",
+				"state_id": "s1_to_s4",
 				"value": 0.198,
 				"unit": "au"
 			},
-			"s2->s5_e": {
+			"s2_to_s5_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B1u->B3g",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": 1.090,
 				"unit": "eV"
 			},
-			"s2->s5_fl": {
+			"s2_to_s5_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B1u->B3g",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": 0.004,
 				"unit": "au"
 			},
-			"s2->s5_fv": {
+			"s2_to_s5_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B1u->B3g",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": 0.004,
 				"unit": "au"
 			},
-			"s2->s5_fm": {
+			"s2_to_s5_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B1u->B3g",
-				"state_id": "s2->s5",
+				"state_id": "s2_to_s5",
 				"value": 0.004,
 				"unit": "au"
 			},
-			"s3->s5_e": {
+			"s3_to_s5_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B2u->B3g",
-				"state_id": "s3->s5",
+				"state_id": "s3_to_s5",
 				"value": 0.722,
 				"unit": "eV"
 			},
-			"s3->s5_fl": {
+			"s3_to_s5_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B2u->B3g",
-				"state_id": "s3->s5",
+				"state_id": "s3_to_s5",
 				"value": 0.201,
 				"unit": "au"
 			},
-			"s3->s5_fv": {
+			"s3_to_s5_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B2u->B3g",
-				"state_id": "s3->s5",
+				"state_id": "s3_to_s5",
 				"value": 0.201,
 				"unit": "au"
 			},
-			"s3->s5_fm": {
+			"s3_to_s5_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B2u->B3g",
-				"state_id": "s3->s5",
+				"state_id": "s3_to_s5",
 				"value": 0.201,
 				"unit": "au"
 			}
@@ -3089,47 +3089,47 @@
 				"value": 6.366,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 1.995,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.012,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.010,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": -0.011,
 				"unit": "au"
 			}
@@ -3194,91 +3194,91 @@
 				"value": 5.980,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.734,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.091,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.091,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": -0.091,
 				"unit": "au"
 			},
-			"s1->s3_e": {
+			"s1_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.747,
 				"unit": "eV"
 			},
-			"s1->s3_fl": {
+			"s1_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.171,
 				"unit": "au"
 			},
-			"s1->s3_fv": {
+			"s1_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.171,
 				"unit": "au"
 			},
-			"s1->s3_fm": {
+			"s1_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->A2",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.171,
 				"unit": "au"
 			}
@@ -3327,47 +3327,47 @@
 				"value": 3.780,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 1.624,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.003,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.002,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": -0.003,
 				"unit": "au"
 			}
@@ -3430,91 +3430,91 @@
 				"value": 5.463,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B3u->B1g",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 2.456,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B3u->B1g",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.061,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B3u->B1g",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.068,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B3u->B1g",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.065,
 				"unit": "au"
 			},
-			"s1->s3_e": {
+			"s1_to_s3_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B3u->B2g",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 3.009,
 				"unit": "eV"
 			},
-			"s1->s3_fl": {
+			"s1_to_s3_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B3u->B2g",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.017,
 				"unit": "au"
 			},
-			"s1->s3_fv": {
+			"s1_to_s3_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B3u->B2g",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.017,
 				"unit": "au"
 			},
-			"s1->s3_fm": {
+			"s1_to_s3_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "D2h",
 				"detected_irreps": "B3u->B2g",
-				"state_id": "s1->s3",
+				"state_id": "s1_to_s3",
 				"value": 0.017,
 				"unit": "au"
 			}
@@ -3566,47 +3566,47 @@
 				"value": 6.130,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.009,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.001,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": -0.004,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "A2->B1",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": -0.000,
 				"unit": "au"
 			}
@@ -3654,47 +3654,47 @@
 				"value": 9.368,
 				"unit": "eV"
 			},
-			"s1->s2_e": {
+			"s1_to_s2_e": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s excitation energy",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 1.768,
 				"unit": "eV"
 			},
-			"s1->s2_fl": {
+			"s1_to_s2_fl": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength length gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.283,
 				"unit": "au"
 			},
-			"s1->s2_fv": {
+			"s1_to_s2_fv": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength velocity gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.284,
 				"unit": "au"
 			},
-			"s1->s2_fm": {
+			"s1_to_s2_fm": {
 				"basis": "d-aug-cc-pvtz",
 				"method": "qr-cc3",
 				"type": "s2s oscillator strength mixed gauge",
 				"state_multiplicities": "1->1",
 				"detected_point_group": "C2v",
 				"detected_irreps": "B1->A2",
-				"state_id": "s1->s2",
+				"state_id": "s1_to_s2",
 				"value": 0.283,
 				"unit": "au"
 			}
