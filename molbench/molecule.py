@@ -1,8 +1,16 @@
 from . import logger as log
 from .functions import walk_dict_by_key
+from typing import Any
 
 
 class Molecule:
+
+    __slots__ = ("name", "data_id", "system_data", "state_data")
+    name: str
+    data_id: str
+    system_data: dict[str, Any]
+    state_data: dict[str, Any]
+
     def __init__(self, name, data_id, system_data: dict | None = None,
                  state_data: dict | None = None) -> None:
         self.name = name
@@ -10,11 +18,11 @@ class Molecule:
         # dict that contains all the information regarding the system:
         # xyz_coords, charge, ...
         # -> information that is mostly required to build input files
-        self.system_data: dict = {} if system_data is None else system_data
+        self.system_data = {} if system_data is None else system_data
         # dict that contains all the information regarding the data points
         # for each state. Is of the form:
         # {state: {basis: _, method: _, ... type: _, value: _}
-        self.state_data: dict = {} if state_data is None else state_data
+        self.state_data = {} if state_data is None else state_data
 
     def __repr__(self):
         return f"{self.name}: {self.data_id}"
@@ -53,54 +61,69 @@ class Molecule:
         return cls(name, benchmark_id, system_data, properties)
 
     @classmethod
-    def from_external(cls, external: dict, data_id,
-                      molname=None) -> 'Molecule':
-        # possibly the name of the molecule is included in external
-        # -> extract it
-        # if it is not given -> use molname as backup
-        # multiple properties may be listed in external['data']
-        # -> flatten the structure by adding a counter to the state
-        name = None
-        state_data = {}
-        for state_id, metadata in external.items():
-            n = metadata.get("name", None)
-            if n is not None:
-                if name is None:
-                    name = n
-                elif name != n:
-                    log.critical("Ambiguous name definition in external data: "
-                                 f"{name} and {n}", "Molecule: from_external")
-            data = metadata.get("data", None)
-            metadata = {k: v for k, v in metadata.items()
-                        if k not in ["name", "data"]}
-            if data is None:
-                state_data[state_id] = metadata
-                continue
+    def from_external(cls, external_system_data: dict[str, Any],
+                      external_state_data: dict[str, Any], 
+                      data_id: str, molname: str) -> 'Molecule':
+        # Either system data or state data must exist
+        if (not external_state_data) and (not external_system_data):
+            log.critical("Both state and system data dicts are empty. "
+                         f"Molecule {molname}", "Molecule: from_external")
+        # We now define variables that are filled with the parsed data
+        system_data: dict[str, Any] = dict(external_system_data)
+        state_data: dict[str, Any] = dict(external_state_data)
+        # Next we check if the state_data dictionary is correctly set up
+        # We expect that the top level contains each state in the format
+        # [str]: [dict]
+        if external_state_data is not None:
+            for state_key, state_values in external_state_data.items():
+                # Make sure that all keys are strings
+                if not isinstance(state_key, str):
+                    log.critical("All state data keys must be strings. "
+                                 f"{state_key} is of type {type(state_key)} "
+                                 f"in Molecule {molname}",
+                                 "Molecule: from_external")
+                if not isinstance(state_values, dict):
+                    log.critical("Incorrect state data structre. Found "
+                                 f"{type(state_values)} where there "
+                                 f"should be a dict in molecule {molname}",
+                                 "Molecule: from_external")
+                # State_values must have the keywords method, basis and data
+                if "method" not in state_values:
+                    log.critical("\"method\" keyword is required in state "
+                                 f"data. State Key: {state_key}",
+                                 "Molecule: from_external")
+                if "basis" not in state_values:
+                    log.critical("\"basis\" keyword is required in state "
+                                 f"data. State Key: {state_key}",
+                                 "Molecule: from_external")
+                if "data" not in state_values:
+                    log.critical("\"data\" keyword is required in state "
+                                 f"data. State Key: {state_key}",
+                                 "Molecule: from_external")
+                # Lastly, we assert that the "data" dict is correctly set up
+                # It should contain a series of entries, each containing a pair
+                # of entries labeled "value" and "unit"
+                if not isinstance(state_values["data"], dict):
+                    log.critical("\"data\" keyword in state dictionary must "
+                                 f"contain a dictionary (state: {state_key}, "
+                                 f"molecule: {molname})",
+                                 "Molecule: from_external")
+                for dkey, dvals in state_values["data"].items():
+                    # only value, unit allowed
+                    if len(dvals) != 2:
+                        log.critical("Incorrect datapoint specification: "
+                                     f"{dvals}", "Molecule: from_external")
+                    if "unit" not in dvals:
+                        log.critical("Incorrect datapoint specification: "
+                                     f"{dvals}", "Molecule: from_external")
+                    if "value" not in dvals:
+                        log.critical("Incorrect datapoint specification: "
+                                     f"{dvals}", "Molecule: from_external")
+                    dpoint: Datapoint = Datapoint(dvals["value"],
+                                                  str(dvals["unit"]))
+                    state_data[state_key]["data"][dkey] = dpoint
 
-            if "type" in metadata or "value" in metadata:
-                log.warning("The keys 'type' and 'value' in external data "
-                            "will be overwritten when the structure is "
-                            "flattened.", "Molecule: from_external")
-            i = 0
-            for proptype, value in data.items():
-                prop = metadata.copy()
-                prop["type"] = proptype
-                prop["value"] = value
-                # ensure that we don't overwrite any data!
-                key = f"{state_id}_{i}"
-                while key in external or key in state_data:
-                    i += 1
-                    key = f"{state_id}_{i}"
-                state_data[key] = prop
-                i += 1
-
-        if name is None:
-            if molname is None:
-                log.critical("Name not specified in external data and not "
-                             "provided as argument to the method.",
-                             "Molecule: from_external")
-            name = molname
-        return cls(name, data_id, None, state_data)
+        return cls(molname, data_id, system_data, state_data)
 
     def add_assignments(self, assignments: dict,
                         state_id_key: str = "state_id") -> None:
@@ -140,7 +163,7 @@ class Molecule:
             state_data[state_id_key] = assignments[external_id]
 
 
-class MoleculeList(list):
+class MoleculeList(list[Molecule]):
 
     def __repr__(self):
         return super().__repr__()
@@ -179,6 +202,7 @@ class MoleculeList(list):
             combined_mol = Molecule(c_name, data_id, dict(), dict())
 
             for molidx, rmol in enumerate(relevant_mols):
+                rmol: Molecule
                 self._join_system_data(combined_mol.system_data,
                                        rmol.system_data, molidx)
                 self._join_state_data(combined_mol.state_data, rmol.state_data,
@@ -359,3 +383,14 @@ class MoleculeList(list):
                                       zip(property_value, pdict["value"])]
                 else:
                     pdict["value"] += property_value
+
+
+class Datapoint:
+
+    __slots__ = ("value", "unit")
+    value: Any
+    unit: str
+
+    def __init__(self, value: Any, unit: str) -> None:
+        self.value = value
+        self.unit = unit

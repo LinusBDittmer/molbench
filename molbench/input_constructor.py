@@ -246,7 +246,7 @@ class TemplateConstructor(InputConstructor):
                                   file_name_generator, file_content_generator,
                                   folder_structure_generator)
 
-    def _molecule_variants_data_iter(self, benchmark: MoleculeList[Molecule],
+    def _molecule_variants_data_iter(self, benchmark: MoleculeList,
                                      calc_details: dict,
                                      file_expansion_keys: tuple):
         # for each molecule:
@@ -254,7 +254,6 @@ class TemplateConstructor(InputConstructor):
         #  perform calculations for different basis sets in independent
         #  files.
         for molecule in benchmark:
-            molecule: Molecule
             # list instead of set -> values have not to be hashable
             variants = []
             variant_properties = []
@@ -367,7 +366,7 @@ class CompressedTemplateConstructor(TemplateConstructor):
     def __init__(self, template: str):
         super().__init__(template)
 
-    def create_inputs(self, benchmark: MoleculeList[Molecule], basepath: str,
+    def create_inputs(self, benchmark: MoleculeList, basepath: str,
                       calc_details: dict,
                       file_expansion_keys: tuple = ("basis",),
                       flat_structure: bool = False,
@@ -442,12 +441,14 @@ class CompressedTemplateConstructor(TemplateConstructor):
                     pkey = list(mol.state_data.keys())[0]
                 else:
                     pkey = [k for k, v in mol.state_data.items()
-                            if v["type"] == compressed_property][0]
+                            if compressed_property in v][0]
 
                 factor_key = None
-                if "stochiometry" in mol.state_data[pkey]:
+                if "stochiometry" in \
+                        mol.state_data[pkey][compressed_property]:
                     factor_key = "stochiometry"
-                elif "factors" in mol.state_data[pkey]:
+                elif "factors" in \
+                        mol.state_data[pkey][compressed_property]:
                     factor_key = "factors"
 
                 if factor_key is None:

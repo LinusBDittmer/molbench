@@ -3,7 +3,7 @@ import os
 import sys
 
 
-instance = None
+instance: logging.Logger | None = None
 
 
 class MolbenchFormatter(logging.Formatter):
@@ -46,6 +46,7 @@ def _format_cause(cause):
 def debug(msg: str, cause=None):
     fcause = _format_cause(cause)
     global instance
+    assert instance is not None
     if cause is None:
         instance.debug(msg)
     else:
@@ -55,6 +56,7 @@ def debug(msg: str, cause=None):
 def info(msg: str, cause=None):
     fcause = _format_cause(cause)
     global instance
+    assert instance is not None
     if cause is None:
         instance.info(msg)
     else:
@@ -64,6 +66,7 @@ def info(msg: str, cause=None):
 def warning(msg: str, cause=None):
     fcause = _format_cause(cause)
     global instance
+    assert instance is not None
     if cause is None:
         instance.warning(msg)
     else:
@@ -73,6 +76,7 @@ def warning(msg: str, cause=None):
 def error(msg: str, cause=None, etype: str = ""):
     fcause = _format_cause(cause)
     global instance
+    assert instance is not None
     if cause is None:
         instance.error(f"{msg} (Error type: {etype})")
     else:
@@ -82,6 +86,7 @@ def error(msg: str, cause=None, etype: str = ""):
 def critical(msg: str, cause):
     fcause = _format_cause(cause)
     global instance
+    assert instance is not None
     instance.critical(f"[{fcause}] CRITICAL ERROR: {msg}\n")
     sys.exit(-1)
 
