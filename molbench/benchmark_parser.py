@@ -56,6 +56,9 @@ class BenchmarkParser:
                              "cannot be seen.", "Benchmark Parser")
             benchfile = benchmark
         content = self.parse_benchmark(benchfile)
+        if not content:
+            log.critical(f"Benchmark file {benchmark} was found but could not"
+                         " be loaded.", "Benchmark Parser")
         if benchmark_id is None:
             benchmark_id = benchmark
         return MoleculeList(
@@ -63,7 +66,7 @@ class BenchmarkParser:
             for molkey, moldata in content.items()
         )
 
-    def parse_benchmark(self, benchmarkfile: str) -> dict:
+    def parse_benchmark(self, benchmarkfile: str) -> dict | None:
         raise NotImplementedError("The parse_benchmark function is not "
                                   "implemented in the BenchmarkParser "
                                   "superclass. Please use a child class "
@@ -71,7 +74,7 @@ class BenchmarkParser:
 
 
 class JSONBenchmarkParser(BenchmarkParser):
-    def parse_benchmark(self, benchmarkfile: str) -> dict:
+    def parse_benchmark(self, benchmarkfile: str) -> dict | None:
         """
         Parse a benchmark file.
 

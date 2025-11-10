@@ -75,9 +75,8 @@ from .statistics import Statistics, register_as_error_measure
 from .export import Exporter, LatexExporter
 from .external_parser import ExternalParser
 from .molecule import Molecule
-# from .extrapolate import CBSExtrapolator
 
-__all__ = ["config", "Molecule", "load_benchmark", "InputConstructor",
+__all__ = ["config", "Molecule", "InputConstructor",
            "TemplateConstructor", "CompressedTemplateConstructor",
            "create_bash_files", "make_send_script",
            "JSONBenchmarkParser",

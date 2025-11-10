@@ -1,6 +1,6 @@
 from . import logger as log
 from .functions import walk_dict_by_key
-from typing import Any
+from typing import Any, Callable
 
 
 class Molecule:
@@ -62,19 +62,23 @@ class Molecule:
 
     @classmethod
     def from_external(cls, external_system_data: dict[str, Any],
-                      external_state_data: dict[str, Any], 
+                      external_state_data: dict[str, Any],
                       data_id: str, molname: str) -> 'Molecule':
         # Either system data or state data must exist
         if (not external_state_data) and (not external_system_data):
             log.critical("Both state and system data dicts are empty. "
                          f"Molecule {molname}", "Molecule: from_external")
         # We now define variables that are filled with the parsed data
-        system_data: dict[str, Any] = dict(external_system_data)
-        state_data: dict[str, Any] = dict(external_state_data)
+        system_data: dict[str, Any] | None = None
+        state_data: dict[str, Any] | None = None
+        if external_system_data:
+            system_data = external_system_data
+        if external_state_data:
+            state_data = external_state_data
         # Next we check if the state_data dictionary is correctly set up
         # We expect that the top level contains each state in the format
         # [str]: [dict]
-        if external_state_data is not None:
+        if state_data is not None:
             for state_key, state_values in external_state_data.items():
                 # Make sure that all keys are strings
                 if not isinstance(state_key, str):
@@ -282,7 +286,7 @@ class MoleculeList(list[Molecule]):
             return True
         return self._filter(key, _filter_vec_norm)
 
-    def _filter(self: list[Molecule], key, callback: callable):
+    def _filter(self: list[Molecule], key, callback: Callable):
         # XXX: currently it is not possible to filter according to state names!
         if key == "name":  # filter according to molecule names
             filtered = MoleculeList(m for m in self if callback(m.name))
@@ -349,8 +353,8 @@ class MoleculeList(list[Molecule]):
         of a formally stochiometric factor.
 
         The decision, which properties to merge is performed by the
-        individual properties type argument, i. e. the value given at
-        state_data[state_id]["type"].
+        individual properties type argument, i. e. the keys given at
+        state_data[state_id]["data"].
 
         Args:
             dst_state (dict): Destination state data dict
@@ -360,29 +364,40 @@ class MoleculeList(list[Molecule]):
         # Create and cache a dictionary, which types of properties
         # are handled by which property keys in the destination state
         # property dictionary for easy lookup in the loop
-        keydict = {v["type"]: k for k, v in dst_state.items()}
+        keydict: dict[str, str] = dict()
+        for state_id, state_props in dst_state.items():
+            all_props = list(state_props["data"].keys())
+            keydict.update(
+                {k: state_id for k in all_props}
+            )
         for key, val in src_state.items():
             # Extract the property value of the source state data
             # dictionary for out-of-place modification since the
             # same source state data dictionary can influence
             # multiple combined molecules
-            property_value = val["value"]
-            if isinstance(property_value, (list, tuple)):
-                property_value = [p * factor for p in property_value]
-            else:
-                property_value *= factor
+            for datakey, datapoint in val["data"].items():
+                datakey: str
+                datapoint: Datapoint
+                property_value = datapoint.value
 
-            if val["type"] not in keydict:
-                dst_state[key] = val
-                dst_state[key]["value"] = property_value
-            else:
-                pdict = dst_state[keydict[val["type"]]]
                 if isinstance(property_value, (list, tuple)):
-                    assert isinstance(pdict["value"], (tuple, list))
-                    pdict["value"] = [p0 + p1 for p0, p1 in
-                                      zip(property_value, pdict["value"])]
+                    property_value = [p * factor for p in property_value]
                 else:
-                    pdict["value"] += property_value
+                    property_value *= factor
+
+                if datakey not in keydict:
+                    dst_state[datakey] = dict(val)
+                    dst_state[datakey]["data"] = {
+                        datakey: Datapoint(datapoint.value, datapoint.unit)
+                    }
+                else:
+                    dst_dp = dst_state[keydict[datakey]]["data"][datakey]
+                    if isinstance(property_value, (list, tuple)):
+                        assert isinstance(dst_dp.value, (list, tuple))
+                        dst_dp.value = [p0 + p1 for p0, p1 in
+                                        zip(property_value, dst_dp.value)]
+                    else:
+                        dst_dp.value += property_value
 
 
 class Datapoint:
@@ -394,3 +409,12 @@ class Datapoint:
     def __init__(self, value: Any, unit: str) -> None:
         self.value = value
         self.unit = unit
+
+    def __repr__(self) -> str:
+        return f"{self.value} {self.unit}"
+
+    def __eq__(self, other: object) -> bool:
+        if not isinstance(other, Datapoint):
+            return False
+        return (self.value == other.value) and (self.unit.lower()
+                                                == other.unit.lower())

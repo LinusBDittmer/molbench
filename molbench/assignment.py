@@ -1,4 +1,5 @@
 from . import logger as log
+from typing import Callable
 
 
 def new_assignment_file(state_ids: list, comment_token: str = "#",
@@ -29,8 +30,8 @@ def parse_assignment_file(assignmentfile: str,
                           comment_token: str = "#",
                           id_separator: str = "->",
                           null_token: str = "null",
-                          import_external: callable = None,
-                          import_ref: callable = None) -> dict:
+                          import_external: Callable | None = None,
+                          import_ref: Callable | None = None) -> dict:
     """
     Parses an assignment file.
 
@@ -44,9 +45,9 @@ def parse_assignment_file(assignmentfile: str,
         The token separating reference and external id (default: '->').
     null_token : str, optional
         Identifier for empty, not assigned states (default: 'null').
-    import_external: callable, optional
+    import_external: Callable, optional
         Imports the external id before inserting the id in the dictionary.
-    import_ref : callable, optional
+    import_ref : Callable, optional
         Imports the reference id before inserting the id in the dictionary.
 
     Returns
@@ -69,7 +70,7 @@ def parse_assignment_file(assignmentfile: str,
         if len(assignment) != 2:
             log.critical(f"Invalid use of state id separator {id_separator} in"
                          f" line {line} of assignment file {assignmentfile}.",
-                         "parse_assignment_file", "Assignment")
+                         "Assignment: parse_assignment_file")
 
         ref = assignment[0].strip()
         external = assignment[1].strip()

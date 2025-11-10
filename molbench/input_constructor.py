@@ -390,6 +390,12 @@ class CompressedTemplateConstructor(TemplateConstructor):
             if xyz_list in all_xyzs:
                 return all_xyzs.index(xyz_list)
             return -1
+        
+        def _available_props(state_data: dict) -> list:
+            props = list()
+            for _, state in state_data.items():
+                props.extend(list(state["data"].keys()))
+            return props
 
         for mol in benchmark:
             if "xyz_list" not in mol.system_data:
@@ -428,12 +434,15 @@ class CompressedTemplateConstructor(TemplateConstructor):
                 idx_name = f"m{idx:06d}"
                 references[mol.name]["molecules"].append(idx_name)
 
-                if len(mol.state_data) > 1 and compressed_property is None:
+                available_properties = _available_props(mol.state_data)
+
+                if (len(available_properties) > 1 and
+                        compressed_property is None):
                     log.critical("Please specify a property key from which the"
                                  + " stochiometry should be read",
                                  "CompressedTemplateConstructor")
-                elif (len(mol.state_data) > 1 and
-                      compressed_property not in mol.state_data):
+                elif (len(available_properties) > 1 and
+                      compressed_property not in available_properties):
                     log.critical("compressed_property was not found in"
                                  + f" Molecule {mol.name}",
                                  "CompressedTemplateConstructor")
@@ -441,14 +450,14 @@ class CompressedTemplateConstructor(TemplateConstructor):
                     pkey = list(mol.state_data.keys())[0]
                 else:
                     pkey = [k for k, v in mol.state_data.items()
-                            if compressed_property in v][0]
+                            if compressed_property in v["data"]][0]
 
                 factor_key = None
                 if "stochiometry" in \
-                        mol.state_data[pkey][compressed_property]:
+                        mol.state_data[pkey]:
                     factor_key = "stochiometry"
                 elif "factors" in \
-                        mol.state_data[pkey][compressed_property]:
+                        mol.state_data[pkey]:
                     factor_key = "factors"
 
                 if factor_key is None:

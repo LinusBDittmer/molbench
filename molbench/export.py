@@ -25,7 +25,7 @@ class Exporter:
     None
     """
 
-    def export(self, *args, **kwargs) -> str:
+    def export(self, *args, **kwargs) -> str | None:
         raise NotImplementedError("Export function has to be implemented on "
                                   "the child classes.")
 
@@ -41,7 +41,7 @@ class TableExporter(Exporter):
         self.multirow = multirow
 
     def export(self, data: Comparison, property, outfile: typing.IO,
-               columns, rows=None):
+               columns, rows=None) -> str | None:
         # no row labels provided -> use all available keys
         if rows is None:
             rows = DummyNode()

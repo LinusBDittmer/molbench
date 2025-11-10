@@ -1,6 +1,7 @@
 from .comparison import Comparison
 from . import logger as log
 from collections import defaultdict
+from typing import Callable
 import numpy
 
 
@@ -85,8 +86,8 @@ class Statistics:
                              relative_damping=relative_damping,
                              error_thresh=error_thresh)
 
-    def identify(self, interest: dict, reference: dict) -> callable:
-        """Returns a callable to identify whether a value is a reference or
+    def identify(self, interest: dict, reference: dict) -> Callable:
+        """Returns a Callable to identify whether a value is a reference or
            interest value.
         """
         all_separators = self.data.structure
@@ -101,8 +102,8 @@ class Statistics:
                 return None
         return _identify
 
-    def get_interest_values(self, interest, reference) -> callable:
-        """Returns a callable that identifies the interest values that belong
+    def get_interest_values(self, interest, reference) -> Callable:
+        """Returns a Callable that identifies the interest values that belong
            to a given reference value.
         """
         common_keys = interest.keys() & reference.keys()
@@ -147,8 +148,8 @@ class Statistics:
             return interest_values
         return _get_interest_values
 
-    def _compare(self, identify: callable,
-                 get_interest_values: callable,
+    def _compare(self, identify: Callable,
+                 get_interest_values: Callable,
                  relative: bool = False,
                  relative_damping: float = 0.0,
                  error_thresh: float = 1) -> dict:
@@ -164,7 +165,7 @@ class Statistics:
                 interest.append((tuple(keys), value))
             else:
                 log.error(f"Could not assign a role to {keys}.", self,
-                          ValueError)
+                          "Statistics")
 
         signed_errors = defaultdict(dict)
         for (ref_keys, ref) in reference:
@@ -185,12 +186,13 @@ class Statistics:
         return signed_errors
 
     def evaluate(self, signed_errors: dict, *statistical_error_measures,
-                 assign: callable = None, proptype: str = None) -> dict:
+                 assign: Callable | None = None,
+                 proptype: str | None = None) -> dict:
         """
         Evaluates statistical error measures for the given set of
         signed errors. Statistical error measures can be requested by
         their name, e.g., 'mse' for the mean signed error.
-        Optionally, a callable can be provided to determine whether a specific
+        Optionally, a Callable can be provided to determine whether a specific
         signed error should be included in the statistical evaluation.
         By default the signed errors are filtered according to the property
         type ('energy', ...), which can be provided as another optional
@@ -207,7 +209,7 @@ class Statistics:
 
         if assign is None:
             if proptype is None:
-                log.error("No assign callable or proptype given.",
+                log.error("No assign Callable or proptype given.",
                           "Statistics: evaluate")
                 return
             assign = self.assign_by_proptye(proptype)
@@ -242,28 +244,28 @@ def register_as_error_measure(function):
     return function
 
 
-def _collect_errors(signed_errors: dict, assign: callable) -> list:
+def _collect_errors(signed_errors: dict, assign: Callable) -> list:
     return [value for refkeys, interest in signed_errors.items()
             for interestkeys, value in interest.items()
             if assign(refkeys, interestkeys)]
 
 
 @register_as_error_measure
-def mse(signed_errors: dict, assign: callable):
+def mse(signed_errors: dict, assign: Callable):
     """Computes the mean signed error."""
     errors = _collect_errors(signed_errors, assign)
     return numpy.array(errors).mean(axis=0), len(errors)
 
 
 @register_as_error_measure
-def sde(signed_errors: dict, assign: callable):
+def sde(signed_errors: dict, assign: Callable):
     """Computes the standard deviation."""
     errors = _collect_errors(signed_errors, assign)
     return numpy.array(errors).std(axis=0), len(errors)
 
 
 @register_as_error_measure
-def mae(signed_errors: dict, assign: callable):
+def mae(signed_errors: dict, assign: Callable):
     """Computes the mean absolute error."""
     errors = _collect_errors(signed_errors, assign)
     if len(errors) == 0:
@@ -276,28 +278,28 @@ def mae(signed_errors: dict, assign: callable):
 
 
 @register_as_error_measure
-def min(signed_errors: dict, assign: callable):
+def min(signed_errors: dict, assign: Callable):
     """Computes the minimal signed error."""
     errors = _collect_errors(signed_errors, assign)
     return numpy.array(errors).min(axis=0), len(errors)
 
 
 @register_as_error_measure
-def max(signed_errors: dict, assign: callable):
+def max(signed_errors: dict, assign: Callable):
     """Computes the maximal signed error."""
     errors = _collect_errors(signed_errors, assign)
     return numpy.array(errors).max(axis=0), len(errors)
 
 
 @register_as_error_measure
-def median_se(signed_errors: dict, assign: callable):
+def median_se(signed_errors: dict, assign: Callable):
     """Computes the median signed error."""
     errors = _collect_errors(signed_errors, assign)
     return numpy.median(numpy.array(errors), axis=0), len(errors)
 
 
 @register_as_error_measure
-def rmsd(signed_errors: dict, assign: callable):
+def rmsd(signed_errors: dict, assign: Callable):
     """Computes the root mean-square deviation."""
     errors = _collect_errors(signed_errors, assign)
     return numpy.sqrt(numpy.mean(numpy.square(errors), axis=0)), len(errors)
