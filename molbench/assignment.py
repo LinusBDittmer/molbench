@@ -28,7 +28,7 @@ def new_assignment_file(state_ids: list, comment_token: str = "#",
 
 def parse_assignment_file(assignmentfile: str,
                           comment_token: str = "#",
-                          id_separator: str = "->",
+                          id_separator: str = "==>",
                           null_token: str = "null",
                           import_external: Callable | None = None,
                           import_ref: Callable | None = None) -> dict:
@@ -42,7 +42,7 @@ def parse_assignment_file(assignmentfile: str,
     comment_token : str, optional
         Token to mark comments in the assignment file (default: '#').
     id_separator : str, optional
-        The token separating reference and external id (default: '->').
+        The token separating reference and external id (default: '==>').
     null_token : str, optional
         Identifier for empty, not assigned states (default: 'null').
     import_external: Callable, optional
@@ -61,6 +61,9 @@ def parse_assignment_file(assignmentfile: str,
     state_assignments = {}
     for line in content.splitlines():
         line = line.strip()
+        # - remove empty lines
+        if len(line) == 0:
+            continue
         # - remove comments
         if line.startswith(comment_token):
             continue
