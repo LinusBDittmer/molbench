@@ -251,7 +251,7 @@
                 "data": {
                     "excitation_energy": {
                         "unit": "eV",
-                        "value": 3.26
+                        "value": 3.05
                     }
                 },
                 "detected_irrep": "Dg",
@@ -265,7 +265,7 @@
                 "data": {
                     "excitation_energy": {
                         "unit": "eV",
-                        "value": 3.23
+                        "value": 3.1
                     }
                 },
                 "detected_irrep": "Dg",
@@ -274,12 +274,42 @@
                 "state_multiplicity": 1,
                 "transition_id": "s0->s1"
             },
+            "cc3_s2": {
+                "basis": "aug-cc-pvtz",
+                "comment": "0% singles character",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.26
+                    }
+                },
+                "detected_irrep": "Sg+",
+                "detected_point_group": "Dinfh",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "cc3_s2_small": {
+                "basis": "6-31+G*",
+                "comment": "0% singles character",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.23
+                    }
+                },
+                "detected_irrep": "Sg+",
+                "detected_point_group": "Dinfh",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
             "s1": {
                 "basis": "aug-cc-pvtz",
                 "data": {
                     "excitation_energy": {
                         "unit": "eV",
-                        "value": 2.42
+                        "value": 2.09
                     }
                 },
                 "detected_irrep": "Dg",
@@ -293,7 +323,7 @@
                 "data": {
                     "excitation_energy": {
                         "unit": "eV",
-                        "value": 2.51
+                        "value": 2.29
                     }
                 },
                 "detected_irrep": "Dg",
@@ -301,6 +331,34 @@
                 "method": "tbe",
                 "state_multiplicity": 1,
                 "transition_id": "s0->s1"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.42
+                    }
+                },
+                "detected_irrep": "Sg+",
+                "detected_point_group": "Dinfh",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_small": {
+                "basis": "6-31+G*",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.51
+                    }
+                },
+                "detected_irrep": "Sg+",
+                "detected_point_group": "Dinfh",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
             }
         },
         "xyz": [
@@ -325,7 +383,7 @@
                 "data": {
                     "excitation_energy": {
                         "unit": "eV",
-                        "value": 7.24
+                        "value": 6.68
                     }
                 },
                 "detected_irrep": "Dg",
@@ -340,7 +398,7 @@
                 "data": {
                     "excitation_energy": {
                         "unit": "eV",
-                        "value": 7.2
+                        "value": 6.65
                     }
                 },
                 "detected_irrep": "Dg",
@@ -349,12 +407,42 @@
                 "state_multiplicity": 1,
                 "transition_id": "s0->s1"
             },
+            "cc3_s2": {
+                "basis": "aug-cc-pvtz",
+                "comment": "1% singles character",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.24
+                    }
+                },
+                "detected_irrep": "Sg+",
+                "detected_point_group": "Dinfh",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "cc3_s2_small": {
+                "basis": "6-31+G*",
+                "comment": "1% singles character",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.2
+                    }
+                },
+                "detected_irrep": "Sg+",
+                "detected_point_group": "Dinfh",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
             "s1": {
                 "basis": "aug-cc-pvtz",
                 "data": {
                     "excitation_energy": {
                         "unit": "eV",
-                        "value": 5.91
+                        "value": 5.22
                     }
                 },
                 "detected_irrep": "Dg",
@@ -368,7 +456,7 @@
                 "data": {
                     "excitation_energy": {
                         "unit": "eV",
-                        "value": 5.93
+                        "value": 5.27
                     }
                 },
                 "detected_irrep": "Dg",
@@ -376,6 +464,34 @@
                 "method": "tbe",
                 "state_multiplicity": 1,
                 "transition_id": "s0->s1"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.91
+                    }
+                },
+                "detected_irrep": "Sg+",
+                "detected_point_group": "Dinfh",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_small": {
+                "basis": "6-31+G*",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.93
+                    }
+                },
+                "detected_irrep": "Sg+",
+                "detected_point_group": "Dinfh",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
             }
         },
         "xyz": [

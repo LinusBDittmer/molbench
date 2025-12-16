@@ -3,7 +3,7 @@ from typing import Callable
 
 
 def new_assignment_file(state_ids: list, comment_token: str = "#",
-                        id_separator: str = "->",
+                        id_separator: str = "==>",
                         null_token: str = "null") -> str:
     """
     Creates the content of an assignment file.
@@ -16,7 +16,7 @@ def new_assignment_file(state_ids: list, comment_token: str = "#",
     comment_token : str, optional
         Token to mark comments (default: '#').
     id_separator : str, optional
-        The separator of reference and external id (default: '->').
+        The separator of reference and external id (default: '==>').
     null_token : str, optional
         Identifier for empty, not assigned states.
     """

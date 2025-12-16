@@ -192,7 +192,7 @@ class TemplateConstructor(InputConstructor):
                            file_expansion_keys: tuple = ("basis",),
                            flat_structure: bool = False,
                            name_template: str | None = None,
-                           state_id_key="state_id") -> list:
+                           transition_id_key="transition_id") -> list:
         """
         Create assignment files for the provided set of Molecules.
         Note: This does currently not work for relative properties!
@@ -221,8 +221,8 @@ class TemplateConstructor(InputConstructor):
             Template to define the names of the generated files. By default,
             a template based on the file_expansion_keys is used that ensures
             that all data points have a unique name.
-        state_id_key
-            The key under which the state_ids an be found in the
+        transition_id_key
+            The key under which the transition_ids an be found in the
             properties (the state_data) of the molecules.
         """
         if name_template is None:
@@ -231,7 +231,7 @@ class TemplateConstructor(InputConstructor):
             benchmark, calc_details, file_expansion_keys
         )
         file_name_generator = self._gen_file_names(name_template)
-        file_content_generator = self._gen_assignment_content(state_id_key)
+        file_content_generator = self._gen_assignment_content(transition_id_key)
 
         # create a tree representing the folder structure
         # TODO: allow more complex input for more complex folder
@@ -342,22 +342,22 @@ class TemplateConstructor(InputConstructor):
         generator = self._folders_from_tree(tree)
         return _gen_folders
 
-    def _gen_assignment_content(self, state_id_key):
+    def _gen_assignment_content(self, transition_id_key):
         def _gen_assignment(data: tuple[dict, list]) -> tuple[str]:
             variant_data, properties = data
             # collect all the state id's of properties of the molecule
             # that match the variant data
-            state_ids = []
+            transition_ids = []
             for prop in properties:
-                s_id = prop.get(state_id_key, None)
-                if s_id is None:
+                t_id = prop.get(transition_id_key, None)
+                if t_id is None:
                     log.warning(f"Property of molecule {variant_data['name']} "
                                 f"has no assignment: {prop}",
                                 "Template Constructor")
                     continue
-                if s_id not in state_ids:  # s_id has not to be hashable
-                    state_ids.append(s_id)
-            return (new_assignment_file(state_ids),)
+                if t_id not in transition_ids:  # s_id has not to be hashable
+                    transition_ids.append(t_id)
+            return (new_assignment_file(transition_ids),)
         return _gen_assignment
 
 
