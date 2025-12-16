@@ -130,7 +130,8 @@ class Molecule:
         return cls(molname, data_id, system_data, state_data)
 
     def add_assignments(self, assignments: dict,
-                        state_id_key: str = "state_id") -> None:
+                        old_transition_id_key: str = "transition_id",
+                        new_transition_id_key: str = "assigned_transition_id") -> None:
         """
         Add the state assignment to the state data, i.e., try to add an
         assignment for each property in the state data.
@@ -138,33 +139,32 @@ class Molecule:
         Parameters
         ----------
         assignments : dict
-            The assignments to add.
-        state_id_key : str, optional
-            The key under which the assignment should be placed
-            (default: 'state_id').
+            The assignments to add, sorted as external: ref
+        old_transition_id_key : str, optional
+            The original identifier for the transition
+            (default: 'transition_id').
+        new_transition_id_key : str, optional
+            The identifier under which the assigned transition id should pe placed
+            (default: 'assigned_transition_id').
         """
-        # during import the external_ids might be suffixed with '_number'
-        # first check for an exact match in the assignment
-        # if not found remove the extension and check if we find an assignment
-        # for the shorter key.
-        for external_id, state_data in self.state_data.items():
-            if external_id not in assignments:
-                ext_id = external_id.split("_")
-                if not ext_id[-1].isdigit():  # unexpected extension
-                    continue
-                ext_id = "_".join(ext_id[:-1])
-                if ext_id not in assignments:
-                    continue
-                external_id = ext_id
+        # We create a list to keep track of previously assigned states
+        prev_assigned = list()
 
-            # check if the key is already in use (None as value is ok)
-            current_id = state_data.get(state_id_key, None)
-            if current_id is not None:
-                log.warning(f"The state id key {state_id_key} is already "
-                            f"used in the state data of property {external_id}"
-                            f" of molecule {self.name}. Overwriting the "
-                            "existing value.", "Molecule: add_assignments")
-            state_data[state_id_key] = assignments[external_id]
+        # Next, we iterate over all states and look for the correct transition id
+        for state_key, state_data in self.state_data.items():
+            # If the property does not have a transition id, it cannot be assigned
+            if old_transition_id_key not in state_data:
+                continue
+            # If the property is not found, it cannot be assigned
+            tid = state_data[old_transition_id_key]
+            if tid not in assignments:
+                continue
+            # The assigned transition_id
+            ass_tid = assignment[tid]
+            if ass_tid in prev_assigned:
+                log.warning(f"The transition id key {tid} is assigned to multiple"
+                            "transitions. Overwriting.", "Molecule: add_assignments")
+            state_data[new_transition_id_key] = ass_tid
 
 
 class MoleculeList(list[Molecule]):
