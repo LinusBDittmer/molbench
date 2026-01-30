@@ -9,7 +9,7 @@ name -> basis -> method -> property -> id/path
 """
 
 from . import logger as log
-from .molecule import Molecule, MoleculeList
+from .molecule import Molecule, MoleculeList, Datapoint
 from .functions import walk_dict_by_key, walk_dict_values
 import numpy
 
@@ -88,6 +88,13 @@ class Comparison(dict):
         """
         if isinstance(value, (int, float, complex, str)):
             return value
+        elif isinstance(value, dict):
+            if ((len(value.keys()) == 2) 
+                and ("value" in value)
+                and ("unit" in value)):
+                return Datapoint(value["value"], value["unit"])
+        elif isinstance(value, Datapoint):
+            return value
         else:
             return numpy.array(value)
 
@@ -102,34 +109,50 @@ class Comparison(dict):
         if not isinstance(data, Molecule):
             log.error(f"Can't add data of type {type(data)}.",
                       "Comparison.add_molecule")
+        
+        # We define a wrapper around prop.get to filter out transition ids
+        # Here, we need to take the assigned transition id if possible
+        def _propget(prop, key, default=None):
+            if key == "transition_id" and "assigned_transition_id" in prop:
+                return prop["assigned_transition_id"]
+            return prop.get(key, default)
+
         for prop in data.state_data.values():
-            separators = [prop.get(key, None) for key in self.data_separators]
-            proptype = prop.get("type", None)
-            value = prop.get("value", None)
-            if proptype is None or value is None or any(v is None
-                                                        for v in separators):
-                continue
-            # move into and establish the nested dict structure
-            if data.name not in self:  # special separator: name
-                self[data.name] = {}
-            d = self[data.name]
-            for sep in separators:
-                if sep not in d:
-                    d[sep] = {}
-                d = d[sep]
-            if proptype not in d:  # special separator: proptype
-                d[proptype] = {}
-            d = d[proptype]
-            data_id = data.data_id
-            if "component" in proptype and "component index" in prop:
-                propci = prop["component index"]
-                data_id += f"_{propci}"
-            if data_id in d:
-                log.warning(f"data_id {data.data_id} is not unique. Found "
-                            f"conflicting entry for {data.name}, {separators} "
-                            f"and {proptype}. Overwriting the exisiting value",
-                            "Comparison.add_molecule")
-            d[data_id] = self._import_value(value)
+            separators = [_propget(prop, key) for key in self.data_separators]
+            proptypes = list(prop.get("data", dict()).keys())
+            values = [prop.get("data", dict())[k] for k in proptypes]
+
+            for proptype, value in zip(proptypes, values):
+                if proptype is None or value is None or any(v is None
+                                                            for v in separators):
+                    continue
+                # move into and establish the nested dict structure
+                if data.name not in self:  # special separator: name
+                    self[data.name] = {}
+                d = self[data.name]
+                for sep in separators:
+                    if sep not in d:
+                        d[sep] = {}
+                    d = d[sep]
+                # Check if we have to consider state assignments
+                # tid = prop.get("assigned_transition_id", prop.get("transition_id", None))
+                # if tid is not None:
+                #     if tid not in d:
+                #         d[tid] = {}
+                #     d = d[tid]
+                if proptype not in d:  # special separator: proptype
+                    d[proptype] = {}
+                d = d[proptype]
+                data_id = data.data_id
+                if "component" in proptype and "component index" in prop:
+                    propci = prop["component index"]
+                    data_id += f"_{propci}"
+                if data_id in d:
+                    log.warning(f"data_id {data.data_id} is not unique. Found "
+                                f"conflicting entry for {data.name}, {separators} "
+                                f"and {proptype}. Overwriting the exisiting value",
+                                "Comparison.add_molecule")
+                d[data_id] = self._import_value(value)
 
     def walk_by_key(self, desired_key):
         """Walk the dictionary looking for the desired key, returning

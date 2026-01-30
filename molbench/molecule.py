@@ -149,6 +149,8 @@ class Molecule:
         """
         # We create a list to keep track of previously assigned states
         prev_assigned = list()
+        # We also create a list of unassigned states to pop
+        unassigned = list()
 
         # Next, we iterate over all states and look for the correct transition id
         for state_key, state_data in self.state_data.items():
@@ -158,14 +160,17 @@ class Molecule:
             # If the property is not found, it cannot be assigned
             tid = state_data[old_transition_id_key]
             if tid not in assignments:
+                unassigned.append(state_key)
                 continue
             # The assigned transition_id
-            ass_tid = assignment[tid]
+            ass_tid = assignments[tid]
             if ass_tid in prev_assigned:
                 log.warning(f"The transition id key {tid} is assigned to multiple"
                             "transitions. Overwriting.", "Molecule: add_assignments")
             state_data[new_transition_id_key] = ass_tid
 
+        for key in unassigned:
+            del self.state_data[key]
 
 class MoleculeList(list[Molecule]):
 
@@ -418,3 +423,31 @@ class Datapoint:
             return False
         return (self.value == other.value) and (self.unit.lower()
                                                 == other.unit.lower())
+
+    def __add__(self, other: Datapoint):
+        if other.unit != self.unit:
+            raise ValueError("Only datapoints with identical units can be compared")
+        return Datapoint(self.value + other.value, self.unit)
+
+    def __sub__(self, other: Datapoint):
+        if other.unit != self.unit:
+            raise ValueError("Only datapoints with identical units can be compared")
+        return Datapoint(self.value - other.value, self.unit)
+
+    def __abs__(self):
+        return Datapoint(abs(self.value), self.unit)
+
+    def __mul__(self, other):
+        if isinstance(other, (float, int, complex)):
+            return Datapoint(self.value * other, self.unit)
+        raise ValueError("Datapoints can only multiplied by dimensionless quantities")
+
+    def __truediv__(self, other):
+        if isinstance(other, (float, int, complex)):
+            return Datapoint(self.value / other, self.unit)
+        raise ValueError("Datapoints can only divided by dimensionless quantities")
+
+    def __floordiv__(self, other):
+        if isinstance(other, (float, int, complex)):
+            return Datapoint(self.value // other, self.unit)
+        raise ValueError("Datapoints can only divided by dimensionless quantities")

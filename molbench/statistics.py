@@ -174,7 +174,7 @@ class Statistics:
                 se = values - ref
                 if relative:
                     se /= abs(ref) + relative_damping
-                if abs(se) > error_thresh:
+                if abs(se).value > error_thresh:
                     log.warning(f"Large Error detected: {se}\n"
                                 f"Reference:    {ref_keys}\n"
                                 f"Interest:     {interest_keys}\n"
@@ -212,7 +212,7 @@ class Statistics:
                 log.error("No assign Callable or proptype given.",
                           "Statistics: evaluate")
                 return
-            assign = self.assign_by_proptye(proptype)
+            assign = self.assign_by_proptype(proptype)
 
         ret = {}
         for error_measure in statistical_error_measures:
@@ -225,7 +225,7 @@ class Statistics:
         return ret
 
     @staticmethod
-    def assign_by_proptye(intproptype: str, refproptype: str = None):
+    def assign_by_proptype(intproptype: str, refproptype: str = None):
         if refproptype is None:
             refproptype = intproptype
 
@@ -245,7 +245,7 @@ def register_as_error_measure(function):
 
 
 def _collect_errors(signed_errors: dict, assign: Callable) -> list:
-    return [value for refkeys, interest in signed_errors.items()
+    return [value.value for refkeys, interest in signed_errors.items()
             for interestkeys, value in interest.items()
             if assign(refkeys, interestkeys)]
 

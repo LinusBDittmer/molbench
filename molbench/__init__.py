@@ -75,6 +75,7 @@ from .statistics import Statistics, register_as_error_measure
 from .export import Exporter, LatexExporter
 from .external_parser import ExternalParser
 from .molecule import Molecule
+from .json_encoder import MolbenchJSONEncoder
 
 __all__ = ["config", "Molecule", "InputConstructor",
            "TemplateConstructor", "CompressedTemplateConstructor",
@@ -82,6 +83,6 @@ __all__ = ["config", "Molecule", "InputConstructor",
            "JSONBenchmarkParser",
            "Comparison", "Statistics", "register_as_error_measure",
            "Exporter", "LatexExporter",
-           "ExternalParser"]
+           "ExternalParser", "MolbenchJSONEncoder"]
 __version__ = "0.0.1"
 __authors__ = ["Linus Bjarne Dittmer", "Jonas Leitner"]
