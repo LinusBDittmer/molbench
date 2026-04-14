@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from . import logger as log
 from .functions import walk_dict_by_key
 from typing import Any, Callable

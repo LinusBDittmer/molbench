@@ -82,7 +82,11 @@ class ExternalParser:
         # Use regex to find the name of the molecule in the
         # output file
         parsed: Any = None
-        parsed = out_parser(outfile)
+        param_num: int = len(inspect.signature(out_parser).parameters)
+        if param_num == 2:
+            parsed = out_parser(outfile, Path(outfile).stem)
+        else:
+            parsed = out_parser(outfile)
         if len(parsed) != 3:
             log.critical("Output file parser must return name, system_data and"
                          f" state_data, but only {len(parsed)} arguments were "

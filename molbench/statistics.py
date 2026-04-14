@@ -173,7 +173,7 @@ class Statistics:
             for interest_keys, values in interest_values:
                 se = values - ref
                 if relative:
-                    se /= abs(ref) + relative_damping
+                    se /= abs(ref).value + relative_damping
                 if abs(se).value > error_thresh:
                     log.warning(f"Large Error detected: {se}\n"
                                 f"Reference:    {ref_keys}\n"
@@ -272,7 +272,7 @@ def mae(signed_errors: dict, assign: Callable):
         return numpy.float64(0), 0
     else:
         return (
-            numpy.sum(numpy.absolute(e) for e in errors) / len(errors),
+            numpy.sum(numpy.fromiter((numpy.absolute(e) for e in errors), dtype=float)) / len(errors),
             len(errors)
         )
 

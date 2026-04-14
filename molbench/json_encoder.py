@@ -24,4 +24,10 @@ class MolbenchJSONEncoder(json.JSONEncoder):
         if isinstance(obj, numpy.ndarray):
             return list(obj)
 
-        return obj
+        if isinstance(obj, numpy.integer):
+            return int(obj)
+
+        if isinstance(obj, numpy.floating):
+            return float(obj)
+
+        return super().default(obj)
