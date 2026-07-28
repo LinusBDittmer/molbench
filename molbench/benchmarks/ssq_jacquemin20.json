@@ -8,6 +8,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -25,7 +26,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -43,7 +45,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -61,6 +64,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -78,7 +82,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -96,7 +101,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -114,6 +120,7 @@
         "n_states": {
             "n_doublets": 1
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -131,7 +138,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -150,6 +158,7 @@
         "n_states": {
             "n_doublets": 1
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -167,7 +176,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -185,6 +195,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -202,7 +213,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -220,7 +232,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -240,6 +253,7 @@
         "n_states": {
             "n_doublets": 1
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -257,7 +271,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -276,6 +291,7 @@
         "n_states": {
             "n_doublets": 4
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -293,7 +309,8 @@
                 "detected_point_group": "D3h",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -311,7 +328,8 @@
                 "detected_point_group": "D3h",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             },
             "s3": {
                 "basis": "aug-cc-pvtz",
@@ -329,7 +347,8 @@
                 "detected_point_group": "D3h",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s3"
+                "transition_id": "s0->s3",
+                "need_mr": "false"
             },
             "s4": {
                 "basis": "aug-cc-pvtz",
@@ -347,7 +366,8 @@
                 "detected_point_group": "D3h",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s4"
+                "transition_id": "s0->s4",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -367,6 +387,7 @@
         "n_states": {
             "n_doublets": 1
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -384,7 +405,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -403,6 +425,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -420,7 +443,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -438,7 +462,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -458,6 +483,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -475,7 +501,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -493,7 +520,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -512,6 +540,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -529,7 +558,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -547,7 +577,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -567,6 +598,7 @@
         "n_states": {
             "n_doublets": 1
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -584,7 +616,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -603,6 +636,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -620,7 +654,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -638,7 +673,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -658,6 +694,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -675,7 +712,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -693,7 +731,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -713,6 +752,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "weakly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -730,7 +770,8 @@
                 "detected_point_group": "Cinfv",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -748,7 +789,8 @@
                 "detected_point_group": "Cinfv",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -766,6 +808,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "strongly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -783,7 +826,8 @@
                 "detected_point_group": "Cinfv",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -801,7 +845,8 @@
                 "detected_point_group": "Cinfv",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "true"
             }
         },
         "xyz": [
@@ -820,6 +865,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "strongly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -837,7 +883,8 @@
                 "detected_point_group": "Cinfv",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -855,7 +902,8 @@
                 "detected_point_group": "Cinfv",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "true"
             }
         },
         "xyz": [
@@ -874,6 +922,7 @@
         "n_states": {
             "n_doublets": 3
         },
+        "kind": "strongly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -891,7 +940,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -909,7 +959,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             },
             "s3": {
                 "basis": "aug-cc-pvtz",
@@ -927,7 +978,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s3"
+                "transition_id": "s0->s3",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -948,6 +1000,7 @@
         "n_states": {
             "n_doublets": 3
         },
+        "kind": "strongly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -965,7 +1018,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -983,7 +1037,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -1007,6 +1062,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "strongly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -1024,7 +1080,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -1042,7 +1099,8 @@
                 "detected_point_group": "Cs",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -1060,6 +1118,7 @@
         "n_states": {
             "n_doublets": 1
         },
+        "kind": "strongly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -1077,7 +1136,8 @@
                 "detected_point_group": "Cinfv",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "true"
             }
         },
         "xyz": [
@@ -1095,6 +1155,7 @@
         "n_states": {
             "n_doublets": 2
         },
+        "kind": "strongly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -1112,7 +1173,8 @@
                 "detected_point_group": "Cinfv",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -1130,7 +1192,8 @@
                 "detected_point_group": "Cinfv",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             }
         },
         "xyz": [
@@ -1148,6 +1211,7 @@
         "n_states": {
             "n_doublets": 4
         },
+        "kind": "strongly_spin_contaminated",
         "properties": {
             "s1": {
                 "basis": "aug-cc-pvtz",
@@ -1165,7 +1229,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s1"
+                "transition_id": "s0->s1",
+                "need_mr": "false"
             },
             "s2": {
                 "basis": "aug-cc-pvtz",
@@ -1183,7 +1248,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s2"
+                "transition_id": "s0->s2",
+                "need_mr": "false"
             },
             "s3": {
                 "basis": "aug-cc-pvtz",
@@ -1201,7 +1267,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s3"
+                "transition_id": "s0->s3",
+                "need_mr": "false"
             },
             "s4": {
                 "basis": "aug-cc-pvtz",
@@ -1219,7 +1286,8 @@
                 "detected_point_group": "C2v",
                 "method": "tbe",
                 "state_multiplicity": 2,
-                "transition_id": "s0->s4"
+                "transition_id": "s0->s4",
+                "need_mr": "false"
             }
         },
         "xyz": [
