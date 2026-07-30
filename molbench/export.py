@@ -30,10 +30,23 @@ class Exporter:
                                   "the child classes.")
 
 
+_REQUIRED_FORMATTER_METHODS = (
+    "join_labels", "init_table", "finalize_table", "table_header",
+    "table_content", "multicolumn", "multirow",
+)
+
+
 class TableExporter(Exporter):
     def __init__(self, formatter: Formatter, sort_cols: bool = True,
                  sort_rows: bool = True, sparse_row_labels: bool = True,
                  multirow: bool = False):
+        missing = [m for m in _REQUIRED_FORMATTER_METHODS
+                   if not hasattr(formatter, m)]
+        if missing:
+            log.critical(
+                f"{type(formatter).__name__} is missing the table-structure "
+                f"method(s) {missing} required by TableExporter (e.g. use "
+                "LatexFormatter instead of StdFormatter).", "TableExporter")
         self.formatter = formatter
         self.sort_cols = sort_cols
         self.sort_rows = sort_rows
@@ -115,6 +128,13 @@ class TableExporter(Exporter):
                     data[row_l] = {}
                 if column_l not in data[row_l]:
                     data[row_l][column_l] = []
+                elif data[row_l][column_l]:
+                    log.warning(
+                        f"Multiple values map to the same table cell (row="
+                        f"{row_l}, column={column_l}). This usually means "
+                        "the row/column trees don't cover all separators in "
+                        "the Comparison - the values will be joined into "
+                        "one cell.", "Export")
                 data[row_l][column_l].append(value)
         col_label_tree = col_node_cache["root"]
         row_label_tree = row_node_cache["root"]

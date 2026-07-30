@@ -201,6 +201,11 @@ class MoleculeList(list[Molecule]):
             relevant_mol_names = c_data["molecules"]
             data_id = " / ".join(relevant_mol_names)
             factors = c_data["factors"]
+            if len(relevant_mol_names) != len(factors):
+                log.critical(
+                    f"Number of molecules ({len(relevant_mol_names)}) does "
+                    f"not match number of factors ({len(factors)}) for "
+                    f"stochiometry entry {c_name}.", "MoleculeList")
             relevant_mols = [find_mol(name) for name in relevant_mol_names]
 
             if any([x is None for x in relevant_mols]):
@@ -425,12 +430,12 @@ class Datapoint:
                                                 == other.unit.lower())
 
     def __add__(self, other: Datapoint):
-        if other.unit != self.unit:
+        if other.unit.lower() != self.unit.lower():
             raise ValueError("Only datapoints with identical units can be compared")
         return Datapoint(self.value + other.value, self.unit)
 
     def __sub__(self, other: Datapoint):
-        if other.unit != self.unit:
+        if other.unit.lower() != self.unit.lower():
             raise ValueError("Only datapoints with identical units can be compared")
         return Datapoint(self.value - other.value, self.unit)
 

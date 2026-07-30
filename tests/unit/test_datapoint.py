@@ -13,6 +13,18 @@ def test_add_different_unit_raises():
         Datapoint(1.0, "eV") + Datapoint(1.0, "au")
 
 
+def test_add_case_insensitive_unit():
+    # __eq__ treats units case-insensitively; __add__/__sub__ must be
+    # consistent with that instead of raising on a mere casing difference.
+    result = Datapoint(1.0, "eV") + Datapoint(2.0, "EV")
+    assert result.value == pytest.approx(3.0)
+
+
+def test_sub_case_insensitive_unit():
+    result = Datapoint(5.0, "au") - Datapoint(3.0, "AU")
+    assert result.value == pytest.approx(2.0)
+
+
 def test_sub():
     result = Datapoint(5.0, "au") - Datapoint(3.0, "au")
     assert result.value == pytest.approx(2.0)

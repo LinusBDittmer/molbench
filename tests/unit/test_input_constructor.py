@@ -173,6 +173,22 @@ def test_create_assignments_no_tid_warning(tmp_path, simple_template_file, capfd
     # should not crash; empty assignment file created
 
 
+def test_create_inputs_missing_expansion_key_warns(tmp_path, simple_template_file, caplog):
+    # A state missing the (default) "basis" expansion key must be skipped
+    # with a logged warning, not silently dropped.
+    mol = Molecule(
+        "molA", "bench",
+        {"xyz": "H 0 0 0", "charge": 0, "multiplicity": 1},
+        {"gs": {"method": "HF",  # no "basis" key
+                "data": {"energy": Datapoint(-1.0, "au")}}},
+    )
+    tc = TemplateConstructor(simple_template_file)
+    with caplog.at_level("WARNING", logger="molbench"):
+        result = tc.create_inputs(MoleculeList([mol]), str(tmp_path), {"method": "HF"})
+    assert result == []
+    assert any("missing value" in rec.message for rec in caplog.records)
+
+
 # ---------------------------------------------------------------------------
 # CompressedTemplateConstructor
 # ---------------------------------------------------------------------------
@@ -215,6 +231,17 @@ def test_compressed_single_geometry_handled(tmp_path, simple_template_file):
     result = tc.create_inputs(bench, str(tmp_path), {"method": "HF"},
                               reference_path="references.json")
     assert len(result) >= 1
+
+
+def test_compressed_property_typo_single_property_exits(tmp_path, simple_template_file):
+    # A single-property molecule with a typo'd compressed_property must hit
+    # the intended log.critical() path, not a raw IndexError.
+    tc = CompressedTemplateConstructor(simple_template_file)
+    bench = MoleculeList([_multi_mol("relA")])
+    with pytest.raises(SystemExit):
+        tc.create_inputs(bench, str(tmp_path), {"method": "HF"},
+                         reference_path="references.json",
+                         compressed_property="does_not_exist")
 
 
 def test_compressed_deduplicates_identical_geometries(tmp_path, simple_template_file):

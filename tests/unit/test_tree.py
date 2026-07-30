@@ -159,3 +159,10 @@ def test_node_str():
 def test_dummy_node_str():
     d = DummyNode()
     assert str(d) == "DummyNode"
+
+
+def test_dummy_node_with_parent_links_into_children():
+    root = Node("root")
+    dummy = DummyNode(root)
+    assert dummy.parent is root
+    assert dummy in root.children

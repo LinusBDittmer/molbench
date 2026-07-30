@@ -68,3 +68,16 @@ def test_list_of_datapoints():
     result = json.loads(_dumps(data))
     assert result[0] == {"value": 1.0, "unit": "au"}
     assert result[1] == {"value": 2.0, "unit": "au"}
+
+
+def test_encoding_molecule_does_not_mutate_system_data():
+    mol = Molecule(
+        "water", "bench",
+        {"xyz": "O 0 0 0", "charge": 0},
+        {"gs": {"basis": "cc-pvdz", "method": "HF",
+                "data": {"energy": Datapoint(-76.0, "au")}}},
+    )
+    before = dict(mol.system_data)
+    _dumps(mol)
+    assert mol.system_data == before
+    assert "properties" not in mol.system_data

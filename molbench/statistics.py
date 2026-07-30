@@ -14,8 +14,8 @@ class Statistics:
 
     def __init__(self, data: Comparison) -> None:
         if not isinstance(data, Comparison):
-            log.error("Data for statistics evaluation has to be provided as "
-                      f"{Comparison}.", "Statistics", "TypeError")
+            log.critical("Data for statistics evaluation has to be provided "
+                         f"as {Comparison}.", "Statistics")
         self._data = data
 
     @property
@@ -164,8 +164,8 @@ class Statistics:
             elif role[0] == "i":
                 interest.append((tuple(keys), value))
             else:
-                log.error(f"Could not assign a role to {keys}.", self,
-                          "Statistics")
+                log.error(f"Could not assign a role to {keys}.",
+                          "Statistics._compare")
 
         signed_errors = defaultdict(dict)
         for (ref_keys, ref) in reference:
@@ -173,7 +173,16 @@ class Statistics:
             for interest_keys, values in interest_values:
                 se = values - ref
                 if relative:
-                    se /= abs(ref).value + relative_damping
+                    denom = abs(ref).value + relative_damping
+                    if denom == 0:
+                        log.warning(
+                            f"Reference value {ref} is zero (with damping "
+                            f"{relative_damping}) - cannot compute a "
+                            f"relative error for {interest_keys} vs "
+                            f"{ref_keys}. Skipping this pair.",
+                            "Statistics._compare")
+                        continue
+                    se /= denom
                 if abs(se).value > error_thresh:
                     log.warning(f"Large Error detected: {se}\n"
                                 f"Reference:    {ref_keys}\n"
@@ -254,6 +263,8 @@ def _collect_errors(signed_errors: dict, assign: Callable) -> list:
 def mse(signed_errors: dict, assign: Callable):
     """Computes the mean signed error."""
     errors = _collect_errors(signed_errors, assign)
+    if len(errors) == 0:
+        return numpy.nan, 0
     return numpy.array(errors).mean(axis=0), len(errors)
 
 
@@ -261,6 +272,8 @@ def mse(signed_errors: dict, assign: Callable):
 def sde(signed_errors: dict, assign: Callable):
     """Computes the standard deviation."""
     errors = _collect_errors(signed_errors, assign)
+    if len(errors) == 0:
+        return numpy.nan, 0
     return numpy.array(errors).std(axis=0), len(errors)
 
 
@@ -277,6 +290,8 @@ def mae(signed_errors: dict, assign: Callable):
 def min(signed_errors: dict, assign: Callable):
     """Computes the minimal signed error."""
     errors = _collect_errors(signed_errors, assign)
+    if len(errors) == 0:
+        return numpy.nan, 0
     return numpy.array(errors).min(axis=0), len(errors)
 
 
@@ -284,6 +299,8 @@ def min(signed_errors: dict, assign: Callable):
 def max(signed_errors: dict, assign: Callable):
     """Computes the maximal signed error."""
     errors = _collect_errors(signed_errors, assign)
+    if len(errors) == 0:
+        return numpy.nan, 0
     return numpy.array(errors).max(axis=0), len(errors)
 
 
@@ -291,6 +308,8 @@ def max(signed_errors: dict, assign: Callable):
 def median_se(signed_errors: dict, assign: Callable):
     """Computes the median signed error."""
     errors = _collect_errors(signed_errors, assign)
+    if len(errors) == 0:
+        return numpy.nan, 0
     return numpy.median(numpy.array(errors), axis=0), len(errors)
 
 
@@ -298,4 +317,6 @@ def median_se(signed_errors: dict, assign: Callable):
 def rmsd(signed_errors: dict, assign: Callable):
     """Computes the root mean-square deviation."""
     errors = _collect_errors(signed_errors, assign)
+    if len(errors) == 0:
+        return numpy.nan, 0
     return numpy.sqrt(numpy.mean(numpy.square(errors), axis=0)), len(errors)

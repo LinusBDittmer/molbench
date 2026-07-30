@@ -29,22 +29,28 @@ def create_bash_files(files: list, command: str) -> list:
     command = substitute_template(command, config)[0]
 
     for f in files:
-        fpath = os.path.dirname(f)
+        fpath = os.path.dirname(f) or "."
         os.chdir(fpath)
-        infilename = os.path.basename(f)
-        cmd = command.strip() + " " + infilename
-        log.info(f"Now building script for {infilename}: {f}", "Bash Wrapper")
-        subprocess.run(cmd, shell=True)
-        log.debug(f"Executing command : {cmd}", "Bash Wrapper")
+        try:
+            infilename = os.path.basename(f)
+            cmd = command.strip() + " " + infilename
+            log.info(f"Now building script for {infilename}: {f}",
+                     "Bash Wrapper")
+            result = subprocess.run(cmd, shell=True)
+            if getattr(result, "returncode", 0) != 0:
+                log.error(f"Command failed for {infilename} (exit code "
+                          f"{result.returncode}): {cmd}", "Bash Wrapper")
+            log.debug(f"Executing command : {cmd}", "Bash Wrapper")
 
-        fname_no_ext = os.path.splitext(infilename)[0]
-        all_shs = glob.glob("*.sh")
-        all_shs.extend(glob.glob("*.sbatch"))
+            fname_no_ext = os.path.splitext(infilename)[0]
+            all_shs = glob.glob("*.sh")
+            all_shs.extend(glob.glob("*.sbatch"))
 
-        local_execs = [os.path.abspath(sh) for sh in all_shs
-                       if fname_no_ext in sh]
-        bash_files.extend(local_execs)
-        os.chdir(basepath)
+            local_execs = [os.path.abspath(sh) for sh in all_shs
+                           if fname_no_ext in sh]
+            bash_files.extend(local_execs)
+        finally:
+            os.chdir(basepath)
     return bash_files
 
 

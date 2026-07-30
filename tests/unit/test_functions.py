@@ -3,6 +3,7 @@ from molbench.functions import (
     substitute_template,
     _substitute_single_template,
     default_name_template,
+    determine_basis_cardinality,
     walk_dict_by_key,
     walk_dict_values,
 )
@@ -64,6 +65,66 @@ class TestSubstituteTemplate:
     def test_returns_tuple(self):
         result = substitute_template("[[x]]", {"x": 1})
         assert isinstance(result, tuple)
+
+    def test_list_key_with_scalar_value_not_expanded(self):
+        # A "_list"-suffixed key whose value isn't actually a list/tuple must
+        # not be treated as something to expand (previously crashed with a
+        # raw IndexError since to_expand ended up empty).
+        result = substitute_template("charge=[[charge_list]]",
+                                     {"charge_list": 5})
+        assert result == ("charge=5",)
+
+    def test_out_of_range_index_exits(self):
+        with pytest.raises(SystemExit):
+            substitute_template("[[coords->5]]", {"coords": [1, 2, 3]})
+
+    def test_empty_list_expansion_logs_warning_and_returns_empty(self, caplog):
+        with caplog.at_level("WARNING", logger="molbench"):
+            result = substitute_template("[[name]]", {"name_list": []})
+        assert result == ()
+        assert any("empty list" in rec.message for rec in caplog.records)
+
+    def test_unclosed_placeholder_left_as_literal_and_warns(self, caplog):
+        with caplog.at_level("ERROR", logger="molbench"):
+            result = substitute_template("charge=[[chargex] end", {"charge": 0})
+        assert result == ("charge=[[chargex] end",)
+        assert any("unclosed placeholder" in rec.message for rec in caplog.records)
+
+    def test_stray_closing_bracket_before_real_placeholder(self):
+        # A stray "]]" earlier in the template must not be mistaken for the
+        # closing bracket of the real "[[charge]]" placeholder that follows.
+        result = substitute_template("stray ]] bracket [[charge]]", {"charge": 0})
+        assert result == ("stray ]] bracket 0",)
+
+    def test_bash_bracket_collision_exits_with_helpful_message(self, caplog):
+        # bash's own "[[ ... ]]" test syntax collides with placeholder
+        # delimiters and cannot be resolved automatically; the error message
+        # should hint at the real cause instead of just naming a garbage key.
+        tpl = "if [[ -f file.txt ]]; then echo ok; fi"
+        with pytest.raises(SystemExit):
+            substitute_template(tpl, {"charge": 0})
+
+
+class TestDetermineBasisCardinality:
+    def test_dunning_valid(self):
+        assert determine_basis_cardinality("cc-pvtz") == 3
+
+    def test_karlsruhe_valid(self):
+        assert determine_basis_cardinality("def2-tzvp") == 3
+
+    def test_malformed_dunning_returns_zero(self, caplog):
+        with caplog.at_level("ERROR", logger="molbench"):
+            result = determine_basis_cardinality("cc-p")
+        assert result == 0
+        assert any("could not be identified" in rec.message
+                   for rec in caplog.records)
+
+    def test_malformed_def2_returns_zero(self, caplog):
+        with caplog.at_level("ERROR", logger="molbench"):
+            result = determine_basis_cardinality("def2")
+        assert result == 0
+        assert any("could not be identified" in rec.message
+                   for rec in caplog.records)
 
 
 class TestDefaultNameTemplate:

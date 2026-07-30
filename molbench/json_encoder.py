@@ -17,9 +17,7 @@ class MolbenchJSONEncoder(json.JSONEncoder):
             return {"value": obj.value, "unit": obj.unit}
 
         if isinstance(obj, Molecule):
-            moldict = {obj.name: obj.system_data}
-            moldict[obj.name]["properties"] = obj.state_data
-            return moldict
+            return {obj.name: dict(obj.system_data, properties=obj.state_data)}
 
         if isinstance(obj, numpy.ndarray):
             return list(obj)

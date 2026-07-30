@@ -164,3 +164,30 @@ def test_export_multirow_flag(two_data_comparison):
     col = Node("data_id")
     result = _export_to_string(two_data_comparison, "energy", col, multirow=True)
     assert len(result) > 0
+
+
+# ---------------------------------------------------------------------------
+# Silent cell collisions
+# ---------------------------------------------------------------------------
+
+def test_export_uncovered_separator_collision_warns(caplog):
+    # Two entries share the same name and data_id and differ only by
+    # "method", but the row tree only covers "name" and the column tree
+    # only covers "data_id" - so both values collide into the same cell.
+    # This must be logged, not silent.
+    mols = MoleculeList([
+        Molecule("water", "bench", {},
+                 {"gs": {"basis": "cc-pvdz", "method": "HF",
+                         "data": {"energy": Datapoint(-1.0, "au")}}}),
+        Molecule("water", "bench", {},
+                 {"gs": {"basis": "cc-pvdz", "method": "MP2",
+                         "data": {"energy": Datapoint(-2.0, "au")}}}),
+    ])
+    c = Comparison()
+    c.add(mols)
+    rows = Node("name")
+    cols = Node("data_id")
+    buf = io.StringIO()
+    with caplog.at_level("WARNING", logger="molbench"):
+        LatexExporter().export(c, "energy", buf, columns=cols, rows=rows)
+    assert any("same table cell" in rec.message for rec in caplog.records)

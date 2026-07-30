@@ -96,6 +96,8 @@ class DummyNode(Node):
     def __init__(self, parent: 'Node' = None) -> None:
         self.children = []
         self.parent: 'Node' | None = parent
+        if parent is not None:
+            parent.children.append(self)
 
     def __str__(self):
         return "DummyNode"

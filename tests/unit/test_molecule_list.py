@@ -202,6 +202,20 @@ def test_apply_stochiometry_missing_molecule_logged(capfd):
     assert len(result) == 0
 
 
+def test_apply_stochiometry_mismatched_lengths_exits():
+    mol_a = _make_mol("molA")
+    mol_b = _make_mol("molB")
+    ml = MoleculeList([mol_a, mol_b])
+    stochiometry = {
+        "combined": {
+            "molecules": ["molA", "molB"],
+            "factors": [1.0],  # only one factor for two molecules
+        }
+    }
+    with pytest.raises(SystemExit):
+        ml.apply_stochiometry(stochiometry)
+
+
 def test_apply_stochiometry_system_data_merged():
     mol_a = _make_mol("molA", energy=-10.0)
     mol_b = _make_mol("molB", energy=-5.0)

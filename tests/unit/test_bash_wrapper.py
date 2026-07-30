@@ -1,5 +1,6 @@
 import io
 import os
+import subprocess
 import pytest
 from pathlib import Path
 
@@ -207,6 +208,48 @@ def test_make_send_script_send_command_substitution():
     content = buf.getvalue()
     assert "[[threads]]" not in content
     assert "1" in content  # default threads value
+
+
+def test_create_bash_files_nonzero_returncode_logs_error(tmp_path, monkeypatch, caplog):
+    infile = tmp_path / "mol.in"
+    infile.write_text("")
+    monkeypatch.setattr(
+        "molbench.bash_wrapper.subprocess.run",
+        lambda cmd, shell=False: subprocess.CompletedProcess(args=cmd, returncode=127),
+    )
+    from molbench.bash_wrapper import create_bash_files
+    with caplog.at_level("ERROR", logger="molbench"):
+        result = create_bash_files([str(infile)], "definitely_not_a_real_command")
+    assert result == []
+    assert any("Command failed" in rec.message for rec in caplog.records)
+
+
+def test_create_bash_files_bare_filename_no_directory(tmp_path, monkeypatch):
+    # A file path with no directory component (dirname == "") used to crash
+    # os.chdir("") with FileNotFoundError.
+    infile = tmp_path / "mol.in"
+    infile.write_text("")
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr("molbench.bash_wrapper.subprocess.run",
+                        _make_fake_run(".sh"))
+    from molbench.bash_wrapper import create_bash_files
+    result = create_bash_files(["mol.in"], "fakegen")
+    assert len(result) == 1
+
+
+def test_create_bash_files_restores_cwd_on_exception(tmp_path, monkeypatch):
+    infile = tmp_path / "mol.in"
+    infile.write_text("")
+
+    def raising_run(cmd, shell=False):
+        raise RuntimeError("boom")
+
+    monkeypatch.setattr("molbench.bash_wrapper.subprocess.run", raising_run)
+    original_cwd = os.getcwd()
+    from molbench.bash_wrapper import create_bash_files
+    with pytest.raises(RuntimeError):
+        create_bash_files([str(infile)], "fakegen")
+    assert os.getcwd() == original_cwd
 
 
 def test_make_send_script_uses_abs_path(tmp_path):

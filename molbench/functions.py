@@ -20,7 +20,8 @@ def substitute_template(template: str, subvals: dict) -> tuple[str, ...]:
     that an error is thrown if the length of charge_list and
     multiplicity_list are not equal.
     """
-    if not any(key.endswith("_list") for key in subvals.keys()):
+    if not any(key.endswith("_list") and isinstance(val, (list, tuple))
+               for key, val in subvals.items()):
         return (_substitute_single_template(template, subvals),)
     # split subvals in values to expand and common values
     # and remove the _list suffix
@@ -37,6 +38,11 @@ def substitute_template(template: str, subvals: dict) -> tuple[str, ...]:
         log.critical("List subvals to expand into multiple templates have to "
                      f"be all of the same length. Got\n{to_expand}\n from\n"
                      f"{subvals}", "Functions: Substitute Template")
+    if n_variants == 0:
+        log.warning("Received (an) empty list(s) to expand for placeholders "
+                    f"{[key for key, _ in to_expand]} - no template variants "
+                    f"will be generated from\n{subvals}",
+                    "Functions: Substitute Template")
     # build subvals dicts for all variants
     variants = [dict(common) for _ in range(n_variants)]
     for key, val_list in to_expand:
@@ -62,8 +68,17 @@ def _substitute_single_template(template: str, subvals: dict) -> str:
     """
     while True:
         start = template.find("[[")
-        stop = template.find("]]")
-        if start == -1 or stop == -1:
+        if start == -1:
+            break
+        # search for the closing "]]" only after the opening "[[" so a stray
+        # "]]" earlier in the template can't be mistaken for the closing
+        # bracket of a later placeholder
+        stop = template.find("]]", start)
+        if stop == -1:
+            log.error("Found an unclosed placeholder starting at "
+                      f"'{template[start:start+30]}' in the template. "
+                      "Leaving it as literal text - check for a missing "
+                      "closing ']]'.", "Functions: Substitute Template")
             break
         key = template[start+2:stop]
         # check if we have [[key->number]] and get the key and number
@@ -84,10 +99,22 @@ def _substitute_single_template(template: str, subvals: dict) -> str:
                              "'[[placeholder->number]]' needs to be a 'list' "
                              f"or 'tuple'. Found {val} for key {key}.",
                              "Functions: Substitute Template")
+            if val_idx >= len(val):
+                log.critical(f"Index {val_idx} is out of range for "
+                             f"placeholder '{key}' which only has "
+                             f"{len(val)} element(s).",
+                             "Functions: Substitute Template")
             val = val[val_idx]
         if val is None:
-            log.critical(f"No value available for placeholder {key}. "
-                         f"Available are {subvals}",
+            log.critical(f"No value available for placeholder '{key}'. "
+                         f"Available substitution keys are "
+                         f"{list(subvals.keys())}. If '{key}' doesn't look "
+                         "like a real placeholder name (e.g. it contains "
+                         "spaces or shell syntax), the template likely "
+                         "contains literal '[[' / ']]' content - such as "
+                         "bash's own '[[ ... ]]' test syntax - that "
+                         "collides with the placeholder delimiters and "
+                         "needs to be rewritten to avoid double brackets.",
                          "Functions: Substitute Template")
         # update the template
         template = template.replace(template[start:stop+2], str(val))
@@ -133,23 +160,26 @@ def walk_dict_values(indict: dict, prev_keys: tuple = tuple()):
 def determine_basis_cardinality(basis: str):
     # Dunnings basis sets
     def _dunnings(bas: str):
-        b: list[str] = bas.split("-")
-        cstr: str = b[b.index("cc")+1]
-        zetaidx: int = 2
-        zetaoffset: int = 0
-        if cstr.startswith("pwv") or cstr.startswith("pcv"):
-            zetaidx += 1
-        if "(" in cstr:
-            zetaidx += 1
-            zetaoffset += 1
-        if cstr[zetaidx] == "d":
-            return 2 + zetaoffset
-        if cstr[zetaidx] == "t":
-            return 3 + zetaoffset
-        if cstr[zetaidx] == "q":
-            return 4 + zetaoffset
-        if cstr[zetaidx].isnumeric():
-            return int(cstr[zetaidx]) + zetaoffset
+        try:
+            b: list[str] = bas.split("-")
+            cstr: str = b[b.index("cc")+1]
+            zetaidx: int = 2
+            zetaoffset: int = 0
+            if cstr.startswith("pwv") or cstr.startswith("pcv"):
+                zetaidx += 1
+            if "(" in cstr:
+                zetaidx += 1
+                zetaoffset += 1
+            if cstr[zetaidx] == "d":
+                return 2 + zetaoffset
+            if cstr[zetaidx] == "t":
+                return 3 + zetaoffset
+            if cstr[zetaidx] == "q":
+                return 4 + zetaoffset
+            if cstr[zetaidx].isnumeric():
+                return int(cstr[zetaidx]) + zetaoffset
+        except IndexError:
+            pass
 
         log.error(f"Basis set {bas} was interpreted as a Dunning's basis but "
                   "could not be identified!",
@@ -159,19 +189,22 @@ def determine_basis_cardinality(basis: str):
 
     # Karlsruhe def2
     def _karlsruhe(bas: str):
-        b: list[str] = bas.split("-")
-        cstr: str = b[b.index("def2")+1]
-        zetaidx: int = 0
-        if cstr.startswith("m"):
-            zetaidx += 1
-        if cstr[zetaidx] == "s":
-            return 1
-        if cstr[zetaidx] == "t":
-            return 3
-        if cstr[zetaidx] == "q":
-            return 4
-        if cstr[zetaidx].isnumeric():
-            return int(cstr[zetaidx])
+        try:
+            b: list[str] = bas.split("-")
+            cstr: str = b[b.index("def2")+1]
+            zetaidx: int = 0
+            if cstr.startswith("m"):
+                zetaidx += 1
+            if cstr[zetaidx] == "s":
+                return 1
+            if cstr[zetaidx] == "t":
+                return 3
+            if cstr[zetaidx] == "q":
+                return 4
+            if cstr[zetaidx].isnumeric():
+                return int(cstr[zetaidx])
+        except IndexError:
+            pass
 
         log.error(f"Basis set {bas} was interpreted as a Karlruhe basis but "
                   "could not be identified!",

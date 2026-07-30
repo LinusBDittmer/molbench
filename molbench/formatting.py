@@ -64,6 +64,8 @@ class StdFormatter(Formatter):
         """
         if isinstance(value, (int, float)):
             return str(round(value, self.n_decimals))
+        elif isinstance(value, str):
+            return value
         elif hasattr(value, '__iter__'):  # dict, set, list, tuple, ...
             return self.value_delimiter.join(
                 self.format_datapoint(v) for v in value

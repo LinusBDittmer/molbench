@@ -1,5 +1,6 @@
 import pytest
 from molbench.formatting import StdFormatter, LatexFormatter
+from molbench.export import TableExporter
 
 
 class TestStdFormatter:
@@ -40,6 +41,22 @@ class TestStdFormatter:
         fmt = StdFormatter(value_delimiter=" | ")
         result = fmt.format_datapoint([1.0, 2.0])
         assert result == "1.0 | 2.0"
+
+    def test_format_bare_string_no_recursion(self):
+        # Strings are iterable, so without a dedicated check they get
+        # treated as a sequence of themselves and recurse forever.
+        assert self.fmt.format_datapoint("closed-shell") == "closed-shell"
+
+    def test_format_single_char_string_no_recursion(self):
+        assert self.fmt.format_datapoint("x") == "x"
+
+
+def test_table_exporter_rejects_incompatible_formatter():
+    # StdFormatter doesn't implement the table-structure methods
+    # TableExporter needs; must fail fast at construction with a clear
+    # message instead of crashing mid-export with an AttributeError.
+    with pytest.raises(SystemExit):
+        TableExporter(StdFormatter())
 
 
 class TestLatexFormatter:

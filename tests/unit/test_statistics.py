@@ -268,3 +268,55 @@ def test_assign_by_proptype_different_ref_int():
     ref_keys = ("water", "cc-pvdz", "TBE", "energy", "ref")
     int_keys = ("water", "cc-pvdz", "HF", "dipole", "computed")
     assert assign(ref_keys, int_keys) is True
+
+
+# ---------------------------------------------------------------------------
+# __init__ type guard
+# ---------------------------------------------------------------------------
+
+def test_init_wrong_type_exits_cleanly():
+    # Must hit the intended log.critical() path immediately, not log a
+    # non-fatal error and then crash later on an unrelated AttributeError.
+    with pytest.raises(SystemExit):
+        Statistics("not a comparison")
+
+
+# ---------------------------------------------------------------------------
+# relative error with a zero reference value
+# ---------------------------------------------------------------------------
+
+def test_compare_relative_zero_reference_skips_pair(caplog):
+    ref = Molecule("water", "ref", {},
+                   {"gs": {"basis": "cc-pvdz", "method": "TBE",
+                           "data": {"energy": Datapoint(0.0, "au")}}})
+    interest = Molecule("water", "computed", {},
+                        {"gs": {"basis": "cc-pvdz", "method": "HF",
+                                "data": {"energy": Datapoint(1.0, "au")}}})
+    c = Comparison()
+    c.add(MoleculeList([ref, interest]))
+    with caplog.at_level("WARNING", logger="molbench"):
+        errors = Statistics(c).compare(INTEREST, REFERENCE, relative=True)
+    assert errors == {}
+    assert any("is zero" in rec.message for rec in caplog.records)
+
+
+# ---------------------------------------------------------------------------
+# empty-input behavior of the built-in error measures
+# ---------------------------------------------------------------------------
+
+def test_empty_errors_all_measures_no_crash():
+    assign = _assign()
+    for measure in (mse, sde, stat_min, stat_max, median_se, rmsd):
+        val, count = measure({}, assign)
+        assert count == 0
+        assert np.isnan(val)
+
+
+def test_evaluate_all_on_empty_errors_no_crash(known_comparison):
+    # A proptype filter matching zero pairs used to crash "all" on min/max.
+    result = Statistics(known_comparison).evaluate(
+        {}, "all", proptype="nonexistent_proptype"
+    )
+    for key in ("mse", "mae", "rmsd", "sde", "min", "max", "median_se"):
+        assert key in result
+        assert result[key][1] == 0

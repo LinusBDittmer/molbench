@@ -42,7 +42,7 @@ class Configuration(dict):
 
         """
         self.load_from_file()
-        super().__init__(self, *args, **kwargs)
+        super().__init__(*args, **kwargs)
 
     def load_from_file(self):
         """

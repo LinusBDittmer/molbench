@@ -261,6 +261,10 @@ class TemplateConstructor(InputConstructor):
                 var = tuple((key, property.get(key, None))
                             for key in file_expansion_keys)
                 if any(val is None for _, val in var):
+                    log.warning(
+                        f"Skipping a state of molecule {molecule.name}: "
+                        f"missing value(s) for {file_expansion_keys} "
+                        f"(got {var}).", "TemplateConstructor")
                     continue
                 try:  # no new variant -> add the property to the list
                     i = variants.index(var)
@@ -438,7 +442,7 @@ class CompressedTemplateConstructor(TemplateConstructor):
                     log.critical("Please specify a property key from which the"
                                  + " stochiometry should be read",
                                  "CompressedTemplateConstructor")
-                elif (len(available_properties) > 1 and
+                elif (compressed_property is not None and
                       compressed_property not in available_properties):
                     log.critical("compressed_property was not found in"
                                  + f" Molecule {mol.name}",
