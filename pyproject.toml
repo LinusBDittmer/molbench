@@ -9,14 +9,9 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 numpy = "^1.26.2"
-matplotlib = "^3.8.2"
-argparse = "^1.4.0"
 
 [tool.poetry.group.dev.dependencies]
-numpy = "^1.26.2"
-matplotlib = "^3.8.2"
 pytest = "^7.4.3"
-argparse = "^1.4.0"
 
 [build-system]
 requires = ["poetry-core"]

@@ -22,9 +22,6 @@ class Configuration(dict):
     load_from_file()
         Load configuration from a JSON file specified by environment variable
         or default path.
-    check_required_fields()
-        Check if all required fields are present in the configuration and fill
-        in missing ones with default values.
 
     """
 
@@ -65,23 +62,6 @@ class Configuration(dict):
         except Exception:
             log.critical(f"Configuration file at {config_path} could not be "
                          "parsed.", "Configuration")
-
-    def check_required_fields(self):
-        """
-        Check and fill in missing required fields with default values.
-
-        This method iterates through the required fields defined in the class
-        and checks if they are present in the configuration dictionary. If any
-        required field is missing, it is added to the configuration with its
-        default value.
-
-        """
-        for field, val in self.required_fields.items():
-            if field not in self:
-                log.warning(f"Expected Configuration value {field} to be set. "
-                            f"Reverting to hardcoded standard of {val}",
-                            "Configuration")
-                self[field] = val
 
     def __setattr__(self, attr: str, val) -> None:
         """

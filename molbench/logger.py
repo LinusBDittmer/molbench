@@ -37,57 +37,46 @@ def __init_log_instance():
     instance.addHandler(stream_handler)
 
 
-def _format_cause(cause):
-    if isinstance(cause, str):
-        return cause
-    return str(cause)
-
-
 def debug(msg: str, cause=None):
-    fcause = _format_cause(cause)
     global instance
     assert instance is not None
     if cause is None:
         instance.debug(msg)
     else:
-        instance.debug(f"[{fcause}] {msg}")
+        instance.debug(f"[{cause}] {msg}")
 
 
 def info(msg: str, cause=None):
-    fcause = _format_cause(cause)
     global instance
     assert instance is not None
     if cause is None:
         instance.info(msg)
     else:
-        instance.info(f"[{fcause}] {msg}")
+        instance.info(f"[{cause}] {msg}")
 
 
 def warning(msg: str, cause=None):
-    fcause = _format_cause(cause)
     global instance
     assert instance is not None
     if cause is None:
         instance.warning(msg)
     else:
-        instance.warning(f"[{fcause}] {msg}\n")
+        instance.warning(f"[{cause}] {msg}\n")
 
 
 def error(msg: str, cause=None, etype: str = ""):
-    fcause = _format_cause(cause)
     global instance
     assert instance is not None
     if cause is None:
         instance.error(f"{msg} (Error type: {etype})")
     else:
-        instance.error(f"[{fcause}] {msg} (Error type: {etype})\n")
+        instance.error(f"[{cause}] {msg} (Error type: {etype})\n")
 
 
 def critical(msg: str, cause):
-    fcause = _format_cause(cause)
     global instance
     assert instance is not None
-    instance.critical(f"[{fcause}] CRITICAL ERROR: {msg}\n")
+    instance.critical(f"[{cause}] CRITICAL ERROR: {msg}\n")
     sys.exit(-1)
 
 

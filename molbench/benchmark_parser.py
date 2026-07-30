@@ -19,20 +19,6 @@ class BenchmarkParser:
     def _collect_premade_benchmarks(cls) -> None:
         """
         Collect premade benchmark files from the 'benchmarks' directory.
-
-        Explanation
-        -----------
-        - `premade_benchmarks`: Global dictionary to store premade benchmark
-           files.
-        - If `premade_benchmarks` is already populated, exit the function.
-        - `wpath`: Get the directory path of the current file.
-        - `rpath`: Create the absolute path to the 'benchmarks' directory
-           relative to the current file.
-        - Initialize `premade_benchmarks` as an empty dictionary.
-        - Iterate over files in the 'benchmarks' directory:
-            - If the file has a '.json' extension, add it to
-              `premade_benchmarks` with the filename
-              (without extension) as key and the absolute path as value.
         """
         if cls.premade_benchmarks is not None:
             return

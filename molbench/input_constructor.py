@@ -363,9 +363,6 @@ class TemplateConstructor(InputConstructor):
 
 class CompressedTemplateConstructor(TemplateConstructor):
 
-    def __init__(self, template: str):
-        super().__init__(template)
-
     def create_inputs(self, benchmark: MoleculeList, basepath: str,
                       calc_details: dict,
                       file_expansion_keys: tuple = ("basis",),

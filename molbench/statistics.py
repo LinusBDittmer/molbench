@@ -270,11 +270,7 @@ def mae(signed_errors: dict, assign: Callable):
     errors = _collect_errors(signed_errors, assign)
     if len(errors) == 0:
         return numpy.float64(0), 0
-    else:
-        return (
-            numpy.sum(numpy.fromiter((numpy.absolute(e) for e in errors), dtype=float)) / len(errors),
-            len(errors)
-        )
+    return numpy.abs(numpy.array(errors)).mean(axis=0), len(errors)
 
 
 @register_as_error_measure

@@ -134,12 +134,6 @@ class Comparison(dict):
                     if sep not in d:
                         d[sep] = {}
                     d = d[sep]
-                # Check if we have to consider state assignments
-                # tid = prop.get("assigned_transition_id", prop.get("transition_id", None))
-                # if tid is not None:
-                #     if tid not in d:
-                #         d[tid] = {}
-                #     d = d[tid]
                 if proptype not in d:  # special separator: proptype
                     d[proptype] = {}
                 d = d[proptype]

@@ -176,12 +176,6 @@ class Molecule:
 
 class MoleculeList(list[Molecule]):
 
-    def __repr__(self):
-        return super().__repr__()
-
-    def __str__(self):
-        return super().__str__()
-
     def filter(self, key, *values) -> 'MoleculeList':
         return self._filter(key, lambda v: v in values)
 
