@@ -33,6 +33,9 @@ class ExternalParser:
         """
         outfiles = self._fetch_all_outfiles(filepath, out_suffix)
 
+        if parser is None:
+            log.critical("No parser available for parsing.", "External Parser")
+
         param_num: int = len(inspect.signature(parser).parameters)
 
         if param_num not in (1, 2):
@@ -45,11 +48,6 @@ class ExternalParser:
 
         data = MoleculeList()
         for outf in outfiles:
-            # contains all the relevant metadata, suite, method, etc
-            # to determine which parser is needed
-            if parser is None:
-                log.critical(f"No parser available for parsing {parser}.",
-                             "External Parser")
             # load the file and add assignments if available
             mol = self._load_file(
                 outfile=outf, out_parser=parser,
@@ -87,10 +85,10 @@ class ExternalParser:
             parsed = out_parser(outfile, Path(outfile).stem)
         else:
             parsed = out_parser(outfile)
-        if len(parsed) != 3:
-            log.critical("Output file parser must return name, system_data and"
-                         f" state_data, but only {len(parsed)} arguments were "
-                         "found.", "ExternalParser")
+        if not isinstance(parsed, (tuple, list)) or len(parsed) != 3:
+            log.critical("Output file parser must return a tuple/list of "
+                         "(name, system_data, state_data), but got "
+                         f"{parsed!r} instead.", "ExternalParser")
         name: str = parsed[0]
         system_data: dict[str, Any] = parsed[1]
         state_data: dict[str, Any] = parsed[2]

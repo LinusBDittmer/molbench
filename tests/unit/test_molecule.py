@@ -202,6 +202,25 @@ def test_add_assignments_no_transition_id_skipped():
     assert "gs" in mol.state_data
 
 
+def test_add_assignments_duplicate_ref_warns(caplog):
+    # Two different transition ids mapped to the same ref id must warn.
+    mol = _mol_with_transitions()
+    with caplog.at_level("WARNING", logger="molbench"):
+        mol.add_assignments({"s0->s1": "state_001", "s0->s2": "state_001"})
+    assert any("multiple" in rec.message for rec in caplog.records)
+    assert mol.state_data["s1"]["assigned_transition_id"] == "state_001"
+    assert mol.state_data["s2"]["assigned_transition_id"] == "state_001"
+
+
+def test_add_assignments_unmatched_tid_warns(caplog):
+    # A transition id with no matching assignment must warn before dropping.
+    mol = _mol_with_transitions()
+    with caplog.at_level("WARNING", logger="molbench"):
+        mol.add_assignments({"s0->s1": "state_001"})  # s2 has no assignment
+    assert any("No assignment found" in rec.message for rec in caplog.records)
+    assert "s2" not in mol.state_data
+
+
 def test_add_assignments_custom_keys():
     mol = Molecule(
         "mol", "bench", {},

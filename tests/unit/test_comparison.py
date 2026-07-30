@@ -172,3 +172,25 @@ def test_import_value_list_to_ndarray():
     c = Comparison()
     result = c._import_value([1.0, 2.0, 3.0])
     assert isinstance(result, numpy.ndarray)
+
+
+def test_import_value_malformed_dict_logs_error(caplog):
+    # A dict that isn't exactly {"value", "unit"} must be reported, not
+    # silently swallowed into None.
+    c = Comparison()
+    with caplog.at_level("ERROR", logger="molbench"):
+        result = c._import_value({"value": 2.0, "unit": "eV", "note": "extra"})
+    assert result is None
+    assert any("Could not interpret" in rec.message for rec in caplog.records)
+
+
+# ---------------------------------------------------------------------------
+# add_molecule — invalid input type
+# ---------------------------------------------------------------------------
+
+def test_add_molecule_wrong_type_logs_error_and_returns(caplog):
+    c = Comparison()
+    with caplog.at_level("ERROR", logger="molbench"):
+        c.add_molecule({"not": "a molecule"})  # must not raise
+    assert c == {}
+    assert any("Can't add data of type" in rec.message for rec in caplog.records)

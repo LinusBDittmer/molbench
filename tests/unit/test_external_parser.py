@@ -142,6 +142,26 @@ def test_load_wrong_return_length_exits(tmp_path):
         ExternalParser().load(str(tmp_path), parser=bad_parser_wrong_return)
 
 
+def test_load_parser_none_exits_cleanly(tmp_path):
+    # Must hit the intended log.critical() path, not a raw TypeError from
+    # inspect.signature(None).
+    (tmp_path / "mol.out").write_text("")
+    with pytest.raises(SystemExit):
+        ExternalParser().load(str(tmp_path), parser=None)
+
+
+def test_load_parser_returns_none_exits_cleanly(tmp_path):
+    # A parser that forgets its return statement returns None, which has no
+    # len(); must hit the intended log.critical() path, not a raw TypeError.
+    (tmp_path / "mol.out").write_text("")
+
+    def forgetful_parser(filepath):
+        pass
+
+    with pytest.raises(SystemExit):
+        ExternalParser().load(str(tmp_path), parser=forgetful_parser)
+
+
 # ---------------------------------------------------------------------------
 # load — with assignment files
 # ---------------------------------------------------------------------------

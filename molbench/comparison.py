@@ -89,10 +89,14 @@ class Comparison(dict):
         if isinstance(value, (int, float, complex, str)):
             return value
         elif isinstance(value, dict):
-            if ((len(value.keys()) == 2) 
+            if ((len(value.keys()) == 2)
                 and ("value" in value)
                 and ("unit" in value)):
                 return Datapoint(value["value"], value["unit"])
+            log.error(f"Could not interpret {value} as a datapoint. Expected "
+                      "a dict with exactly the keys 'value' and 'unit'.",
+                      "Comparison._import_value")
+            return None
         elif isinstance(value, Datapoint):
             return value
         else:
@@ -109,7 +113,8 @@ class Comparison(dict):
         if not isinstance(data, Molecule):
             log.error(f"Can't add data of type {type(data)}.",
                       "Comparison.add_molecule")
-        
+            return
+
         # We define a wrapper around prop.get to filter out transition ids
         # Here, we need to take the assigned transition id if possible
         def _propget(prop, key, default=None):

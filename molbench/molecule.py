@@ -162,6 +162,9 @@ class Molecule:
             # If the property is not found, it cannot be assigned
             tid = state_data[old_transition_id_key]
             if tid not in assignments:
+                log.warning(f"No assignment found for transition id {tid} of "
+                            f"state {state_key}. Dropping the state.",
+                            "Molecule: add_assignments")
                 unassigned.append(state_key)
                 continue
             # The assigned transition_id
@@ -169,6 +172,7 @@ class Molecule:
             if ass_tid in prev_assigned:
                 log.warning(f"The transition id key {tid} is assigned to multiple"
                             "transitions. Overwriting.", "Molecule: add_assignments")
+            prev_assigned.append(ass_tid)
             state_data[new_transition_id_key] = ass_tid
 
         for key in unassigned:
