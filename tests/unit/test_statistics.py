@@ -301,6 +301,34 @@ def test_compare_relative_zero_reference_skips_pair(caplog):
 
 
 # ---------------------------------------------------------------------------
+# extreme_error_keys
+# ---------------------------------------------------------------------------
+
+def test_extreme_error_keys_two_molecules(two_molecule_comparison):
+    errors = _get_errors(two_molecule_comparison)
+    result = Statistics(two_molecule_comparison).extreme_error_keys(
+        errors, proptype=PROPTYPE
+    )
+    assert result["min"]["value"] == pytest.approx(0.1)
+    assert result["min"]["reference"][0] == "water"
+    assert result["max"]["value"] == pytest.approx(0.3)
+    assert result["max"]["reference"][0] == "benzene"
+
+
+def test_extreme_error_keys_empty_returns_empty_dict(known_comparison):
+    result = Statistics(known_comparison).extreme_error_keys(
+        {}, proptype=PROPTYPE
+    )
+    assert result == {}
+
+
+def test_extreme_error_keys_no_assign_no_proptype_logs_error(known_comparison):
+    errors = _get_errors(known_comparison)
+    result = Statistics(known_comparison).extreme_error_keys(errors)
+    assert result == {}
+
+
+# ---------------------------------------------------------------------------
 # empty-input behavior of the built-in error measures
 # ---------------------------------------------------------------------------
 

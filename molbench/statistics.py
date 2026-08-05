@@ -233,6 +233,60 @@ class Statistics:
             ret[error_measure] = callback(signed_errors, assign)
         return ret
 
+    def extreme_error_keys(self, signed_errors: dict,
+                           assign: Callable | None = None,
+                           proptype: str | None = None,
+                           absolute: bool = False) -> dict:
+        """
+        Finds the reference/interest key tuples (the expansion keys
+        identifying a data point in the underlying Comparison, i.e.,
+        name/basis/method/proptype/data_id) for the smallest and largest
+        signed error. As in evaluate(), either an assign Callable or a
+        proptype has to be provided to select the relevant subset of
+        signed_errors.
+
+        Returns
+        -------
+        dict
+            {"min": {"reference": keys, "interest": keys, "value": error},
+             "max": {...}}
+            Empty dict if no matching errors are found.
+        """
+        if assign is None:
+            if proptype is None:
+                log.error("No assign Callable or proptype given.",
+                          "Statistics: extreme_error_keys")
+                return {}
+            assign = self.assign_by_proptype(proptype)
+
+        entries = [
+            (refkeys, interestkeys, value.value)
+            for refkeys, interest in signed_errors.items()
+            for interestkeys, value in interest.items()
+            if assign(refkeys, interestkeys)
+        ]
+        if not entries:
+            return {}
+
+        def _sortkey(entry):
+            return abs(entry[2]) if absolute else entry[2]
+
+        # NB: 'min'/'max' are shadowed in this module by the registered
+        # error measures of the same name -> compare manually.
+        lowest = highest = entries[0]
+        for entry in entries[1:]:
+            if _sortkey(entry) < _sortkey(lowest):
+                lowest = entry
+            if _sortkey(entry) > _sortkey(highest):
+                highest = entry
+
+        return {
+            "min": {"reference": lowest[0], "interest": lowest[1],
+                    "value": lowest[2]},
+            "max": {"reference": highest[0], "interest": highest[1],
+                    "value": highest[2]},
+        }
+
     @staticmethod
     def assign_by_proptype(intproptype: str, refproptype: str = None):
         if refproptype is None:
