@@ -96,6 +96,91 @@ def test_filter_returns_molecule_list(mixed_list):
     assert isinstance(result, MoleculeList)
 
 
+def test_filter_by_name_and_data_id_delegate(mixed_list):
+    assert [m.name for m in mixed_list.filter("name", "water")] == \
+        [m.name for m in mixed_list.filter_names("water")]
+    assert [m.name for m in mixed_list.remove("name", "water")] == \
+        [m.name for m in mixed_list.remove_names("water")]
+    assert [m.name for m in mixed_list.filter("data_id", "bench")] == \
+        [m.name for m in mixed_list.filter_data_ids("bench")]
+    assert [m.name for m in mixed_list.remove("data_id", "bench")] == \
+        [m.name for m in mixed_list.remove_data_ids("bench")]
+
+
+# ---------------------------------------------------------------------------
+# filter_properties / remove_properties
+# ---------------------------------------------------------------------------
+
+@pytest.fixture
+def property_list():
+    return MoleculeList([
+        Molecule(
+            name="multi", data_id="bench", system_data={"charge": 0},
+            state_data={
+                "s1": {"basis": "cc-pvdz", "method": "adc2",
+                       "data": {"excitation_energy": Datapoint(1.0, "eV"),
+                                "oscillator_strength": Datapoint(0.1, "au")}},
+                "s2": {"basis": "cc-pvdz", "method": "adc2",
+                       "data": {"oscillator_strength": Datapoint(0.2, "au")}},
+            }
+        ),
+        Molecule(
+            name="osc_only", data_id="bench", system_data={"charge": 0},
+            state_data={
+                "s1": {"basis": "cc-pvdz", "method": "adc2",
+                       "data": {"oscillator_strength": Datapoint(0.3, "au")}},
+            }
+        ),
+    ])
+
+
+def test_filter_properties(property_list):
+    # ensure that osc_only is dropped and multi only keeps the s1 energy
+    result = property_list.filter_properties("excitation_energy")
+    assert len(result) == 1
+    assert result[0].name == "multi"
+    # the state without excitation energy is dropped
+    assert list(result[0].state_data) == ["s1"]
+    assert list(result[0].state_data["s1"]["data"]) == ["excitation_energy"]
+    # the remaining state keeps its other entries
+    assert result[0].state_data["s1"]["method"] == "adc2"
+    # Ensure that nothing is dropped
+    result = property_list.filter_properties("excitation_energy",
+                                             "oscillator_strength")
+    assert len(result) == 2
+    assert set(result[0].state_data) == {"s1", "s2"}
+    assert set(result[0].state_data["s1"]["data"]) == \
+        {"excitation_energy", "oscillator_strength"}
+    assert list(result[1].state_data["s1"]["data"]) == ["oscillator_strength"]
+    # ensure that multi looses its energy
+    removed = property_list.remove_properties("excitation_energy")
+    assert len(removed) == 2
+    assert removed[0].name == "multi"
+    assert set(removed[0].state_data) == {"s1", "s2"}
+    assert removed[1].name == "osc_only"
+    assert list(removed[1].state_data) == ["s1"]
+    assert all(
+        ptype == "oscillator_strength"
+        for m in removed
+        for _, data in m.state_data.items()
+        for ptype in data["data"]
+    )
+    # ensure that everything is dropped
+    result = property_list.remove_properties("excitation_energy",
+                                             "oscillator_strength")
+    assert len(result) == 0
+    # ensure that a state without data is dropped
+    no_data = MoleculeList()
+    no_data.append(Molecule(
+        name="no_data", data_id="test", system_data={},
+        state_data={"s1": {"method": "adc2", "basis": "cc-pvdz"}}
+    ))
+    res = no_data.filter_properties("bla")
+    assert len(res) == 0
+    res = no_data.remove_properties("bla")
+    assert len(res) == 0
+
+
 # ---------------------------------------------------------------------------
 # filter_by_range
 # ---------------------------------------------------------------------------

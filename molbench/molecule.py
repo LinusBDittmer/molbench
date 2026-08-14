@@ -13,7 +13,7 @@ class Molecule:
     system_data: dict[str, Any]
     state_data: dict[str, Any]
 
-    def __init__(self, name, data_id, system_data: dict | None = None,
+    def __init__(self, name: str, data_id: str, system_data: dict | None = None,
                  state_data: dict | None = None) -> None:
         self.name = name
         self.data_id = data_id
@@ -181,9 +181,17 @@ class Molecule:
 class MoleculeList(list[Molecule]):
 
     def filter(self, key, *values) -> 'MoleculeList':
+        if key == "name":  # for compatability
+            return self.filter_names(*values)
+        elif key == "data_id":
+            return self.filter_data_ids(*values)
         return self._filter(key, lambda v: v in values)
 
     def remove(self, key, *values) -> 'MoleculeList':
+        if key == "name":  # for compatability
+            return self.remove_names(*values)
+        elif key == "data_id":
+            return self.remove_data_ids(*values)
         return self._filter(key, lambda v: v not in values)
 
     def apply_stochiometry(self, stochiometry: dict) -> 'MoleculeList':
@@ -296,37 +304,80 @@ class MoleculeList(list[Molecule]):
             return True
         return self._filter(key, _filter_vec_norm)
 
+    def filter_names(self, *names: str) -> 'MoleculeList':
+        return self._filter_names(lambda n: n in names)
+
+    def remove_names(self, *names: str) -> 'MoleculeList':
+        return self._filter_names(lambda n: n not in names)
+
+    def _filter_names(self, callback: Callable[[str], bool]) -> 'MoleculeList':
+        return MoleculeList(m for m in self if callback(m.name))
+
+    def filter_data_ids(self, *ids: str) -> 'MoleculeList':
+        return self._filter_data_ids(lambda id: id in ids)
+
+    def remove_data_ids(self, *ids: str) -> 'MoleculeList':
+        return self._filter_data_ids(lambda id: id not in ids)
+
+    def _filter_data_ids(self, callback: Callable[[str], bool]) -> 'MoleculeList':
+        return MoleculeList(m for m in self if callback(m.data_id))
+
+    def filter_properties(self, *types: str) -> 'MoleculeList':
+        return self._filter_properties(lambda ptype: ptype in types)
+
+    def remove_properties(self, *types: str) -> 'MoleculeList':
+        return self._filter_properties(lambda ptype: ptype not in types)
+
+    def _filter_properties(self, callback: Callable[[str], bool]) -> 'MoleculeList':
+        filtered = MoleculeList()
+        for molecule in self:
+            remaining_state_data = {}
+            for state, data in molecule.state_data.items():
+                remaining_properties = {
+                    k: v for k, v in data.get("data", {}).items()
+                    if callback(k)
+                }
+                # no property left -> drop the state
+                if remaining_properties:
+                    new_data = data.copy()
+                    new_data["data"] = remaining_properties
+                    remaining_state_data[state] = new_data
+            if remaining_state_data:
+                filtered.append(Molecule(
+                    name=molecule.name, data_id=molecule.data_id,
+                    system_data=molecule.system_data,
+                    state_data=remaining_state_data
+                ))
+        return filtered
+
     def _filter(self: list[Molecule], key, callback: Callable):
-        # XXX: currently it is not possible to filter according to state names!
-        if key == "name":  # filter according to molecule names
-            filtered = MoleculeList(m for m in self if callback(m.name))
-        elif key == "data_id":
-            filtered = MoleculeList(m for m in self if callback(m.data_id))
-        else:  # check system_data and state_data for the key
-            filtered = MoleculeList()
-            for molecule in self:
-                # start by checking system_data -> possibly drop the molecule
-                if not all(callback(val) for _, val in
-                           walk_dict_by_key(molecule.system_data, key)):
-                    continue
-                # now check the state_data -> possibly drop multiple states
-                # if no states are left we drop the whole molecule
-                remaining_states = [state for state, data in
-                                    molecule.state_data.items()
-                                    if all(callback(val) for _, val
-                                           in walk_dict_by_key(data, key))]
-                if not remaining_states:  # no state left -> drop molecule
-                    continue
-                # no state was removed
-                if len(remaining_states) == len(molecule.state_data.keys()):
-                    filtered.append(molecule)
-                else:  # at least 1 state was removed
-                    state_data = {state: molecule.state_data[state]
-                                  for state in remaining_states}
-                    filtered.append(Molecule(
-                        molecule.name, molecule.data_id, molecule.system_data,
-                        state_data
-                    ))
+        assert key != "name"  # special method
+        assert key != "data_id"  # special method
+        # check system_data and state_data for the key
+        filtered = MoleculeList()
+        for molecule in self:
+            # start by checking system_data -> possibly drop the molecule
+            if not all(callback(val) for _, val in
+                       walk_dict_by_key(molecule.system_data, key)):
+                continue
+            # now check the state_data -> possibly drop multiple states
+            # if no states are left we drop the whole molecule
+            remaining_states = [state for state, data in
+                                molecule.state_data.items()
+                                if all(callback(val) for _, val
+                                       in walk_dict_by_key(data, key))]
+            if not remaining_states:  # no state left -> drop molecule
+                continue
+            # no state was removed
+            if len(remaining_states) == len(molecule.state_data.keys()):
+                filtered.append(molecule)
+            else:  # at least 1 state was removed
+                state_data = {state: molecule.state_data[state]
+                              for state in remaining_states}
+                filtered.append(Molecule(
+                    molecule.name, molecule.data_id, molecule.system_data,
+                    state_data
+                ))
         return filtered
 
     def _join_system_data(self, dst_sys, src_sys, idx):
