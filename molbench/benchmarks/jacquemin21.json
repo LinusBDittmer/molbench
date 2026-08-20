@@ -1,2179 +1,2091 @@
 {
-	"BF": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 2,
-		"n_electrons": 14,
-		"n_core_orbitals": 2,
-		"n_states": {
-			"n_singlets": 1
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"B  0.00000000  0.00000000  0.00000000",
-			"F  0.00000000  0.00000000  2.39729626"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 6.417,
-				"unit": "eV"
-			},
-			"s1_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 0.468
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 0.299,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 6.410,
-				"unit": "eV"
-			}
-		}
-	},
-	"BH": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 2,
-		"n_electrons": 6,
-		"n_core_orbitals": 1,
-		"n_states": {
-			"n_singlets": 1
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"B  0.00000000  0.00000000  0.00000000",
-			"H  0.00000000  0.00000000  2.31089693"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 2.901,
-				"unit": "eV"
-			},
-			"s1_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 0.048
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 0.559,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 2.910,
-				"unit": "eV"
-			}
-		}
-	},
-	"carbon_monoxyde": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 2,
-		"n_electrons": 14,
-		"n_core_orbitals": 2,
-		"n_states": {
-			"n_singlets": 6
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"C  0.00000000  0.00000000 -1.24942055",
-			"O  0.00000000  0.00000000  0.89266692"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 8.478,
-				"unit": "eV"
-			},
-			"s2_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "S-",
-				"state_id": "s2",
-				"value": 9.932,
-				"unit": "eV"
-			},
-			"s3_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "D",
-				"state_id": "s3",
-				"value": 10.065,
-				"unit": "eV"
-			},
-			"s4_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "S+",
-				"state_id": "s4",
-				"value": 10.956,
-				"unit": "eV"
-			},
-			"s5_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "S+",
-				"state_id": "s5",
-				"value": 11.519,
-				"unit": "eV"
-			},
-			"s6_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s6",
-				"value": 11.715,
-				"unit": "eV"
-			},
-			"s1_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 0.166
-			},
-			"s4_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "S+",
-				"state_id": "s4",
-				"value": 0.003
-			},
-			"s5_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "S+",
-				"state_id": "s5",
-				"value": 0.202
-			},
-			"s6_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s6",
-				"value": 0.107
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 0.126,
-				"unit": "D"
-			},
-			"s2_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "S-",
-				"state_id": "s2",
-				"value": 1.614,
-				"unit": "D"
-			},
-			"s3_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "D",
-				"state_id": "s3",
-				"value": 1.450,
-				"unit": "D"
-			},
-			"s4_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "S+",
-				"state_id": "s4",
-				"value": 4.014,
-				"unit": "D"
-			},
-			"s5_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "S+",
-				"state_id": "s5",
-				"value": 6.229,
-				"unit": "D"
-			},
-			"s6_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s6",
-				"value": 0.124,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 8.486,
-				"unit": "eV"
-			},
-			"s2_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "S-",
-				"state_id": "s2",
-				"value": 9.992,
-				"unit": "eV"
-			},
-			"s3_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "D",
-				"state_id": "s3",
-				"value": 10.119,
-				"unit": "eV"
-			},
-			"s4_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "S+",
-				"state_id": "s4",
-				"value": 10.944,
-				"unit": "eV"
-			},
-			"s5_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "S+",
-				"state_id": "s5",
-				"value": 11.489,
-				"unit": "eV"
-			},
-			"s6_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s6",
-				"value": 11.690,
-				"unit": "eV"
-			}
-		}
-	},
-	"CF2": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 3,
-		"n_electrons": 24,
-		"n_core_orbitals": 3,
-		"n_states": {
-			"n_singlets": 1
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"C  0.00000000  0.00000000 -1.14170749",
-			"F  0.00000000  1.94810617  0.36114458",
-			"F  0.00000000 -1.94810617  0.36114458"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 5.066,
-				"unit": "eV"
-			},
-			"s1_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 0.034
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 0.035,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 5.069,
-				"unit": "eV"
-			}
-		}
-	},
-	"cyclopropene": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 7,
-		"n_electrons": 22,
-		"n_core_orbitals": 3,
-		"n_states": {
-			"n_singlets": 2
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"C   0.00000000  0.00000000 -1.66820880",
-			"C   0.00000000  1.22523906  0.90681419",
-			"C   0.00000000 -1.22523906  0.90681419",
-			"H   1.72255446  0.00000000 -2.77881149",
-			"H  -1.72255446  0.00000000 -2.77881149",
-			"H   0.00000000  2.97844519  1.92076771",
-			"H   0.00000000 -2.97844519  1.92076771"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 6.671,
-				"unit": "eV"
-			},
-			"s2_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 6.733,
-				"unit": "eV"
-			},
-			"s1_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 0.001
-			},
-			"s2_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 0.070
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 1.232,
-				"unit": "D"
-			},
-			"s2_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 0.813,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 6.683,
-				"unit": "eV"
-			},
-			"s2_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 6.733,
-				"unit": "eV"
-			}
-		}
-	},
-	"diazirine": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 5,
-		"n_electrons": 22,
-		"n_core_orbitals": 3,
-		"n_states": {
-			"n_singlets": 3
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"C  0.00000000  0.00000000 -0.26696099",
-			"H  0.00000000  1.75890895 -1.28616478",
-			"H  0.00000000 -1.75890895 -1.28616478",
-			"N  1.16058100  0.00000000  2.27183007",
-			"N -1.16058100  0.00000000  2.27183007"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 4.093,
-				"unit": "eV"
-			},
-			"s2_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s2",
-				"value": 7.273,
-				"unit": "eV"
-			},
-			"s3_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s3",
-				"value": 7.437,
-				"unit": "eV"
-			},
-			"s4_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 8.017,
-				"unit": "eV"
-			},
-			"s1_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 0.002
-			},
-			"s3_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s3",
-				"value": 0.000
-			},
-			"s4_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 0.131
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 4.114,
-				"unit": "eV"
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 2.509,
-				"unit": "D"
-			},
-			"s2_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s2",
-				"value": 1.708,
-				"unit": "D"
-			},
-			"s3_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s3",
-				"value": 3.025,
-				"unit": "D"
-			},
-			"s4_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 1.393,
-				"unit": "D"
-			},
-			"s2_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s2",
-				"value": 7.308,
-				"unit": "eV"
-			},
-			"s3_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s3",
-				"value": 7.450,
-				"unit": "eV"
-			},
-			"s4_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 8.037,
-				"unit": "eV"
-			}
-		}
-	},
-	"diazomethane": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 5,
-		"n_electrons": 22,
-		"n_core_orbitals": 3,
-		"n_states": {
-			"n_singlets": 3
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"C  0.00000000   0.00000000  -2.30830005",
-			"N  0.00000000   0.00000000   0.14457890",
-			"N  0.00000000   0.00000000   2.29923216",
-			"H  0.00000000   1.79875201  -3.24272317",
-			"H  0.00000000  -1.79875201  -3.24272317"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 3.050,
-				"unit": "eV"
-			},
-			"s2_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 5.463,
-				"unit": "eV"
-			},
-			"s3_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 5.827,
-				"unit": "eV"
-			},
-			"s2_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 0.016
-			},
-			"s3_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 0.235
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 3.278,
-				"unit": "D"
-			},
-			"s2_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 0.480,
-				"unit": "D"
-			},
-			"s3_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 0.902,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 3.070,
-				"unit": "eV"
-			},
-			"s2_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 5.450,
-				"unit": "eV"
-			},
-			"s3_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 5.836,
-				"unit": "eV"
-			}
-		}
-	},
-	"dinitrogen": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 2,
-		"n_electrons": 14,
-		"n_core_orbitals": 2,
-		"n_states": {
-			"n_singlets": 4
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"N  0.00000000 0.00000000  1.04008632",
-			"N  0.00000000 0.00000000 -1.04008632"
-		],
-		"properties": {
-			"s5_e": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Pu",
-				"state_id": "s5",
-				"value": 13.090,
-				"unit": "eV"
-			},
-			"s6_e": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Su+",
-				"state_id": "s6",
-				"value": 13.088,
-				"unit": "eV"
-			},
-			"s7_e": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Pu",
-				"state_id": "s7",
-				"value": 13.417,
-				"unit": "eV"
-			},
-			"s8_e": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Pu",
-				"state_id": "s8",
-				"value": 14.009,
-				"unit": "eV"
-			},
-			"s5_f": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Pu",
-				"state_id": "s5",
-				"value": 0.423
-			},
-			"s6_f": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Su+",
-				"state_id": "s6",
-				"value": 0.286
-			},
-			"s7_f": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Pu",
-				"state_id": "s7",
-				"value": 0.015
-			},
-			"s8_f": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Pu",
-				"state_id": "s8",
-				"value": 0.148
-			},
-			"s5_e_cc3": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Pu",
-				"state_id": "s5",
-				"value": 13.223,
-				"unit": "eV"
-			},
-			"s6_e_cc3": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Su+",
-				"state_id": "s6",
-				"value": 13.120,
-				"unit": "eV"
-			},
-			"s7_e_cc3": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Pu",
-				"state_id": "s7",
-				"value": 13.494,
-				"unit": "eV"
-			},
-			"s8_e_cc3": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Dinfh",
-				"detected_irrep": "Pu",
-				"state_id": "s8",
-				"value": 13.974,
-				"unit": "eV"
-			}
-		}
-	},
-	"ethylene": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 6,
-		"n_electrons": 16,
-		"n_core_orbitals": 2,
-		"n_states": {
-			"n_singlets": 2
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"C  0.00000000   1.26026583   0.00000000",
-			"C  0.00000000  -1.26026583   0.00000000",
-			"H  0.00000000   2.32345976   1.74287672",
-			"H  0.00000000  -2.32345976   1.74287672",
-			"H  0.00000000   2.32345976  -1.74287672",
-			"H  0.00000000  -2.32345976  -1.74287672"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "D2h",
-				"detected_irrep": "B3u",
-				"state_id": "s1",
-				"value": 7.374,
-				"unit": "eV"
-			},
-			"s2_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "D2h",
-				"detected_irrep": "B1u",
-				"state_id": "s2",
-				"value": 7.905,
-				"unit": "eV"
-			},
-			"s1_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "D2h",
-				"detected_irrep": "B3u",
-				"state_id": "s1",
-				"value": 0.078
-			},
-			"s2_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "D2h",
-				"detected_irrep": "B1u",
-				"state_id": "s2",
-				"value": 0.345
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "D2h",
-				"detected_irrep": "B3u",
-				"state_id": "s1",
-				"value": 7.354,
-				"unit": "eV"
-			},
-			"s2_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "D2h",
-				"detected_irrep": "B1u",
-				"state_id": "s2",
-				"value": 7.905,
-				"unit": "eV"
-			}
-		}
-	},
-	"formaldehyde": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 4,
-		"n_electrons": 16,
-		"n_core_orbitals": 2,
-		"n_states": {
-			"n_singlets": 5
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"C  0.00000000  0.00000000  1.13947666",
-			"O  0.00000000  0.00000000 -1.14402883",
-			"H  0.00000000  1.76627623  2.23398653",
-			"H  0.00000000 -1.76627623  2.23398653"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 3.966,
-				"unit": "eV"
-			},
-			"s2_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 7.225,
-				"unit": "eV"
-			},
-			"s3_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s3",
-				"value": 8.119,
-				"unit": "eV"
-			},
-			"s4_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 8.224,
-				"unit": "eV"
-			},
-			"s7_e": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s7",
-				"value": 9.441,
-				"unit": "eV"
-			},
-			"s2_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 0.020
-			},
-			"s3_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s3",
-				"value": 0.039
-			},
-			"s4_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 0.052
-			},
-			"s7_f": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s7",
-				"value": 0.127
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 1.325,
-				"unit": "D"
-			},
-			"s2_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 2.302,
-				"unit": "D"
-			},
-			"s3_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s3",
-				"value": 0.454,
-				"unit": "D"
-			},
-			"s4_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 1.628,
-				"unit": "D"
-			},
-			"s7_mu": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s7",
-				"value": 1.301,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 3.970,
-				"unit": "eV"
-			},
-			"s2_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 7.179,
-				"unit": "eV"
-			},
-			"s3_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s3",
-				"value": 8.086,
-				"unit": "eV"
-			},
-			"s4_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 8.182,
-				"unit": "eV"
-			},
-			"s7_e_cc3": {
-				"comment": "state_id consistent with jacquemin18",
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s7",
-				"value": 9.482,
-				"unit": "eV"
-			}
-		}
-	},
-	"HCF": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 3,
-		"n_electrons": 16,
-		"n_core_orbitals": 2,
-		"n_states": {
-			"n_singlets": 1
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"C -0.13561085  0.00000000  1.20394474",
-			"F  1.85493976  0.00000000 -0.27610752",
-			"H -1.71932891  0.00000000 -0.18206846"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cs",
-				"detected_irrep": "A\"",
-				"state_id": "s1",
-				"value": 2.498,
-				"unit": "eV"
-			},
-			"s1_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cs",
-				"detected_irrep": "A\"",
-				"state_id": "s1",
-				"value": 0.006
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cs",
-				"detected_irrep": "A\"",
-				"state_id": "s1",
-				"value": 0.964,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cs",
-				"detected_irrep": "A\"",
-				"state_id": "s1",
-				"value": 2.496,
-				"unit": "eV"
-			}
-		}
-	},
-	"hydrogen_chloride": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 2,
-		"n_electrons": 18,
-		"n_core_orbitals": 5,
-		"n_states": {
-			"n_singlets": 1
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"H   0.00000000 0.00000000  2.38483140",
-			"Cl  0.00000000 0.00000000 -0.02489783"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 7.837,
-				"unit": "eV"
-			},
-			"s1_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 0.055
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 2.501,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cinfv",
-				"detected_irrep": "P",
-				"state_id": "s1",
-				"value": 7.840,
-				"unit": "eV"
-			}
-		}
-	},
-	"hydrogen_sulfide": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 3,
-		"n_electrons": 18,
-		"n_core_orbitals": 5,
-		"n_states": {
-			"n_singlets": 2
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"S  0.00000000  0.00000000 -0.50365086",
-			"H  0.00000000  1.81828105  1.25212288",
-			"H  0.00000000 -1.81828105  1.25212288"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 6.181,
-				"unit": "eV"
-			},
-			"s2_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 6.238,
-				"unit": "eV"
-			},
-			"s2_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 0.063
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 0.498,
-				"unit": "D"
-			},
-			"s2_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 1.865,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 6.192,
-				"unit": "eV"
-			},
-			"s2_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 6.240,
-				"unit": "eV"
-			}
-		}
-	},
-	"ketene": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 5,
-		"n_electrons": 22,
-		"n_core_orbitals": 3,
-		"n_states": {
-			"n_singlets": 4
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"C   0.00000000   0.00000000  -2.44810151",
-			"C   0.00000000   0.00000000   0.03498545",
-			"O   0.00000000   0.00000000   2.23663914",
-			"H   0.00000000   1.77432079  -3.43705988",
-			"H   0.00000000  -1.77432079  -3.43705988"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 3.861,
-				"unit": "eV"
-			},
-			"s2_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 5.987,
-				"unit": "eV"
-			},
-			"s3_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s3",
-				"value": 7.200,
-				"unit": "eV"
-			},
-			"s4_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 7.250,
-				"unit": "eV"
-			},
-			"s2_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 0.034
-			},
-			"s4_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 0.156
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 2.390,
-				"unit": "D"
-			},
-			"s2_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 0.969,
-				"unit": "D"
-			},
-			"s3_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s3",
-				"value": 1.480,
-				"unit": "D"
-			},
-			"s4_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 0.929,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 3.882,
-				"unit": "eV"
-			},
-			"s2_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s2",
-				"value": 5.956,
-				"unit": "eV"
-			},
-			"s3_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s3",
-				"value": 7.157,
-				"unit": "eV"
-			},
-			"s4_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s4",
-				"value": 7.231,
-				"unit": "eV"
-			}
-		}
-	},
-	"nitroxyl": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 3,
-		"n_electrons": 16,
-		"n_core_orbitals": 2,
-		"n_states": {
-			"n_singlets": 1
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"O  0.21099695  0.00000000  2.15462460",
-			"N -0.44776863  0.00000000 -0.03589263",
-			"H  1.18163475  0.00000000 -1.17386890"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cs",
-				"detected_irrep": "A\"",
-				"state_id": "s1",
-				"value": 1.740,
-				"unit": "eV"
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cs",
-				"detected_irrep": "A\"",
-				"state_id": "s1",
-				"value": 1.676,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "Cs",
-				"detected_irrep": "A\"",
-				"state_id": "s1",
-				"value": 1.747,
-				"unit": "eV"
-			}
-		}
-	},
-	"silylidene": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 4,
-		"n_electrons": 22,
-		"n_core_orbitals": 6,
-		"n_states": {
-			"n_singlets": 2
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"C   0.00000000  0.00000000 -2.09539928",
-			"Si  0.00000000  0.00000000  1.14992930",
-			"H   0.00000000  1.70929524 -3.22894481",
-			"H   0.00000000 -1.70929524 -3.22894481"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 2.122,
-				"unit": "eV"
-			},
-			"s2_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 3.783,
-				"unit": "eV"
-			},
-			"s2_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 0.034
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 1.924,
-				"unit": "D"
-			},
-			"s2_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 0.039,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 2.154,
-				"unit": "eV"
-			},
-			"s2_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 3.780,
-				"unit": "eV"
-			}
-		}
-	},
-	"thioformaldehyde": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 4,
-		"n_electrons": 24,
-		"n_core_orbitals": 6,
-		"n_states": {
-			"n_singlets": 3
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"C  0.00000000  0.00000000  2.08677304",
-			"S  0.00000000  0.00000000 -0.97251194",
-			"H  0.00000000  1.73657773  3.17013507",
-			"H  0.00000000 -1.73657773  3.17013507"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 2.210,
-				"unit": "eV"
-			},
-			"s2_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 5.923,
-				"unit": "eV"
-			},
-			"s3_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 6.377,
-				"unit": "eV"
-			},
-			"s2_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 0.013
-			},
-			"s3_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 0.135
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 0.840,
-				"unit": "D"
-			},
-			"s2_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 3.658,
-				"unit": "D"
-			},
-			"s3_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 1.179,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s1",
-				"value": 2.228,
-				"unit": "eV"
-			},
-			"s2_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B2",
-				"state_id": "s2",
-				"value": 5.910,
-				"unit": "eV"
-			},
-			"s3_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 6.484,
-				"unit": "eV"
-			}
-		}
-	},
-	"water": {
-		"charge": 0,
-		"multiplicity": 1,
-		"n_atoms": 3,
-		"n_electrons": 10,
-		"n_core_orbitals": 1,
-		"n_states": {
-			"n_singlets": 3
-		},
-		"xyz_unit": "Bohr",
-		"xyz": [
-			"O  0.00000000  0.00000000 -0.13209669",
-			"H  0.00000000  1.43152878  0.97970006",
-			"H  0.00000000 -1.43152878  0.97970006"
-		],
-		"properties": {
-			"s1_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 7.614,
-				"unit": "eV"
-			},
-			"s2_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s2",
-				"value": 9.405,
-				"unit": "eV"
-			},
-			"s3_e": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 9.985,
-				"unit": "eV"
-			},
-			"s1_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 0.054
-			},
-			"s3_f": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "oscillator strength",
-				"gauge": "length",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 0.100
-			},
-			"s1_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 1.558,
-				"unit": "D"
-			},
-			"s2_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s2",
-				"value": 1.106,
-				"unit": "D"
-			},
-			"s3_mu": {
-				"basis": "aug-cc-pvtz",
-				"method": "tbe",
-				"type": "total dipole moment",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 1.213,
-				"unit": "D"
-			},
-			"s1_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "B1",
-				"state_id": "s1",
-				"value": 7.605,
-				"unit": "eV"
-			},
-			"s2_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A2",
-				"state_id": "s2",
-				"value": 9.382,
-				"unit": "eV"
-			},
-			"s3_e_cc3": {
-				"basis": "aug-cc-pvtz",
-				"method": "cc3",
-				"type": "excitation energy",
-				"state_multiplicity": 1,
-				"detected_point_group": "C2v",
-				"detected_irrep": "A1",
-				"state_id": "s3",
-				"value": 9.966,
-				"unit": "eV"
-			}
-		}
-	}
+    "BF": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 2,
+        "n_core_orbitals": 2,
+        "n_electrons": 14,
+        "n_states": {
+            "n_singlets": 1
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 0.299
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.417
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.468
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.299
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.41
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            }
+        },
+        "xyz": [
+            "B  0.00000000  0.00000000  0.00000000",
+            "F  0.00000000  0.00000000  2.39729626"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "BH": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 2,
+        "n_core_orbitals": 1,
+        "n_electrons": 6,
+        "n_states": {
+            "n_singlets": 1
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 0.559
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.901
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.048
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.559
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.91
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            }
+        },
+        "xyz": [
+            "B  0.00000000  0.00000000  0.00000000",
+            "H  0.00000000  0.00000000  2.31089693"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "CF2": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 3,
+        "n_core_orbitals": 3,
+        "n_electrons": 24,
+        "n_states": {
+            "n_singlets": 1
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 0.035
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.066
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.034
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.035
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.069
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -1.14170749",
+            "F  0.00000000  1.94810617  0.36114458",
+            "F  0.00000000 -1.94810617  0.36114458"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "HCF": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 3,
+        "n_core_orbitals": 2,
+        "n_electrons": 16,
+        "n_states": {
+            "n_singlets": 1
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 0.964
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.498
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.006
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.964
+                    }
+                },
+                "detected_irrep": "A\"",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.496
+                    }
+                },
+                "detected_irrep": "A\"",
+                "detected_point_group": "Cs",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            }
+        },
+        "xyz": [
+            "C -0.13561085  0.00000000  1.20394474",
+            "F  1.85493976  0.00000000 -0.27610752",
+            "H -1.71932891  0.00000000 -0.18206846"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "carbon_monoxyde": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 2,
+        "n_core_orbitals": 2,
+        "n_electrons": 14,
+        "n_states": {
+            "n_singlets": 6
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -0.126
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.478
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.166
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.126
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.486
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s2_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 1.614
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 9.932
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.614
+                    }
+                },
+                "detected_irrep": "S-",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 9.992
+                    }
+                },
+                "detected_irrep": "S-",
+                "detected_point_group": "Cinfv",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 1.45
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 10.065
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.45
+                    }
+                },
+                "detected_irrep": "D",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 10.119
+                    }
+                },
+                "detected_irrep": "D",
+                "detected_point_group": "Cinfv",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s4_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -4.014
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 10.956
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.003
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 4.014
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            },
+            "s4_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 10.944
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cinfv",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            },
+            "s5_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 6.229
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 11.519
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.202
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 6.229
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s5"
+            },
+            "s5_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 11.489
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cinfv",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s5"
+            },
+            "s6_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 0.124
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 11.715
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.107
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.124
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s6"
+            },
+            "s6_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 11.69
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s6"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -1.24942055",
+            "O  0.00000000  0.00000000  0.89266692"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "cyclopropene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 7,
+        "n_core_orbitals": 3,
+        "n_electrons": 22,
+        "n_states": {
+            "n_singlets": 2
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -1.232
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.671
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.001
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.232
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.683
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s2_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -0.813
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.733
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.07
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.813
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.733
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            }
+        },
+        "xyz": [
+            "C   0.00000000  0.00000000 -1.66820880",
+            "C   0.00000000  1.22523906  0.90681419",
+            "C   0.00000000 -1.22523906  0.90681419",
+            "H   1.72255446  0.00000000 -2.77881149",
+            "H  -1.72255446  0.00000000 -2.77881149",
+            "H   0.00000000  2.97844519  1.92076771",
+            "H   0.00000000 -2.97844519  1.92076771"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "diazirine": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 5,
+        "n_core_orbitals": 3,
+        "n_electrons": 22,
+        "n_states": {
+            "n_singlets": 3
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -2.509
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.093
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.002
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 2.509
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.114
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s2_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -1.708
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.273
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.708
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.308
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 3.025
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.437
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.0
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 3.025
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.45
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s4_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 1.393
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.017
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.131
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.393
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            },
+            "s4_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.037
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -0.26696099",
+            "H  0.00000000  1.75890895 -1.28616478",
+            "H  0.00000000 -1.75890895 -1.28616478",
+            "N  1.16058100  0.00000000  2.27183007",
+            "N -1.16058100  0.00000000  2.27183007"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "diazomethane": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 5,
+        "n_core_orbitals": 3,
+        "n_electrons": 22,
+        "n_states": {
+            "n_singlets": 3
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -3.278
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.05
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 3.278
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.07
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s2_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 0.48
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.463
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.016
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.48
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.45
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -0.902
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.827
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.235
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.902
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.836
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            }
+        },
+        "xyz": [
+            "C  0.00000000   0.00000000  -2.30830005",
+            "N  0.00000000   0.00000000   0.14457890",
+            "N  0.00000000   0.00000000   2.29923216",
+            "H  0.00000000   1.79875201  -3.24272317",
+            "H  0.00000000  -1.79875201  -3.24272317"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "dinitrogen": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 2,
+        "n_core_orbitals": 2,
+        "n_electrons": 14,
+        "n_states": {
+            "n_singlets": 4
+        },
+        "properties": {
+            "s5_e": {
+                "basis": "aug-cc-pvtz",
+                "comment": "state_id consistent with jacquemin18",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 13.09
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.423
+                    }
+                },
+                "detected_irrep": "Pu",
+                "detected_point_group": "Dinfh",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s5"
+            },
+            "s5_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "comment": "state_id consistent with jacquemin18",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 13.223
+                    }
+                },
+                "detected_irrep": "Pu",
+                "detected_point_group": "Dinfh",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s5"
+            },
+            "s6_e": {
+                "basis": "aug-cc-pvtz",
+                "comment": "state_id consistent with jacquemin18",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 13.088
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.286
+                    }
+                },
+                "detected_irrep": "Su+",
+                "detected_point_group": "Dinfh",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s6"
+            },
+            "s6_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "comment": "state_id consistent with jacquemin18",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 13.12
+                    }
+                },
+                "detected_irrep": "Su+",
+                "detected_point_group": "Dinfh",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s6"
+            },
+            "s7_e": {
+                "basis": "aug-cc-pvtz",
+                "comment": "state_id consistent with jacquemin18",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 13.417
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.015
+                    }
+                },
+                "detected_irrep": "Pu",
+                "detected_point_group": "Dinfh",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s7"
+            },
+            "s7_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "comment": "state_id consistent with jacquemin18",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 13.494
+                    }
+                },
+                "detected_irrep": "Pu",
+                "detected_point_group": "Dinfh",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s7"
+            },
+            "s8_e": {
+                "basis": "aug-cc-pvtz",
+                "comment": "state_id consistent with jacquemin18",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 14.009
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.148
+                    }
+                },
+                "detected_irrep": "Pu",
+                "detected_point_group": "Dinfh",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s8"
+            },
+            "s8_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "comment": "state_id consistent with jacquemin18",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 13.974
+                    }
+                },
+                "detected_irrep": "Pu",
+                "detected_point_group": "Dinfh",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s8"
+            }
+        },
+        "xyz": [
+            "N  0.00000000 0.00000000  1.04008632",
+            "N  0.00000000 0.00000000 -1.04008632"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "ethylene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 6,
+        "n_core_orbitals": 2,
+        "n_electrons": 16,
+        "n_states": {
+            "n_singlets": 2
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.374
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.078
+                    }
+                },
+                "detected_irrep": "B3u",
+                "detected_point_group": "D2h",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.354
+                    }
+                },
+                "detected_irrep": "B3u",
+                "detected_point_group": "D2h",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s2_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.905
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.345
+                    }
+                },
+                "detected_irrep": "B1u",
+                "detected_point_group": "D2h",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.905
+                    }
+                },
+                "detected_irrep": "B1u",
+                "detected_point_group": "D2h",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            }
+        },
+        "xyz": [
+            "C  0.00000000   1.26026583   0.00000000",
+            "C  0.00000000  -1.26026583   0.00000000",
+            "H  0.00000000   2.32345976   1.74287672",
+            "H  0.00000000  -2.32345976   1.74287672",
+            "H  0.00000000   2.32345976  -1.74287672",
+            "H  0.00000000  -2.32345976  -1.74287672"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "formaldehyde": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 4,
+        "n_core_orbitals": 2,
+        "n_electrons": 16,
+        "n_states": {
+            "n_singlets": 5
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 1.325
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.966
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.325
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.97
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s2_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -2.302
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.225
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.02
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 2.302
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.179
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 0.454
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.119
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.039
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.454
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.086
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s4_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -1.628
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.224
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.052
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.628
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            },
+            "s4_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.182
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            },
+            "s7_e": {
+                "basis": "aug-cc-pvtz",
+                "comment": "state_id consistent with jacquemin18",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 1.301
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 9.441
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.127
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.301
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s7"
+            },
+            "s7_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "comment": "state_id consistent with jacquemin18",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 9.482
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s7"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000  1.13947666",
+            "O  0.00000000  0.00000000 -1.14402883",
+            "H  0.00000000  1.76627623  2.23398653",
+            "H  0.00000000 -1.76627623  2.23398653"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "hydrogen_chloride": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 2,
+        "n_core_orbitals": 5,
+        "n_electrons": 18,
+        "n_states": {
+            "n_singlets": 1
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -2.501
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.837
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.055
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 2.501
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.84
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            }
+        },
+        "xyz": [
+            "H   0.00000000 0.00000000  2.38483140",
+            "Cl  0.00000000 0.00000000 -0.02489783"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "hydrogen_sulfide": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 3,
+        "n_core_orbitals": 5,
+        "n_electrons": 18,
+        "n_states": {
+            "n_singlets": 2
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 0.498
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.181
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.498
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.192
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s2_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -1.865
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.238
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.063
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.865
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.24
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            }
+        },
+        "xyz": [
+            "S  0.00000000  0.00000000 -0.50365086",
+            "H  0.00000000  1.81828105  1.25212288",
+            "H  0.00000000 -1.81828105  1.25212288"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "ketene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 5,
+        "n_core_orbitals": 3,
+        "n_electrons": 22,
+        "n_states": {
+            "n_singlets": 4
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -2.39
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.861
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 2.39
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.882
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s2_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -0.969
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.987
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.034
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.969
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.956
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 1.48
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.2
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.48
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.157
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s4_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 0.929
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.25
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.156
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.929
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            },
+            "s4_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.231
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            }
+        },
+        "xyz": [
+            "C   0.00000000   0.00000000  -2.44810151",
+            "C   0.00000000   0.00000000   0.03498545",
+            "O   0.00000000   0.00000000   2.23663914",
+            "H   0.00000000   1.77432079  -3.43705988",
+            "H   0.00000000  -1.77432079  -3.43705988"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "nitroxyl": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 3,
+        "n_core_orbitals": 2,
+        "n_electrons": 16,
+        "n_states": {
+            "n_singlets": 1
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 1.676
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.74
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.676
+                    }
+                },
+                "detected_irrep": "A\"",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.747
+                    }
+                },
+                "detected_irrep": "A\"",
+                "detected_point_group": "Cs",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            }
+        },
+        "xyz": [
+            "O  0.21099695  0.00000000  2.15462460",
+            "N -0.44776863  0.00000000 -0.03589263",
+            "H  1.18163475  0.00000000 -1.17386890"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "silylidene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 4,
+        "n_core_orbitals": 6,
+        "n_electrons": 22,
+        "n_states": {
+            "n_singlets": 2
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -1.924
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.122
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.924
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.154
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s2_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -0.039
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.783
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.034
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.039
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.78
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            }
+        },
+        "xyz": [
+            "C   0.00000000  0.00000000 -2.09539928",
+            "Si  0.00000000  0.00000000  1.14992930",
+            "H   0.00000000  1.70929524 -3.22894481",
+            "H   0.00000000 -1.70929524 -3.22894481"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "thioformaldehyde": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 4,
+        "n_core_orbitals": 6,
+        "n_electrons": 24,
+        "n_states": {
+            "n_singlets": 3
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 0.84
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.21
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 0.84
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.228
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s2_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -3.658
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.923
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.013
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 3.658
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.91
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": 1.179
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.377
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.135
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.179
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.484
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000  2.08677304",
+            "S  0.00000000  0.00000000 -0.97251194",
+            "H  0.00000000  1.73657773  3.17013507",
+            "H  0.00000000 -1.73657773  3.17013507"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "water": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 3,
+        "n_core_orbitals": 1,
+        "n_electrons": 10,
+        "n_states": {
+            "n_singlets": 3
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -1.558
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.614
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.054
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.558
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.605
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s2_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -1.106
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 9.405
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.106
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 9.382
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "dipole_moment_largest_component": {
+                        "unit": "D",
+                        "value": -1.213
+                    },
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 9.985
+                    },
+                    "oscillator_strength": {
+                        "unit": "au",
+                        "value": 0.1
+                    },
+                    "total_dipole_moment": {
+                        "unit": "D",
+                        "value": 1.213
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_e_cc3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 9.966
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            }
+        },
+        "xyz": [
+            "O  0.00000000  0.00000000 -0.13209669",
+            "H  0.00000000  1.43152878  0.97970006",
+            "H  0.00000000 -1.43152878  0.97970006"
+        ],
+        "xyz_unit": "Bohr"
+    }
 }

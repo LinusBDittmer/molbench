@@ -8,7 +8,7 @@ from collections import Counter, defaultdict
 from .assignment import new_assignment_file
 from . import logger as log
 from .configuration import config
-from .functions import substitute_template
+from .functions import substitute_template, default_name_template
 from .molecule import MoleculeList, Molecule
 from .tree import Node, DummyNode
 
@@ -61,8 +61,8 @@ class InputConstructor:
         #   basepath / folder_path / file_name
         created_files = []
         for data in data_iterable:
-            name_list: tuple[str] = file_name_generator(data)
-            content_list: tuple[str] = file_content_generator(data)
+            name_list: tuple[str, ...] = file_name_generator(data)
+            content_list: tuple[str, ...] = file_content_generator(data)
             folders: Path = folder_structure_generator(data)
             assert len(name_list) == len(content_list)
 
@@ -83,7 +83,7 @@ class InputConstructor:
                 created_files.append(file)
         return created_files
 
-    def _folders_from_tree(self, root: Node) -> Path:
+    def _folders_from_tree(self, root: Node):
         def _folder_structure(variant_data: dict):
             path = Path("")
             for generation in root.traverse_generations():
@@ -91,8 +91,8 @@ class InputConstructor:
                 for node in generation:
                     val = variant_data.get(node.value, None)
                     if val is None:
-                        log.critical("Failed to resolve folder path for ",
-                                     f"{variant_data}.", "Input Constructor")
+                        log.critical("Failed to resolve folder path for "
+                                     + f"{variant_data}.", "Input Constructor")
                     folder_name.append(node.to_string(val))
                 path /= "_".join(folder_name)
             return path
@@ -132,7 +132,7 @@ class TemplateConstructor(InputConstructor):
                       calc_details: dict,
                       file_expansion_keys: tuple = ("basis",),
                       flat_structure: bool = False,
-                      name_template: str = None) -> list:
+                      name_template: str | None = None) -> list:
         """
         Create inputs files for the provided set of Molecules by filling
         in the placeholders in the input template with data from the
@@ -166,8 +166,7 @@ class TemplateConstructor(InputConstructor):
             that each data point has a unique name.
         """
         if name_template is None:
-            name_template = self._default_name_template(file_expansion_keys,
-                                                        ".in")
+            name_template = default_name_template(file_expansion_keys, ".in")
         variant_data_iterator = self._molecule_variants_data_iter(
             benchmark, calc_details, file_expansion_keys
         )
@@ -192,8 +191,8 @@ class TemplateConstructor(InputConstructor):
                            basepath: str, calc_details: dict,
                            file_expansion_keys: tuple = ("basis",),
                            flat_structure: bool = False,
-                           name_template: str = None,
-                           state_id_key="state_id") -> list:
+                           name_template: str | None = None,
+                           transition_id_key="transition_id") -> list:
         """
         Create assignment files for the provided set of Molecules.
         Note: This does currently not work for relative properties!
@@ -222,18 +221,17 @@ class TemplateConstructor(InputConstructor):
             Template to define the names of the generated files. By default,
             a template based on the file_expansion_keys is used that ensures
             that all data points have a unique name.
-        state_id_key
-            The key under which the state_ids an be found in the
+        transition_id_key
+            The key under which the transition_ids an be found in the
             properties (the state_data) of the molecules.
         """
         if name_template is None:
-            name_template = self._default_name_template(file_expansion_keys,
-                                                        ".ass")
+            name_template = default_name_template(file_expansion_keys, ".ass")
         variant_data_iterator = self._molecule_variants_data_iter(
             benchmark, calc_details, file_expansion_keys
         )
         file_name_generator = self._gen_file_names(name_template)
-        file_content_generator = self._gen_assignment_content(state_id_key)
+        file_content_generator = self._gen_assignment_content(transition_id_key)
 
         # create a tree representing the folder structure
         # TODO: allow more complex input for more complex folder
@@ -248,96 +246,7 @@ class TemplateConstructor(InputConstructor):
                                   file_name_generator, file_content_generator,
                                   folder_structure_generator)
 
-    def create_context_files(self, benchmark: MoleculeList[Molecule],
-                             basepath: str, calc_details: dict,
-                             context_key,
-                             file_expansion_keys: tuple = ("basis",),
-                             flat_structure: bool = False,
-                             name_template: str = None,
-                             infile_name_template: str = None) -> list:
-        """
-        Create context files for the provided set of Molecules containing
-        information of how to compute relative properties, i.e., a context
-        contains filenames and prefactors with which the results in the
-        file need to be multiplied in order to compute the relative
-        property of interest, e.g,
-        {file1: {context_key: 1}, file2: {context_key: -1}}
-        indicates that the relative property can be computed as
-        1 * val_from_file1 + (-1) * val_from_file2.
-
-        Parameters
-        ----------
-        benchmark: MoleculeList[Molecule]
-            The set of Molecules to generate context files for.
-        basepath: str
-            The path where all generated files are placed.
-        calc_details: dict
-            Additional information used to resolve placeholders in the
-            name templates.
-        context_key
-            The key under which the prefactors can be found in the
-            properties (the state_data) of the molecules.
-        file_expansion_keys: tuple, optional
-            Possibly multiple context files need to be generated for one
-            molecule that belong to different data points, e.g., for different
-            basis sets. This parameter defines the keys for which the molecules
-            are checked. Each unique combination corresponds to a data point.
-            (default: ('basis',))
-        flat_structure: str, optional
-            True: place all generated files in the same folder
-            False: generate a folder for each Molecule
-            (default: False)
-        name_template: str, optional
-            Template for the names of context files. Should be unique for
-            each data point. By default a template based on the
-            file_expansion_keys is generated.
-        infile_name_template: str, optional
-            Template for the names of input files. Required to generate
-            the content of a context file. Here, the same template as for the
-            generation of the corresponding input files has to be used.
-            By default a template based on the file_expansion_keys
-            is generated.
-        """
-        if name_template is None:
-            name_template = self._default_name_template(file_expansion_keys,
-                                                        ".ctx")
-        if infile_name_template is None:
-            infile_name_template = self._default_name_template(
-                file_expansion_keys, ".in"
-            )
-        variant_data_iterator = self._molecule_variants_data_iter(
-            benchmark, calc_details, file_expansion_keys
-        )
-        file_name_generator = self._gen_context_file_names(name_template)
-
-        # create a tree representing the folder structure
-        # TODO: allow more complex input for more complex folder
-        #       structure?
-        if flat_structure:
-            tree = DummyNode()
-        else:
-            tree = Node("name")
-        folder_structure_generator = self._gen_folder_structure(tree)
-
-        file_content_generator = self._gen_context_content(
-            context_key=context_key,
-            infile_name_generator=self._gen_file_names(infile_name_template),
-            folder_structure_generator=folder_structure_generator
-        )
-        return self._create_files(variant_data_iterator, basepath,
-                                  file_name_generator, file_content_generator,
-                                  folder_structure_generator)
-
-    def _default_name_template(self, file_expansion_keys: tuple,
-                               file_extension) -> str:
-        # construct a name that ensures that each file has a unique name
-        name_template = "[[name]]_[[method]]"
-        for key in file_expansion_keys:
-            if key not in ["name", "method"]:
-                name_template += f"_[[{key}]]"
-        return name_template + file_extension
-
-    def _molecule_variants_data_iter(self, benchmark: MoleculeList[Molecule],
+    def _molecule_variants_data_iter(self, benchmark: MoleculeList,
                                      calc_details: dict,
                                      file_expansion_keys: tuple):
         # for each molecule:
@@ -345,7 +254,6 @@ class TemplateConstructor(InputConstructor):
         #  perform calculations for different basis sets in independent
         #  files.
         for molecule in benchmark:
-            molecule: Molecule
             # list instead of set -> values have not to be hashable
             variants = []
             variant_properties = []
@@ -353,6 +261,10 @@ class TemplateConstructor(InputConstructor):
                 var = tuple((key, property.get(key, None))
                             for key in file_expansion_keys)
                 if any(val is None for _, val in var):
+                    log.warning(
+                        f"Skipping a state of molecule {molecule.name}: "
+                        f"missing value(s) for {file_expansion_keys} "
+                        f"(got {var}).", "TemplateConstructor")
                     continue
                 try:  # no new variant -> add the property to the list
                     i = variants.index(var)
@@ -402,7 +314,7 @@ class TemplateConstructor(InputConstructor):
         # data for the given data point.
         # if this results in multiple identical file names, a counter
         # starting at 0 is added to the corresponding names.
-        def _name_generator(data) -> tuple[str]:
+        def _name_generator(data) -> tuple[str, ...]:
             # resolve the template
             subvals, _ = data
             file_names = substitute_template(name_template, subvals)
@@ -425,23 +337,6 @@ class TemplateConstructor(InputConstructor):
             return tuple(ret)
         return _name_generator
 
-    def _gen_context_file_names(self, name_template: str):
-        # generate file names by resolving the template using the data for the
-        # given data point.
-        # if this results in multiple templates we want to remove duplicates.
-        # Currently, only a single unique context name is supported
-        def _context_name_generator(data) -> tuple[str]:
-            # resolve the template
-            subvals, _ = data
-            file_names = substitute_template(name_template, subvals)
-            if len(file_names) == 1:
-                return file_names
-            elif len(set(file_names)) == 1:
-                return (file_names[0],)
-            raise NotImplementedError("Did not implement the case of multiple "
-                                      "context files per data point.")
-        return _context_name_generator
-
     def _gen_folder_structure(self, tree: Node):
         # just a wrapper to remove the molecule from the data, which is
         # needed for the assignment file content
@@ -451,93 +346,57 @@ class TemplateConstructor(InputConstructor):
         generator = self._folders_from_tree(tree)
         return _gen_folders
 
-    def _gen_assignment_content(self, state_id_key):
+    def _gen_assignment_content(self, transition_id_key):
         def _gen_assignment(data: tuple[dict, list]) -> tuple[str]:
             variant_data, properties = data
             # collect all the state id's of properties of the molecule
             # that match the variant data
-            state_ids = []
+            transition_ids = []
             for prop in properties:
-                s_id = prop.get(state_id_key, None)
-                if s_id is None:
+                t_id = prop.get(transition_id_key, None)
+                if t_id is None:
                     log.warning(f"Property of molecule {variant_data['name']} "
                                 f"has no assignment: {prop}",
                                 "Template Constructor")
                     continue
-                if s_id not in state_ids:  # s_id has not to be hashable
-                    state_ids.append(s_id)
-            return (new_assignment_file(state_ids),)
+                if t_id not in transition_ids:  # s_id has not to be hashable
+                    transition_ids.append(t_id)
+            return (new_assignment_file(transition_ids),)
         return _gen_assignment
 
-    def _gen_context_content(self, context_key,
-                             infile_name_generator: callable,
-                             folder_structure_generator: callable):
-        # generate the context file / relative property file for a single
-        # data point. Therefore, we need
-        # - the context_key, which contains the prefactors that are needed to
-        # compute the relative property from the individual results of
-        # each calculation.
-        # - a generator to generate the names of the inpufiles for this data
-        # point. The generated infiles need to match the order of the
-        # prefactors of the prefactors from the context_key. This should
-        # trivially be the case if the infile_name_generator has been used
-        # to generate the input files.
-        # - a generator to find the folder in which the files for the
-        # current data point are placed.
-        def _context_content_generator(data):
-            _, properties = data
-            # extract the relative property data (factors)
-            # ensuring that all properties (if there are multiple)
-            # share the same value
-            context_val = [prop.get(context_key, None) for prop in properties]
-            if not all(ctx_val == context_val[0] for ctx_val in context_val):
-                log.critical("Expected all properties for a single data point "
-                             "to share the same value of the context key "
-                             f"{context_key}. Found\n{context_val}.",
-                             "Template Constructor")
-            context_val = context_val[0]
-            if context_val is None:
-                log.critical(f"Context key {context_key} not available in the "
-                             "properties data.", "Template Constructor")
-            # next we need to generate the infile names
-            infiles: tuple[str] = infile_name_generator(data)
-            # and the folder path
-            folders: Path = folder_structure_generator(data)
-            # write the path (relative to the base path) in the context file
-            content = defaultdict(dict)
-            for fname, ctx_val in zip(infiles, context_val):
-                content[str(folders / fname)][context_key] = ctx_val
-            content = json.dumps(content, sort_keys=True, ensure_ascii=True,
-                                 indent=2)
-            return (content,)
-
-        return _context_content_generator
 
 class CompressedTemplateConstructor(TemplateConstructor):
 
-    def __init__(self, template: str):
-        super().__init__(template)
-    
-    def create_inputs(self, benchmark: MoleculeList[Molecule], basepath: str,
+    def create_inputs(self, benchmark: MoleculeList, basepath: str,
                       calc_details: dict,
                       file_expansion_keys: tuple = ("basis",),
                       flat_structure: bool = False,
-                      name_template: str = None,
-                      reference_path: str = "references.json") -> list:
+                      name_template: str | None = None,
+                      reference_path: str = "references.json",
+                      compressed_property: str | None = None) -> list:
         # Create compressed benchmark
         # We create a new MoleculeList where each Molecule contains
         # only one geometry.
         # Additionally, we create a dict of references to the individual
         # molecules
 
-        compressed: MoleculeList = []
-        references: dict = defaultdict()
+        compressed = MoleculeList()
+        references = {}
 
-        def _unique(xyz: list) -> int:
-            all_xyzs = [m.system_data["xyz"] for m in compressed]
-            if xyz in all_xyzs:
-                return all_xyzs.index(xyz)
+        def _unique(xyz: list, charge: int, mult: int) -> int:
+            all_xyzs = [(m.system_data["xyz"],
+                         m.system_data["charge"],
+                         m.system_data["multiplicity"]) for m in compressed]
+            xyz_list = (xyz, charge, mult)
+            if xyz_list in all_xyzs:
+                return all_xyzs.index(xyz_list)
             return -1
+        
+        def _available_props(state_data: dict) -> list:
+            props = list()
+            for _, state in state_data.items():
+                props.extend(list(state["data"].keys()))
+            return props
 
         for mol in benchmark:
             if "xyz_list" not in mol.system_data:
@@ -547,40 +406,75 @@ class CompressedTemplateConstructor(TemplateConstructor):
                 references[mol.name] = (mol_counter,)
                 mol_counter += 1
                 continue
-            
+
             # Number of Molecules in mol
             n_mols = len(mol.system_data["xyz_list"])
-            references[mol.name] = []
+            references[mol.name] = {"molecules": list(),
+                                    "factors": list()}
             for i in range(n_mols):
                 mol_counter = len(compressed)
-                idx = _unique(mol.system_data["xyz_list"][i])
+                idx = _unique(mol.system_data["xyz_list"][i],
+                              mol.system_data["charge_list"][i],
+                              mol.system_data["multiplicity_list"][i])
 
                 if idx < 0:
                     # Prepare new Molecule
                     name = f"m{mol_counter:06d}"
                     system_data = dict()
-                    for system_datapoint, system_val in mol.system_data.items():
-                        print(system_datapoint)
-                        print(system_datapoint.endswith("_list"))
-                        if system_datapoint.endswith("_list"):
-                            sd = system_datapoint[:-5]
+                    for system_dp, system_val in mol.system_data.items():
+                        if system_dp.endswith("_list"):
+                            sd = system_dp[:-5]  # -5 to cut off "_list"
                             system_data[sd] = system_val[i]
                         else:
-                            system_data[system_datapoint] = system_val
+                            system_data[system_dp] = system_val
                     newmol = Molecule(name, name, system_data, mol.state_data)
 
                     compressed.append(newmol)
                     idx = mol_counter
-                
-                references[mol.name].append(idx)
-                
-        inputs = super().create_inputs(compressed, basepath, calc_details, 
-                                       file_expansion_keys, flat_structure, 
+
+                idx_name = f"m{idx:06d}"
+                references[mol.name]["molecules"].append(idx_name)
+
+                available_properties = _available_props(mol.state_data)
+
+                if (len(available_properties) > 1 and
+                        compressed_property is None):
+                    log.critical("Please specify a property key from which the"
+                                 + " stochiometry should be read",
+                                 "CompressedTemplateConstructor")
+                elif (compressed_property is not None and
+                      compressed_property not in available_properties):
+                    log.critical("compressed_property was not found in"
+                                 + f" Molecule {mol.name}",
+                                 "CompressedTemplateConstructor")
+                if compressed_property is None:
+                    pkey = list(mol.state_data.keys())[0]
+                else:
+                    pkey = [k for k, v in mol.state_data.items()
+                            if compressed_property in v["data"]][0]
+
+                factor_key = None
+                if "stochiometry" in \
+                        mol.state_data[pkey]:
+                    factor_key = "stochiometry"
+                elif "factors" in \
+                        mol.state_data[pkey]:
+                    factor_key = "factors"
+
+                if factor_key is None:
+                    log.critical(f"Could not find a factor in state {pkey} of "
+                                 f"molecule {mol.name}.",
+                                 "CompressedTemplateConstructor")
+                stoch: list = mol.state_data[pkey][factor_key]
+                references[mol.name]["factors"] = stoch
+
+        inputs = super().create_inputs(compressed, basepath, calc_details,
+                                       file_expansion_keys, flat_structure,
                                        name_template)
 
         full_reference_path = Path(basepath) / Path(reference_path)
         with open(full_reference_path, "w") as f:
-            json.dump(references, f, ensure_ascii=True, indent=4, sort_keys=True)
+            json.dump(references, f, ensure_ascii=True, indent=4,
+                      sort_keys=True)
 
         return inputs
-

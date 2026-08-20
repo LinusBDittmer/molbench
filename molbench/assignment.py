@@ -1,8 +1,9 @@
 from . import logger as log
+from typing import Callable
 
 
 def new_assignment_file(state_ids: list, comment_token: str = "#",
-                        id_separator: str = "->",
+                        id_separator: str = "==>",
                         null_token: str = "null") -> str:
     """
     Creates the content of an assignment file.
@@ -15,7 +16,7 @@ def new_assignment_file(state_ids: list, comment_token: str = "#",
     comment_token : str, optional
         Token to mark comments (default: '#').
     id_separator : str, optional
-        The separator of reference and external id (default: '->').
+        The separator of reference and external id (default: '==>').
     null_token : str, optional
         Identifier for empty, not assigned states.
     """
@@ -27,10 +28,10 @@ def new_assignment_file(state_ids: list, comment_token: str = "#",
 
 def parse_assignment_file(assignmentfile: str,
                           comment_token: str = "#",
-                          id_separator: str = "->",
+                          id_separator: str = "==>",
                           null_token: str = "null",
-                          import_external: callable = None,
-                          import_ref: callable = None) -> dict:
+                          import_external: Callable | None = None,
+                          import_ref: Callable | None = None) -> dict:
     """
     Parses an assignment file.
 
@@ -41,12 +42,12 @@ def parse_assignment_file(assignmentfile: str,
     comment_token : str, optional
         Token to mark comments in the assignment file (default: '#').
     id_separator : str, optional
-        The token separating reference and external id (default: '->').
+        The token separating reference and external id (default: '==>').
     null_token : str, optional
         Identifier for empty, not assigned states (default: 'null').
-    import_external: callable, optional
+    import_external: Callable, optional
         Imports the external id before inserting the id in the dictionary.
-    import_ref : callable, optional
+    import_ref : Callable, optional
         Imports the reference id before inserting the id in the dictionary.
 
     Returns
@@ -60,6 +61,9 @@ def parse_assignment_file(assignmentfile: str,
     state_assignments = {}
     for line in content.splitlines():
         line = line.strip()
+        # - remove empty lines
+        if len(line) == 0:
+            continue
         # - remove comments
         if line.startswith(comment_token):
             continue
@@ -69,12 +73,13 @@ def parse_assignment_file(assignmentfile: str,
         if len(assignment) != 2:
             log.critical(f"Invalid use of state id separator {id_separator} in"
                          f" line {line} of assignment file {assignmentfile}.",
-                         "parse_assignment_file", "Assignment")
+                         "Assignment: parse_assignment_file")
 
         ref = assignment[0].strip()
         external = assignment[1].strip()
         if ref == null_token or external == null_token:  # skip not assigned
-            log.warning(f"Unassigned state in file {assignmentfile}.", "Assigment")
+            log.warning(f"Unassigned state in file {assignmentfile}.",
+                        "Assigment")
             continue
 
         if import_external is not None:

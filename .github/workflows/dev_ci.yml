@@ -1,17 +1,13 @@
-# This workflow will install Python dependencies, run tests and lint with a variety of Python versions
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
 name: Python package
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: ["dev"]
   pull_request:
-    branches: [ "dev" ]
+    branches: ["dev"]
 
 jobs:
-  build:
-
+  unit-and-integration:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -32,10 +28,25 @@ jobs:
         else pip install -e .; fi
     - name: Lint with flake8
       run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-    - name: Test with pytest
+        flake8
+    - name: Test (fast)
       run: |
-        pytest
+        pytest -m "not slow" --tb=short
+
+  pyscf-end-to-end:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v3
+      with:
+        python-version: "3.12"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt
+        else pip install -e .; fi
+        pip install pyscf pytest
+    - name: Test (pyscf end-to-end)
+      run: |
+        pytest -m slow --tb=short tests/integration/test_full_pipeline_pyscf.py

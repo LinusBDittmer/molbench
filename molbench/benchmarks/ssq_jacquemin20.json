@@ -1,0 +1,1303 @@
+{
+    "BeF": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 2,
+        "n_core_orbitals": 2,
+        "n_electrons": 13,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.14
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.21
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "Be  0.00000000   0.00000000 -1.77936990",
+            "F   0.00000000   0.00000000  0.79083149"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "BeH": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 2,
+        "n_core_orbitals": 1,
+        "n_electrons": 5,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.49
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.46
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "Be  0.00000000  0.00000000  0.25103976",
+            "H   0.00000000  0.00000000 -2.24485003"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "BH2": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 3,
+        "n_core_orbitals": 1,
+        "n_electrons": 7,
+        "n_states": {
+            "n_doublets": 1
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.18
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "B  0.00000000  0.00000000  0.14984923",
+            "H  0.00000000  2.01119016 -0.81846345",
+            "H  0.00000000 -2.01119016 -0.81846345"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "OH": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 2,
+        "n_core_orbitals": 1,
+        "n_electrons": 9,
+        "n_states": {
+            "n_doublets": 1
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.10
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "O  0.00000000  0.00000000 -0.10864763",
+            "H  0.00000000  0.00000000  1.72431679"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "F2BO": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 4,
+        "n_core_orbitals": 4,
+        "n_electrons": 31,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.73
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.80
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "O  0.00000000  0.00000000  2.65260017",
+            "B  0.00000000  0.00000000  0.07681654",
+            "F  0.00000000  2.16433924 -1.13888019",
+            "F  0.00000000 -2.16433924 -1.13888019"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "NH2": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 3,
+        "n_core_orbitals": 1,
+        "n_electrons": 9,
+        "n_states": {
+            "n_doublets": 1
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.12
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "N  0.00000000  0.00000000  0.15111603",
+            "H  0.00000000  1.51574744 -1.04982949",
+            "H  0.00000000 -1.51574744 -1.04982949"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "CH3": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 4,
+        "n_core_orbitals": 1,
+        "n_electrons": 9,
+        "n_states": {
+            "n_doublets": 4
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.85
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A1'",
+                "detected_point_group": "D3h",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.96
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "E'",
+                "detected_point_group": "D3h",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            },
+            "s3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.18
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "E'",
+                "detected_point_group": "D3h",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s3",
+                "need_mr": "false"
+            },
+            "s4": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.65
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A2''",
+                "detected_point_group": "D3h",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s4",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000  0.00000000",
+            "H  0.00000000  0.00000000  2.03379507",
+            "H  0.00000000  1.76131924 -1.01689753",
+            "H  0.00000000 -1.76131924 -1.01689753"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "HOC": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 3,
+        "n_core_orbitals": 2,
+        "n_electrons": 15,
+        "n_states": {
+            "n_doublets": 1
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.92
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A''",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "H  0.00000000  1.82002973  1.50851586",
+            "O  0.00000000  0.96467865 -0.12887834",
+            "C  0.00000000 -1.43868535  0.04508983"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "F2BS": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 4,
+        "n_core_orbitals": 8,
+        "n_electrons": 38,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.51
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.99
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "S  0.00000000  0.00000000  2.64960984",
+            "B  0.00000000  0.00000000 -0.74406239",
+            "F  0.00000000  2.14169276 -2.01390354",
+            "F  0.00000000 -2.14169276 -2.01390354"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "HCO": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 3,
+        "n_core_orbitals": 3,
+        "n_electrons": 15,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.09
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A''",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.45
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A'",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "H  0.00000000 -2.55038496  1.39798104",
+            "C  0.00000000 -1.17300976 -0.19046167",
+            "O  0.00000000  1.04073447  0.05480615"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "H2BO": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 4,
+        "n_core_orbitals": 2,
+        "n_electrons": 15,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.15
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.49
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "O  0.00000000  0.00000000  1.17360276",
+            "B  0.00000000  0.00000000 -1.27133435",
+            "H  0.00000000  1.98370787 -2.36904602",
+            "H  0.00000000 -1.98370787 -2.36904602"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "PH2": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 3,
+        "n_core_orbitals": 5,
+        "n_electrons": 17,
+        "n_states": {
+            "n_doublets": 1
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.77
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "P  0.00000000  0.00000000  0.11427641",
+            "H  0.00000000  1.91899987 -1.75604411",
+            "H  0.00000000 -1.91899987 -1.75604411"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "H2PO": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 4,
+        "n_core_orbitals": 6,
+        "n_electrons": 25,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.80
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A''",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.21
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A'",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "P  0.00000000  0.87766783 -0.10010856",
+            "O  0.00000000 -1.95912323  0.05701315",
+            "H  2.08101554  2.05955113  1.08591181",
+            "H -2.08101554  2.05955113  1.08591181"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "H2PS": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 4,
+        "n_core_orbitals": 10,
+        "n_electrons": 33,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.16
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A''",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.72
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A'",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "P  0.00000000  1.81994516 -0.10769248",
+            "S  0.00000000 -1.93707861  0.02086846",
+            "H  2.03762554  2.75934101  1.32385757",
+            "H -2.03762554  2.75934101  1.32385757"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "NO": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 2,
+        "n_core_orbitals": 2,
+        "n_electrons": 15,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "weakly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.13
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.29
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "N  0.00000000  0.00000000 -1.15775086",
+            "O  0.00000000  0.00000000  1.01357658"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "CNO": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 3,
+        "n_core_orbitals": 3,
+        "n_electrons": 21,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "strongly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.61
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.49
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "true"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -2.50680714",
+            "N  0.00000000  0.00000000 -0.22402176",
+            "O  0.00000000  0.00000000  2.07682752"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "NCO": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 3,
+        "n_core_orbitals": 3,
+        "n_electrons": 21,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "strongly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.89
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.73
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "true"
+            }
+        },
+        "xyz": [
+            "N  0.00000000  0.00000000 -2.39343558",
+            "C  0.00000000  0.00000000 -0.07238136",
+            "O  0.00000000  0.00000000  2.14968523"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "Vinyl": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 5,
+        "n_core_orbitals": 2,
+        "n_electrons": 15,
+        "n_states": {
+            "n_doublets": 3
+        },
+        "kind": "strongly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.26
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A''",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.69
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A''",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            },
+            "s3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.20
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A'",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s3",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  1.16769663 -0.04303146",
+            "C  0.00000000 -1.29945364  0.15810072",
+            "H  0.00000000  2.38429609  1.59801822",
+            "H  0.00000000  2.08759130 -1.87998309",
+            "H  0.00000000 -2.90307925 -1.08814513"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "Allyl": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 8,
+        "n_core_orbitals": 3,
+        "n_electrons": 23,
+        "n_states": {
+            "n_doublets": 3
+        },
+        "kind": "strongly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.39
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.99
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000  0.83050732",
+            "C  0.00000000  2.30981224 -0.38722841",
+            "C  0.00000000 -2.30981224 -0.38722841",
+            "H  0.00000000  0.00000000  2.87547067",
+            "H  0.00000000  4.06036949  0.65560561",
+            "H  0.00000000 -4.06036949  0.65560561",
+            "H  0.00000000  2.41059890 -2.42703281",
+            "H  0.00000000 -2.41059890 -2.42703281"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "CO": {
+        "charge": 1,
+        "multiplicity": 2,
+        "n_atoms": 2,
+        "n_core_orbitals": 2,
+        "n_electrons": 14,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "strongly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.28
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.81
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cs",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -1.20324172",
+            "O  0.00000000  0.00000000  0.90271821"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "CH": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 2,
+        "n_core_orbitals": 1,
+        "n_electrons": 7,
+        "n_states": {
+            "n_doublets": 1
+        },
+        "kind": "strongly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.91
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "D",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "true"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -0.16245872",
+            "H  0.00000000  0.00000000  1.93436816"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "CN": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 2,
+        "n_core_orbitals": 2,
+        "n_electrons": 13,
+        "n_states": {
+            "n_doublets": 2
+        },
+        "kind": "strongly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.34
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.22
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cinfv",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -1.18953886",
+            "N  0.00000000  0.00000000  1.01938091"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "Nitromethyl": {
+        "charge": 0,
+        "multiplicity": 2,
+        "n_atoms": 7,
+        "n_core_orbitals": 4,
+        "n_electrons": 32,
+        "n_states": {
+            "n_doublets": 4
+        },
+        "kind": "strongly_spin_contaminated",
+        "properties": {
+            "s1": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.05
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s1",
+                "need_mr": "false"
+            },
+            "s2": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.38
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s2",
+                "need_mr": "false"
+            },
+            "s3": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.56
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s3",
+                "need_mr": "false"
+            },
+            "s4": {
+                "basis": "aug-cc-pvtz",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.35
+                    },
+                    "ssq": {
+                        "unit": "au",
+                        "value": 0.75
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "tbe",
+                "state_multiplicity": 2,
+                "transition_id": "s0->s4",
+                "need_mr": "false"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -2.58417104",
+            "N  0.00000000  0.00000000  0.08692471",
+            "O  0.00000000 -2.06715629  1.15098225",
+            "O  0.00000000  2.06715629  1.15098225",
+            "H  0.00000000  1.81656349 -3.48616378",
+            "H  0.00000000 -1.81656349 -3.48616378"
+        ],
+        "xyz_unit": "Bohr"
+    }
+}

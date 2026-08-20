@@ -11,7 +11,7 @@ class Node:
         if parent is not None:
             parent.children.append(self)
         # callable to convert the found keys to string
-        self.to_string = lambda x: str(x) if to_string is None else to_string
+        self.to_string = (lambda x: str(x)) if to_string is None else to_string
 
     def __str__(self):
         return f"Node({self.value})"
@@ -96,6 +96,8 @@ class DummyNode(Node):
     def __init__(self, parent: 'Node' = None) -> None:
         self.children = []
         self.parent: 'Node' | None = parent
+        if parent is not None:
+            parent.children.append(self)
 
     def __str__(self):
         return "DummyNode"

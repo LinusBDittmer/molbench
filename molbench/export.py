@@ -25,15 +25,28 @@ class Exporter:
     None
     """
 
-    def export(self, *args, **kwargs) -> str:
+    def export(self, *args, **kwargs) -> str | None:
         raise NotImplementedError("Export function has to be implemented on "
                                   "the child classes.")
+
+
+_REQUIRED_FORMATTER_METHODS = (
+    "join_labels", "init_table", "finalize_table", "table_header",
+    "table_content", "multicolumn", "multirow",
+)
 
 
 class TableExporter(Exporter):
     def __init__(self, formatter: Formatter, sort_cols: bool = True,
                  sort_rows: bool = True, sparse_row_labels: bool = True,
                  multirow: bool = False):
+        missing = [m for m in _REQUIRED_FORMATTER_METHODS
+                   if not hasattr(formatter, m)]
+        if missing:
+            log.critical(
+                f"{type(formatter).__name__} is missing the table-structure "
+                f"method(s) {missing} required by TableExporter (e.g. use "
+                "LatexFormatter instead of StdFormatter).", "TableExporter")
         self.formatter = formatter
         self.sort_cols = sort_cols
         self.sort_rows = sort_rows
@@ -41,7 +54,7 @@ class TableExporter(Exporter):
         self.multirow = multirow
 
     def export(self, data: Comparison, property, outfile: typing.IO,
-               columns, rows=None):
+               columns, rows=None) -> str | None:
         # no row labels provided -> use all available keys
         if rows is None:
             rows = DummyNode()
@@ -98,7 +111,8 @@ class TableExporter(Exporter):
         row_nodes = tuple(row_tree.traverse_generations())
         if any(n.value not in data_structure for n in
                chain.from_iterable(chain(column_nodes, row_nodes))):
-            log.critical("A key is not available in the provided Comparison.", "Export")
+            log.critical("A key is not available in the provided Comparison.",
+                         "Export")
 
         col_node_cache = {"root": DummyNode()}
         row_node_cache = {"root": DummyNode()}
@@ -114,6 +128,13 @@ class TableExporter(Exporter):
                     data[row_l] = {}
                 if column_l not in data[row_l]:
                     data[row_l][column_l] = []
+                elif data[row_l][column_l]:
+                    log.warning(
+                        f"Multiple values map to the same table cell (row="
+                        f"{row_l}, column={column_l}). This usually means "
+                        "the row/column trees don't cover all separators in "
+                        "the Comparison - the values will be joined into "
+                        "one cell.", "Export")
                 data[row_l][column_l].append(value)
         col_label_tree = col_node_cache["root"]
         row_label_tree = row_node_cache["root"]
@@ -167,7 +188,8 @@ class TableExporter(Exporter):
             tuple(v for _, v in sorted(row_l.items()))
         )
 
-    def _add_to_label_tree(self, label: tuple[str], node_cache: dict) -> None:
+    def _add_to_label_tree(self, label: tuple[str, ...],
+                           node_cache: dict) -> None:
         # Helper function for building the label trees
         # constructs all nodes for a given entry and inserts them in the tree
         parent = node_cache["root"]
@@ -180,7 +202,7 @@ class TableExporter(Exporter):
             parent = node
 
     def _prepare_table_header(self, col_label_tree: Node,
-                              additional_cols: tuple[str]) -> list:
+                              additional_cols: tuple[str, ...]) -> list:
         # Build the table header as nested list of strings
         rows = []
         prefix = tuple("" for _ in range(len(additional_cols)))
@@ -199,7 +221,7 @@ class TableExporter(Exporter):
         return rows
 
     def _prepare_content(self, data: dict, row_label_tree: Node,
-                         column_labels: tuple[str]) -> list:
+                         column_labels: tuple[str, ...]) -> list:
         # Build the content of the table as nested list
         content: list[list[str]] = []
         prev_row_label = None

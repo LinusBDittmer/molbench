@@ -1,0 +1,2962 @@
+{
+    "acetone": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 10,
+        "n_core_orbitals": 4,
+        "n_electrons": 32,
+        "n_states": {
+            "n_singlets": 4
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3s)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.418
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.964
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.361
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.363
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.364
+                    }
+                },
+                "detected_irreps": "B2->A2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s1_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.032
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.256
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.257
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.259
+                    }
+                },
+                "detected_irreps": "B2->A1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s3"
+            },
+            "s1_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.037
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.267
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.268
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.268
+                    }
+                },
+                "detected_irreps": "B2->B2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s4"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.382
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.45
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.456
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000  0.18807702",
+            "C  0.00000000  2.42007545 -1.31764698",
+            "C  0.00000000 -2.42007545 -1.31764698",
+            "O  0.00000000  0.00000000  2.48269094",
+            "H  0.00000000  4.03690733 -0.05185132",
+            "H  0.00000000 -4.03690733 -0.05185132",
+            "H  1.66061256  2.48420530 -2.53995285",
+            "H -1.66061256  2.48420530 -2.53995285",
+            "H  1.66061256 -2.48420530 -2.53995285",
+            "H -1.66061256 -2.48420530 -2.53995285"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "acrolein": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 8,
+        "n_core_orbitals": 4,
+        "n_electrons": 30,
+        "n_states": {
+            "n_singlets": 2
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.741
+                    }
+                },
+                "detected_irrep": "A\"",
+                "detected_point_group": "Cs",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.002
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.036
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.037
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.039
+                    }
+                },
+                "detected_irreps": "A\"->A\"",
+                "detected_point_group": "Cs",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.743
+                    }
+                },
+                "detected_irrep": "A\"",
+                "detected_point_group": "Cs",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            }
+        },
+        "xyz": [
+            "C -1.11645072 -0.68348783  0.00000000",
+            "C  1.20647847  0.83714564  0.00000000",
+            "C  3.46831059 -0.28872636  0.00000000",
+            "O -3.23666415  0.19187203  0.00000000",
+            "H -0.80613858 -2.74747338  0.00000000",
+            "H  0.98699813  2.86613511  0.00000000",
+            "H  5.20930864  0.77443560  0.00000000",
+            "H  3.60951559 -2.33000749  0.00000000"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "ammonia": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 4,
+        "n_core_orbitals": 1,
+        "n_electrons": 10,
+        "n_states": {
+            "n_singlets": 4
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3s)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.572
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C3v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.545
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.32
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.321
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.321
+                    }
+                },
+                "detected_irreps": "A2->E",
+                "detected_point_group": "C3v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s1_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.992
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.295
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.296
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.296
+                    }
+                },
+                "detected_irreps": "A2->A1",
+                "detected_point_group": "C3v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s3"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3p)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.117
+                    }
+                },
+                "detected_irrep": "E",
+                "detected_point_group": "C3v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.003
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.139
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.141
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.143
+                    }
+                },
+                "detected_irreps": "E->A2",
+                "detected_point_group": "C3v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s2->s4"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3p)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.565
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C3v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.556
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.252
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.264
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.278
+                    }
+                },
+                "detected_irreps": "A1->A2",
+                "detected_point_group": "C3v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s3->s4"
+            },
+            "s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-4s)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 9.12
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C3v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            }
+        },
+        "xyz": [
+            "N  0.12804615  0.00000000  0.00000000",
+            "H -0.59303935  0.88580079 -1.53425197",
+            "H -0.59303935 -1.77160157  0.00000000",
+            "H -0.59303935  0.88580079  1.53425197"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "benzene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 12,
+        "n_core_orbitals": 6,
+        "n_electrons": 42,
+        "n_states": {
+            "n_singlets": 3
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3s)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.504
+                    }
+                },
+                "detected_irrep": "E1g",
+                "detected_point_group": "D6h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.549
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.132
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.133
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.133
+                    }
+                },
+                "detected_irreps": "E1g->A2u",
+                "detected_point_group": "D6h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s1_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.613
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.138
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.139
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.14
+                    }
+                },
+                "detected_irreps": "E1g->E2u",
+                "detected_point_group": "D6h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s3"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.053
+                    }
+                },
+                "detected_irrep": "A2u",
+                "detected_point_group": "D6h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.117
+                    }
+                },
+                "detected_irrep": "E2u",
+                "detected_point_group": "D6h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  2.63144965  0.00000000",
+            "C -2.27890225  1.31572483  0.00000000",
+            "C -2.27890225 -1.31572483  0.00000000",
+            "C  0.00000000 -2.63144965  0.00000000",
+            "C  2.27890225 -1.31572483  0.00000000",
+            "C  2.27890225  1.31572483  0.00000000",
+            "H -4.04725813  2.33668557  0.00000000",
+            "H -4.04725813 -2.33668557  0.00000000",
+            "H  0.00000000 -4.67337115  0.00000000",
+            "H  4.04725813 -2.33668557  0.00000000",
+            "H  4.04725813  2.33668557  0.00000000",
+            "H  0.00000000  4.67337115  0.00000000"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "butadiene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 10,
+        "n_core_orbitals": 4,
+        "n_electrons": 30,
+        "n_states": {
+            "n_singlets": 4
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3s)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.311
+                    }
+                },
+                "detected_irrep": "Bg",
+                "detected_point_group": "C2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.316
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.122
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.124
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.124
+                    }
+                },
+                "detected_irreps": "Bg->Au",
+                "detected_point_group": "C2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s1_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.47
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.165
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.166
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.167
+                    }
+                },
+                "detected_irreps": "Bg->Au",
+                "detected_point_group": "C2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s3"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.626
+                    }
+                },
+                "detected_irrep": "Au",
+                "detected_point_group": "C2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.821
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.062
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.062
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.062
+                    }
+                },
+                "detected_irreps": "Au->Bg",
+                "detected_point_group": "C2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s2->s4"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.78
+                    }
+                },
+                "detected_irrep": "Au",
+                "detected_point_group": "C2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.667
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.367
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.368
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.369
+                    }
+                },
+                "detected_irreps": "Au->Bg",
+                "detected_point_group": "C2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s3->s4"
+            },
+            "s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3d)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.447
+                    }
+                },
+                "detected_irrep": "Bg",
+                "detected_point_group": "C2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            }
+        },
+        "xyz": [
+            "C  1.14656244  0.00000000  0.75468820",
+            "C -1.14656244  0.00000000 -0.75468820",
+            "C  3.48132647  0.00000000 -0.22482805",
+            "C -3.48132647  0.00000000  0.22482805",
+            "H  0.90770978  0.00000000  2.78883925",
+            "H -0.90770978  0.00000000 -2.78883925",
+            "H  3.77525814  0.00000000 -2.24895470",
+            "H -3.77525814  0.00000000  2.24895470",
+            "H  5.13664967  0.00000000  0.96861890",
+            "H -5.13664967  0.00000000 -0.96861890"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "carbon_monoxide": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 2,
+        "n_core_orbitals": 2,
+        "n_electrons": 14,
+        "n_states": {
+            "n_singlets": 4
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.481
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.195
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.025
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.025
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.025
+                    }
+                },
+                "detected_irreps": "P->S+",
+                "detected_point_group": "Cinfv",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s4"
+            },
+            "s1_to_s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.804
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.01
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.01
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.01
+                    }
+                },
+                "detected_irreps": "P->S+",
+                "detected_point_group": "Cinfv",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s5"
+            },
+            "s1_to_s6_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.933
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.01
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.009
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.009
+                    }
+                },
+                "detected_irreps": "P->P",
+                "detected_point_group": "Cinfv",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s6"
+            },
+            "s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n.d.)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 10.676
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cinfv",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            },
+            "s4_to_s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.609
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.146
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.147
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.146
+                    }
+                },
+                "detected_irreps": "S+->S+",
+                "detected_point_group": "Cinfv",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s4->s5"
+            },
+            "s4_to_s6_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.738
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.256
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.258
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.261
+                    }
+                },
+                "detected_irreps": "S+->P",
+                "detected_point_group": "Cinfv",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s4->s6"
+            },
+            "s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n.d.)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 11.285
+                    }
+                },
+                "detected_irrep": "S+",
+                "detected_point_group": "Cinfv",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s5"
+            },
+            "s6_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n.d.)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 11.414
+                    }
+                },
+                "detected_irrep": "P",
+                "detected_point_group": "Cinfv",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s6"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -1.24942055",
+            "O  0.00000000  0.00000000  0.89266692"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "cyclopentadiene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 11,
+        "n_core_orbitals": 5,
+        "n_electrons": 36,
+        "n_states": {
+            "n_singlets": 6
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, \u03c0-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.538
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s6_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.029
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.023
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.027
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.032
+                    }
+                },
+                "detected_irreps": "B2->A1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s6"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3s)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.759
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.616
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.235
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.236
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.236
+                    }
+                },
+                "detected_irreps": "A2->B1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s2->s3"
+            },
+            "s2_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.653
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.252
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.253
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.254
+                    }
+                },
+                "detected_irreps": "A2->A2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s2->s4"
+            },
+            "s2_to_s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.689
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.282
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.283
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.284
+                    }
+                },
+                "detected_irreps": "A2->B2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s2->s5"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.375
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.412
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            },
+            "s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.448
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s5"
+            },
+            "s6_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, \u03c0-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.567
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s6"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -2.33113051",
+            "C  0.00000000  2.22209092 -0.56871188",
+            "C  0.00000000 -2.22209092 -0.56871188",
+            "C  0.00000000  1.38514451  1.83772922",
+            "C  0.00000000 -1.38514451  1.83772922",
+            "H  1.66130504  0.00000000 -3.56414299",
+            "H -1.66130504  0.00000000 -3.56414299",
+            "H  0.00000000  4.16550405 -1.18116624",
+            "H  0.00000000 -4.16550405 -1.18116624",
+            "H  0.00000000  2.54514584  3.51352303",
+            "H  0.00000000 -2.54514584  3.51352303"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "cyclopropene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 7,
+        "n_core_orbitals": 3,
+        "n_electrons": 22,
+        "n_states": {
+            "n_singlets": 2
+        },
+        "properties": {
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3s)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.921
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.373
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.103
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.103
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.102
+                    }
+                },
+                "detected_irreps": "B1->B1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s3->s4"
+            },
+            "s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.294
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -1.66820880",
+            "C  0.00000000  1.22523906  0.90681419",
+            "C  0.00000000 -1.22523906  0.90681419",
+            "H  1.72255446  0.00000000 -2.77881149",
+            "H -1.72255446  0.00000000 -2.77881149",
+            "H  0.00000000  2.97844519  1.92076771",
+            "H  0.00000000 -2.97844519  1.92076771"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "diazirine": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 5,
+        "n_core_orbitals": 3,
+        "n_electrons": 22,
+        "n_states": {
+            "n_singlets": 3
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.112
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.859
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.014
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.014
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.015
+                    }
+                },
+                "detected_irreps": "B1->A1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s4"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3s)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.442
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.53
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.085
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.084
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.084
+                    }
+                },
+                "detected_irreps": "B2->A1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s3->s4"
+            },
+            "s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, \u03c0-\u03c0*)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21. State is relabeled as valence state; was Rydberg state in jacquemin21!",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.972
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -0.26696099",
+            "H  0.00000000  1.75890895 -1.28616478",
+            "H  0.00000000 -1.75890895 -1.28616479",
+            "N  1.16058100  0.00000000  2.27183007",
+            "N -1.16058100  0.00000000  2.27183007"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "diazomethane": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 5,
+        "n_core_orbitals": 3,
+        "n_electrons": 22,
+        "n_states": {
+            "n_singlets": 2
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, \u03c0-\u03c0*)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.071
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.364
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.012
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.012
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.012
+                    }
+                },
+                "detected_irreps": "A2->B1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3s)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.436
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -2.30830005",
+            "N  0.00000000  0.00000000  0.14457890",
+            "N  0.00000000  0.00000000  2.29923216",
+            "H  0.00000000  1.79875201 -3.24272317",
+            "H  0.00000000 -1.79875201 -3.24272317"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "formaldehyde": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 4,
+        "n_core_orbitals": 2,
+        "n_electrons": 16,
+        "n_states": {
+            "n_singlets": 5
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.968
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.205
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.019
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.02
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.02
+                    }
+                },
+                "detected_irreps": "A2->B2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s1_to_s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.419
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.015
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.014
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.014
+                    }
+                },
+                "detected_irreps": "A2->A2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s5"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3s)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.173
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.972
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.297
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.299
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.301
+                    }
+                },
+                "detected_irreps": "B2->A1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s2->s4"
+            },
+            "s2_to_s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.214
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.278
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.279
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.279
+                    }
+                },
+                "detected_irreps": "B2->A2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s2->s5"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3p)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.995
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_to_s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.392
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.011
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.011
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.011
+                    }
+                },
+                "detected_irreps": "B2->A2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s3->s5"
+            },
+            "s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3p)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.145
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            },
+            "s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3p)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 8.386
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s5"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -1.13947666",
+            "O  0.00000000  0.00000000  1.14402883",
+            "H  0.00000000  1.76627623 -2.23398653",
+            "H  0.00000000 -1.76627623 -2.23398653"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "furane": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 9,
+        "n_core_orbitals": 5,
+        "n_electrons": 36,
+        "n_states": {
+            "n_singlets": 4
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3s)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.061
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.544
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.22
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.22
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.22
+                    }
+                },
+                "detected_irreps": "A2->B1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s1_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.693
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.268
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.269
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.269
+                    }
+                },
+                "detected_irreps": "A2->A2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s3"
+            },
+            "s1_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.822
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.271
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.271
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.272
+                    }
+                },
+                "detected_irreps": "A2->B2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s4"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.606
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.754
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.883
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  2.06365826 -0.60051250",
+            "C  0.00000000 -2.06365826 -0.60051250",
+            "C  0.00000000  1.35348578  1.86336416",
+            "C  0.00000000 -1.35348578  1.86336416",
+            "O  0.00000000  0.00000000 -2.13945332",
+            "H  0.00000000  3.86337287 -1.53765695",
+            "H  0.00000000 -3.86337287 -1.53765695",
+            "H  0.00000000  2.59168789  3.47168051",
+            "H  0.00000000 -2.59168789  3.47168051"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "glyoxal": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 6,
+        "n_core_orbitals": 4,
+        "n_electrons": 30,
+        "n_states": {
+            "n_singlets": 3
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.874
+                    }
+                },
+                "detected_irrep": "Au",
+                "detected_point_group": "C2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.393
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.02
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.021
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.021
+                    }
+                },
+                "detected_irreps": "Au->Bg",
+                "detected_point_group": "C2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s1_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.692
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.113
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.115
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.117
+                    }
+                },
+                "detected_irreps": "Au->Bg",
+                "detected_point_group": "C2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s3"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.267
+                    }
+                },
+                "detected_irrep": "Bg",
+                "detected_point_group": "C2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.566
+                    }
+                },
+                "detected_irrep": "Bg",
+                "detected_point_group": "C2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            }
+        },
+        "xyz": [
+            "C  1.21360282  0.75840215  0.00000000",
+            "C -1.21360282 -0.75840215  0.00000000",
+            "O  3.25581408 -0.26453186  0.00000000",
+            "O -3.25581408  0.26453186  0.00000000",
+            "H  0.96135276  2.81883243  0.00000000",
+            "H -0.96135276 -2.81883243  0.00000000"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "ketene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 5,
+        "n_core_orbitals": 3,
+        "n_electrons": 22,
+        "n_states": {
+            "n_singlets": 3
+        },
+        "properties": {
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3s)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.948
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.161
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.336
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.337
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.338
+                    }
+                },
+                "detected_irreps": "B1->A2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s2->s3"
+            },
+            "s2_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.136
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.176
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.175
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.174
+                    }
+                },
+                "detected_irreps": "B1->A1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s2->s4"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.109
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, \u03c0-\u03c0*)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.085
+                    }
+                },
+                "detected_irrep": "A1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -2.44810151",
+            "C  0.00000000  0.00000000  0.03498545",
+            "O  0.00000000  0.00000000  2.23663914",
+            "H  0.00000000  1.77432079 -3.43705988",
+            "H  0.00000000 -1.77432079 -3.43705988"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "methylenecyclopropene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 8,
+        "n_core_orbitals": 4,
+        "n_electrons": 28,
+        "n_states": {
+            "n_singlets": 3
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, \u03c0-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.311
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.616
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.023
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.024
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.025
+                    }
+                },
+                "detected_irreps": "B2->A2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s3"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3s)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.422
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.506
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.188
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.189
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.189
+                    }
+                },
+                "detected_irreps": "B1->A2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s2->s3"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.928
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000  0.53512883",
+            "C  0.00000000  0.00000000  3.04739824",
+            "C  0.00000000  1.25042956 -1.88571561",
+            "C  0.00000000 -1.25042956 -1.88571561",
+            "H  0.00000000  2.96887531 -2.96270271",
+            "H  0.00000000 -2.96887531 -2.96270271",
+            "H  0.00000000  1.75335023  4.08608382",
+            "H  0.00000000 -1.75335023  4.08608382"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "pyrazine": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 10,
+        "n_core_orbitals": 6,
+        "n_electrons": 42,
+        "n_states": {
+            "n_singlets": 5
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3s)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.638
+                    }
+                },
+                "detected_irrep": "Ag",
+                "detected_point_group": "D2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.591
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.24
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.242
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.244
+                    }
+                },
+                "detected_irreps": "Ag->B2u",
+                "detected_point_group": "D2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s3"
+            },
+            "s1_to_s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.771
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.198
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.198
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.197
+                    }
+                },
+                "detected_irreps": "Ag->B1u",
+                "detected_point_group": "D2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s4"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, \u03c0-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.86
+                    }
+                },
+                "detected_irrep": "B1u",
+                "detected_point_group": "D2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s2_to_s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.09
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.004
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.004
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.004
+                    }
+                },
+                "detected_irreps": "B1u->B3g",
+                "detected_point_group": "D2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s2->s5"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.229
+                    }
+                },
+                "detected_irrep": "B2u",
+                "detected_point_group": "D2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            },
+            "s3_to_s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.722
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.201
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.201
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.201
+                    }
+                },
+                "detected_irreps": "B2u->B3g",
+                "detected_point_group": "D2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s3->s5"
+            },
+            "s4_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.41
+                    }
+                },
+                "detected_irrep": "B1u",
+                "detected_point_group": "D2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s4"
+            },
+            "s5_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n.d.)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.951
+                    }
+                },
+                "detected_irrep": "B3g",
+                "detected_point_group": "D2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s5"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  2.13188686  1.31510863",
+            "C  0.00000000 -2.13188686  1.31510863",
+            "C  0.00000000  2.13188686 -1.31510863",
+            "C  0.00000000 -2.13188686 -1.31510863",
+            "N  0.00000000  0.00000000  2.66620111",
+            "N  0.00000000  0.00000000 -2.66620111",
+            "H  0.00000000  3.88751412  2.35234226",
+            "H  0.00000000 -3.88751412  2.35234226",
+            "H  0.00000000  3.88751412 -2.35234226",
+            "H  0.00000000 -3.88751412 -2.35234226"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "pyridazine": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 10,
+        "n_core_orbitals": 6,
+        "n_electrons": 42,
+        "n_states": {
+            "n_singlets": 2
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.372
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.995
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.012
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.011
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.01
+                    }
+                },
+                "detected_irreps": "A2->B1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.366
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  1.30150855 -2.31552865",
+            "C  0.00000000 -1.30150855 -2.31552865",
+            "C  0.00000000  2.49271907  0.03513416",
+            "C  0.00000000 -2.49271907  0.03513416",
+            "N  0.00000000  1.26228251  2.23104685",
+            "N  0.00000000 -1.26228251  2.23104685",
+            "H  0.00000000  4.52804172  0.19299731",
+            "H  0.00000000 -4.52804172  0.19299731",
+            "H  0.00000000  2.39011496 -4.03967703",
+            "H  0.00000000 -2.39011496 -4.03967703"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "pyrrole": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 10,
+        "n_core_orbitals": 5,
+        "n_electrons": 36,
+        "n_states": {
+            "n_singlets": 3
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3s)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.233
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.734
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.091
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.091
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.091
+                    }
+                },
+                "detected_irreps": "A2->B1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s1_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.747
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.171
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.171
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.171
+                    }
+                },
+                "detected_irreps": "A2->A2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s3"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, mixed)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.967
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.98
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  2.11924634  0.62676569",
+            "C  0.00000000 -2.11924634  0.62676569",
+            "C  0.00000000  1.34568862 -1.85506908",
+            "C  0.00000000 -1.34568862 -1.85506908",
+            "N  0.00000000  0.00000000  2.10934391",
+            "H  0.00000000  0.00000000  4.00257355",
+            "H  0.00000000  3.97648410  1.44830201",
+            "H  0.00000000 -3.97648410  1.44830201",
+            "H  0.00000000  2.56726559 -3.47837232",
+            "H  0.00000000 -2.56726559 -3.47837232"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "silylidene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 4,
+        "n_core_orbitals": 6,
+        "n_electrons": 22,
+        "n_states": {
+            "n_singlets": 2
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, \u03c0-\u03c0*)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.155
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.624
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.003
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.003
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.002
+                    }
+                },
+                "detected_irreps": "A2->B2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.78
+                    }
+                },
+                "detected_irrep": "B2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000 -2.09539928",
+            "Si 0.00000000  0.00000000  1.14992930",
+            "H  0.00000000  1.70929524 -3.22894481",
+            "H  0.00000000 -1.70929524 -3.22894481"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "tetrazine": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 8,
+        "n_core_orbitals": 6,
+        "n_electrons": 42,
+        "n_states": {
+            "n_singlets": 3
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.454
+                    }
+                },
+                "detected_irrep": "B3u",
+                "detected_point_group": "D2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 2.456
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.061
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.065
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.068
+                    }
+                },
+                "detected_irreps": "B3u->B1g",
+                "detected_point_group": "D2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s1_to_s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 3.009
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.017
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.017
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.017
+                    }
+                },
+                "detected_irreps": "B3u->B2g",
+                "detected_point_group": "D2h",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s3"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 4.91
+                    }
+                },
+                "detected_irrep": "B1g",
+                "detected_point_group": "D2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            },
+            "s3_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(V, n-\u03c0*)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 5.463
+                    }
+                },
+                "detected_irrep": "B2g",
+                "detected_point_group": "D2h",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s3"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  0.00000000  2.38208164",
+            "C  0.00000000  0.00000000 -2.38208164",
+            "N  2.25673244  0.00000000  1.24973261",
+            "N -2.25673244  0.00000000  1.24973261",
+            "N  2.25673244  0.00000000 -1.24973261",
+            "N -2.25673244  0.00000000 -1.24973261",
+            "H  0.00000000  0.00000000  4.41850901",
+            "H  0.00000000  0.00000000 -4.41850901"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "thiophene": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 9,
+        "n_core_orbitals": 9,
+        "n_electrons": 44,
+        "n_states": {
+            "n_singlets": 2
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3s)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.121
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 0.009
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.001
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": -0.0
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": -0.004
+                    }
+                },
+                "detected_irreps": "A2->B1",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, \u03c0-3p)",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 6.13
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            }
+        },
+        "xyz": [
+            "C  0.00000000  2.33342542 -0.09858421",
+            "C  0.00000000 -2.33342542 -0.09858421",
+            "C  0.00000000  1.34371718 -2.48297725",
+            "C  0.00000000 -1.34371718 -2.48297725",
+            "S  0.00000000  0.00000000  2.17250692",
+            "H  0.00000000  4.29028016  0.44577296",
+            "H  0.00000000 -4.29028016  0.44577296",
+            "H  0.00000000  2.48760051 -4.16768392",
+            "H  0.00000000 -2.48760051 -4.16768392"
+        ],
+        "xyz_unit": "Bohr"
+    },
+    "water": {
+        "charge": 0,
+        "multiplicity": 1,
+        "n_atoms": 3,
+        "n_core_orbitals": 1,
+        "n_electrons": 10,
+        "n_states": {
+            "n_singlets": 2
+        },
+        "properties": {
+            "s1_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3s)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 7.6
+                    }
+                },
+                "detected_irrep": "B1",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s1"
+            },
+            "s1_to_s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "data": {
+                    "s2s_excitation_energy": {
+                        "unit": "eV",
+                        "value": 1.768
+                    },
+                    "s2s_oscillator_strength_length_gauge": {
+                        "unit": "au",
+                        "value": 0.283
+                    },
+                    "s2s_oscillator_strength_mixed_gauge": {
+                        "unit": "au",
+                        "value": 0.283
+                    },
+                    "s2s_oscillator_strength_velocity_gauge": {
+                        "unit": "au",
+                        "value": 0.284
+                    }
+                },
+                "detected_irreps": "B1->A2",
+                "detected_point_group": "C2v",
+                "method": "qr-cc3",
+                "state_multiplicities": "1->1",
+                "transition_id": "s1->s2"
+            },
+            "s2_e": {
+                "basis": "d-aug-cc-pvtz",
+                "character": "(R, n-3p)",
+                "comment": "state_id consistent to jacquemin18 and jacquemin21",
+                "data": {
+                    "excitation_energy": {
+                        "unit": "eV",
+                        "value": 9.368
+                    }
+                },
+                "detected_irrep": "A2",
+                "detected_point_group": "C2v",
+                "method": "lr-cc3",
+                "state_multiplicity": 1,
+                "transition_id": "s0->s2"
+            }
+        },
+        "xyz": [
+            "O  0.00000000  0.00000000 -0.13209669",
+            "H  0.00000000  1.43152878  0.97970006",
+            "H  0.00000000 -1.43152878  0.97970006"
+        ],
+        "xyz_unit": "Bohr"
+    }
+}
