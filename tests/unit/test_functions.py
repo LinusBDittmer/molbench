@@ -1,9 +1,9 @@
 import pytest
+
 from molbench.functions import (
-    substitute_template,
-    _substitute_single_template,
     default_name_template,
     determine_basis_cardinality,
+    substitute_template,
     walk_dict_by_key,
     walk_dict_values,
 )
@@ -15,7 +15,9 @@ class TestSubstituteTemplate:
         assert result == ("charge=0",)
 
     def test_multiple_keys(self):
-        result = substitute_template("[[name]] [[basis]]", {"name": "mol", "basis": "cc-pvdz"})
+        result = substitute_template(
+            "[[name]] [[basis]]", {"name": "mol", "basis": "cc-pvdz"}
+        )
         assert result == ("mol cc-pvdz",)
 
     def test_no_placeholders(self):
@@ -70,8 +72,7 @@ class TestSubstituteTemplate:
         # A "_list"-suffixed key whose value isn't actually a list/tuple must
         # not be treated as something to expand (previously crashed with a
         # raw IndexError since to_expand ended up empty).
-        result = substitute_template("charge=[[charge_list]]",
-                                     {"charge_list": 5})
+        result = substitute_template("charge=[[charge_list]]", {"charge_list": 5})
         assert result == ("charge=5",)
 
     def test_out_of_range_index_exits(self):
@@ -116,15 +117,13 @@ class TestDetermineBasisCardinality:
         with caplog.at_level("ERROR", logger="molbench"):
             result = determine_basis_cardinality("cc-p")
         assert result == 0
-        assert any("could not be identified" in rec.message
-                   for rec in caplog.records)
+        assert any("could not be identified" in rec.message for rec in caplog.records)
 
     def test_malformed_def2_returns_zero(self, caplog):
         with caplog.at_level("ERROR", logger="molbench"):
             result = determine_basis_cardinality("def2")
         assert result == 0
-        assert any("could not be identified" in rec.message
-                   for rec in caplog.records)
+        assert any("could not be identified" in rec.message for rec in caplog.records)
 
 
 class TestDefaultNameTemplate:
@@ -166,7 +165,7 @@ class TestWalkDictByKey:
     def test_full_path_returned(self):
         d = {"x": {"target": 99}}
         results = list(walk_dict_by_key(d, "target"))
-        keys, val = results[0]
+        keys, _ = results[0]
         assert keys == ("x", "target")
 
     def test_absent_key(self):
@@ -198,7 +197,6 @@ class TestWalkDictValues:
     def test_nested_dict_not_yielded_as_value(self):
         d = {"outer": {"inner": 5}}
         results = list(walk_dict_values(d))
-        values = [v for _, v in results]
         assert isinstance(results[0][1], int)
         assert len(results) == 1
 

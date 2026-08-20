@@ -1,20 +1,20 @@
 import logging
 import os
 import sys
-
+from typing import ClassVar
 
 instance: logging.Logger | None = None
 
 
 class MolbenchFormatter(logging.Formatter):
-    COLORS = {
-        'DEBUG': '\033[1;32m',  # Green
-        'INFO': '',  # No color
-        'WARNING': '\033[3;33m',  # Orange
-        'ERROR': '\033[1;31m',  # Red
-        'CRITICAL': '\033[1;35m'  # Pink
+    COLORS: ClassVar = {
+        "DEBUG": "\033[1;32m",  # Green
+        "INFO": "",  # No color
+        "WARNING": "\033[3;33m",  # Orange
+        "ERROR": "\033[1;31m",  # Red
+        "CRITICAL": "\033[1;35m",  # Pink
     }
-    RESET_SEQ = '\033[0m'
+    RESET_SEQ = "\033[0m"
 
     def format(self, record):
         levelname = record.levelname
@@ -38,7 +38,6 @@ def __init_log_instance():
 
 
 def debug(msg: str, cause=None):
-    global instance
     assert instance is not None
     if cause is None:
         instance.debug(msg)
@@ -47,7 +46,6 @@ def debug(msg: str, cause=None):
 
 
 def info(msg: str, cause=None):
-    global instance
     assert instance is not None
     if cause is None:
         instance.info(msg)
@@ -56,7 +54,6 @@ def info(msg: str, cause=None):
 
 
 def warning(msg: str, cause=None):
-    global instance
     assert instance is not None
     if cause is None:
         instance.warning(msg)
@@ -65,7 +62,6 @@ def warning(msg: str, cause=None):
 
 
 def error(msg: str, cause=None, etype: str = ""):
-    global instance
     assert instance is not None
     if cause is None:
         instance.error(f"{msg} (Error type: {etype})")
@@ -74,7 +70,6 @@ def error(msg: str, cause=None, etype: str = ""):
 
 
 def critical(msg: str, cause):
-    global instance
     assert instance is not None
     instance.critical(f"[{cause}] CRITICAL ERROR: {msg}\n")
     sys.exit(-1)

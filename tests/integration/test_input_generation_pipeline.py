@@ -1,10 +1,16 @@
 """Integration: load benchmark → generate input/assignment files → verify."""
+
 import json
-import pytest
 from pathlib import Path
-from molbench.benchmark_parser import JSONBenchmarkParser
-from molbench.input_constructor import TemplateConstructor, CompressedTemplateConstructor
+
+import pytest
+
 from molbench.assignment import parse_assignment_file
+from molbench.benchmark_parser import JSONBenchmarkParser
+from molbench.input_constructor import (
+    CompressedTemplateConstructor,
+    TemplateConstructor,
+)
 
 
 @pytest.fixture(scope="module")
@@ -88,6 +94,7 @@ def test_generate_inputs_flat_structure(ascdb, tmp_path):
 # create_assignments with questdb (has transition_ids)
 # ---------------------------------------------------------------------------
 
+
 def test_generate_assignments_from_questdb(questdb, tmp_path):
     tc = TemplateConstructor("pyscf_ordmp2")
     small = questdb[:3]
@@ -120,6 +127,7 @@ def test_assignment_file_contains_transition_ids(questdb, tmp_path):
 # CompressedTemplateConstructor with ascdb (has xyz_list entries)
 # ---------------------------------------------------------------------------
 
+
 def test_compressed_creates_references_json(ascdb, tmp_path):
     tc = CompressedTemplateConstructor("pyscf_ordmp2")
     # Pick only multi-geometry molecules
@@ -127,8 +135,13 @@ def test_compressed_creates_references_json(ascdb, tmp_path):
     if not multi:
         pytest.skip("No multi-geometry molecules in ascdb slice")
     from molbench.molecule import MoleculeList
-    tc.create_inputs(MoleculeList(multi[:2]), str(tmp_path), PYSCF_CALC,
-                     reference_path="references.json")
+
+    tc.create_inputs(
+        MoleculeList(multi[:2]),
+        str(tmp_path),
+        PYSCF_CALC,
+        reference_path="references.json",
+    )
     assert (tmp_path / "references.json").exists()
 
 
@@ -138,8 +151,13 @@ def test_references_json_maps_to_molecule_names(ascdb, tmp_path):
     if not multi:
         pytest.skip("No multi-geometry molecules in ascdb slice")
     from molbench.molecule import MoleculeList
-    tc.create_inputs(MoleculeList(multi[:2]), str(tmp_path), PYSCF_CALC,
-                     reference_path="references.json")
+
+    tc.create_inputs(
+        MoleculeList(multi[:2]),
+        str(tmp_path),
+        PYSCF_CALC,
+        reference_path="references.json",
+    )
     refs = json.loads((tmp_path / "references.json").read_text())
     original_names = {m.name for m in multi[:2]}
     assert any(name in refs for name in original_names)

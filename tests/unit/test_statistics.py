@@ -1,13 +1,23 @@
-import pytest
 import numpy as np
-from molbench.molecule import Molecule, MoleculeList, Datapoint
-from molbench.comparison import Comparison
-from molbench.statistics import (
-    Statistics, register_as_error_measure,
-    mse, mae, sde, rmsd, min as stat_min, max as stat_max, median_se,
-    _collect_errors,
-)
+import pytest
 
+from molbench.comparison import Comparison
+from molbench.molecule import Datapoint, Molecule, MoleculeList
+from molbench.statistics import (
+    Statistics,
+    mae,
+    median_se,
+    mse,
+    register_as_error_measure,
+    rmsd,
+    sde,
+)
+from molbench.statistics import (
+    max as stat_max,
+)
+from molbench.statistics import (
+    min as stat_min,
+)
 
 INTEREST = {"method": "HF"}
 REFERENCE = {"method": "TBE"}
@@ -17,6 +27,7 @@ PROPTYPE = "energy"
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def _get_errors(comparison, interest=INTEREST, reference=REFERENCE):
     return Statistics(comparison).compare(interest, reference)
@@ -29,6 +40,7 @@ def _assign(proptype=PROPTYPE):
 # ---------------------------------------------------------------------------
 # identify
 # ---------------------------------------------------------------------------
+
 
 def test_identify_reference(known_comparison):
     stats = Statistics(known_comparison)
@@ -56,26 +68,36 @@ def test_identify_neither(known_comparison):
 # compare — absolute errors
 # ---------------------------------------------------------------------------
 
+
 def test_compare_absolute_error(known_comparison):
     errors = _get_errors(known_comparison)
     assert len(errors) == 1
-    for ref_keys, interest_dict in errors.items():
-        for int_keys, se in interest_dict.items():
+    for interest_dict in errors.values():
+        for se in interest_dict.values():
             assert se.value == pytest.approx(0.1)
 
 
 def test_compare_signed_positive(known_comparison):
     # interest (-75.9) - reference (-76.0) = +0.1
     errors = _get_errors(known_comparison)
-    for _, id_ in errors.items():
-        for _, se in id_.items():
+    for id_ in errors.values():
+        for se in id_.values():
             assert se.value > 0
 
 
 def test_compare_empty_interest():
-    ref = Molecule("water", "ref", {},
-                   {"gs": {"basis": "cc-pvdz", "method": "TBE",
-                           "data": {"energy": Datapoint(-76.0, "au")}}})
+    ref = Molecule(
+        "water",
+        "ref",
+        {},
+        {
+            "gs": {
+                "basis": "cc-pvdz",
+                "method": "TBE",
+                "data": {"energy": Datapoint(-76.0, "au")},
+            }
+        },
+    )
     c = Comparison()
     c.add(MoleculeList([ref]))
     errors = Statistics(c).compare({"method": "HF"}, {"method": "TBE"})
@@ -86,12 +108,11 @@ def test_compare_empty_interest():
 # compare — relative errors
 # ---------------------------------------------------------------------------
 
+
 def test_compare_relative_error(known_comparison):
-    errors = Statistics(known_comparison).compare(
-        INTEREST, REFERENCE, relative=True
-    )
-    for _, id_ in errors.items():
-        for _, se in id_.items():
+    errors = Statistics(known_comparison).compare(INTEREST, REFERENCE, relative=True)
+    for id_ in errors.values():
+        for se in id_.values():
             # (−75.9 − (−76.0)) / |−76.0| = 0.1/76.0
             assert se.value == pytest.approx(0.1 / 76.0, rel=1e-5)
 
@@ -100,8 +121,8 @@ def test_compare_relative_with_damping(known_comparison):
     errors = Statistics(known_comparison).compare(
         INTEREST, REFERENCE, relative=True, relative_damping=1.0
     )
-    for _, id_ in errors.items():
-        for _, se in id_.items():
+    for id_ in errors.values():
+        for se in id_.values():
             # (−75.9 − (−76.0)) / (|−76.0| + 1.0) = 0.1/77.0
             assert se.value == pytest.approx(0.1 / 77.0, rel=1e-5)
 
@@ -109,6 +130,7 @@ def test_compare_relative_with_damping(known_comparison):
 # ---------------------------------------------------------------------------
 # evaluate
 # ---------------------------------------------------------------------------
+
 
 def test_evaluate_mse(known_comparison):
     errors = _get_errors(known_comparison)
@@ -121,21 +143,21 @@ def test_evaluate_mse(known_comparison):
 def test_evaluate_mae(known_comparison):
     errors = _get_errors(known_comparison)
     result = Statistics(known_comparison).evaluate(errors, "mae", proptype=PROPTYPE)
-    val, count = result["mae"]
+    val, _ = result["mae"]
     assert val == pytest.approx(0.1)
 
 
 def test_evaluate_rmsd(known_comparison):
     errors = _get_errors(known_comparison)
     result = Statistics(known_comparison).evaluate(errors, "rmsd", proptype=PROPTYPE)
-    val, count = result["rmsd"]
+    val, _ = result["rmsd"]
     assert val == pytest.approx(0.1)
 
 
 def test_evaluate_sde_single_point(known_comparison):
     errors = _get_errors(known_comparison)
     result = Statistics(known_comparison).evaluate(errors, "sde", proptype=PROPTYPE)
-    val, count = result["sde"]
+    val, _ = result["sde"]
     # std of a single value is 0
     assert val == pytest.approx(0.0)
 
@@ -182,6 +204,7 @@ def test_evaluate_no_assign_no_proptype_returns_none(known_comparison):
 # two-molecule: known MSE, MAE, RMSD
 # ---------------------------------------------------------------------------
 
+
 def test_mse_two_molecules(two_molecule_comparison):
     errors = _get_errors(two_molecule_comparison)
     result = Statistics(two_molecule_comparison).evaluate(
@@ -197,7 +220,7 @@ def test_mae_two_molecules(two_molecule_comparison):
     result = Statistics(two_molecule_comparison).evaluate(
         errors, "mae", proptype=PROPTYPE
     )
-    val, count = result["mae"]
+    val, _ = result["mae"]
     assert val == pytest.approx(0.2)
 
 
@@ -224,6 +247,7 @@ def test_min_max_two_molecules(two_molecule_comparison):
 # mae on empty errors
 # ---------------------------------------------------------------------------
 
+
 def test_mae_empty_errors(known_comparison):
     assign = _assign()
     val, count = mae({}, assign)
@@ -234,6 +258,7 @@ def test_mae_empty_errors(known_comparison):
 # ---------------------------------------------------------------------------
 # register_as_error_measure decorator
 # ---------------------------------------------------------------------------
+
 
 def test_register_as_error_measure():
     @register_as_error_measure
@@ -248,6 +273,7 @@ def test_register_as_error_measure():
 # ---------------------------------------------------------------------------
 # assign_by_proptype
 # ---------------------------------------------------------------------------
+
 
 def test_assign_by_proptype_matches():
     assign = Statistics.assign_by_proptype("energy")
@@ -274,6 +300,7 @@ def test_assign_by_proptype_different_ref_int():
 # __init__ type guard
 # ---------------------------------------------------------------------------
 
+
 def test_init_wrong_type_exits_cleanly():
     # Must hit the intended log.critical() path immediately, not log a
     # non-fatal error and then crash later on an unrelated AttributeError.
@@ -285,13 +312,32 @@ def test_init_wrong_type_exits_cleanly():
 # relative error with a zero reference value
 # ---------------------------------------------------------------------------
 
+
 def test_compare_relative_zero_reference_skips_pair(caplog):
-    ref = Molecule("water", "ref", {},
-                   {"gs": {"basis": "cc-pvdz", "method": "TBE",
-                           "data": {"energy": Datapoint(0.0, "au")}}})
-    interest = Molecule("water", "computed", {},
-                        {"gs": {"basis": "cc-pvdz", "method": "HF",
-                                "data": {"energy": Datapoint(1.0, "au")}}})
+    ref = Molecule(
+        "water",
+        "ref",
+        {},
+        {
+            "gs": {
+                "basis": "cc-pvdz",
+                "method": "TBE",
+                "data": {"energy": Datapoint(0.0, "au")},
+            }
+        },
+    )
+    interest = Molecule(
+        "water",
+        "computed",
+        {},
+        {
+            "gs": {
+                "basis": "cc-pvdz",
+                "method": "HF",
+                "data": {"energy": Datapoint(1.0, "au")},
+            }
+        },
+    )
     c = Comparison()
     c.add(MoleculeList([ref, interest]))
     with caplog.at_level("WARNING", logger="molbench"):
@@ -303,6 +349,7 @@ def test_compare_relative_zero_reference_skips_pair(caplog):
 # ---------------------------------------------------------------------------
 # extreme_error_keys
 # ---------------------------------------------------------------------------
+
 
 def test_extreme_error_keys_two_molecules(two_molecule_comparison):
     errors = _get_errors(two_molecule_comparison)
@@ -316,9 +363,7 @@ def test_extreme_error_keys_two_molecules(two_molecule_comparison):
 
 
 def test_extreme_error_keys_empty_returns_empty_dict(known_comparison):
-    result = Statistics(known_comparison).extreme_error_keys(
-        {}, proptype=PROPTYPE
-    )
+    result = Statistics(known_comparison).extreme_error_keys({}, proptype=PROPTYPE)
     assert result == {}
 
 
@@ -331,6 +376,7 @@ def test_extreme_error_keys_no_assign_no_proptype_logs_error(known_comparison):
 # ---------------------------------------------------------------------------
 # empty-input behavior of the built-in error measures
 # ---------------------------------------------------------------------------
+
 
 def test_empty_errors_all_measures_no_crash():
     assign = _assign()

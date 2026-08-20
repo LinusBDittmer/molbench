@@ -1,16 +1,15 @@
-"""Python file for input constructors.
-
-"""
+"""Python file for input constructors."""
 
 import json
-from pathlib import Path
 from collections import Counter, defaultdict
-from .assignment import new_assignment_file
+from pathlib import Path
+
 from . import logger as log
+from .assignment import new_assignment_file
 from .configuration import config
-from .functions import substitute_template, default_name_template
-from .molecule import MoleculeList, Molecule
-from .tree import Node, DummyNode
+from .functions import default_name_template, substitute_template
+from .molecule import Molecule, MoleculeList
+from .tree import DummyNode, Node
 
 
 class InputConstructor:
@@ -33,17 +32,23 @@ class InputConstructor:
     """
 
     def create_inputs(self, *args, **kwargs) -> list:
-        raise NotImplementedError("The 'create_inputs' method is only "
-                                  "implemented on child classes.")
+        raise NotImplementedError(
+            "The 'create_inputs' method is only implemented on child classes."
+        )
 
     def create_assignments(self, *args, **kwargs) -> list:
-        raise NotImplementedError("The 'create_assignments' method is only "
-                                  "implemented on child classes.")
+        raise NotImplementedError(
+            "The 'create_assignments' method is only implemented on child classes."
+        )
 
-    def _create_files(self, data_iterable, basepath: str,
-                      file_name_generator: callable,
-                      file_content_generator: callable,
-                      folder_structure_generator: callable):
+    def _create_files(
+        self,
+        data_iterable,
+        basepath: str,
+        file_name_generator: callable,
+        file_content_generator: callable,
+        folder_structure_generator: callable,
+    ):
 
         basepath: Path = Path(basepath).resolve()
         if not basepath.exists():
@@ -75,8 +80,9 @@ class InputConstructor:
             for content, name in zip(content_list, name_list):
                 file = path / name
                 if file.is_file():
-                    log.warning(f"Overwriting existing file {file}.",
-                                "Input Constructor")
+                    log.warning(
+                        f"Overwriting existing file {file}.", "Input Constructor"
+                    )
                 # write the file
                 with open(file, "w") as f:
                     f.write(content)
@@ -91,11 +97,14 @@ class InputConstructor:
                 for node in generation:
                     val = variant_data.get(node.value, None)
                     if val is None:
-                        log.critical("Failed to resolve folder path for "
-                                     + f"{variant_data}.", "Input Constructor")
+                        log.critical(
+                            "Failed to resolve folder path for " + f"{variant_data}.",
+                            "Input Constructor",
+                        )
                     folder_name.append(node.to_string(val))
                 path /= "_".join(folder_name)
             return path
+
         return _folder_structure
 
 
@@ -122,17 +131,22 @@ class TemplateConstructor(InputConstructor):
             template_file = Path(template).resolve()
         # actually try to read the file
         try:
-            with open(template_file, 'r') as f:
+            with open(template_file, "r") as f:
                 self.template = f.read()
-        except Exception:
-            log.critical(f"Template {template} could not be loaded.",
-                         "Template Constructor")
+        except Exception:  # noqa: BLE001
+            log.critical(
+                f"Template {template} could not be loaded.", "Template Constructor"
+            )
 
-    def create_inputs(self, benchmark: MoleculeList[Molecule], basepath: str,
-                      calc_details: dict,
-                      file_expansion_keys: tuple = ("basis",),
-                      flat_structure: bool = False,
-                      name_template: str | None = None) -> list:
+    def create_inputs(
+        self,
+        benchmark: MoleculeList[Molecule],
+        basepath: str,
+        calc_details: dict,
+        file_expansion_keys: tuple = ("basis",),
+        flat_structure: bool = False,
+        name_template: str | None = None,
+    ) -> list:
         """
         Create inputs files for the provided set of Molecules by filling
         in the placeholders in the input template with data from the
@@ -183,16 +197,24 @@ class TemplateConstructor(InputConstructor):
 
         folder_structure_generator = self._gen_folder_structure(tree)
 
-        return self._create_files(variant_data_iterator, basepath,
-                                  file_name_generator, file_content_generator,
-                                  folder_structure_generator)
+        return self._create_files(
+            variant_data_iterator,
+            basepath,
+            file_name_generator,
+            file_content_generator,
+            folder_structure_generator,
+        )
 
-    def create_assignments(self, benchmark: MoleculeList[Molecule],
-                           basepath: str, calc_details: dict,
-                           file_expansion_keys: tuple = ("basis",),
-                           flat_structure: bool = False,
-                           name_template: str | None = None,
-                           transition_id_key="transition_id") -> list:
+    def create_assignments(
+        self,
+        benchmark: MoleculeList[Molecule],
+        basepath: str,
+        calc_details: dict,
+        file_expansion_keys: tuple = ("basis",),
+        flat_structure: bool = False,
+        name_template: str | None = None,
+        transition_id_key="transition_id",
+    ) -> list:
         """
         Create assignment files for the provided set of Molecules.
         Note: This does currently not work for relative properties!
@@ -242,13 +264,17 @@ class TemplateConstructor(InputConstructor):
             tree = Node("name")
         folder_structure_generator = self._gen_folder_structure(tree)
 
-        return self._create_files(variant_data_iterator, basepath,
-                                  file_name_generator, file_content_generator,
-                                  folder_structure_generator)
+        return self._create_files(
+            variant_data_iterator,
+            basepath,
+            file_name_generator,
+            file_content_generator,
+            folder_structure_generator,
+        )
 
-    def _molecule_variants_data_iter(self, benchmark: MoleculeList,
-                                     calc_details: dict,
-                                     file_expansion_keys: tuple):
+    def _molecule_variants_data_iter(
+        self, benchmark: MoleculeList, calc_details: dict, file_expansion_keys: tuple
+    ):
         # for each molecule:
         #  find all unique combination of relevant keys, for instance,
         #  perform calculations for different basis sets in independent
@@ -258,13 +284,16 @@ class TemplateConstructor(InputConstructor):
             variants = []
             variant_properties = []
             for property in molecule.state_data.values():
-                var = tuple((key, property.get(key, None))
-                            for key in file_expansion_keys)
+                var = tuple(
+                    (key, property.get(key, None)) for key in file_expansion_keys
+                )
                 if any(val is None for _, val in var):
                     log.warning(
                         f"Skipping a state of molecule {molecule.name}: "
                         f"missing value(s) for {file_expansion_keys} "
-                        f"(got {var}).", "TemplateConstructor")
+                        f"(got {var}).",
+                        "TemplateConstructor",
+                    )
                     continue
                 try:  # no new variant -> add the property to the list
                     i = variants.index(var)
@@ -273,25 +302,32 @@ class TemplateConstructor(InputConstructor):
                     variants.append(var)
                     variant_properties.append([property])
             for var, props in zip(variants, variant_properties):
-                log.debug(f"Creating file for: {molecule.name} -> {var}.",
-                          "Template Constructor")
+                log.debug(
+                    f"Creating file for: {molecule.name} -> {var}.",
+                    "Template Constructor",
+                )
                 # collect all the relevant data
                 variant_data: dict = molecule.system_data.copy()
                 if "name" in variant_data:
-                    log.warning("The key 'name' in the molecules 'system_data'"
-                                " is reservedfor the name of the molecule. "
-                                "Overwriting existing value "
-                                f"{variant_data['name']} with "
-                                f"{molecule.name}.", "Template Constructor")
+                    log.warning(
+                        "The key 'name' in the molecules 'system_data'"
+                        " is reservedfor the name of the molecule. "
+                        "Overwriting existing value "
+                        f"{variant_data['name']} with "
+                        f"{molecule.name}.",
+                        "Template Constructor",
+                    )
                 variant_data["name"] = molecule.name
                 # add the relevant subset of state_data for resolving the
                 # current variant
                 for key, val in var:
                     if key in variant_data:
-                        log.warning(f"Found conflicting entry for {key}. "
-                                    f"Overwriting existing value "
-                                    f"{variant_data[key]} with {val}.",
-                                    "TemplateConstructor")
+                        log.warning(
+                            f"Found conflicting entry for {key}. "
+                            f"Overwriting existing value "
+                            f"{variant_data[key]} with {val}.",
+                            "TemplateConstructor",
+                        )
                     variant_data[key] = val
                 # add the additional data from the user
                 variant_data.update(calc_details)
@@ -307,6 +343,7 @@ class TemplateConstructor(InputConstructor):
         def _substitute(data):
             subvals, _ = data
             return substitute_template(template, subvals)
+
         return _substitute
 
     def _gen_file_names(self, name_template: str):
@@ -335,6 +372,7 @@ class TemplateConstructor(InputConstructor):
                     fname = f"{fname.stem}_{idx}{fname.suffix}"
                 ret.append(fname)
             return tuple(ret)
+
         return _name_generator
 
     def _gen_folder_structure(self, tree: Node):
@@ -343,6 +381,7 @@ class TemplateConstructor(InputConstructor):
         def _gen_folders(data):
             variant_data, _ = data
             return generator(variant_data)
+
         generator = self._folders_from_tree(tree)
         return _gen_folders
 
@@ -355,25 +394,31 @@ class TemplateConstructor(InputConstructor):
             for prop in properties:
                 t_id = prop.get(transition_id_key, None)
                 if t_id is None:
-                    log.warning(f"Property of molecule {variant_data['name']} "
-                                f"has no assignment: {prop}",
-                                "Template Constructor")
+                    log.warning(
+                        f"Property of molecule {variant_data['name']} "
+                        f"has no assignment: {prop}",
+                        "Template Constructor",
+                    )
                     continue
                 if t_id not in transition_ids:  # s_id has not to be hashable
                     transition_ids.append(t_id)
             return (new_assignment_file(transition_ids),)
+
         return _gen_assignment
 
 
 class CompressedTemplateConstructor(TemplateConstructor):
-
-    def create_inputs(self, benchmark: MoleculeList, basepath: str,
-                      calc_details: dict,
-                      file_expansion_keys: tuple = ("basis",),
-                      flat_structure: bool = False,
-                      name_template: str | None = None,
-                      reference_path: str = "references.json",
-                      compressed_property: str | None = None) -> list:
+    def create_inputs(
+        self,
+        benchmark: MoleculeList,
+        basepath: str,
+        calc_details: dict,
+        file_expansion_keys: tuple = ("basis",),
+        flat_structure: bool = False,
+        name_template: str | None = None,
+        reference_path: str = "references.json",
+        compressed_property: str | None = None,
+    ) -> list:
         # Create compressed benchmark
         # We create a new MoleculeList where each Molecule contains
         # only one geometry.
@@ -384,17 +429,22 @@ class CompressedTemplateConstructor(TemplateConstructor):
         references = {}
 
         def _unique(xyz: list, charge: int, mult: int) -> int:
-            all_xyzs = [(m.system_data["xyz"],
-                         m.system_data["charge"],
-                         m.system_data["multiplicity"]) for m in compressed]
+            all_xyzs = [
+                (
+                    m.system_data["xyz"],
+                    m.system_data["charge"],
+                    m.system_data["multiplicity"],
+                )
+                for m in compressed
+            ]
             xyz_list = (xyz, charge, mult)
             if xyz_list in all_xyzs:
                 return all_xyzs.index(xyz_list)
             return -1
-        
+
         def _available_props(state_data: dict) -> list:
-            props = list()
-            for _, state in state_data.items():
+            props = []
+            for state in state_data.values():
                 props.extend(list(state["data"].keys()))
             return props
 
@@ -409,18 +459,19 @@ class CompressedTemplateConstructor(TemplateConstructor):
 
             # Number of Molecules in mol
             n_mols = len(mol.system_data["xyz_list"])
-            references[mol.name] = {"molecules": list(),
-                                    "factors": list()}
+            references[mol.name] = {"molecules": [], "factors": []}
             for i in range(n_mols):
                 mol_counter = len(compressed)
-                idx = _unique(mol.system_data["xyz_list"][i],
-                              mol.system_data["charge_list"][i],
-                              mol.system_data["multiplicity_list"][i])
+                idx = _unique(
+                    mol.system_data["xyz_list"][i],
+                    mol.system_data["charge_list"][i],
+                    mol.system_data["multiplicity_list"][i],
+                )
 
                 if idx < 0:
                     # Prepare new Molecule
                     name = f"m{mol_counter:06d}"
-                    system_data = dict()
+                    system_data = {}
                     for system_dp, system_val in mol.system_data.items():
                         if system_dp.endswith("_list"):
                             sd = system_dp[:-5]  # -5 to cut off "_list"
@@ -437,44 +488,56 @@ class CompressedTemplateConstructor(TemplateConstructor):
 
                 available_properties = _available_props(mol.state_data)
 
-                if (len(available_properties) > 1 and
-                        compressed_property is None):
-                    log.critical("Please specify a property key from which the"
-                                 + " stochiometry should be read",
-                                 "CompressedTemplateConstructor")
-                elif (compressed_property is not None and
-                      compressed_property not in available_properties):
-                    log.critical("compressed_property was not found in"
-                                 + f" Molecule {mol.name}",
-                                 "CompressedTemplateConstructor")
+                if len(available_properties) > 1 and compressed_property is None:
+                    log.critical(
+                        "Please specify a property key from which the"
+                        + " stochiometry should be read",
+                        "CompressedTemplateConstructor",
+                    )
+                elif (
+                    compressed_property is not None
+                    and compressed_property not in available_properties
+                ):
+                    log.critical(
+                        "compressed_property was not found in"
+                        + f" Molecule {mol.name}",
+                        "CompressedTemplateConstructor",
+                    )
                 if compressed_property is None:
-                    pkey = list(mol.state_data.keys())[0]
+                    pkey = next(iter(mol.state_data.keys()))
                 else:
-                    pkey = [k for k, v in mol.state_data.items()
-                            if compressed_property in v["data"]][0]
+                    pkey = next(
+                        k
+                        for k, v in mol.state_data.items()
+                        if compressed_property in v["data"]
+                    )
 
                 factor_key = None
-                if "stochiometry" in \
-                        mol.state_data[pkey]:
+                if "stochiometry" in mol.state_data[pkey]:
                     factor_key = "stochiometry"
-                elif "factors" in \
-                        mol.state_data[pkey]:
+                elif "factors" in mol.state_data[pkey]:
                     factor_key = "factors"
 
                 if factor_key is None:
-                    log.critical(f"Could not find a factor in state {pkey} of "
-                                 f"molecule {mol.name}.",
-                                 "CompressedTemplateConstructor")
+                    log.critical(
+                        f"Could not find a factor in state {pkey} of "
+                        f"molecule {mol.name}.",
+                        "CompressedTemplateConstructor",
+                    )
                 stoch: list = mol.state_data[pkey][factor_key]
                 references[mol.name]["factors"] = stoch
 
-        inputs = super().create_inputs(compressed, basepath, calc_details,
-                                       file_expansion_keys, flat_structure,
-                                       name_template)
+        inputs = super().create_inputs(
+            compressed,
+            basepath,
+            calc_details,
+            file_expansion_keys,
+            flat_structure,
+            name_template,
+        )
 
         full_reference_path = Path(basepath) / Path(reference_path)
         with open(full_reference_path, "w") as f:
-            json.dump(references, f, ensure_ascii=True, indent=4,
-                      sort_keys=True)
+            json.dump(references, f, ensure_ascii=True, indent=4, sort_keys=True)
 
         return inputs

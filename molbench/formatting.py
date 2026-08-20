@@ -2,8 +2,8 @@ from typing import Any
 
 
 class Formatter:
-    """A base class for formatting datapoints.
-    """
+    """A base class for formatting datapoints."""
+
     def format_datapoint(self, value: Any) -> str:
         """Returns a formatted datapoint value
 
@@ -27,9 +27,9 @@ class Formatter:
 
 
 class StdFormatter(Formatter):
-
-    def __init__(self, n_decimals: int = 5, empty_field: str = "",
-                 value_delimiter: str = ", ") -> None:
+    def __init__(
+        self, n_decimals: int = 5, empty_field: str = "", value_delimiter: str = ", "
+    ) -> None:
         """The standard formatter for text.
 
         Parameters
@@ -66,10 +66,8 @@ class StdFormatter(Formatter):
             return str(round(value, self.n_decimals))
         elif isinstance(value, str):
             return value
-        elif hasattr(value, '__iter__'):  # dict, set, list, tuple, ...
-            return self.value_delimiter.join(
-                self.format_datapoint(v) for v in value
-            )
+        elif hasattr(value, "__iter__"):  # dict, set, list, tuple, ...
+            return self.value_delimiter.join(self.format_datapoint(v) for v in value)
         elif value is None:
             return self.empty_field
         else:
@@ -77,15 +75,19 @@ class StdFormatter(Formatter):
 
 
 class LatexFormatter(StdFormatter):
-    def __init__(self, n_decimals: int = 5, empty_field: str = "",
-                 value_delimiter: str = ", ",
-                 label_delimiter: str = "/",
-                 column_delimiter: str = " & ",
-                 row_delimiter: str = "\\\\ \n",
-                 column_alignment: str = "c",
-                 additional_column_alignment: str = "l",
-                 multicol_alignment: str = "c",
-                 multirow_width: str = "*") -> None:
+    def __init__(
+        self,
+        n_decimals: int = 5,
+        empty_field: str = "",
+        value_delimiter: str = ", ",
+        label_delimiter: str = "/",
+        column_delimiter: str = " & ",
+        row_delimiter: str = "\\\\ \n",
+        column_alignment: str = "c",
+        additional_column_alignment: str = "l",
+        multicol_alignment: str = "c",
+        multirow_width: str = "*",
+    ) -> None:
         """Used to create a LaTeX table of all datapoints
 
         Parameters
@@ -120,9 +122,16 @@ class LatexFormatter(StdFormatter):
         self.multicol_alignment = multicol_alignment
         self.multirow_width = multirow_width
 
-    def init_table(self, n_additional_cols: int, n_columns: int,) -> str:
-        alignment = (self.additional_column_alignment * n_additional_cols +
-                     "|" + self.column_alignment * n_columns)
+    def init_table(
+        self,
+        n_additional_cols: int,
+        n_columns: int,
+    ) -> str:
+        alignment = (
+            self.additional_column_alignment * n_additional_cols
+            + "|"
+            + self.column_alignment * n_columns
+        )
         return r"\begin{table}" + "\n" + r"\begin{tabular}{" + alignment + "}"
 
     def finalize_table(self):
@@ -130,14 +139,12 @@ class LatexFormatter(StdFormatter):
 
     def table_header(self, labels: tuple[tuple[str, ...], ...]) -> str:
         return (
-            self.join_rows(tuple(self.join_columns(row) for row in labels)) +
-            r"\\ \hline"
+            self.join_rows(tuple(self.join_columns(row) for row in labels))
+            + r"\\ \hline"
         )
 
     def table_content(self, content: tuple[tuple[str, ...], ...]) -> str:
-        return (
-            self.join_rows(tuple(self.join_columns(row) for row in content))
-        )
+        return self.join_rows(tuple(self.join_columns(row) for row in content))
 
     def join_labels(self, labels: tuple[str, ...]) -> str:
         return self.label_delimiter.join(labels)
@@ -149,9 +156,23 @@ class LatexFormatter(StdFormatter):
         return self.row_delimiter.join(rows)
 
     def multicolumn(self, width: int, value: str) -> str:
-        return (r"\multicolumn{" + str(width) + "}{" +
-                self.multicol_alignment + "}{" + value + "}")
+        return (
+            r"\multicolumn{"
+            + str(width)
+            + "}{"
+            + self.multicol_alignment
+            + "}{"
+            + value
+            + "}"
+        )
 
     def multirow(self, heigth: int, value: str) -> str:
-        return (r"\multirow{" + str(heigth) + "}{" +
-                self.multirow_width + "}{" + value + "}")
+        return (
+            r"\multirow{"
+            + str(heigth)
+            + "}{"
+            + self.multirow_width
+            + "}{"
+            + value
+            + "}"
+        )

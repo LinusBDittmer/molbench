@@ -113,6 +113,7 @@ default name hint.
 import json
 from molbench import ExternalParser
 
+
 def my_parser(filepath):
     raw = json.load(open(filepath))
     name = raw["name"]
@@ -121,18 +122,17 @@ def my_parser(filepath):
         "gs": {
             "basis": raw["basis"],
             "method": raw["method"],
-            "data": {
-                "energy": {"value": raw["energy"], "unit": "au"}
-            },
+            "data": {"energy": {"value": raw["energy"], "unit": "au"}},
         }
     }
     return name, system_data, state_data
 
+
 computed = ExternalParser().load(
     "/path/to/output/dir",
     parser=my_parser,
-    out_suffix=".out",          # scan for files with this extension
-    assignment_suffix=".ass",   # companion assignment files (optional)
+    out_suffix=".out",  # scan for files with this extension
+    assignment_suffix=".ass",  # companion assignment files (optional)
 )
 ```
 
@@ -144,7 +144,7 @@ For excitation spectra benchmarks you will typically also need
 ```python
 from molbench import Comparison
 
-c = Comparison()          # default separators: ("basis", "method")
+c = Comparison()  # default separators: ("basis", "method")
 c.add(bench)
 c.add(computed)
 
@@ -179,8 +179,8 @@ errors_rel = stats.compare(
     interest={"method": "my_method"},
     reference={"method": "TBE"},
     relative=True,
-    relative_damping=0.01,   # adds 0.01 to |ref| in denominator
-    error_thresh=0.5,        # warn if |error| > threshold
+    relative_damping=0.01,  # adds 0.01 to |ref| in denominator
+    error_thresh=0.5,  # warn if |error| > threshold
 )
 ```
 
@@ -306,8 +306,7 @@ for post-processing.
 from molbench import CompressedTemplateConstructor
 
 tc = CompressedTemplateConstructor("pyscf_ordmp2")
-tc.create_inputs(bench, "/path/to/inputs", calc,
-                 reference_path="references.json")
+tc.create_inputs(bench, "/path/to/inputs", calc, reference_path="references.json")
 ```
 
 ---
@@ -416,6 +415,7 @@ from molbench import Statistics, register_as_error_measure
 from molbench.statistics import _collect_errors
 import numpy as np
 
+
 @register_as_error_measure
 def winsorized_mae(signed_errors, assign):
     errors = _collect_errors(signed_errors, assign)
@@ -423,6 +423,7 @@ def winsorized_mae(signed_errors, assign):
         return 0.0, 0
     arr = np.clip(np.abs(errors), None, np.percentile(np.abs(errors), 90))
     return float(arr.mean()), len(errors)
+
 
 result = stats.evaluate(errors, "winsorized_mae", proptype="energy")
 ```

@@ -1,10 +1,14 @@
+from collections.abc import Callable
+
 from . import logger as log
-from typing import Callable
 
 
-def new_assignment_file(state_ids: list, comment_token: str = "#",
-                        id_separator: str = "==>",
-                        null_token: str = "null") -> str:
+def new_assignment_file(
+    state_ids: list,
+    comment_token: str = "#",
+    id_separator: str = "==>",
+    null_token: str = "null",
+) -> str:
     """
     Creates the content of an assignment file.
 
@@ -26,12 +30,14 @@ def new_assignment_file(state_ids: list, comment_token: str = "#",
     return content
 
 
-def parse_assignment_file(assignmentfile: str,
-                          comment_token: str = "#",
-                          id_separator: str = "==>",
-                          null_token: str = "null",
-                          import_external: Callable | None = None,
-                          import_ref: Callable | None = None) -> dict:
+def parse_assignment_file(
+    assignmentfile: str,
+    comment_token: str = "#",
+    id_separator: str = "==>",
+    null_token: str = "null",
+    import_external: Callable | None = None,
+    import_ref: Callable | None = None,
+) -> dict:
     """
     Parses an assignment file.
 
@@ -71,15 +77,16 @@ def parse_assignment_file(assignmentfile: str,
         # - read both state id's and import them if necessary
         assignment = assignment.split(id_separator)
         if len(assignment) != 2:
-            log.critical(f"Invalid use of state id separator {id_separator} in"
-                         f" line {line} of assignment file {assignmentfile}.",
-                         "Assignment: parse_assignment_file")
+            log.critical(
+                f"Invalid use of state id separator {id_separator} in"
+                f" line {line} of assignment file {assignmentfile}.",
+                "Assignment: parse_assignment_file",
+            )
 
         ref = assignment[0].strip()
         external = assignment[1].strip()
         if ref == null_token or external == null_token:  # skip not assigned
-            log.warning(f"Unassigned state in file {assignmentfile}.",
-                        "Assigment")
+            log.warning(f"Unassigned state in file {assignmentfile}.", "Assigment")
             continue
 
         if import_external is not None:
@@ -88,8 +95,11 @@ def parse_assignment_file(assignmentfile: str,
             ref = import_ref(ref)
 
         if external in state_assignments:
-            log.warning(f"The external state {external} in assignment file "
-                        f"{assignmentfile} is assigned twice. Overwriting the "
-                        "first assignment.", "Assigment")
+            log.warning(
+                f"The external state {external} in assignment file "
+                f"{assignmentfile} is assigned twice. Overwriting the "
+                "first assignment.",
+                "Assigment",
+            )
         state_assignments[external] = ref
     return state_assignments

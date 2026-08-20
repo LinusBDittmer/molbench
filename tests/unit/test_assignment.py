@@ -1,10 +1,11 @@
 import pytest
-from molbench.assignment import new_assignment_file, parse_assignment_file
 
+from molbench.assignment import new_assignment_file, parse_assignment_file
 
 # ---------------------------------------------------------------------------
 # new_assignment_file
 # ---------------------------------------------------------------------------
+
 
 def test_new_assignment_file_header():
     content = new_assignment_file([])
@@ -33,6 +34,7 @@ def test_new_assignment_file_format():
 # ---------------------------------------------------------------------------
 # parse_assignment_file
 # ---------------------------------------------------------------------------
+
 
 def _write_ass(tmp_path, content, filename="test.ass"):
     f = tmp_path / filename

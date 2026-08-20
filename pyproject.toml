@@ -2,16 +2,18 @@
 name = "molbench"
 version = "0.1.0"
 description = "This package is a molecular benchmarking package. It allows for interactive comparison of generated data with benchmarks kept inside this package and for subsequent statistical analysis."
-authors = ["Linus Bjarne Dittmer"]
+authors = ["Linus Bjarne Dittmer, Jonas Leitner"]
 license = "MIT License"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.14"
 numpy = "^1.26.2"
 
-[tool.poetry.group.dev.dependencies]
-pytest = "^7.4.3"
+# PEP 735 group: "pip install --group dev" (pip >= 25.1) or
+# "poetry install --with dev" (poetry >= 2.1)
+[dependency-groups]
+dev = ["pytest>=7.4.3", "pre-commit>=4.0"]
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,20 +1,26 @@
-import json
-import pytest
 from pathlib import Path
+
+import pytest
+
 from molbench.external_parser import ExternalParser
 from molbench.molecule import MoleculeList
-
 
 # ---------------------------------------------------------------------------
 # Minimal mock parsers
 # ---------------------------------------------------------------------------
 
+
 def mock_parser_1param(filepath):
     return (
         Path(filepath).stem,
         {"xyz": "H 0 0 0", "charge": 0, "multiplicity": 1},
-        {"gs": {"basis": "cc-pvdz", "method": "HF",
-                "data": {"energy": {"value": -0.5, "unit": "au"}}}},
+        {
+            "gs": {
+                "basis": "cc-pvdz",
+                "method": "HF",
+                "data": {"energy": {"value": -0.5, "unit": "au"}},
+            }
+        },
     )
 
 
@@ -22,8 +28,13 @@ def mock_parser_2param(filepath, name):
     return (
         name or Path(filepath).stem,
         {"xyz": "H 0 0 0", "charge": 0, "multiplicity": 1},
-        {"gs": {"basis": "cc-pvdz", "method": "HF",
-                "data": {"energy": {"value": -0.5, "unit": "au"}}}},
+        {
+            "gs": {
+                "basis": "cc-pvdz",
+                "method": "HF",
+                "data": {"energy": {"value": -0.5, "unit": "au"}},
+            }
+        },
     )
 
 
@@ -38,6 +49,7 @@ def bad_parser_wrong_return(filepath):
 # ---------------------------------------------------------------------------
 # _fetch_all_outfiles
 # ---------------------------------------------------------------------------
+
 
 def test_fetch_all_outfiles_flat(tmp_path):
     (tmp_path / "a.out").write_text("output")
@@ -76,6 +88,7 @@ def test_fetch_all_outfiles_empty_dir(tmp_path):
 # _assignmentfile_from_outfile
 # ---------------------------------------------------------------------------
 
+
 def test_assignmentfile_exists(tmp_path):
     out = tmp_path / "mol.out"
     ass = tmp_path / "mol.ass"
@@ -97,6 +110,7 @@ def test_assignmentfile_absent(tmp_path):
 # ---------------------------------------------------------------------------
 # load — basic
 # ---------------------------------------------------------------------------
+
 
 def test_load_single_file(tmp_path):
     (tmp_path / "molA.out").write_text("fake")
@@ -166,6 +180,7 @@ def test_load_parser_returns_none_exits_cleanly(tmp_path):
 # load — with assignment files
 # ---------------------------------------------------------------------------
 
+
 def test_load_with_assignment_file(tmp_path):
     # Molecule states have external computation ids as transition_id.
     # Assignment file maps: ref_id ==> external_id  (returns {external: ref}).
@@ -176,12 +191,20 @@ def test_load_with_assignment_file(tmp_path):
         return (
             "mol",
             {},
-            {"s1": {"basis": "cc-pvdz", "method": "HF",
+            {
+                "s1": {
+                    "basis": "cc-pvdz",
+                    "method": "HF",
                     "data": {"energy": {"value": -1.0, "unit": "au"}},
-                    "transition_id": "state_001"},   # external computation id
-             "s2": {"basis": "cc-pvdz", "method": "HF",
+                    "transition_id": "state_001",
+                },  # external computation id
+                "s2": {
+                    "basis": "cc-pvdz",
+                    "method": "HF",
                     "data": {"energy": {"value": -2.0, "unit": "au"}},
-                    "transition_id": "state_002"}},  # external computation id
+                    "transition_id": "state_002",
+                },
+            },  # external computation id
         )
 
     # File format: ref_id ==> external_id; state_002 left as null → removed
@@ -197,7 +220,9 @@ def test_load_with_assignment_file(tmp_path):
 
 def test_load_custom_out_suffix(tmp_path):
     (tmp_path / "mol.log").write_text("")
-    ml = ExternalParser().load(str(tmp_path), parser=mock_parser_1param, out_suffix=".log")
+    ml = ExternalParser().load(
+        str(tmp_path), parser=mock_parser_1param, out_suffix=".log"
+    )
     assert len(ml) == 1
 
 
@@ -205,14 +230,23 @@ def test_load_custom_assignment_suffix(tmp_path):
     (tmp_path / "mol.out").write_text("")
 
     def parser_with_tid(filepath):
-        return ("mol", {},
-                {"s1": {"basis": "b", "method": "m",
-                        "data": {"energy": {"value": -1.0, "unit": "au"}},
-                        "transition_id": "ref_001"}})  # external computation id
+        return (
+            "mol",
+            {},
+            {
+                "s1": {
+                    "basis": "b",
+                    "method": "m",
+                    "data": {"energy": {"value": -1.0, "unit": "au"}},
+                    "transition_id": "ref_001",
+                }
+            },
+        )  # external computation id
 
     # File format: ref_id ==> external_id; parse returns {external: ref}
     # add_assignments looks up transition_id (ref_001) → assigned = "s0->s1"
     (tmp_path / "mol.asgn").write_text("s0->s1 ==> ref_001\n")
-    ml = ExternalParser().load(str(tmp_path), parser=parser_with_tid,
-                               assignment_suffix=".asgn")
+    ml = ExternalParser().load(
+        str(tmp_path), parser=parser_with_tid, assignment_suffix=".asgn"
+    )
     assert ml[0].state_data["s1"].get("assigned_transition_id") == "s0->s1"

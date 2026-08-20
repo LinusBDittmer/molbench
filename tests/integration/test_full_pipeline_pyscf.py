@@ -3,24 +3,26 @@
 Marked @pytest.mark.slow — runs in its own CI job with pyscf installed.
 Skipped automatically if pyscf is not installed.
 """
+
 import json
-import pytest
 from pathlib import Path
+
+import pytest
 
 pyscf = pytest.importorskip("pyscf", reason="pyscf not installed")
 
-from pyscf import gto, scf  # noqa: E402
+from pyscf import gto, scf
 
-from molbench.benchmark_parser import JSONBenchmarkParser  # noqa: E402
-from molbench.external_parser import ExternalParser  # noqa: E402
-from molbench.comparison import Comparison  # noqa: E402
-from molbench.statistics import Statistics  # noqa: E402
-from molbench.molecule import MoleculeList  # noqa: E402
-
+from molbench.benchmark_parser import JSONBenchmarkParser
+from molbench.comparison import Comparison
+from molbench.external_parser import ExternalParser
+from molbench.molecule import MoleculeList
+from molbench.statistics import Statistics
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def _json_parser(filepath):
     """Parse a JSON .out file written by the test itself."""
@@ -31,9 +33,7 @@ def _json_parser(filepath):
         "gs": {
             "basis": raw["basis"],
             "method": raw["method"],
-            "data": {
-                "energy": {"value": raw["data"]["energy"], "unit": "au"}
-            },
+            "data": {"energy": {"value": raw["data"]["energy"], "unit": "au"}},
         }
     }
     return name, system_data, state_data
@@ -61,6 +61,7 @@ def _run_hf(xyz_str, basis, charge, spin, unit="A"):
 # Tests
 # ---------------------------------------------------------------------------
 
+
 @pytest.mark.slow
 def test_hf_energy_on_h_atom_vs_ascdb(tmp_path):
     """HF/cc-pVDZ energy for the H atom should be within 0.05 au of the TBE."""
@@ -80,16 +81,21 @@ def test_hf_energy_on_h_atom_vs_ascdb(tmp_path):
 
     # Write a mock .out file
     out_file = tmp_path / "AE18pE-1_HF_cc-pvdz.out"
-    out_file.write_text(json.dumps({
-        "name": "AE18pE-1",
-        "basis": "cc-pvdz",
-        "method": "HF",
-        "data": {"energy": hf_energy},
-    }))
+    out_file.write_text(
+        json.dumps(
+            {
+                "name": "AE18pE-1",
+                "basis": "cc-pvdz",
+                "method": "HF",
+                "data": {"energy": hf_energy},
+            }
+        )
+    )
 
     # Load via ExternalParser
-    computed = ExternalParser().load(str(tmp_path), parser=_json_parser,
-                                     out_suffix=".out")
+    computed = ExternalParser().load(
+        str(tmp_path), parser=_json_parser, out_suffix=".out"
+    )
     assert len(computed) == 1
 
     # Build Comparison
@@ -107,9 +113,7 @@ def test_hf_energy_on_h_atom_vs_ascdb(tmp_path):
 
     mae_val, count = result["mae"]
     assert count == 1
-    assert abs(mae_val) < 0.05, (
-        f"HF/cc-pVDZ MAE for H atom too large: {mae_val:.6f} au"
-    )
+    assert abs(mae_val) < 0.05, f"HF/cc-pVDZ MAE for H atom too large: {mae_val:.6f} au"
 
 
 @pytest.mark.slow
@@ -119,9 +123,9 @@ def test_hf_energy_on_water_vs_ascdb(tmp_path):
     # Filter to a single-geometry water-like molecule from AE18
     # We'll pick a molecule with a single geometry and charge=0
     single_geo = [
-        m for m in bench
-        if "xyz" in m.system_data
-        and m.system_data.get("charge", -99) == 0
+        m
+        for m in bench
+        if "xyz" in m.system_data and m.system_data.get("charge", -99) == 0
     ]
     if not single_geo:
         pytest.skip("No suitable single-geometry neutral molecule found in ascdb")
@@ -140,19 +144,24 @@ def test_hf_energy_on_water_vs_ascdb(tmp_path):
 
     try:
         hf_energy = _run_hf(xyz, basis, charge, spin)
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         pytest.skip(f"PySCF calculation failed: {e}")
 
     out_file = tmp_path / f"{target.name}_HF_{basis}.out"
-    out_file.write_text(json.dumps({
-        "name": target.name,
-        "basis": basis,
-        "method": "HF",
-        "data": {"energy": hf_energy},
-    }))
+    out_file.write_text(
+        json.dumps(
+            {
+                "name": target.name,
+                "basis": basis,
+                "method": "HF",
+                "data": {"energy": hf_energy},
+            }
+        )
+    )
 
-    computed = ExternalParser().load(str(tmp_path), parser=_json_parser,
-                                     out_suffix=".out")
+    computed = ExternalParser().load(
+        str(tmp_path), parser=_json_parser, out_suffix=".out"
+    )
     assert len(computed) == 1
 
     mol_bench = MoleculeList([target])

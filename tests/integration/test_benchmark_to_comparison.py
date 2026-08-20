@@ -1,8 +1,10 @@
 """Integration: load benchmark → filter → add to Comparison → walk."""
+
 import pytest
+
 from molbench.benchmark_parser import JSONBenchmarkParser
-from molbench.molecule import Datapoint
 from molbench.comparison import Comparison
+from molbench.molecule import Datapoint
 
 
 @pytest.fixture(scope="module")
@@ -18,6 +20,7 @@ def questdb():
 # ---------------------------------------------------------------------------
 # ascdb
 # ---------------------------------------------------------------------------
+
 
 def test_ascdb_loads_and_populates_comparison(ascdb):
     c = Comparison()
@@ -41,14 +44,15 @@ def test_ascdb_filter_then_add(ascdb):
     c.add(filtered)
     assert len(c) > 0
     # Only TBE molecules
-    for name, basis_dict in c.items():
-        for basis, method_dict in basis_dict.items():
+    for basis_dict in c.values():
+        for method_dict in basis_dict.values():
             assert "TBE" in method_dict or list(method_dict.keys())
 
 
 # ---------------------------------------------------------------------------
 # questdb
 # ---------------------------------------------------------------------------
+
 
 def test_questdb_loads(questdb):
     assert len(questdb) > 0
@@ -73,7 +77,7 @@ def test_questdb_energy_values_are_datapoints(questdb):
     energy_entries = list(c.walk_by_key("excitation_energy"))
     assert len(energy_entries) > 0
     for _, val_dict in energy_entries:
-        for _, v in val_dict.items():
+        for v in val_dict.values():
             assert isinstance(v, Datapoint)
 
 
@@ -81,9 +85,8 @@ def test_questdb_energy_values_are_datapoints(questdb):
 # stochiometry pipeline (ascdb has stochiometry entries)
 # ---------------------------------------------------------------------------
 
+
 def test_ascdb_stochiometry_entries_exist(ascdb):
     """Some ascdb entries use stochiometry (multi-geometry)."""
-    has_xyz_list = any(
-        "xyz_list" in mol.system_data for mol in ascdb
-    )
+    has_xyz_list = any("xyz_list" in mol.system_data for mol in ascdb)
     assert has_xyz_list

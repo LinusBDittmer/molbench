@@ -1,6 +1,6 @@
-import json
 import pytest
-from molbench.benchmark_parser import JSONBenchmarkParser, BenchmarkParser
+
+from molbench.benchmark_parser import BenchmarkParser, JSONBenchmarkParser
 from molbench.molecule import Molecule, MoleculeList
 
 
@@ -12,6 +12,7 @@ def parser():
 # ---------------------------------------------------------------------------
 # Built-in benchmarks
 # ---------------------------------------------------------------------------
+
 
 def test_load_ascdb(parser):
     ml = parser.load("ascdb")
@@ -49,6 +50,7 @@ def test_questdb_has_transition_ids(parser):
 # Custom file
 # ---------------------------------------------------------------------------
 
+
 def test_load_from_file_path(parser, minimal_benchmark_file):
     ml = parser.load(minimal_benchmark_file, benchmark_id="test_bench")
     assert len(ml) == 2
@@ -74,6 +76,7 @@ def test_molecule_names_are_keys(parser, minimal_benchmark_file):
 # ---------------------------------------------------------------------------
 # Error paths
 # ---------------------------------------------------------------------------
+
 
 def test_load_nonexistent_exits(parser):
     with pytest.raises(SystemExit):
@@ -103,6 +106,7 @@ def test_use_local_benchmark_skips_premade(parser, minimal_benchmark_file):
 # premade_benchmarks discovery
 # ---------------------------------------------------------------------------
 
+
 def test_premade_benchmarks_discovered(parser):
     BenchmarkParser._collect_premade_benchmarks()
     assert "ascdb" in parser.premade_benchmarks
@@ -110,13 +114,14 @@ def test_premade_benchmarks_discovered(parser):
 
 
 def test_premade_benchmarks_are_json_paths(parser):
-    for key, path in parser.premade_benchmarks.items():
+    for path in parser.premade_benchmarks.values():
         assert path.endswith(".json")
 
 
 # ---------------------------------------------------------------------------
 # multi-geometry benchmark
 # ---------------------------------------------------------------------------
+
 
 def test_load_xyz_list_benchmark(parser, minimal_benchmark_list_file):
     ml = parser.load(minimal_benchmark_list_file)

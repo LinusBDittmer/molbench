@@ -1,6 +1,7 @@
 import pytest
-from molbench.formatting import StdFormatter, LatexFormatter
+
 from molbench.export import TableExporter
+from molbench.formatting import LatexFormatter, StdFormatter
 
 
 class TestStdFormatter:
@@ -34,7 +35,9 @@ class TestStdFormatter:
     def test_format_non_iterable_fallback(self):
         # Non-numeric, non-iterable objects fall through to str()
         class Custom:
-            def __str__(self): return "custom_val"
+            def __str__(self):
+                return "custom_val"
+
         assert self.fmt.format_datapoint(Custom()) == "custom_val"
 
     def test_custom_delimiter(self):

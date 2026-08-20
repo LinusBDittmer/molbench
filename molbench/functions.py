@@ -20,8 +20,10 @@ def substitute_template(template: str, subvals: dict) -> tuple[str, ...]:
     that an error is thrown if the length of charge_list and
     multiplicity_list are not equal.
     """
-    if not any(key.endswith("_list") and isinstance(val, (list, tuple))
-               for key, val in subvals.items()):
+    if not any(
+        key.endswith("_list") and isinstance(val, (list, tuple))
+        for key, val in subvals.items()
+    ):
         return (_substitute_single_template(template, subvals),)
     # split subvals in values to expand and common values
     # and remove the _list suffix
@@ -35,27 +37,33 @@ def substitute_template(template: str, subvals: dict) -> tuple[str, ...]:
     # ensure that all expansion lists are of the same length
     n_variants = len(to_expand[0][1])
     if not all(len(val) == n_variants for _, val in to_expand):
-        log.critical("List subvals to expand into multiple templates have to "
-                     f"be all of the same length. Got\n{to_expand}\n from\n"
-                     f"{subvals}", "Functions: Substitute Template")
+        log.critical(
+            "List subvals to expand into multiple templates have to "
+            f"be all of the same length. Got\n{to_expand}\n from\n"
+            f"{subvals}",
+            "Functions: Substitute Template",
+        )
     if n_variants == 0:
-        log.warning("Received (an) empty list(s) to expand for placeholders "
-                    f"{[key for key, _ in to_expand]} - no template variants "
-                    f"will be generated from\n{subvals}",
-                    "Functions: Substitute Template")
+        log.warning(
+            "Received (an) empty list(s) to expand for placeholders "
+            f"{[key for key, _ in to_expand]} - no template variants "
+            f"will be generated from\n{subvals}",
+            "Functions: Substitute Template",
+        )
     # build subvals dicts for all variants
     variants = [dict(common) for _ in range(n_variants)]
     for key, val_list in to_expand:
         for var, val in zip(variants, val_list):
             if key in var:
-                log.error(f"The key {key} generated from {key}_list already "
-                          f"exists in the variant\n{var}\nOverwriting existing"
-                          " value", "Functions: Substitute Template",
-                          "KeyError")
+                log.error(
+                    f"The key {key} generated from {key}_list already "
+                    f"exists in the variant\n{var}\nOverwriting existing"
+                    " value",
+                    "Functions: Substitute Template",
+                    "KeyError",
+                )
             var[key] = val
-    return tuple(
-        _substitute_single_template(template, var) for var in variants
-    )
+    return tuple(_substitute_single_template(template, var) for var in variants)
 
 
 def _substitute_single_template(template: str, subvals: dict) -> str:
@@ -75,54 +83,64 @@ def _substitute_single_template(template: str, subvals: dict) -> str:
         # bracket of a later placeholder
         stop = template.find("]]", start)
         if stop == -1:
-            log.error("Found an unclosed placeholder starting at "
-                      f"'{template[start:start+30]}' in the template. "
-                      "Leaving it as literal text - check for a missing "
-                      "closing ']]'.", "Functions: Substitute Template")
+            log.error(
+                "Found an unclosed placeholder starting at "
+                f"'{template[start : start + 30]}' in the template. "
+                "Leaving it as literal text - check for a missing "
+                "closing ']]'.",
+                "Functions: Substitute Template",
+            )
             break
-        key = template[start+2:stop]
+        key = template[start + 2 : stop]
         # check if we have [[key->number]] and get the key and number
         val_idx = None
         if "->" in key:
             key, val_idx = key.split("->")
             if not val_idx.isnumeric():
-                log.critical(f"{val_idx} is not a number. Placeholders of the "
-                             f"form {key}->{val_idx} need to be of the form "
-                             "'key'->'number'.",
-                             "Functions: Substitute Template")
+                log.critical(
+                    f"{val_idx} is not a number. Placeholders of the "
+                    f"form {key}->{val_idx} need to be of the form "
+                    "'key'->'number'.",
+                    "Functions: Substitute Template",
+                )
             val_idx = int(val_idx)
         # get the actual value
         val = subvals.get(key, None)
         if val_idx is not None and val is not None:
             if not isinstance(val, (list, tuple)):
-                log.critical("The value for a placeholder of the form "
-                             "'[[placeholder->number]]' needs to be a 'list' "
-                             f"or 'tuple'. Found {val} for key {key}.",
-                             "Functions: Substitute Template")
+                log.critical(
+                    "The value for a placeholder of the form "
+                    "'[[placeholder->number]]' needs to be a 'list' "
+                    f"or 'tuple'. Found {val} for key {key}.",
+                    "Functions: Substitute Template",
+                )
             if val_idx >= len(val):
-                log.critical(f"Index {val_idx} is out of range for "
-                             f"placeholder '{key}' which only has "
-                             f"{len(val)} element(s).",
-                             "Functions: Substitute Template")
+                log.critical(
+                    f"Index {val_idx} is out of range for "
+                    f"placeholder '{key}' which only has "
+                    f"{len(val)} element(s).",
+                    "Functions: Substitute Template",
+                )
             val = val[val_idx]
         if val is None:
-            log.critical(f"No value available for placeholder '{key}'. "
-                         f"Available substitution keys are "
-                         f"{list(subvals.keys())}. If '{key}' doesn't look "
-                         "like a real placeholder name (e.g. it contains "
-                         "spaces or shell syntax), the template likely "
-                         "contains literal '[[' / ']]' content - such as "
-                         "bash's own '[[ ... ]]' test syntax - that "
-                         "collides with the placeholder delimiters and "
-                         "needs to be rewritten to avoid double brackets.",
-                         "Functions: Substitute Template")
+            log.critical(
+                f"No value available for placeholder '{key}'. "
+                f"Available substitution keys are "
+                f"{list(subvals.keys())}. If '{key}' doesn't look "
+                "like a real placeholder name (e.g. it contains "
+                "spaces or shell syntax), the template likely "
+                "contains literal '[[' / ']]' content - such as "
+                "bash's own '[[ ... ]]' test syntax - that "
+                "collides with the placeholder delimiters and "
+                "needs to be rewritten to avoid double brackets.",
+                "Functions: Substitute Template",
+            )
         # update the template
-        template = template.replace(template[start:stop+2], str(val))
+        template = template.replace(template[start : stop + 2], str(val))
     return template
 
 
-def default_name_template(file_expansion_keys: tuple,
-                          file_extension: str) -> str:
+def default_name_template(file_expansion_keys: tuple, file_extension: str) -> str:
     # construct a name that ensures that each file has a unique name
     name_template = "[[name]]_[[method]]"
     for key in file_expansion_keys:
@@ -131,7 +149,7 @@ def default_name_template(file_expansion_keys: tuple,
     return name_template + file_extension
 
 
-def walk_dict_by_key(indict: dict, desired_key, prev_keys: tuple = tuple()):
+def walk_dict_by_key(indict: dict, desired_key, prev_keys: tuple = ()):
     """
     Walk an arbitrarily nested dictionary looking for the desired key
     yielding the squence of keys and the corresponding value.
@@ -140,19 +158,17 @@ def walk_dict_by_key(indict: dict, desired_key, prev_keys: tuple = tuple()):
         if key == desired_key:
             yield prev_keys + (key,), val
         elif isinstance(val, dict):
-            for data in walk_dict_by_key(val, desired_key, prev_keys + (key,)):
-                yield data
+            yield from walk_dict_by_key(val, desired_key, prev_keys + (key,))
 
 
-def walk_dict_values(indict: dict, prev_keys: tuple = tuple()):
+def walk_dict_values(indict: dict, prev_keys: tuple = ()):
     """
     Walk an arbitrarily nested dictionary yielding all non dictionary
     values and the corresponding sequence of keys.
     """
     for key, val in indict.items():
         if isinstance(val, dict):
-            for data in walk_dict_values(val, prev_keys + (key,)):
-                yield data
+            yield from walk_dict_values(val, prev_keys + (key,))
         else:
             yield prev_keys + (key,), val
 
@@ -162,10 +178,10 @@ def determine_basis_cardinality(basis: str):
     def _dunnings(bas: str):
         try:
             b: list[str] = bas.split("-")
-            cstr: str = b[b.index("cc")+1]
+            cstr: str = b[b.index("cc") + 1]
             zetaidx: int = 2
             zetaoffset: int = 0
-            if cstr.startswith("pwv") or cstr.startswith("pcv"):
+            if cstr.startswith(("pwv", "pcv")):
                 zetaidx += 1
             if "(" in cstr:
                 zetaidx += 1
@@ -181,17 +197,19 @@ def determine_basis_cardinality(basis: str):
         except IndexError:
             pass
 
-        log.error(f"Basis set {bas} was interpreted as a Dunning's basis but "
-                  "could not be identified!",
-                  "Functions: Determine Basis Cardinality",
-                  "Basis identification error")
+        log.error(
+            f"Basis set {bas} was interpreted as a Dunning's basis but "
+            "could not be identified!",
+            "Functions: Determine Basis Cardinality",
+            "Basis identification error",
+        )
         return 0
 
     # Karlsruhe def2
     def _karlsruhe(bas: str):
         try:
             b: list[str] = bas.split("-")
-            cstr: str = b[b.index("def2")+1]
+            cstr: str = b[b.index("def2") + 1]
             zetaidx: int = 0
             if cstr.startswith("m"):
                 zetaidx += 1
@@ -206,10 +224,12 @@ def determine_basis_cardinality(basis: str):
         except IndexError:
             pass
 
-        log.error(f"Basis set {bas} was interpreted as a Karlruhe basis but "
-                  "could not be identified!",
-                  "Functions: Determine Basis Cardinality",
-                  "Basis identification error")
+        log.error(
+            f"Basis set {bas} was interpreted as a Karlruhe basis but "
+            "could not be identified!",
+            "Functions: Determine Basis Cardinality",
+            "Basis identification error",
+        )
         return 0
 
     b: str = basis.lower()
@@ -221,7 +241,9 @@ def determine_basis_cardinality(basis: str):
     if "def2" in b:
         return _karlsruhe(b)
 
-    log.error(f"Unknown basis format for {b}.",
-              "Functions: Determine Basis Cardinality",
-              "Basis identification error")
+    log.error(
+        f"Unknown basis format for {b}.",
+        "Functions: Determine Basis Cardinality",
+        "Basis identification error",
+    )
     return 0

@@ -1,20 +1,26 @@
 from __future__ import annotations
 
+from collections.abc import Callable
+from typing import Any
+
 from . import logger as log
 from .functions import walk_dict_by_key
-from typing import Any, Callable
 
 
 class Molecule:
-
-    __slots__ = ("name", "data_id", "system_data", "state_data")
+    __slots__ = ("data_id", "name", "state_data", "system_data")
     name: str
     data_id: str
     system_data: dict[str, Any]
     state_data: dict[str, Any]
 
-    def __init__(self, name: str, data_id: str, system_data: dict | None = None,
-                 state_data: dict | None = None) -> None:
+    def __init__(
+        self,
+        name: str,
+        data_id: str,
+        system_data: dict | None = None,
+        state_data: dict | None = None,
+    ) -> None:
         self.name = name
         self.data_id = data_id
         # dict that contains all the information regarding the system:
@@ -30,18 +36,19 @@ class Molecule:
         return f"{self.name}: {self.data_id}"
 
     @classmethod
-    def from_benchmark(cls, benchmark_entry: dict,
-                       benchmark_id, molname=None) -> 'Molecule':
+    def from_benchmark(
+        cls, benchmark_entry: dict, benchmark_id, molname=None
+    ) -> Molecule:
         # molname is only used as backup if name is not defined in the
         # benchmark
-        system_data = {k: v for k, v in benchmark_entry.items()
-                       if k != "properties"}
+        system_data = {k: v for k, v in benchmark_entry.items() if k != "properties"}
         # Check if this molecule is a multi-Molecule entry,
         # e. g. through relative energies
         # If so, it contains the usual entries suffixed by "_list"
         # i. e. "xyz_list", "multiplicity_list", "n_atoms_list" etc.
-        if "xyz_list" in system_data and \
-                isinstance(system_data["xyz_list"], (list, tuple)):
+        if "xyz_list" in system_data and isinstance(
+            system_data["xyz_list"], (list, tuple)
+        ):
             system_data["xyz_list"] = [
                 "\n".join(xyz) if not isinstance(xyz, str) else xyz
                 for xyz in system_data["xyz_list"]
@@ -55,21 +62,29 @@ class Molecule:
             name = system_data["name"]
             del system_data["name"]
         if name is None:
-            log.critical("Name not specified in benchmark entry and not "
-                         "provided as argument to the method.",
-                         "Molecule: from_benchmark")
+            log.critical(
+                "Name not specified in benchmark entry and not "
+                "provided as argument to the method.",
+                "Molecule: from_benchmark",
+            )
 
         properties = benchmark_entry.get("properties", None)
         return cls(name, benchmark_id, system_data, properties)
 
     @classmethod
-    def from_external(cls, external_system_data: dict[str, Any],
-                      external_state_data: dict[str, Any],
-                      data_id: str, molname: str) -> 'Molecule':
+    def from_external(
+        cls,
+        external_system_data: dict[str, Any],
+        external_state_data: dict[str, Any],
+        data_id: str,
+        molname: str,
+    ) -> Molecule:
         # Either system data or state data must exist
         if (not external_state_data) and (not external_system_data):
-            log.critical("Both state and system data dicts are empty. "
-                         f"Molecule {molname}", "Molecule: from_external")
+            log.critical(
+                f"Both state and system data dicts are empty. Molecule {molname}",
+                "Molecule: from_external",
+            )
         # We now define variables that are filled with the parsed data
         system_data: dict[str, Any] | None = None
         state_data: dict[str, Any] | None = None
@@ -84,56 +99,76 @@ class Molecule:
             for state_key, state_values in external_state_data.items():
                 # Make sure that all keys are strings
                 if not isinstance(state_key, str):
-                    log.critical("All state data keys must be strings. "
-                                 f"{state_key} is of type {type(state_key)} "
-                                 f"in Molecule {molname}",
-                                 "Molecule: from_external")
+                    log.critical(
+                        "All state data keys must be strings. "
+                        f"{state_key} is of type {type(state_key)} "
+                        f"in Molecule {molname}",
+                        "Molecule: from_external",
+                    )
                 if not isinstance(state_values, dict):
-                    log.critical("Incorrect state data structre. Found "
-                                 f"{type(state_values)} where there "
-                                 f"should be a dict in molecule {molname}",
-                                 "Molecule: from_external")
+                    log.critical(
+                        "Incorrect state data structre. Found "
+                        f"{type(state_values)} where there "
+                        f"should be a dict in molecule {molname}",
+                        "Molecule: from_external",
+                    )
                 # State_values must have the keywords method, basis and data
                 if "method" not in state_values:
-                    log.critical("\"method\" keyword is required in state "
-                                 f"data. State Key: {state_key}",
-                                 "Molecule: from_external")
+                    log.critical(
+                        '"method" keyword is required in state '
+                        f"data. State Key: {state_key}",
+                        "Molecule: from_external",
+                    )
                 if "basis" not in state_values:
-                    log.critical("\"basis\" keyword is required in state "
-                                 f"data. State Key: {state_key}",
-                                 "Molecule: from_external")
+                    log.critical(
+                        '"basis" keyword is required in state '
+                        f"data. State Key: {state_key}",
+                        "Molecule: from_external",
+                    )
                 if "data" not in state_values:
-                    log.critical("\"data\" keyword is required in state "
-                                 f"data. State Key: {state_key}",
-                                 "Molecule: from_external")
+                    log.critical(
+                        '"data" keyword is required in state '
+                        f"data. State Key: {state_key}",
+                        "Molecule: from_external",
+                    )
                 # Lastly, we assert that the "data" dict is correctly set up
                 # It should contain a series of entries, each containing a pair
                 # of entries labeled "value" and "unit"
                 if not isinstance(state_values["data"], dict):
-                    log.critical("\"data\" keyword in state dictionary must "
-                                 f"contain a dictionary (state: {state_key}, "
-                                 f"molecule: {molname})",
-                                 "Molecule: from_external")
+                    log.critical(
+                        '"data" keyword in state dictionary must '
+                        f"contain a dictionary (state: {state_key}, "
+                        f"molecule: {molname})",
+                        "Molecule: from_external",
+                    )
                 for dkey, dvals in state_values["data"].items():
                     # only value, unit allowed
                     if len(dvals) != 2:
-                        log.critical("Incorrect datapoint specification: "
-                                     f"{dvals}", "Molecule: from_external")
+                        log.critical(
+                            f"Incorrect datapoint specification: {dvals}",
+                            "Molecule: from_external",
+                        )
                     if "unit" not in dvals:
-                        log.critical("Incorrect datapoint specification: "
-                                     f"{dvals}", "Molecule: from_external")
+                        log.critical(
+                            f"Incorrect datapoint specification: {dvals}",
+                            "Molecule: from_external",
+                        )
                     if "value" not in dvals:
-                        log.critical("Incorrect datapoint specification: "
-                                     f"{dvals}", "Molecule: from_external")
-                    dpoint: Datapoint = Datapoint(dvals["value"],
-                                                  str(dvals["unit"]))
+                        log.critical(
+                            f"Incorrect datapoint specification: {dvals}",
+                            "Molecule: from_external",
+                        )
+                    dpoint: Datapoint = Datapoint(dvals["value"], str(dvals["unit"]))
                     state_data[state_key]["data"][dkey] = dpoint
 
         return cls(molname, data_id, system_data, state_data)
 
-    def add_assignments(self, assignments: dict,
-                        old_transition_id_key: str = "transition_id",
-                        new_transition_id_key: str = "assigned_transition_id") -> None:
+    def add_assignments(
+        self,
+        assignments: dict,
+        old_transition_id_key: str = "transition_id",
+        new_transition_id_key: str = "assigned_transition_id",
+    ) -> None:
         """
         Add the state assignment to the state data, i.e., try to add an
         assignment for each property in the state data.
@@ -150,9 +185,9 @@ class Molecule:
             (default: 'assigned_transition_id').
         """
         # We create a list to keep track of previously assigned states
-        prev_assigned = list()
+        prev_assigned = []
         # We also create a list of unassigned states to pop
-        unassigned = list()
+        unassigned = []
 
         # Next, we iterate over all states and look for the correct transition id
         for state_key, state_data in self.state_data.items():
@@ -162,39 +197,44 @@ class Molecule:
             # If the property is not found, it cannot be assigned
             tid = state_data[old_transition_id_key]
             if tid not in assignments:
-                log.warning(f"No assignment found for transition id {tid} of "
-                            f"state {state_key}. Dropping the state.",
-                            "Molecule: add_assignments")
+                log.warning(
+                    f"No assignment found for transition id {tid} of "
+                    f"state {state_key}. Dropping the state.",
+                    "Molecule: add_assignments",
+                )
                 unassigned.append(state_key)
                 continue
             # The assigned transition_id
             ass_tid = assignments[tid]
             if ass_tid in prev_assigned:
-                log.warning(f"The transition id key {tid} is assigned to multiple"
-                            "transitions. Overwriting.", "Molecule: add_assignments")
+                log.warning(
+                    f"The transition id key {tid} is assigned to multiple"
+                    "transitions. Overwriting.",
+                    "Molecule: add_assignments",
+                )
             prev_assigned.append(ass_tid)
             state_data[new_transition_id_key] = ass_tid
 
         for key in unassigned:
             del self.state_data[key]
 
-class MoleculeList(list[Molecule]):
 
-    def filter(self, key, *values) -> 'MoleculeList':
+class MoleculeList(list[Molecule]):
+    def filter(self, key, *values) -> MoleculeList:
         if key == "name":  # for compatability
             return self.filter_names(*values)
         elif key == "data_id":
             return self.filter_data_ids(*values)
         return self._filter(key, lambda v: v in values)
 
-    def remove(self, key, *values) -> 'MoleculeList':
+    def remove(self, key, *values) -> MoleculeList:
         if key == "name":  # for compatability
             return self.remove_names(*values)
         elif key == "data_id":
             return self.remove_data_ids(*values)
         return self._filter(key, lambda v: v not in values)
 
-    def apply_stochiometry(self, stochiometry: dict) -> 'MoleculeList':
+    def apply_stochiometry(self, stochiometry: dict) -> MoleculeList:
         # TODO: some explanation: e.g., what is the expected form of the
         # stochiometry dict?
         combined_list = MoleculeList()
@@ -213,28 +253,31 @@ class MoleculeList(list[Molecule]):
                 log.critical(
                     f"Number of molecules ({len(relevant_mol_names)}) does "
                     f"not match number of factors ({len(factors)}) for "
-                    f"stochiometry entry {c_name}.", "MoleculeList")
+                    f"stochiometry entry {c_name}.",
+                    "MoleculeList",
+                )
             relevant_mols = [find_mol(name) for name in relevant_mol_names]
 
-            if any([x is None for x in relevant_mols]):
-                log.error(f"Could not find all molecules for {c_name}",
-                          "MoleculeList")
+            if any(x is None for x in relevant_mols):
+                log.error(f"Could not find all molecules for {c_name}", "MoleculeList")
                 continue
 
-            combined_mol = Molecule(c_name, data_id, dict(), dict())
+            combined_mol = Molecule(c_name, data_id, {}, {})
 
             for molidx, rmol in enumerate(relevant_mols):
                 rmol: Molecule
-                self._join_system_data(combined_mol.system_data,
-                                       rmol.system_data, molidx)
-                self._join_state_data(combined_mol.state_data, rmol.state_data,
-                                      factors[molidx])
+                self._join_system_data(
+                    combined_mol.system_data, rmol.system_data, molidx
+                )
+                self._join_state_data(
+                    combined_mol.state_data, rmol.state_data, factors[molidx]
+                )
 
             combined_list.append(combined_mol)
 
         return combined_list
 
-    def filter_by_range(self, key, min=None, max=None) -> 'MoleculeList':
+    def filter_by_range(self, key, min=None, max=None) -> MoleculeList:
         # here we don't know how to add elements to min and max
         # and we also don't know how anything about the value we want to
         # compare
@@ -253,7 +296,7 @@ class MoleculeList(list[Molecule]):
 
         return self._filter(key, _filter_range)
 
-    def filter_by_vec_norm(self, key, min=None, max=None) -> 'MoleculeList':
+    def filter_by_vec_norm(self, key, min=None, max=None) -> MoleculeList:
         # filter according to the vector norm and only keep states with a norm
         # min <= norm <= max
         # min and max should be provided as list of numbers of arbitrary length
@@ -291,7 +334,7 @@ class MoleculeList(list[Molecule]):
             if len(vec_norm) < len(norm_range):
                 vec_norm = [
                     *vec_norm,
-                    *(0 for _ in range(len(norm_range) - len(vec_norm)))
+                    *(0 for _ in range(len(norm_range) - len(vec_norm))),
                 ]
             # norm_range might be shorter than vec_norm
             for i, norm in enumerate(vec_norm):
@@ -302,40 +345,40 @@ class MoleculeList(list[Molecule]):
                 else:  # user input is exhausted -> allow all norms
                     break
             return True
+
         return self._filter(key, _filter_vec_norm)
 
-    def filter_names(self, *names: str) -> 'MoleculeList':
+    def filter_names(self, *names: str) -> MoleculeList:
         return self._filter_names(lambda n: n in names)
 
-    def remove_names(self, *names: str) -> 'MoleculeList':
+    def remove_names(self, *names: str) -> MoleculeList:
         return self._filter_names(lambda n: n not in names)
 
-    def _filter_names(self, callback: Callable[[str], bool]) -> 'MoleculeList':
+    def _filter_names(self, callback: Callable[[str], bool]) -> MoleculeList:
         return MoleculeList(m for m in self if callback(m.name))
 
-    def filter_data_ids(self, *ids: str) -> 'MoleculeList':
+    def filter_data_ids(self, *ids: str) -> MoleculeList:
         return self._filter_data_ids(lambda id: id in ids)
 
-    def remove_data_ids(self, *ids: str) -> 'MoleculeList':
+    def remove_data_ids(self, *ids: str) -> MoleculeList:
         return self._filter_data_ids(lambda id: id not in ids)
 
-    def _filter_data_ids(self, callback: Callable[[str], bool]) -> 'MoleculeList':
+    def _filter_data_ids(self, callback: Callable[[str], bool]) -> MoleculeList:
         return MoleculeList(m for m in self if callback(m.data_id))
 
-    def filter_properties(self, *types: str) -> 'MoleculeList':
+    def filter_properties(self, *types: str) -> MoleculeList:
         return self._filter_properties(lambda ptype: ptype in types)
 
-    def remove_properties(self, *types: str) -> 'MoleculeList':
+    def remove_properties(self, *types: str) -> MoleculeList:
         return self._filter_properties(lambda ptype: ptype not in types)
 
-    def _filter_properties(self, callback: Callable[[str], bool]) -> 'MoleculeList':
+    def _filter_properties(self, callback: Callable[[str], bool]) -> MoleculeList:
         filtered = MoleculeList()
         for molecule in self:
             remaining_state_data = {}
             for state, data in molecule.state_data.items():
                 remaining_properties = {
-                    k: v for k, v in data.get("data", {}).items()
-                    if callback(k)
+                    k: v for k, v in data.get("data", {}).items() if callback(k)
                 }
                 # no property left -> drop the state
                 if remaining_properties:
@@ -343,11 +386,14 @@ class MoleculeList(list[Molecule]):
                     new_data["data"] = remaining_properties
                     remaining_state_data[state] = new_data
             if remaining_state_data:
-                filtered.append(Molecule(
-                    name=molecule.name, data_id=molecule.data_id,
-                    system_data=molecule.system_data,
-                    state_data=remaining_state_data
-                ))
+                filtered.append(
+                    Molecule(
+                        name=molecule.name,
+                        data_id=molecule.data_id,
+                        system_data=molecule.system_data,
+                        state_data=remaining_state_data,
+                    )
+                )
         return filtered
 
     def _filter(self: list[Molecule], key, callback: Callable):
@@ -357,27 +403,34 @@ class MoleculeList(list[Molecule]):
         filtered = MoleculeList()
         for molecule in self:
             # start by checking system_data -> possibly drop the molecule
-            if not all(callback(val) for _, val in
-                       walk_dict_by_key(molecule.system_data, key)):
+            if not all(
+                callback(val) for _, val in walk_dict_by_key(molecule.system_data, key)
+            ):
                 continue
             # now check the state_data -> possibly drop multiple states
             # if no states are left we drop the whole molecule
-            remaining_states = [state for state, data in
-                                molecule.state_data.items()
-                                if all(callback(val) for _, val
-                                       in walk_dict_by_key(data, key))]
+            remaining_states = [
+                state
+                for state, data in molecule.state_data.items()
+                if all(callback(val) for _, val in walk_dict_by_key(data, key))
+            ]
             if not remaining_states:  # no state left -> drop molecule
                 continue
             # no state was removed
             if len(remaining_states) == len(molecule.state_data.keys()):
                 filtered.append(molecule)
             else:  # at least 1 state was removed
-                state_data = {state: molecule.state_data[state]
-                              for state in remaining_states}
-                filtered.append(Molecule(
-                    molecule.name, molecule.data_id, molecule.system_data,
-                    state_data
-                ))
+                state_data = {
+                    state: molecule.state_data[state] for state in remaining_states
+                }
+                filtered.append(
+                    Molecule(
+                        molecule.name,
+                        molecule.data_id,
+                        molecule.system_data,
+                        state_data,
+                    )
+                )
         return filtered
 
     def _join_system_data(self, dst_sys, src_sys, idx):
@@ -425,13 +478,11 @@ class MoleculeList(list[Molecule]):
         # Create and cache a dictionary, which types of properties
         # are handled by which property keys in the destination state
         # property dictionary for easy lookup in the loop
-        keydict: dict[str, str] = dict()
+        keydict: dict[str, str] = {}
         for state_id, state_props in dst_state.items():
             all_props = list(state_props["data"].keys())
-            keydict.update(
-                {k: state_id for k in all_props}
-            )
-        for key, val in src_state.items():
+            keydict.update({k: state_id for k in all_props})
+        for val in src_state.values():
             # Extract the property value of the source state data
             # dictionary for out-of-place modification since the
             # same source state data dictionary can influence
@@ -455,15 +506,15 @@ class MoleculeList(list[Molecule]):
                     dst_dp = dst_state[keydict[datakey]]["data"][datakey]
                     if isinstance(property_value, (list, tuple)):
                         assert isinstance(dst_dp.value, (list, tuple))
-                        dst_dp.value = [p0 + p1 for p0, p1 in
-                                        zip(property_value, dst_dp.value)]
+                        dst_dp.value = [
+                            p0 + p1 for p0, p1 in zip(property_value, dst_dp.value)
+                        ]
                     else:
                         dst_dp.value += property_value
 
 
 class Datapoint:
-
-    __slots__ = ("value", "unit")
+    __slots__ = ("unit", "value")
     value: Any
     unit: str
 
@@ -477,8 +528,7 @@ class Datapoint:
     def __eq__(self, other: object) -> bool:
         if not isinstance(other, Datapoint):
             return False
-        return (self.value == other.value) and (self.unit.lower()
-                                                == other.unit.lower())
+        return (self.value == other.value) and (self.unit.lower() == other.unit.lower())
 
     def __add__(self, other: Datapoint):
         if other.unit.lower() != self.unit.lower():

@@ -1,13 +1,14 @@
 import json
-import io
-import pytest
-from molbench.molecule import Molecule, MoleculeList, Datapoint
-from molbench.comparison import Comparison
 
+import pytest
+
+from molbench.comparison import Comparison
+from molbench.molecule import Datapoint, Molecule, MoleculeList
 
 # ---------------------------------------------------------------------------
 # Minimal molecule fixtures
 # ---------------------------------------------------------------------------
+
 
 @pytest.fixture
 def hydrogen_molecule():
@@ -137,20 +138,35 @@ def simple_template_file(tmp_path):
 # Known-delta Comparison fixture for statistics tests
 # ---------------------------------------------------------------------------
 
+
 @pytest.fixture
 def known_comparison():
     """Comparison with ref=-76.0 au (TBE) and interest=-75.9 au (HF).
     Signed error = interest - reference = +0.1 au.
     """
     ref_mol = Molecule(
-        "water", "ref", {},
-        {"gs": {"basis": "cc-pvdz", "method": "TBE",
-                "data": {"energy": Datapoint(-76.0, "au")}}}
+        "water",
+        "ref",
+        {},
+        {
+            "gs": {
+                "basis": "cc-pvdz",
+                "method": "TBE",
+                "data": {"energy": Datapoint(-76.0, "au")},
+            }
+        },
     )
     int_mol = Molecule(
-        "water", "computed", {},
-        {"gs": {"basis": "cc-pvdz", "method": "HF",
-                "data": {"energy": Datapoint(-75.9, "au")}}}
+        "water",
+        "computed",
+        {},
+        {
+            "gs": {
+                "basis": "cc-pvdz",
+                "method": "HF",
+                "data": {"energy": Datapoint(-75.9, "au")},
+            }
+        },
     )
     c = Comparison()
     c.add(MoleculeList([ref_mol, int_mol]))
@@ -162,20 +178,58 @@ def two_molecule_comparison():
     """Two molecules, errors +0.1 and +0.3 au.
     MSE=0.2, MAE=0.2, RMSD=sqrt(0.05)≈0.2236, min=0.1, max=0.3
     """
-    mols = MoleculeList([
-        Molecule("water", "ref", {},
-                 {"gs": {"basis": "cc-pvdz", "method": "TBE",
-                         "data": {"energy": Datapoint(-76.0, "au")}}}),
-        Molecule("benzene", "ref", {},
-                 {"gs": {"basis": "cc-pvdz", "method": "TBE",
-                         "data": {"energy": Datapoint(-10.0, "au")}}}),
-        Molecule("water", "computed", {},
-                 {"gs": {"basis": "cc-pvdz", "method": "HF",
-                         "data": {"energy": Datapoint(-75.9, "au")}}}),
-        Molecule("benzene", "computed", {},
-                 {"gs": {"basis": "cc-pvdz", "method": "HF",
-                         "data": {"energy": Datapoint(-9.7, "au")}}}),
-    ])
+    mols = MoleculeList(
+        [
+            Molecule(
+                "water",
+                "ref",
+                {},
+                {
+                    "gs": {
+                        "basis": "cc-pvdz",
+                        "method": "TBE",
+                        "data": {"energy": Datapoint(-76.0, "au")},
+                    }
+                },
+            ),
+            Molecule(
+                "benzene",
+                "ref",
+                {},
+                {
+                    "gs": {
+                        "basis": "cc-pvdz",
+                        "method": "TBE",
+                        "data": {"energy": Datapoint(-10.0, "au")},
+                    }
+                },
+            ),
+            Molecule(
+                "water",
+                "computed",
+                {},
+                {
+                    "gs": {
+                        "basis": "cc-pvdz",
+                        "method": "HF",
+                        "data": {"energy": Datapoint(-75.9, "au")},
+                    }
+                },
+            ),
+            Molecule(
+                "benzene",
+                "computed",
+                {},
+                {
+                    "gs": {
+                        "basis": "cc-pvdz",
+                        "method": "HF",
+                        "data": {"energy": Datapoint(-9.7, "au")},
+                    }
+                },
+            ),
+        ]
+    )
     c = Comparison()
     c.add(mols)
     return c

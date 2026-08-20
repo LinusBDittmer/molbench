@@ -1,11 +1,20 @@
 import pytest
-from molbench.molecule import Molecule, MoleculeList, Datapoint
+
+from molbench.molecule import Datapoint, Molecule, MoleculeList
 
 
-def _make_mol(name, data_id="bench", charge=0, basis="cc-pvdz", method="HF",
-              energy=-1.0, unit="au"):
+def _make_mol(
+    name,
+    data_id="bench",
+    charge=0,
+    basis="cc-pvdz",
+    method="HF",
+    energy=-1.0,
+    unit="au",
+):
     return Molecule(
-        name=name, data_id=data_id,
+        name=name,
+        data_id=data_id,
         system_data={"xyz": "H 0 0 0", "charge": charge, "multiplicity": 1},
         state_data={
             "gs": {
@@ -20,17 +29,20 @@ def _make_mol(name, data_id="bench", charge=0, basis="cc-pvdz", method="HF",
 @pytest.fixture
 def mixed_list():
     ml = MoleculeList()
-    ml.extend([
-        _make_mol("water", charge=0, basis="cc-pvdz", method="HF", energy=-76.0),
-        _make_mol("benzene", charge=0, basis="cc-pvtz", method="HF", energy=-10.0),
-        _make_mol("methane", charge=1, basis="cc-pvdz", method="MP2", energy=-5.0),
-    ])
+    ml.extend(
+        [
+            _make_mol("water", charge=0, basis="cc-pvdz", method="HF", energy=-76.0),
+            _make_mol("benzene", charge=0, basis="cc-pvtz", method="HF", energy=-10.0),
+            _make_mol("methane", charge=1, basis="cc-pvdz", method="MP2", energy=-5.0),
+        ]
+    )
     return ml
 
 
 # ---------------------------------------------------------------------------
 # filter / remove
 # ---------------------------------------------------------------------------
+
 
 def test_filter_by_name(mixed_list):
     result = mixed_list.filter("name", "water")
@@ -39,10 +51,12 @@ def test_filter_by_name(mixed_list):
 
 
 def test_filter_by_data_id():
-    ml = MoleculeList([
-        _make_mol("a", data_id="bench1"),
-        _make_mol("b", data_id="bench2"),
-    ])
+    ml = MoleculeList(
+        [
+            _make_mol("a", data_id="bench1"),
+            _make_mol("b", data_id="bench2"),
+        ]
+    )
     result = ml.filter("data_id", "bench1")
     assert len(result) == 1
     assert result[0].name == "a"
@@ -63,13 +77,21 @@ def test_filter_by_state_key_basis(mixed_list):
 
 def test_filter_removes_non_matching_states():
     mol = Molecule(
-        "mol", "bench", {"charge": 0},
+        "mol",
+        "bench",
+        {"charge": 0},
         {
-            "s1": {"basis": "cc-pvdz", "method": "HF",
-                   "data": {"energy": Datapoint(-1.0, "au")}},
-            "s2": {"basis": "cc-pvtz", "method": "HF",
-                   "data": {"energy": Datapoint(-2.0, "au")}},
-        }
+            "s1": {
+                "basis": "cc-pvdz",
+                "method": "HF",
+                "data": {"energy": Datapoint(-1.0, "au")},
+            },
+            "s2": {
+                "basis": "cc-pvtz",
+                "method": "HF",
+                "data": {"energy": Datapoint(-2.0, "au")},
+            },
+        },
     )
     ml = MoleculeList([mol])
     result = ml.filter("basis", "cc-pvdz")
@@ -97,41 +119,63 @@ def test_filter_returns_molecule_list(mixed_list):
 
 
 def test_filter_by_name_and_data_id_delegate(mixed_list):
-    assert [m.name for m in mixed_list.filter("name", "water")] == \
-        [m.name for m in mixed_list.filter_names("water")]
-    assert [m.name for m in mixed_list.remove("name", "water")] == \
-        [m.name for m in mixed_list.remove_names("water")]
-    assert [m.name for m in mixed_list.filter("data_id", "bench")] == \
-        [m.name for m in mixed_list.filter_data_ids("bench")]
-    assert [m.name for m in mixed_list.remove("data_id", "bench")] == \
-        [m.name for m in mixed_list.remove_data_ids("bench")]
+    assert [m.name for m in mixed_list.filter("name", "water")] == [
+        m.name for m in mixed_list.filter_names("water")
+    ]
+    assert [m.name for m in mixed_list.remove("name", "water")] == [
+        m.name for m in mixed_list.remove_names("water")
+    ]
+    assert [m.name for m in mixed_list.filter("data_id", "bench")] == [
+        m.name for m in mixed_list.filter_data_ids("bench")
+    ]
+    assert [m.name for m in mixed_list.remove("data_id", "bench")] == [
+        m.name for m in mixed_list.remove_data_ids("bench")
+    ]
 
 
 # ---------------------------------------------------------------------------
 # filter_properties / remove_properties
 # ---------------------------------------------------------------------------
 
+
 @pytest.fixture
 def property_list():
-    return MoleculeList([
-        Molecule(
-            name="multi", data_id="bench", system_data={"charge": 0},
-            state_data={
-                "s1": {"basis": "cc-pvdz", "method": "adc2",
-                       "data": {"excitation_energy": Datapoint(1.0, "eV"),
-                                "oscillator_strength": Datapoint(0.1, "au")}},
-                "s2": {"basis": "cc-pvdz", "method": "adc2",
-                       "data": {"oscillator_strength": Datapoint(0.2, "au")}},
-            }
-        ),
-        Molecule(
-            name="osc_only", data_id="bench", system_data={"charge": 0},
-            state_data={
-                "s1": {"basis": "cc-pvdz", "method": "adc2",
-                       "data": {"oscillator_strength": Datapoint(0.3, "au")}},
-            }
-        ),
-    ])
+    return MoleculeList(
+        [
+            Molecule(
+                name="multi",
+                data_id="bench",
+                system_data={"charge": 0},
+                state_data={
+                    "s1": {
+                        "basis": "cc-pvdz",
+                        "method": "adc2",
+                        "data": {
+                            "excitation_energy": Datapoint(1.0, "eV"),
+                            "oscillator_strength": Datapoint(0.1, "au"),
+                        },
+                    },
+                    "s2": {
+                        "basis": "cc-pvdz",
+                        "method": "adc2",
+                        "data": {"oscillator_strength": Datapoint(0.2, "au")},
+                    },
+                },
+            ),
+            Molecule(
+                name="osc_only",
+                data_id="bench",
+                system_data={"charge": 0},
+                state_data={
+                    "s1": {
+                        "basis": "cc-pvdz",
+                        "method": "adc2",
+                        "data": {"oscillator_strength": Datapoint(0.3, "au")},
+                    },
+                },
+            ),
+        ]
+    )
 
 
 def test_filter_properties(property_list):
@@ -145,12 +189,13 @@ def test_filter_properties(property_list):
     # the remaining state keeps its other entries
     assert result[0].state_data["s1"]["method"] == "adc2"
     # Ensure that nothing is dropped
-    result = property_list.filter_properties("excitation_energy",
-                                             "oscillator_strength")
+    result = property_list.filter_properties("excitation_energy", "oscillator_strength")
     assert len(result) == 2
     assert set(result[0].state_data) == {"s1", "s2"}
-    assert set(result[0].state_data["s1"]["data"]) == \
-        {"excitation_energy", "oscillator_strength"}
+    assert set(result[0].state_data["s1"]["data"]) == {
+        "excitation_energy",
+        "oscillator_strength",
+    }
     assert list(result[1].state_data["s1"]["data"]) == ["oscillator_strength"]
     # ensure that multi looses its energy
     removed = property_list.remove_properties("excitation_energy")
@@ -166,15 +211,18 @@ def test_filter_properties(property_list):
         for ptype in data["data"]
     )
     # ensure that everything is dropped
-    result = property_list.remove_properties("excitation_energy",
-                                             "oscillator_strength")
+    result = property_list.remove_properties("excitation_energy", "oscillator_strength")
     assert len(result) == 0
     # ensure that a state without data is dropped
     no_data = MoleculeList()
-    no_data.append(Molecule(
-        name="no_data", data_id="test", system_data={},
-        state_data={"s1": {"method": "adc2", "basis": "cc-pvdz"}}
-    ))
+    no_data.append(
+        Molecule(
+            name="no_data",
+            data_id="test",
+            system_data={},
+            state_data={"s1": {"method": "adc2", "basis": "cc-pvdz"}},
+        )
+    )
     res = no_data.filter_properties("bla")
     assert len(res) == 0
     res = no_data.remove_properties("bla")
@@ -184,6 +232,7 @@ def test_filter_properties(property_list):
 # ---------------------------------------------------------------------------
 # filter_by_range
 # ---------------------------------------------------------------------------
+
 
 def test_filter_by_range_both(mixed_list):
     result = mixed_list.filter_by_range("charge", min=0, max=0)
@@ -209,12 +258,13 @@ def test_filter_by_range_none_none(mixed_list):
 # filter_by_vec_norm
 # ---------------------------------------------------------------------------
 
+
 def _mol_with_vec_norm(name, vec):
     return Molecule(
-        name, "bench",
+        name,
+        "bench",
         {"vec_norm": vec},
-        {"gs": {"basis": "b", "method": "m",
-                "data": {"e": Datapoint(0.0, "au")}}}
+        {"gs": {"basis": "b", "method": "m", "data": {"e": Datapoint(0.0, "au")}}},
     )
 
 
@@ -238,9 +288,10 @@ def test_filter_by_vec_norm_scalar_promoted():
 
 def test_filter_by_vec_norm_dict_value():
     mol = Molecule(
-        "m", "b", {"vec_norm": {"x": 0.5, "y": 0.3}},
-        {"gs": {"basis": "b", "method": "m",
-                "data": {"e": Datapoint(0.0, "au")}}}
+        "m",
+        "b",
+        {"vec_norm": {"x": 0.5, "y": 0.3}},
+        {"gs": {"basis": "b", "method": "m", "data": {"e": Datapoint(0.0, "au")}}},
     )
     result = MoleculeList([mol]).filter_by_vec_norm(
         "vec_norm", min=[0.0, 0.0], max=[1.0, 1.0]
@@ -257,6 +308,7 @@ def test_filter_by_vec_norm_none_none():
 # ---------------------------------------------------------------------------
 # apply_stochiometry
 # ---------------------------------------------------------------------------
+
 
 def test_apply_stochiometry_basic():
     mol_a = _make_mol("molA", energy=-10.0)

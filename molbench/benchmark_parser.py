@@ -1,12 +1,10 @@
-"""Python script for handling benchmarks.
+"""Python script for handling benchmarks."""
 
-
-"""
+import json
+import os
 
 from . import logger as log
 from .molecule import Molecule, MoleculeList
-import os
-import json
 
 
 class BenchmarkParser:
@@ -27,24 +25,29 @@ class BenchmarkParser:
         cls.premade_benchmarks = {}
         for root, _, files in os.walk(rpath):
             for file in files:
-                if file.endswith('.json'):
+                if file.endswith(".json"):
                     key = os.path.splitext(file)[0]
                     val = os.path.abspath(os.path.join(root, file))
                     cls.premade_benchmarks.update({key: val})
 
-    def load(self, benchmark: str, benchmark_id=None,
-             use_local_benchmark: bool = False) -> list[Molecule]:
+    def load(
+        self, benchmark: str, benchmark_id=None, use_local_benchmark: bool = False
+    ) -> list[Molecule]:
         if not use_local_benchmark and benchmark in self.premade_benchmarks:
             benchfile = self.premade_benchmarks[benchmark]
         else:
             if not os.path.exists(benchmark):
-                log.critical(f"Benchmark file {benchmark} does not exists or "
-                             "cannot be seen.", "Benchmark Parser")
+                log.critical(
+                    f"Benchmark file {benchmark} does not exists or cannot be seen.",
+                    "Benchmark Parser",
+                )
             benchfile = benchmark
         content = self.parse_benchmark(benchfile)
         if not content:
-            log.critical(f"Benchmark file {benchmark} was found but could not"
-                         " be loaded.", "Benchmark Parser")
+            log.critical(
+                f"Benchmark file {benchmark} was found but could not be loaded.",
+                "Benchmark Parser",
+            )
         if benchmark_id is None:
             benchmark_id = benchmark
         return MoleculeList(
@@ -53,10 +56,12 @@ class BenchmarkParser:
         )
 
     def parse_benchmark(self, benchmarkfile: str) -> dict | None:
-        raise NotImplementedError("The parse_benchmark function is not "
-                                  "implemented in the BenchmarkParser "
-                                  "superclass. Please use a child class "
-                                  "instead.")
+        raise NotImplementedError(
+            "The parse_benchmark function is not "
+            "implemented in the BenchmarkParser "
+            "superclass. Please use a child class "
+            "instead."
+        )
 
 
 class JSONBenchmarkParser(BenchmarkParser):
@@ -77,5 +82,6 @@ class JSONBenchmarkParser(BenchmarkParser):
         try:
             return json.load(open(benchmarkfile, "r"))
         except json.JSONDecodeError:
-            log.critical(f"Could not read benchmark file {benchmarkfile}.",
-                         "Benchmark Parser")
+            log.critical(
+                f"Could not read benchmark file {benchmarkfile}.", "Benchmark Parser"
+            )

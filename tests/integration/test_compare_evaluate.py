@@ -1,10 +1,11 @@
 """Integration: Statistics.compare → evaluate with known analytical results."""
-import pytest
-import numpy as np
-from molbench.molecule import Molecule, MoleculeList, Datapoint
-from molbench.comparison import Comparison
-from molbench.statistics import Statistics
 
+import numpy as np
+import pytest
+
+from molbench.comparison import Comparison
+from molbench.molecule import Datapoint, Molecule, MoleculeList
+from molbench.statistics import Statistics
 
 INTEREST = {"method": "HF"}
 REFERENCE = {"method": "TBE"}
@@ -15,12 +16,34 @@ def _build_comparison(pairs):
     """Build a Comparison from (name, ref_energy, int_energy) triples (au)."""
     mols = MoleculeList()
     for name, ref_e, int_e in pairs:
-        mols.append(Molecule(name, "ref", {},
-                             {"gs": {"basis": "cc-pvdz", "method": "TBE",
-                                     "data": {"energy": Datapoint(ref_e, "au")}}}))
-        mols.append(Molecule(name, "computed", {},
-                             {"gs": {"basis": "cc-pvdz", "method": "HF",
-                                     "data": {"energy": Datapoint(int_e, "au")}}}))
+        mols.append(
+            Molecule(
+                name,
+                "ref",
+                {},
+                {
+                    "gs": {
+                        "basis": "cc-pvdz",
+                        "method": "TBE",
+                        "data": {"energy": Datapoint(ref_e, "au")},
+                    }
+                },
+            )
+        )
+        mols.append(
+            Molecule(
+                name,
+                "computed",
+                {},
+                {
+                    "gs": {
+                        "basis": "cc-pvdz",
+                        "method": "HF",
+                        "data": {"energy": Datapoint(int_e, "au")},
+                    }
+                },
+            )
+        )
     c = Comparison()
     c.add(mols)
     return c
@@ -35,6 +58,7 @@ def _eval(c, *measures):
 # ---------------------------------------------------------------------------
 # Single molecule: delta = +0.1
 # ---------------------------------------------------------------------------
+
 
 def test_mse_single_delta():
     c = _build_comparison([("water", -76.0, -75.9)])
@@ -64,6 +88,7 @@ def test_sde_single_point():
 # ---------------------------------------------------------------------------
 # Two molecules: errors +0.1 and +0.3
 # ---------------------------------------------------------------------------
+
 
 def test_mse_two_molecules():
     c = _build_comparison([("water", -76.0, -75.9), ("benzene", -10.0, -9.7)])
@@ -109,6 +134,7 @@ def test_evaluate_all_keyword():
 # Relative errors
 # ---------------------------------------------------------------------------
 
+
 def test_relative_error():
     c = _build_comparison([("water", -76.0, -75.9)])
     stats = Statistics(c)
@@ -130,6 +156,7 @@ def test_relative_error_with_damping():
 # ---------------------------------------------------------------------------
 # Empty comparison
 # ---------------------------------------------------------------------------
+
 
 def test_empty_interest_empty_errors():
     c = _build_comparison([("water", -76.0, -75.9)])

@@ -1,7 +1,8 @@
-import pytest
 import numpy
-from molbench.molecule import Molecule, MoleculeList, Datapoint
+import pytest
+
 from molbench.comparison import Comparison
+from molbench.molecule import Datapoint, Molecule, MoleculeList
 
 
 def _mol(name, data_id, basis, method, energy, unit="au", transition_id=None):
@@ -18,6 +19,7 @@ def _mol(name, data_id, basis, method, energy, unit="au", transition_id=None):
 # ---------------------------------------------------------------------------
 # Initialization
 # ---------------------------------------------------------------------------
+
 
 def test_default_separators():
     c = Comparison()
@@ -46,6 +48,7 @@ def test_structure_property():
 # add_molecule / add
 # ---------------------------------------------------------------------------
 
+
 def test_add_molecule_inserts_at_correct_path():
     c = Comparison()
     mol = _mol("water", "bench", "cc-pvdz", "HF", -76.0)
@@ -67,10 +70,12 @@ def test_add_molecule_value_is_datapoint():
 
 def test_add_molecule_list():
     c = Comparison()
-    ml = MoleculeList([
-        _mol("water", "bench", "cc-pvdz", "HF", -76.0),
-        _mol("benzene", "bench", "cc-pvdz", "HF", -10.0),
-    ])
+    ml = MoleculeList(
+        [
+            _mol("water", "bench", "cc-pvdz", "HF", -76.0),
+            _mol("benzene", "bench", "cc-pvdz", "HF", -10.0),
+        ]
+    )
     c.add(ml)
     assert "water" in c and "benzene" in c
 
@@ -93,14 +98,18 @@ def test_add_molecule_duplicate_data_id_warns(recwarn):
 
 def test_add_molecule_assigned_transition_id_overrides():
     mol = Molecule(
-        "mol", "bench", {},
-        {"gs": {
-            "basis": "cc-pvdz",
-            "method": "HF",
-            "data": {"energy": Datapoint(-1.0, "au")},
-            "transition_id": "old_tid",
-            "assigned_transition_id": "new_tid",
-        }}
+        "mol",
+        "bench",
+        {},
+        {
+            "gs": {
+                "basis": "cc-pvdz",
+                "method": "HF",
+                "data": {"energy": Datapoint(-1.0, "au")},
+                "transition_id": "old_tid",
+                "assigned_transition_id": "new_tid",
+            }
+        },
     )
     c = Comparison("basis", "method", "transition_id")
     c.add_molecule(mol)
@@ -111,9 +120,10 @@ def test_add_molecule_assigned_transition_id_overrides():
 def test_add_molecule_none_separator_skipped():
     # State is missing a separator key → silently skipped
     mol = Molecule(
-        "mol", "bench", {},
-        {"gs": {"method": "HF",
-                "data": {"energy": Datapoint(-1.0, "au")}}}
+        "mol",
+        "bench",
+        {},
+        {"gs": {"method": "HF", "data": {"energy": Datapoint(-1.0, "au")}}},
         # no "basis" key → separator value is None
     )
     c = Comparison()  # separators: basis, method
@@ -124,6 +134,7 @@ def test_add_molecule_none_separator_skipped():
 # ---------------------------------------------------------------------------
 # walk_by_key / walk_values
 # ---------------------------------------------------------------------------
+
 
 def test_walk_by_key_finds_energy(simple_comparison):
     results = list(simple_comparison.walk_by_key("energy"))
@@ -146,6 +157,7 @@ def test_walk_values_count(simple_comparison):
 # ---------------------------------------------------------------------------
 # _import_value
 # ---------------------------------------------------------------------------
+
 
 def test_import_value_scalar():
     c = Comparison()
@@ -187,6 +199,7 @@ def test_import_value_malformed_dict_logs_error(caplog):
 # ---------------------------------------------------------------------------
 # add_molecule — invalid input type
 # ---------------------------------------------------------------------------
+
 
 def test_add_molecule_wrong_type_logs_error_and_returns(caplog):
     c = Comparison()
