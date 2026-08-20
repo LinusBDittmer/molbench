@@ -1,9 +1,10 @@
-from .comparison import Comparison
-from .formatting import LatexFormatter, Formatter
-from .tree import Node, DummyNode
-from . import logger as log
-from itertools import chain
 import typing
+from itertools import chain
+
+from . import logger as log
+from .comparison import Comparison
+from .formatting import Formatter, LatexFormatter
+from .tree import DummyNode, Node
 
 
 class Exporter:
@@ -26,35 +27,48 @@ class Exporter:
     """
 
     def export(self, *args, **kwargs) -> str | None:
-        raise NotImplementedError("Export function has to be implemented on "
-                                  "the child classes.")
+        raise NotImplementedError(
+            "Export function has to be implemented on the child classes."
+        )
 
 
 _REQUIRED_FORMATTER_METHODS = (
-    "join_labels", "init_table", "finalize_table", "table_header",
-    "table_content", "multicolumn", "multirow",
+    "join_labels",
+    "init_table",
+    "finalize_table",
+    "table_header",
+    "table_content",
+    "multicolumn",
+    "multirow",
 )
 
 
 class TableExporter(Exporter):
-    def __init__(self, formatter: Formatter, sort_cols: bool = True,
-                 sort_rows: bool = True, sparse_row_labels: bool = True,
-                 multirow: bool = False):
-        missing = [m for m in _REQUIRED_FORMATTER_METHODS
-                   if not hasattr(formatter, m)]
+    def __init__(
+        self,
+        formatter: Formatter,
+        sort_cols: bool = True,
+        sort_rows: bool = True,
+        sparse_row_labels: bool = True,
+        multirow: bool = False,
+    ):
+        missing = [m for m in _REQUIRED_FORMATTER_METHODS if not hasattr(formatter, m)]
         if missing:
             log.critical(
                 f"{type(formatter).__name__} is missing the table-structure "
                 f"method(s) {missing} required by TableExporter (e.g. use "
-                "LatexFormatter instead of StdFormatter).", "TableExporter")
+                "LatexFormatter instead of StdFormatter).",
+                "TableExporter",
+            )
         self.formatter = formatter
         self.sort_cols = sort_cols
         self.sort_rows = sort_rows
         self.sparse_row_labels = sparse_row_labels
         self.multirow = multirow
 
-    def export(self, data: Comparison, property, outfile: typing.IO,
-               columns, rows=None) -> str | None:
+    def export(
+        self, data: Comparison, property, outfile: typing.IO, columns, rows=None
+    ) -> str | None:
         # no row labels provided -> use all available keys
         if rows is None:
             rows = DummyNode()
@@ -68,8 +82,8 @@ class TableExporter(Exporter):
 
         # prepare the data for the export by constructing row and column labels
         # for all data points
-        prepared_data, col_label_tree, row_label_tree = (
-            self._prepare_data(data, columns, rows, property)
+        prepared_data, col_label_tree, row_label_tree = self._prepare_data(
+            data, columns, rows, property
         )
         # sort the column and row trees according to the labels
         if self.sort_cols:
@@ -88,31 +102,32 @@ class TableExporter(Exporter):
             for generation in rows.traverse_generations()
         )
         # init the table
-        preamble = self.formatter.init_table(len(additional_col_labels),
-                                             len(column_labels))
+        preamble = self.formatter.init_table(
+            len(additional_col_labels), len(column_labels)
+        )
         # Build the header of the table (column labels)
-        header = self._prepare_table_header(col_label_tree,
-                                            additional_col_labels)
+        header = self._prepare_table_header(col_label_tree, additional_col_labels)
         header = self.formatter.table_header(header)
         # Fill the body of the table
-        content = self._prepare_content(prepared_data, row_label_tree,
-                                        column_labels)
+        content = self._prepare_content(prepared_data, row_label_tree, column_labels)
         content = self.formatter.table_content(content)
         # finalize the table (close environments etc.)
         finish = self.formatter.finalize_table()
-        table = "\n".join((preamble, header, content, finish))
+        table = f"{preamble}\n{header}\n{content}\n{finish}"
         outfile.write(table)
 
-    def _prepare_data(self, comparison: Comparison, column_tree: Node,
-                      row_tree: Node, prop):
+    def _prepare_data(
+        self, comparison: Comparison, column_tree: Node, row_tree: Node, prop
+    ):
         # Ensure that all nodes are present in comparison!
         data_structure = comparison.structure
         column_nodes = tuple(column_tree.traverse_generations())
         row_nodes = tuple(row_tree.traverse_generations())
-        if any(n.value not in data_structure for n in
-               chain.from_iterable(chain(column_nodes, row_nodes))):
-            log.critical("A key is not available in the provided Comparison.",
-                         "Export")
+        if any(
+            n.value not in data_structure
+            for n in chain.from_iterable(chain(column_nodes, row_nodes))
+        ):
+            log.critical("A key is not available in the provided Comparison.", "Export")
 
         col_node_cache = {"root": DummyNode()}
         row_node_cache = {"root": DummyNode()}
@@ -134,15 +149,17 @@ class TableExporter(Exporter):
                         f"{row_l}, column={column_l}). This usually means "
                         "the row/column trees don't cover all separators in "
                         "the Comparison - the values will be joined into "
-                        "one cell.", "Export")
+                        "one cell.",
+                        "Export",
+                    )
                 data[row_l][column_l].append(value)
         col_label_tree = col_node_cache["root"]
         row_label_tree = row_node_cache["root"]
         return data, col_label_tree, row_label_tree
 
-    def _build_row_column_label(self, columns: tuple, rows: tuple,
-                                sep_names: tuple,
-                                sep_vals: tuple) -> tuple[tuple, tuple]:
+    def _build_row_column_label(
+        self, columns: tuple, rows: tuple, sep_names: tuple, sep_vals: tuple
+    ) -> tuple[tuple, tuple]:
         # construct the row and column label for a given entry
         row_l, column_l = {}, {}
         for name, val in zip(sep_names, sep_vals):
@@ -174,22 +191,17 @@ class TableExporter(Exporter):
         # sort the labels for each generation to maintain the order
         # as given in the input tree
         for gen, labels in column_l.items():
-            column_l[gen] = self.formatter.join_labels(
-                v for _, v in sorted(labels)
-            )
+            column_l[gen] = self.formatter.join_labels(v for _, v in sorted(labels))
         for gen, labels in row_l.items():
-            row_l[gen] = self.formatter.join_labels(
-                v for _, v in sorted(labels)
-            )
+            row_l[gen] = self.formatter.join_labels(v for _, v in sorted(labels))
         # finally sort the labels such that the upper entries of the tree
         # appear first
         return (
             tuple(v for _, v in sorted(column_l.items())),
-            tuple(v for _, v in sorted(row_l.items()))
+            tuple(v for _, v in sorted(row_l.items())),
         )
 
-    def _add_to_label_tree(self, label: tuple[str, ...],
-                           node_cache: dict) -> None:
+    def _add_to_label_tree(self, label: tuple[str, ...], node_cache: dict) -> None:
         # Helper function for building the label trees
         # constructs all nodes for a given entry and inserts them in the tree
         parent = node_cache["root"]
@@ -201,8 +213,9 @@ class TableExporter(Exporter):
                 node_cache[key] = node
             parent = node
 
-    def _prepare_table_header(self, col_label_tree: Node,
-                              additional_cols: tuple[str, ...]) -> list:
+    def _prepare_table_header(
+        self, col_label_tree: Node, additional_cols: tuple[str, ...]
+    ) -> list:
         # Build the table header as nested list of strings
         rows = []
         prefix = tuple("" for _ in range(len(additional_cols)))
@@ -220,8 +233,9 @@ class TableExporter(Exporter):
             rows.append(row)
         return rows
 
-    def _prepare_content(self, data: dict, row_label_tree: Node,
-                         column_labels: tuple[str, ...]) -> list:
+    def _prepare_content(
+        self, data: dict, row_label_tree: Node, column_labels: tuple[str, ...]
+    ) -> list:
         # Build the content of the table as nested list
         content: list[list[str]] = []
         prev_row_label = None
@@ -233,8 +247,9 @@ class TableExporter(Exporter):
             if prev_row_label is None:
                 write_label = [True for _ in range(len(row_label))]
             else:
-                write_label = [label != prev for label, prev in
-                               zip(row_label, prev_row_label)]
+                write_label = [
+                    label != prev for label, prev in zip(row_label, prev_row_label)
+                ]
             for label, write, node in zip(row_label, write_label, tree_path):
                 # possibly skip repeating row labels
                 if self.sparse_row_labels and not write:
@@ -256,11 +271,20 @@ class TableExporter(Exporter):
 
 
 class LatexExporter(TableExporter):
-    def __init__(self, formatter: Formatter = None, sort_cols: bool = True,
-                 sort_rows: bool = True, sparse_row_labels: bool = True,
-                 multirow: bool = False):
+    def __init__(
+        self,
+        formatter: Formatter = None,
+        sort_cols: bool = True,
+        sort_rows: bool = True,
+        sparse_row_labels: bool = True,
+        multirow: bool = False,
+    ):
         if formatter is None:
             formatter = LatexFormatter()
-        super().__init__(formatter, sort_cols=sort_cols, sort_rows=sort_rows,
-                         sparse_row_labels=sparse_row_labels,
-                         multirow=multirow)
+        super().__init__(
+            formatter,
+            sort_cols=sort_cols,
+            sort_rows=sort_rows,
+            sparse_row_labels=sparse_row_labels,
+            multirow=multirow,
+        )

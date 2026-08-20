@@ -1,10 +1,11 @@
-import os
 import glob
+import os
 import subprocess
 import typing
+
 from . import logger as log
+from .configuration import config
 from .functions import substitute_template
-from . import config
 
 
 def create_bash_files(files: list, command: str) -> list:
@@ -34,28 +35,28 @@ def create_bash_files(files: list, command: str) -> list:
         try:
             infilename = os.path.basename(f)
             cmd = command.strip() + " " + infilename
-            log.info(f"Now building script for {infilename}: {f}",
-                     "Bash Wrapper")
-            result = subprocess.run(cmd, shell=True)
+            log.info(f"Now building script for {infilename}: {f}", "Bash Wrapper")
+            result = subprocess.run(cmd, shell=True, check=False)
             if getattr(result, "returncode", 0) != 0:
-                log.error(f"Command failed for {infilename} (exit code "
-                          f"{result.returncode}): {cmd}", "Bash Wrapper")
+                log.error(
+                    f"Command failed for {infilename} (exit code "
+                    f"{result.returncode}): {cmd}",
+                    "Bash Wrapper",
+                )
             log.debug(f"Executing command : {cmd}", "Bash Wrapper")
 
             fname_no_ext = os.path.splitext(infilename)[0]
             all_shs = glob.glob("*.sh")
             all_shs.extend(glob.glob("*.sbatch"))
 
-            local_execs = [os.path.abspath(sh) for sh in all_shs
-                           if fname_no_ext in sh]
+            local_execs = [os.path.abspath(sh) for sh in all_shs if fname_no_ext in sh]
             bash_files.extend(local_execs)
         finally:
             os.chdir(basepath)
     return bash_files
 
 
-def make_send_script(bashfiles: list, send_command: str,
-                     sendscript: typing.IO):
+def make_send_script(bashfiles: list, send_command: str, sendscript: typing.IO):
     """
     Generate a script for sending all jobscripts to a cluster.
 
@@ -72,11 +73,11 @@ def make_send_script(bashfiles: list, send_command: str,
     sendscript_content = (
         "#!/bin/bash\n"
         "function cd_and_sbatch() {\n"
-        "    local script_file=\"$1\"\n"
-        "    local folder=\"$2\"\n"
-        "    echo \"Sending $script_file\"\n"
-        "    cd \"$folder\"\n"
-        f"    {send_command.strip()} \"$script_file\"\n"
+        '    local script_file="$1"\n'
+        '    local folder="$2"\n'
+        '    echo "Sending $script_file"\n'
+        '    cd "$folder"\n'
+        f'    {send_command.strip()} "$script_file"\n'
         "}\n\n"
     )
 
@@ -84,7 +85,7 @@ def make_send_script(bashfiles: list, send_command: str,
         fpath = os.path.abspath(os.path.dirname(f))
         infilename = os.path.basename(f)
 
-        addendum = f"cd_and_sbatch \"{infilename}\" \"{fpath}\"\n"
+        addendum = f'cd_and_sbatch "{infilename}" "{fpath}"\n'
         sendscript_content += addendum
 
     sendscript.write(sendscript_content)

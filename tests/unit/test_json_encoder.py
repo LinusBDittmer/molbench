@@ -1,8 +1,10 @@
 import json
-import pytest
+
 import numpy
-from molbench.molecule import Molecule, Datapoint
+import pytest
+
 from molbench.json_encoder import MolbenchJSONEncoder
+from molbench.molecule import Datapoint, Molecule
 
 
 def _dumps(obj):
@@ -46,10 +48,16 @@ def test_encodes_plain_str():
 
 def test_encodes_molecule():
     mol = Molecule(
-        "water", "bench",
+        "water",
+        "bench",
         {"xyz": "O 0 0 0", "charge": 0},
-        {"gs": {"basis": "cc-pvdz", "method": "HF",
-                "data": {"energy": Datapoint(-76.0, "au")}}},
+        {
+            "gs": {
+                "basis": "cc-pvdz",
+                "method": "HF",
+                "data": {"energy": Datapoint(-76.0, "au")},
+            }
+        },
     )
     result = json.loads(_dumps(mol))
     assert "water" in result
@@ -72,10 +80,16 @@ def test_list_of_datapoints():
 
 def test_encoding_molecule_does_not_mutate_system_data():
     mol = Molecule(
-        "water", "bench",
+        "water",
+        "bench",
         {"xyz": "O 0 0 0", "charge": 0},
-        {"gs": {"basis": "cc-pvdz", "method": "HF",
-                "data": {"energy": Datapoint(-76.0, "au")}}},
+        {
+            "gs": {
+                "basis": "cc-pvdz",
+                "method": "HF",
+                "data": {"energy": Datapoint(-76.0, "au")},
+            }
+        },
     )
     before = dict(mol.system_data)
     _dumps(mol)

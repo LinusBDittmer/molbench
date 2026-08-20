@@ -1,22 +1,24 @@
-"""Parsing class for external data
-"""
+"""Parsing class for external data"""
 
-from . import logger as log
-from .molecule import Molecule, MoleculeList
-from .assignment import parse_assignment_file
-import os.path
 import inspect
+import os.path
+from collections.abc import Callable
 from pathlib import Path
 from typing import Any
-from collections.abc import Callable
+
+from . import logger as log
+from .assignment import parse_assignment_file
+from .molecule import Molecule, MoleculeList
 
 
 class ExternalParser:
-
-    def load(self, filepath: str,
-             parser: Callable[[str], tuple[str, dict | None, dict | None]],
-             out_suffix: str = ".out",
-             assignment_suffix: str = ".ass"):
+    def load(
+        self,
+        filepath: str,
+        parser: Callable[[str], tuple[str, dict | None, dict | None]],
+        out_suffix: str = ".out",
+        assignment_suffix: str = ".ass",
+    ):
         """
         Loads the external data in the given folder.
 
@@ -39,18 +41,21 @@ class ExternalParser:
         param_num: int = len(inspect.signature(parser).parameters)
 
         if param_num not in (1, 2):
-            log.critical("Parser Callable can only have the following "
-                         + "arguments:\n\noutput_filepath : str\n    "
-                         + "Path to the output file\nname : str (optional)"
-                         + "\n    Name for the molecule object\n\nThe given"
-                         + f" Callable has {param_num} parameters.",
-                         "ExternalParser")
+            log.critical(
+                "Parser Callable can only have the following "
+                + "arguments:\n\noutput_filepath : str\n    "
+                + "Path to the output file\nname : str (optional)"
+                + "\n    Name for the molecule object\n\nThe given"
+                + f" Callable has {param_num} parameters.",
+                "ExternalParser",
+            )
 
         data = MoleculeList()
         for outf in outfiles:
             # load the file and add assignments if available
             mol = self._load_file(
-                outfile=outf, out_parser=parser,
+                outfile=outf,
+                out_parser=parser,
                 assignment_parser=parse_assignment_file,
                 assignment_suffix=assignment_suffix,
             )
@@ -58,9 +63,13 @@ class ExternalParser:
 
         return data
 
-    def _load_file(self, outfile: str, out_parser: Callable,
-                   assignment_parser: Callable,
-                   assignment_suffix: str = ".ass") -> Molecule:
+    def _load_file(
+        self,
+        outfile: str,
+        out_parser: Callable,
+        assignment_parser: Callable,
+        assignment_suffix: str = ".ass",
+    ) -> Molecule:
         """
         Parses and imports the given outfile, and if possible finds the
         corresponding assignment file and adds the assignments of states.
@@ -86,34 +95,36 @@ class ExternalParser:
         else:
             parsed = out_parser(outfile)
         if not isinstance(parsed, (tuple, list)) or len(parsed) != 3:
-            log.critical("Output file parser must return a tuple/list of "
-                         "(name, system_data, state_data), but got "
-                         f"{parsed!r} instead.", "ExternalParser")
+            log.critical(
+                "Output file parser must return a tuple/list of "
+                "(name, system_data, state_data), but got "
+                f"{parsed!r} instead.",
+                "ExternalParser",
+            )
         name: str = parsed[0]
         system_data: dict[str, Any] = parsed[1]
         state_data: dict[str, Any] = parsed[2]
         mol = Molecule.from_external(system_data, state_data, outfile, name)
-        ass_file = self._assignmentfile_from_outfile(outfile,
-                                                     assignment_suffix)
+        ass_file = self._assignmentfile_from_outfile(outfile, assignment_suffix)
         if ass_file is not None:  # assignment file exists -> add assignments
             assignments = assignment_parser(ass_file)
             mol.add_assignments(assignments)
         return mol
 
-    def _fetch_all_outfiles(self, path: str,
-                            suffix: str = '.out') -> list[str]:
+    def _fetch_all_outfiles(self, path: str, suffix: str = ".out") -> list[str]:
         outfiles = []
-        for root, _, files in os.walk(os.path.abspath(path), topdown=True,
-                                      followlinks=True):
+        for root, _, files in os.walk(
+            os.path.abspath(path), topdown=True, followlinks=True
+        ):
             for f in files:
                 if f.endswith(suffix):
                     fp = os.path.abspath(os.path.join(root, f))
                     outfiles.append(fp)
         return outfiles
 
-    def _assignmentfile_from_outfile(self, outfile: str,
-                                     assignment_suffix: str = ".ass"
-                                     ) -> str | None:
+    def _assignmentfile_from_outfile(
+        self, outfile: str, assignment_suffix: str = ".ass"
+    ) -> str | None:
         """
         Finds the assignmentfile for a given output file. Returns None if no
         assignment file could be found.

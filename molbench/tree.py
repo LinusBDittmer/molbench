@@ -3,11 +3,12 @@ from itertools import chain
 
 
 class Node:
-    def __init__(self, value, parent: 'Node' = None,
-                 to_string: callable = None) -> None:
+    def __init__(
+        self, value, parent: "Node | None" = None, to_string: callable | None = None
+    ) -> None:
         self.value = value
-        self.children: list['Node'] = []
-        self.parent: 'Node' | None = parent
+        self.children: list[Node] = []
+        self.parent: Node | None = parent
         if parent is not None:
             parent.children.append(self)
         # callable to convert the found keys to string
@@ -28,8 +29,7 @@ class Node:
         # depth first algorithm
         yield self
         for child in self.children:
-            for n in child.traverse():
-                yield n
+            yield from child.traverse()
 
     def traverse_breadth_first(self):
         # skip all DummyNodes
@@ -49,10 +49,12 @@ class Node:
         if not isinstance(self, DummyNode):
             yield nodes
         while any(node.children for node in nodes):
-            nodes = tuple(chain.from_iterable(
-                (n for n in node.children if not isinstance(n, DummyNode))
-                for node in nodes
-            ))
+            nodes = tuple(
+                chain.from_iterable(
+                    (n for n in node.children if not isinstance(n, DummyNode))
+                    for node in nodes
+                )
+            )
             if nodes:  # there are non dummy nodes in the generation
                 yield nodes
 
@@ -67,7 +69,7 @@ class Node:
         for child in self.children:
             child.sort(**kwargs)
 
-    def path_to_root(self) -> list['Node']:
+    def path_to_root(self) -> list["Node"]:
         # path to the root node including self and excluding DummyNodes
         path: list[Node] = []
         if not isinstance(self, DummyNode):
@@ -93,9 +95,9 @@ class Node:
 
 
 class DummyNode(Node):
-    def __init__(self, parent: 'Node' = None) -> None:
+    def __init__(self, parent: "Node" = None) -> None:
         self.children = []
-        self.parent: 'Node' | None = parent
+        self.parent: Node | None = parent
         if parent is not None:
             parent.children.append(self)
 
@@ -105,5 +107,4 @@ class DummyNode(Node):
     def traverse(self):
         # skip dummy nodes
         for child in self.children:
-            for n in child.traverse():
-                yield n
+            yield from child.traverse()

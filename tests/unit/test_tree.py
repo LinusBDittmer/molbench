@@ -1,5 +1,4 @@
-import pytest
-from molbench.tree import Node, DummyNode
+from molbench.tree import DummyNode, Node
 
 
 def test_node_construction_links_parent():
@@ -55,7 +54,7 @@ def test_traverse_generations_two_levels():
     gens = list(root.traverse_generations())
     assert len(gens) == 3
     assert tuple(n.value for n in gens[0]) == ("root",)
-    assert set(n.value for n in gens[1]) == {"a", "b"}
+    assert {n.value for n in gens[1]} == {"a", "b"}
     assert tuple(n.value for n in gens[2]) == ("a1",)
 
 
@@ -73,10 +72,10 @@ def test_walk_leaves_only_terminal():
     root = Node("root")
     a = Node("a", root)
     b = Node("b", root)
-    leaf_a = Node("a1", a)
-    leaf_b = Node("b1", b)
+    Node("a1", a)
+    Node("b1", b)
     leaves = list(root.walk_leaves())
-    assert set(n.value for n in leaves) == {"a1", "b1"}
+    assert {n.value for n in leaves} == {"a1", "b1"}
     assert a not in leaves
     assert root not in leaves
 

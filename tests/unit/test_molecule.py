@@ -1,10 +1,11 @@
 import pytest
-from molbench.molecule import Molecule, Datapoint
 
+from molbench.molecule import Datapoint, Molecule
 
 # ---------------------------------------------------------------------------
 # from_benchmark
 # ---------------------------------------------------------------------------
+
 
 def _entry_single(name=None):
     entry = {
@@ -78,7 +79,8 @@ def test_from_benchmark_data_id():
 
 def test_from_benchmark_no_properties():
     entry = {
-        "charge": 0, "multiplicity": 1,
+        "charge": 0,
+        "multiplicity": 1,
         "xyz": "H 0 0 0",
     }
     mol = Molecule.from_benchmark(entry, "bench", "mol")
@@ -93,6 +95,7 @@ def test_from_benchmark_system_data_excludes_properties():
 # ---------------------------------------------------------------------------
 # from_external
 # ---------------------------------------------------------------------------
+
 
 def _valid_state_data():
     return {
@@ -137,8 +140,9 @@ def test_from_external_missing_data_exits():
 
 def test_from_external_malformed_datapoint_exits():
     # data dict entry must have exactly "value" and "unit"
-    sd = {"gs": {"method": "HF", "basis": "cc-pvdz",
-                 "data": {"energy": {"value": 0}}}}  # missing "unit"
+    sd = {
+        "gs": {"method": "HF", "basis": "cc-pvdz", "data": {"energy": {"value": 0}}}
+    }  # missing "unit"
     with pytest.raises(SystemExit):
         Molecule.from_external({}, sd, "f.out", "mol")
 
@@ -150,8 +154,13 @@ def test_from_external_non_dict_state_exits():
 
 
 def test_from_external_non_string_state_key_exits():
-    sd = {123: {"method": "HF", "basis": "cc-pvdz",
-                "data": {"energy": {"value": 0, "unit": "au"}}}}
+    sd = {
+        123: {
+            "method": "HF",
+            "basis": "cc-pvdz",
+            "data": {"energy": {"value": 0, "unit": "au"}},
+        }
+    }
     with pytest.raises(SystemExit):
         Molecule.from_external({}, sd, "f.out", "mol")
 
@@ -166,15 +175,26 @@ def test_from_external_system_data_only():
 # add_assignments
 # ---------------------------------------------------------------------------
 
+
 def _mol_with_transitions():
     return Molecule(
-        "mol", "bench", {},
+        "mol",
+        "bench",
+        {},
         {
-            "s1": {"method": "HF", "basis": "cc-pvdz", "data": {},
-                   "transition_id": "s0->s1"},
-            "s2": {"method": "HF", "basis": "cc-pvdz", "data": {},
-                   "transition_id": "s0->s2"},
-        }
+            "s1": {
+                "method": "HF",
+                "basis": "cc-pvdz",
+                "data": {},
+                "transition_id": "s0->s1",
+            },
+            "s2": {
+                "method": "HF",
+                "basis": "cc-pvdz",
+                "data": {},
+                "transition_id": "s0->s2",
+            },
+        },
     )
 
 
@@ -194,8 +214,10 @@ def test_add_assignments_removes_unassigned():
 
 def test_add_assignments_no_transition_id_skipped():
     mol = Molecule(
-        "mol", "bench", {},
-        {"gs": {"method": "HF", "basis": "cc-pvdz", "data": {}}}  # no transition_id
+        "mol",
+        "bench",
+        {},
+        {"gs": {"method": "HF", "basis": "cc-pvdz", "data": {}}},  # no transition_id
     )
     mol.add_assignments({"some_key": "val"})
     # state without transition_id is unchanged and not removed
@@ -223,11 +245,12 @@ def test_add_assignments_unmatched_tid_warns(caplog):
 
 def test_add_assignments_custom_keys():
     mol = Molecule(
-        "mol", "bench", {},
-        {"s1": {"method": "HF", "basis": "cc-pvdz", "data": {},
-                "my_tid": "A"}}
+        "mol",
+        "bench",
+        {},
+        {"s1": {"method": "HF", "basis": "cc-pvdz", "data": {}, "my_tid": "A"}},
     )
-    mol.add_assignments({"A": "B"},
-                        old_transition_id_key="my_tid",
-                        new_transition_id_key="result_tid")
+    mol.add_assignments(
+        {"A": "B"}, old_transition_id_key="my_tid", new_transition_id_key="result_tid"
+    )
     assert mol.state_data["s1"]["result_tid"] == "B"

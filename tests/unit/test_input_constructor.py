@@ -1,14 +1,19 @@
 import json
-import pytest
 from pathlib import Path
-from molbench.molecule import Molecule, MoleculeList, Datapoint
-from molbench.input_constructor import TemplateConstructor, CompressedTemplateConstructor
-from molbench.assignment import parse_assignment_file
 
+import pytest
+
+from molbench.assignment import parse_assignment_file
+from molbench.input_constructor import (
+    CompressedTemplateConstructor,
+    TemplateConstructor,
+)
+from molbench.molecule import Datapoint, Molecule, MoleculeList
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def _mol(name, basis="cc-pvdz", method="HF", tid=None, charge=0):
     state = {
@@ -19,9 +24,9 @@ def _mol(name, basis="cc-pvdz", method="HF", tid=None, charge=0):
     if tid:
         state["transition_id"] = tid
     return Molecule(
-        name, "bench",
-        {"xyz": "H 0 0 0", "charge": charge, "multiplicity": 1,
-         "xyz_unit": "A"},
+        name,
+        "bench",
+        {"xyz": "H 0 0 0", "charge": charge, "multiplicity": 1, "xyz_unit": "A"},
         {"gs": state},
     )
 
@@ -33,6 +38,7 @@ def _bench(*names, basis="cc-pvdz"):
 # ---------------------------------------------------------------------------
 # init_template
 # ---------------------------------------------------------------------------
+
 
 def test_init_template_from_templates_dir():
     # "pyscf_ordmp2" is a built-in template
@@ -56,6 +62,7 @@ def test_init_template_nonexistent_exits():
 # create_inputs — files and directories
 # ---------------------------------------------------------------------------
 
+
 def test_create_inputs_creates_directory(tmp_path, simple_template_file):
     tc = TemplateConstructor(simple_template_file)
     calc = {"method": "HF"}
@@ -75,8 +82,9 @@ def test_create_inputs_default_nested_structure(tmp_path, simple_template_file):
 
 def test_create_inputs_flat_structure(tmp_path, simple_template_file):
     tc = TemplateConstructor(simple_template_file)
-    tc.create_inputs(_bench("molA", "molB"), str(tmp_path), {"method": "HF"},
-                     flat_structure=True)
+    tc.create_inputs(
+        _bench("molA", "molB"), str(tmp_path), {"method": "HF"}, flat_structure=True
+    )
     # All files directly in basepath
     files = list(tmp_path.glob("*.in"))
     assert len(files) == 2
@@ -84,8 +92,9 @@ def test_create_inputs_flat_structure(tmp_path, simple_template_file):
 
 def test_create_inputs_file_count_matches_molecules(tmp_path, simple_template_file):
     tc = TemplateConstructor(simple_template_file)
-    tc.create_inputs(_bench("a", "b", "c"), str(tmp_path), {"method": "HF"},
-                     flat_structure=True)
+    tc.create_inputs(
+        _bench("a", "b", "c"), str(tmp_path), {"method": "HF"}, flat_structure=True
+    )
     files = list(tmp_path.glob("*.in"))
     assert len(files) == 3
 
@@ -112,25 +121,40 @@ def test_create_inputs_list_expansion(tmp_path):
     f = tmp_path / "tmpl.txt"
     f.write_text(template)
     mol = Molecule(
-        "molA", "bench",
-        {"xyz_list": ["H 0 0 0", "H 0 1 0"],
-         "charge_list": [0, 1],
-         "multiplicity_list": [1, 2],
-         "xyz_unit": "A"},
-        {"gs": {"basis": "cc-pvdz", "method": "HF",
-                "data": {"energy": Datapoint(-1.0, "au")}}},
+        "molA",
+        "bench",
+        {
+            "xyz_list": ["H 0 0 0", "H 0 1 0"],
+            "charge_list": [0, 1],
+            "multiplicity_list": [1, 2],
+            "xyz_unit": "A",
+        },
+        {
+            "gs": {
+                "basis": "cc-pvdz",
+                "method": "HF",
+                "data": {"energy": Datapoint(-1.0, "au")},
+            }
+        },
     )
     tc = TemplateConstructor(str(f))
-    result = tc.create_inputs(MoleculeList([mol]), str(tmp_path / "out"),
-                              {"method": "HF"}, flat_structure=True)
+    result = tc.create_inputs(
+        MoleculeList([mol]),
+        str(tmp_path / "out"),
+        {"method": "HF"},
+        flat_structure=True,
+    )
     assert len(result) == 2
 
 
 def test_create_inputs_custom_name_template(tmp_path, simple_template_file):
     tc = TemplateConstructor(simple_template_file)
     tc.create_inputs(
-        _bench("molA"), str(tmp_path), {"method": "HF"},
-        name_template="[[name]].input", flat_structure=True
+        _bench("molA"),
+        str(tmp_path),
+        {"method": "HF"},
+        name_template="[[name]].input",
+        flat_structure=True,
     )
     assert (tmp_path / "molA.input").exists()
 
@@ -138,6 +162,7 @@ def test_create_inputs_custom_name_template(tmp_path, simple_template_file):
 # ---------------------------------------------------------------------------
 # create_assignments
 # ---------------------------------------------------------------------------
+
 
 def test_create_assignments_creates_ass_files(tmp_path, simple_template_file):
     tc = TemplateConstructor(simple_template_file)
@@ -173,14 +198,21 @@ def test_create_assignments_no_tid_warning(tmp_path, simple_template_file, capfd
     # should not crash; empty assignment file created
 
 
-def test_create_inputs_missing_expansion_key_warns(tmp_path, simple_template_file, caplog):
+def test_create_inputs_missing_expansion_key_warns(
+    tmp_path, simple_template_file, caplog
+):
     # A state missing the (default) "basis" expansion key must be skipped
     # with a logged warning, not silently dropped.
     mol = Molecule(
-        "molA", "bench",
+        "molA",
+        "bench",
         {"xyz": "H 0 0 0", "charge": 0, "multiplicity": 1},
-        {"gs": {"method": "HF",  # no "basis" key
-                "data": {"energy": Datapoint(-1.0, "au")}}},
+        {
+            "gs": {
+                "method": "HF",  # no "basis" key
+                "data": {"energy": Datapoint(-1.0, "au")},
+            }
+        },
     )
     tc = TemplateConstructor(simple_template_file)
     with caplog.at_level("WARNING", logger="molbench"):
@@ -193,34 +225,43 @@ def test_create_inputs_missing_expansion_key_warns(tmp_path, simple_template_fil
 # CompressedTemplateConstructor
 # ---------------------------------------------------------------------------
 
+
 def _multi_mol(name):
     return Molecule(
-        name, "bench",
-        {"xyz_list": ["H 0 0 0", "H 0 1 0"],
-         "charge_list": [0, 0],
-         "multiplicity_list": [1, 1],
-         "n_atoms_list": [1, 1]},
-        {"p1": {
-            "basis": "cc-pvdz", "method": "TBE",
-            "data": {"energy": Datapoint(0.5, "au")},
-            "stochiometry": [-1.0, 1.0],
-        }},
+        name,
+        "bench",
+        {
+            "xyz_list": ["H 0 0 0", "H 0 1 0"],
+            "charge_list": [0, 0],
+            "multiplicity_list": [1, 1],
+            "n_atoms_list": [1, 1],
+        },
+        {
+            "p1": {
+                "basis": "cc-pvdz",
+                "method": "TBE",
+                "data": {"energy": Datapoint(0.5, "au")},
+                "stochiometry": [-1.0, 1.0],
+            }
+        },
     )
 
 
 def test_compressed_creates_references_json(tmp_path, simple_template_file):
     tc = CompressedTemplateConstructor(simple_template_file)
     bench = MoleculeList([_multi_mol("relA")])
-    tc.create_inputs(bench, str(tmp_path), {"method": "HF"},
-                     reference_path="references.json")
+    tc.create_inputs(
+        bench, str(tmp_path), {"method": "HF"}, reference_path="references.json"
+    )
     assert (tmp_path / "references.json").exists()
 
 
 def test_compressed_references_json_valid(tmp_path, simple_template_file):
     tc = CompressedTemplateConstructor(simple_template_file)
     bench = MoleculeList([_multi_mol("relA")])
-    tc.create_inputs(bench, str(tmp_path), {"method": "HF"},
-                     reference_path="references.json")
+    tc.create_inputs(
+        bench, str(tmp_path), {"method": "HF"}, reference_path="references.json"
+    )
     refs = json.loads((tmp_path / "references.json").read_text())
     assert "relA" in refs
 
@@ -228,8 +269,9 @@ def test_compressed_references_json_valid(tmp_path, simple_template_file):
 def test_compressed_single_geometry_handled(tmp_path, simple_template_file):
     tc = CompressedTemplateConstructor(simple_template_file)
     bench = _bench("molA")  # no xyz_list
-    result = tc.create_inputs(bench, str(tmp_path), {"method": "HF"},
-                              reference_path="references.json")
+    result = tc.create_inputs(
+        bench, str(tmp_path), {"method": "HF"}, reference_path="references.json"
+    )
     assert len(result) >= 1
 
 
@@ -239,9 +281,13 @@ def test_compressed_property_typo_single_property_exits(tmp_path, simple_templat
     tc = CompressedTemplateConstructor(simple_template_file)
     bench = MoleculeList([_multi_mol("relA")])
     with pytest.raises(SystemExit):
-        tc.create_inputs(bench, str(tmp_path), {"method": "HF"},
-                         reference_path="references.json",
-                         compressed_property="does_not_exist")
+        tc.create_inputs(
+            bench,
+            str(tmp_path),
+            {"method": "HF"},
+            reference_path="references.json",
+            compressed_property="does_not_exist",
+        )
 
 
 def test_compressed_deduplicates_identical_geometries(tmp_path, simple_template_file):
@@ -250,7 +296,8 @@ def test_compressed_deduplicates_identical_geometries(tmp_path, simple_template_
     mol2 = _multi_mol("relB")
     # Both use "H 0 0 0" as first geometry → should be deduplicated
     bench = MoleculeList([mol1, mol2])
-    result = tc.create_inputs(bench, str(tmp_path), {"method": "HF"},
-                              reference_path="references.json")
+    result = tc.create_inputs(
+        bench, str(tmp_path), {"method": "HF"}, reference_path="references.json"
+    )
     # 2 unique geometries per mol, but first geometry shared → 3 unique instead of 4
     assert len(result) <= 4

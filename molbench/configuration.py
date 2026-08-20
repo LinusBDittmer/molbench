@@ -1,9 +1,9 @@
-"""Configuration main class.
+"""Configuration main class."""
 
-"""
-
-import os
 import json
+import os
+from typing import ClassVar
+
 import molbench.logger as log
 
 
@@ -25,11 +25,7 @@ class Configuration(dict):
 
     """
 
-    required_fields = {
-        "threads": 1,
-        "memory": 50000,
-        "walltime": "12:00:00"
-    }
+    required_fields: ClassVar = {"threads": 1, "memory": 50000, "walltime": "12:00:00"}
 
     def __init__(self, *args, **kwargs):
         """
@@ -59,9 +55,11 @@ class Configuration(dict):
         try:
             with open(config_path, "r") as f:
                 self.update(json.load(f))
-        except Exception:
-            log.critical(f"Configuration file at {config_path} could not be "
-                         "parsed.", "Configuration")
+        except Exception:  # noqa: BLE001
+            log.critical(
+                f"Configuration file at {config_path} could not be parsed.",
+                "Configuration",
+            )
 
     def __setattr__(self, attr: str, val) -> None:
         """

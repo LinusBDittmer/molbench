@@ -8,10 +8,11 @@ name -> basis -> method -> property -> id/path
 
 """
 
-from . import logger as log
-from .molecule import Molecule, MoleculeList, Datapoint
-from .functions import walk_dict_by_key, walk_dict_values
 import numpy
+
+from . import logger as log
+from .functions import walk_dict_by_key, walk_dict_values
+from .molecule import Datapoint, Molecule, MoleculeList
 
 
 class Comparison(dict):
@@ -39,7 +40,8 @@ class Comparison(dict):
         if data_separators:
             # remove the special separators (used anyway)
             data_separators = tuple(
-                separator for separator in data_separators
+                separator
+                for separator in data_separators
                 if separator not in ["name", "proptype", "data_id"]
             )
             self._data_separators = data_separators
@@ -89,13 +91,13 @@ class Comparison(dict):
         if isinstance(value, (int, float, complex, str)):
             return value
         elif isinstance(value, dict):
-            if ((len(value.keys()) == 2)
-                and ("value" in value)
-                and ("unit" in value)):
+            if (len(value.keys()) == 2) and ("value" in value) and ("unit" in value):
                 return Datapoint(value["value"], value["unit"])
-            log.error(f"Could not interpret {value} as a datapoint. Expected "
-                      "a dict with exactly the keys 'value' and 'unit'.",
-                      "Comparison._import_value")
+            log.error(
+                f"Could not interpret {value} as a datapoint. Expected "
+                "a dict with exactly the keys 'value' and 'unit'.",
+                "Comparison._import_value",
+            )
             return None
         elif isinstance(value, Datapoint):
             return value
@@ -111,8 +113,9 @@ class Comparison(dict):
 
     def add_molecule(self, data: Molecule) -> None:
         if not isinstance(data, Molecule):
-            log.error(f"Can't add data of type {type(data)}.",
-                      "Comparison.add_molecule")
+            log.error(
+                f"Can't add data of type {type(data)}.", "Comparison.add_molecule"
+            )
             return
 
         # We define a wrapper around prop.get to filter out transition ids
@@ -124,12 +127,15 @@ class Comparison(dict):
 
         for prop in data.state_data.values():
             separators = [_propget(prop, key) for key in self.data_separators]
-            proptypes = list(prop.get("data", dict()).keys())
-            values = [prop.get("data", dict())[k] for k in proptypes]
+            proptypes = list(prop.get("data", {}).keys())
+            values = [prop.get("data", {})[k] for k in proptypes]
 
             for proptype, value in zip(proptypes, values):
-                if proptype is None or value is None or any(v is None
-                                                            for v in separators):
+                if (
+                    proptype is None
+                    or value is None
+                    or any(v is None for v in separators)
+                ):
                     continue
                 # move into and establish the nested dict structure
                 if data.name not in self:  # special separator: name
@@ -147,15 +153,17 @@ class Comparison(dict):
                     propci = prop["component index"]
                     data_id += f"_{propci}"
                 if data_id in d:
-                    log.warning(f"data_id {data.data_id} is not unique. Found "
-                                f"conflicting entry for {data.name}, {separators} "
-                                f"and {proptype}. Overwriting the exisiting value",
-                                "Comparison.add_molecule")
+                    log.warning(
+                        f"data_id {data.data_id} is not unique. Found "
+                        f"conflicting entry for {data.name}, {separators} "
+                        f"and {proptype}. Overwriting the exisiting value",
+                        "Comparison.add_molecule",
+                    )
                 d[data_id] = self._import_value(value)
 
     def walk_by_key(self, desired_key):
         """Walk the dictionary looking for the desired key, returning
-           the sqeuence of keys and the corresponding value."""
+        the sqeuence of keys and the corresponding value."""
         return walk_dict_by_key(self, desired_key=desired_key)
 
     def walk_values(self):
