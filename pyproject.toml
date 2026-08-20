@@ -7,7 +7,7 @@ license = "MIT License"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.14"
 numpy = "^1.26.2"
 
 # PEP 735 group: "pip install --group dev" (pip >= 25.1) or
